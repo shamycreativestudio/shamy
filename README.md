@@ -6,7 +6,7 @@ Sitio web oficial de **Shamy] Creative Studio** - Diseño de marca con propósit
 
 ## 🌐 Sitio web
 
-Visita: [https://TU-USUARIO.github.io/shamy](https://TU-USUARIO.github.io/shamy)
+Visita: [https://TU-USUARIO.github.io/shamy](https://narex04.github.io/shamy/)
 
 ## 📁 Estructura del proyecto
 
