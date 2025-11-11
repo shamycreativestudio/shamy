@@ -1,12 +1,12 @@
-# Shamy Creative Studio
+# Shamy] Creative Studio
 
 ![Shamy Logo](assets/img/shamy-logotipo.svg)
 
-Sitio web oficial de **Shamy Creative Studio** - Diseño de marca con propósito.
+Sitio web oficial de **Shamy] Creative Studio** - Diseño de marca con propósito.
 
 ## 🌐 Sitio web
 
-Visita: [https://Narex04.github.io/shamy](https://Narex04.github.io/shamy)
+Visita: [https://Narex04.github.io/shamy](https://narex04.github.io/shamy/)
 
 ## 📁 Estructura del proyecto
 
