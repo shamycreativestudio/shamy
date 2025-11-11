@@ -9,8 +9,7 @@ const CONFIG = {
     ENV_NAME: "Development",
   },
   production: {
-    // ⚠️ IMPORTANTE: Reemplaza esta URL con la que te dé Railway o Render
-    API_URL: "https://TU-URL-AQUI.up.railway.app",
+    API_URL: "https://shamy-backend.fly.dev",
     ENV_NAME: "Production",
   },
 };

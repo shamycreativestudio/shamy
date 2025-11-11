@@ -1,0 +1,12 @@
+# Dockerignore para Shamy Backend
+node_modules
+npm-debug.log
+.git
+.gitignore
+README.md
+*.md
+.env
+database/briefs.db
+database/*.db-shm
+database/*.db-wal
+.DS_Store
