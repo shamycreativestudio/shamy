@@ -1,4 +1,4 @@
-# Shamy Creative Studio
+# Shamy] Creative Studio
 
 ![Shamy Logo](assets/img/shamy-logotipo.svg)
 
