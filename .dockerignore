@@ -6,7 +6,8 @@ npm-debug.log
 README.md
 *.md
 .env
-database/briefs.db
+# Solo excluir archivos de base de datos, NO el db.js
+database/*.db
 database/*.db-shm
 database/*.db-wal
 .DS_Store
