@@ -2,7 +2,7 @@
 
 ![Shamy Logo](assets/img/shamy-logotipo.svg)
 
-Sitio web oficial de **Shamy Creative Studio** - Diseño de marca con propósito.
+Sitio web oficial de **Shamy] Creative Studio** - Diseño de marca con propósito.
 
 ## 🌐 Sitio web
 
