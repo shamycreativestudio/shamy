@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Formulario de inicio de proyecto de marca - Shamy</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Formulario sencillo para recolectar información inicial de tu proyecto de marca."
+    />
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="top-bar" id="topBar">
+        <div class="logo-container">
+          <img
+            src="assets/shamy-logotipo-white.svg"
+            alt="Shamy"
+            class="main-logo"
+            id="mainLogo"
+          />
+          <span class="tagline" id="tagline"></span>
+        </div>
+        <button
+          type="button"
+          class="btn-reset"
+          id="resetBtn"
+          title="Empezar de nuevo"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+            <path d="M3 3v5h5" />
+          </svg>
+          Empezar de nuevo
+        </button>
+      </div>
+      <div class="header-content">
+        <h1>Inicia tu proyecto de marca</h1>
+        <p class="subtitle">
+          Completa lo que puedas. Si no sabes algo, déjalo en blanco.
+        </p>
+      </div>
+    </header>
+
+    <main id="app" class="container" aria-live="polite">
+      <div class="progress-wrapper" aria-label="Progreso del formulario">
+        <div class="progress-bar" id="progressBar">
+          <span id="progressText">0%</span>
+        </div>
+      </div>
+
+      <form id="briefForm" novalidate>
+        <!-- Paso 1 -->
+        <section class="step active" data-step="1" aria-labelledby="step1Title">
+          <h2 id="step1Title">Paso 1. Datos básicos</h2>
+          <div class="grid">
+            <label class="field">
+              <span>Nombre de tu empresa o marca *</span>
+              <input
+                type="text"
+                name="empresaNombre"
+                required
+                maxlength="100"
+              />
+              <small class="hint">Ej.: Café La Montaña</small>
+            </label>
+            <label class="field">
+              <span>Tu nombre y cargo *</span>
+              <input
+                type="text"
+                name="contactoNombreCargo"
+                required
+                maxlength="120"
+              />
+              <small class="hint">Ej.: Ana Gómez - Gerente</small>
+            </label>
+            <label class="field">
+              <span>Correo electrónico de contacto *</span>
+              <input type="email" name="contactoEmail" required />
+            </label>
+            <label class="field">
+              <span>Celular / WhatsApp *</span>
+              <input
+                type="tel"
+                name="contactoTelefono"
+                required
+                pattern="^[0-9+()\\-\\s]{8,20}$"
+              />
+              <small class="hint">Ej.: 3001234567</small>
+            </label>
+            <label class="field">
+              <span>Ciudad principal donde operas</span>
+              <input type="text" name="ciudad" maxlength="60" />
+            </label>
+            <fieldset class="field">
+              <legend>¿Qué necesitas principalmente? *</legend>
+              <div
+                class="checkbox-column"
+                data-required-group="necesidadesPrincipales"
+              >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="necesidadesPrincipales"
+                    value="Crear marca"
+                  />
+                  Crear una marca desde cero</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="necesidadesPrincipales"
+                    value="Rediseño"
+                  />
+                  Mejorar / actualizar mi marca (rediseño)</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="necesidadesPrincipales"
+                    value="Empaques"
+                  />
+                  Diseñar empaques / etiquetas</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="necesidadesPrincipales"
+                    value="Redes"
+                  />
+                  Diseño para redes sociales</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="necesidadesPrincipales"
+                    value="Web"
+                  />
+                  Página web / tienda online</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="necesidadesPrincipales"
+                    value="Impresos"
+                  />
+                  Material impreso</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="necesidadesPrincipales"
+                    value="FotoVideo"
+                  />
+                  Fotos o video</label
+                >
+                <label class="other-wrap">
+                  <input
+                    type="checkbox"
+                    name="necesidadesPrincipales"
+                    value="Otro"
+                  />
+                  Otro:
+                  <input
+                    type="text"
+                    name="necesidadesOtro"
+                    placeholder="Describe brevemente"
+                    disabled
+                  />
+                </label>
+              </div>
+            </fieldset>
+            <label class="field full">
+              <span>Breve descripción de lo que haces *</span>
+              <textarea
+                name="descripcionBreve"
+                required
+                maxlength="280"
+                rows="2"
+                placeholder="Ej.: Vendemos café especial de origen Nariño."
+              ></textarea>
+              <small class="char-counter" data-for="descripcionBreve"></small>
+            </label>
+            <fieldset class="field">
+              <legend>¿Hasta dónde quieres llegar con tu proyecto?</legend>
+              <div class="checkbox-row">
+                <label
+                  ><input type="checkbox" name="cobertura" value="Local" />
+                  Ciudad / Local</label
+                >
+                <label
+                  ><input type="checkbox" name="cobertura" value="Regional" />
+                  Región / Departamento</label
+                >
+                <label
+                  ><input type="checkbox" name="cobertura" value="Nacional" />
+                  Nacional</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="cobertura"
+                    value="Internacional"
+                  />
+                  Internacional</label
+                >
+              </div>
+            </fieldset>
+            <label class="field">
+              <span>Fecha ideal de lanzamiento o entrega</span>
+              <input type="date" name="fechaEntregaIdeal" />
+            </label>
+          </div>
+        </section>
+
+        <!-- Paso 2 -->
+        <section class="step" data-step="2" aria-labelledby="step2Title">
+          <h2 id="step2Title">Paso 2. Objetivos</h2>
+          <div class="grid">
+            <fieldset class="field">
+              <legend>¿Cuál es tu objetivo principal? (elige uno)</legend>
+              <div class="radio-column">
+                <label
+                  ><input
+                    type="radio"
+                    name="objetivoPrincipal"
+                    value="Vender más"
+                  />
+                  Vender más</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="objetivoPrincipal"
+                    value="Lanzar nuevo producto"
+                  />
+                  Lanzar un nuevo producto/servicio</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="objetivoPrincipal"
+                    value="Verse profesional"
+                  />
+                  Verse más profesional</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="objetivoPrincipal"
+                    value="Diferenciarse"
+                  />
+                  Diferenciarse de la competencia</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="objetivoPrincipal"
+                    value="Mejorar digital"
+                  />
+                  Mejorar presencia digital</label
+                >
+                <label class="other-wrap">
+                  <input type="radio" name="objetivoPrincipal" value="Otro" />
+                  Otro:
+                  <input
+                    type="text"
+                    name="objetivoOtro"
+                    placeholder="Escribe tu objetivo"
+                    disabled
+                  />
+                </label>
+              </div>
+            </fieldset>
+            <label class="field full">
+              <span>Objetivos secundarios (Opcional, máximo 2)</span>
+              <div class="chip-input" data-max="2">
+                <input
+                  type="text"
+                  placeholder="Escribe y presiona Enter"
+                  class="chip-origin"
+                />
+                <div
+                  class="chips"
+                  aria-label="Lista de objetivos secundarios"
+                ></div>
+              </div>
+            </label>
+            <fieldset class="field">
+              <legend>¿Qué te gustaría medir?</legend>
+              <div class="checkbox-column">
+                <label
+                  ><input
+                    type="checkbox"
+                    name="mediciones"
+                    value="Visitas web"
+                  />
+                  Visitas a la página</label
+                >
+                <label
+                  ><input type="checkbox" name="mediciones" value="Consultas" />
+                  Consultas / mensajes</label
+                >
+                <label
+                  ><input type="checkbox" name="mediciones" value="Ventas" />
+                  Ventas</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="mediciones"
+                    value="Seguidores"
+                  />
+                  Seguidores / interacción</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="mediciones"
+                    value="Recordación"
+                  />
+                  Recordación</label
+                >
+                <label class="other-wrap">
+                  <input type="checkbox" name="mediciones" value="Otro" />
+                  Otro:
+                  <input
+                    type="text"
+                    name="medicionesOtro"
+                    placeholder="Otra métrica"
+                    disabled
+                  />
+                </label>
+              </div>
+            </fieldset>
+          </div>
+        </section>
+
+        <!-- Paso 3 -->
+        <section class="step" data-step="3" aria-labelledby="step3Title">
+          <h2 id="step3Title">Paso 3. Tu público</h2>
+          <div class="grid">
+            <label class="field full">
+              <span>¿Quiénes son tus clientes principales?</span>
+              <textarea
+                name="publicoClientes"
+                rows="2"
+                maxlength="300"
+                placeholder="Ej.: Jóvenes universitarios que buscan snacks saludables."
+              ></textarea>
+              <small class="char-counter" data-for="publicoClientes"></small>
+            </label>
+            <label class="field">
+              <span>Rango de edad más común (Opcional)</span>
+              <input
+                type="text"
+                name="rangoEdad"
+                placeholder="Ej.: 25-40"
+                maxlength="20"
+              />
+            </label>
+            <label class="field full">
+              <span>¿Qué problema o necesidad les ayudas a resolver?</span>
+              <textarea
+                name="publicoProblema"
+                rows="2"
+                maxlength="300"
+                placeholder="Ej.: Acceso a café de calidad sin pagar precios altos."
+              ></textarea>
+              <small class="char-counter" data-for="publicoProblema"></small>
+            </label>
+            <label class="field full">
+              <span>¿Por qué crees que te elegirían a ti?</span>
+              <textarea
+                name="publicoEleccion"
+                rows="2"
+                maxlength="300"
+              ></textarea>
+              <small class="char-counter" data-for="publicoEleccion"></small>
+            </label>
+            <fieldset class="field">
+              <legend>Estilo que te gustaría transmitir</legend>
+              <div class="radio-row">
+                <label
+                  ><input type="radio" name="estilo" value="Clásico" /> Más
+                  clásico / serio</label
+                >
+                <label
+                  ><input type="radio" name="estilo" value="Moderno" /> Más
+                  moderno / actual</label
+                >
+                <label
+                  ><input type="radio" name="estilo" value="Mixto" /> Una
+                  mezcla</label
+                >
+              </div>
+            </fieldset>
+          </div>
+        </section>
+
+        <!-- Paso 4 -->
+        <section class="step" data-step="4" aria-labelledby="step4Title">
+          <h2 id="step4Title">Paso 4. Competencia</h2>
+          <div class="grid">
+            <div class="field full">
+              <span>Nombra 1 a 3 competidores (Nombre y enlace)</span>
+              <div id="competidoresGroup" class="repeat-group" data-max="3">
+                <div class="repeat-item">
+                  <input
+                    type="text"
+                    name="competidorNombre[]"
+                    placeholder="Nombre"
+                    maxlength="60"
+                  />
+                  <input
+                    type="url"
+                    name="competidorUrl[]"
+                    placeholder="https://..."
+                  />
+                  <button
+                    type="button"
+                    class="btn-icon remove"
+                    aria-label="Eliminar competidor"
+                    hidden
+                  >
+                    &times;
+                  </button>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="btn-secondary small"
+                id="addCompetidor"
+              >
+                Añadir otro
+              </button>
+            </div>
+            <label class="field full">
+              <span>¿En qué sientes que eres mejor?</span>
+              <textarea
+                name="competenciaVentajas"
+                rows="2"
+                maxlength="300"
+              ></textarea>
+              <small
+                class="char-counter"
+                data-for="competenciaVentajas"
+              ></small>
+            </label>
+            <label class="field full">
+              <span>¿En qué crees que podrías mejorar?</span>
+              <textarea
+                name="competenciaMejoras"
+                rows="2"
+                maxlength="300"
+              ></textarea>
+              <small class="char-counter" data-for="competenciaMejoras"></small>
+            </label>
+            <label class="field full">
+              <span>¿Hay alguna marca que te guste? ¿Por qué?</span>
+              <textarea
+                name="marcaInspiracion"
+                rows="2"
+                maxlength="300"
+              ></textarea>
+              <small class="char-counter" data-for="marcaInspiracion"></small>
+            </label>
+          </div>
+        </section>
+
+        <!-- Paso 5 Condicional -->
+        <section class="step" data-step="5" aria-labelledby="step5Title" hidden>
+          <h2 id="step5Title">Paso 5. Rediseño / Actualizar marca</h2>
+          <p class="info">
+            Este bloque aparece porque seleccionaste que quieres rediseñar o
+            actualizar tu marca.
+          </p>
+          <div class="grid">
+            <fieldset class="field">
+              <legend>¿Por qué quieres cambiar tu marca?</legend>
+              <div class="checkbox-column">
+                <label
+                  ><input
+                    type="checkbox"
+                    name="motivosRedisenio"
+                    value="Anticuada"
+                  />
+                  Ya se ve anticuada</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="motivosRedisenio"
+                    value="No se entiende"
+                  />
+                  No se entiende bien</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="motivosRedisenio"
+                    value="No funciona digital"
+                  />
+                  No funciona en redes / digital</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="motivosRedisenio"
+                    value="Cambió negocio"
+                  />
+                  Cambió mi negocio</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="motivosRedisenio"
+                    value="Reposicionamiento"
+                  />
+                  Quiero reposicionarme</label
+                >
+                <label class="other-wrap">
+                  <input type="checkbox" name="motivosRedisenio" value="Otro" />
+                  Otro:
+                  <input
+                    type="text"
+                    name="motivosOtro"
+                    placeholder="Describe"
+                    disabled
+                  />
+                </label>
+              </div>
+            </fieldset>
+            <fieldset class="field">
+              <legend>¿Qué quieres mantener?</legend>
+              <div class="checkbox-column">
+                <label
+                  ><input type="checkbox" name="mantener" value="Colores" />
+                  Colores</label
+                >
+                <label
+                  ><input type="checkbox" name="mantener" value="Tipografía" />
+                  Tipografía</label
+                >
+                <label
+                  ><input type="checkbox" name="mantener" value="Símbolo" /> El
+                  símbolo / ícono</label
+                >
+                <label
+                  ><input type="checkbox" name="mantener" value="Forma logo" />
+                  La forma general del logo</label
+                >
+                <label
+                  ><input type="checkbox" name="mantener" value="Eslogan" />
+                  Eslogan</label
+                >
+                <label
+                  ><input
+                    type="checkbox"
+                    name="mantener"
+                    value="Estilo fotos"
+                  />
+                  Estilo de fotos</label
+                >
+                <label
+                  ><input type="checkbox" name="mantener" value="Nada" /> Nada,
+                  quiero empezar de cero</label
+                >
+                <label class="other-wrap">
+                  <input type="checkbox" name="mantener" value="Otro" />
+                  Otro:
+                  <input
+                    type="text"
+                    name="mantenerOtro"
+                    placeholder="Describe"
+                    disabled
+                  />
+                </label>
+              </div>
+            </fieldset>
+            <label class="field full">
+              <span>¿Qué quieres que se cambie sí o sí?</span>
+              <textarea name="cambiarSiOSi" rows="2" maxlength="300"></textarea>
+              <small class="char-counter" data-for="cambiarSiOSi"></small>
+            </label>
+            <div class="field full">
+              <span>Sube lo que tengas (logo, piezas anteriores)</span>
+              <div
+                class="upload-zone"
+                id="uploadZone"
+                tabindex="0"
+                aria-label="Zona para subir archivos"
+              >
+                <p>Arrastra aquí o haz clic para seleccionar archivos</p>
+                <input
+                  type="file"
+                  id="fileInput"
+                  multiple
+                  accept=".ai,.eps,.svg,.pdf,.png,.jpg,.jpeg"
+                  hidden
+                />
+                <ul
+                  id="fileList"
+                  class="file-list"
+                  aria-label="Archivos seleccionados"
+                ></ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Paso 6 -->
+        <section class="step" data-step="6" aria-labelledby="step6Title">
+          <h2 id="step6Title">Paso 6. Entregables y materiales</h2>
+          <div class="grid">
+            <fieldset class="field">
+              <legend>¿Qué necesitas que diseñemos?</legend>
+              <div class="checkbox-columns-2">
+                <div>
+                  <strong>Identidad</strong>
+                  <label
+                    ><input type="checkbox" name="entregables" value="Logo" />
+                    Logo</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="entregables"
+                      value="Colores tipografías"
+                    />
+                    Colores y tipografías</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="entregables"
+                      value="Manual básico"
+                    />
+                    Manual básico de uso</label
+                  >
+                </div>
+                <div>
+                  <strong>Digital</strong>
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="entregables"
+                      value="Plantillas redes"
+                    />
+                    Plantillas para redes</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="entregables"
+                      value="Página web"
+                    />
+                    Página web</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="entregables"
+                      value="Firma correo"
+                    />
+                    Firma de correo</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="entregables"
+                      value="Presentación"
+                    />
+                    Presentación</label
+                  >
+                </div>
+                <div>
+                  <strong>Impresos</strong>
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="entregables"
+                      value="Tarjetas"
+                    />
+                    Tarjetas</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="entregables"
+                      value="Folleto catálogo"
+                    />
+                    Folleto / catálogo</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="entregables"
+                      value="Etiquetas empaques"
+                    />
+                    Etiquetas / empaques</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="entregables"
+                      value="Letreros avisos"
+                    />
+                    Letreros / avisos</label
+                  >
+                </div>
+                <div>
+                  <strong>Audiovisual</strong>
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="entregables"
+                      value="Fotografía"
+                    />
+                    Fotografía</label
+                  >
+                  <label
+                    ><input
+                      type="checkbox"
+                      name="entregables"
+                      value="Video corto"
+                    />
+                    Video corto</label
+                  >
+                </div>
+                <label class="other-wrap full">
+                  <input type="checkbox" name="entregables" value="Otro" />
+                  Otro:
+                  <input
+                    type="text"
+                    name="entregablesOtro"
+                    placeholder="Describe"
+                    disabled
+                  />
+                </label>
+              </div>
+            </fieldset>
+            <fieldset class="field">
+              <legend>¿Necesitas página web?</legend>
+              <div class="radio-row">
+                <label
+                  ><input type="radio" name="necesitaWeb" value="No" />
+                  No</label
+                >
+                <label
+                  ><input type="radio" name="necesitaWeb" value="Informativa" />
+                  Sí, informativa</label
+                >
+                <label
+                  ><input type="radio" name="necesitaWeb" value="Catalogo" />
+                  Sí, con catálogo</label
+                >
+                <label
+                  ><input type="radio" name="necesitaWeb" value="Tienda" /> Sí,
+                  con tienda / pagos</label
+                >
+              </div>
+            </fieldset>
+            <fieldset class="field" data-web-sub hidden>
+              <legend>¿Tienes dominio y hosting?</legend>
+              <div class="radio-row">
+                <label
+                  ><input type="radio" name="hostingDominio" value="Sí" />
+                  Sí</label
+                >
+                <label
+                  ><input type="radio" name="hostingDominio" value="No" />
+                  No</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="hostingDominio"
+                    value="No seguro"
+                  />
+                  No estoy seguro</label
+                >
+              </div>
+            </fieldset>
+            <fieldset class="field">
+              <legend>¿Necesitas fotos o video nuevo?</legend>
+              <div class="radio-row">
+                <label
+                  ><input type="radio" name="necesitaFotoVideo" value="No" />
+                  No</label
+                >
+                <label
+                  ><input type="radio" name="necesitaFotoVideo" value="Sí" />
+                  Sí</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="necesitaFotoVideo"
+                    value="No seguro"
+                  />
+                  No estoy seguro</label
+                >
+              </div>
+            </fieldset>
+            <label class="field full" data-fotovideo-sub hidden>
+              <span
+                >Lista breve de lo que imaginas (Ej.: fotos productos, video
+                presentación)</span
+              >
+              <textarea
+                name="listaFotoVideo"
+                rows="2"
+                maxlength="300"
+              ></textarea>
+              <small class="char-counter" data-for="listaFotoVideo"></small>
+            </label>
+            <fieldset class="field">
+              <legend>¿En dónde usarás más tu marca? (máximo 3)</legend>
+              <div class="checkbox-row limited" data-limit="3">
+                <label
+                  ><input type="checkbox" name="usosMarca" value="Redes" />
+                  Redes sociales</label
+                >
+                <label
+                  ><input type="checkbox" name="usosMarca" value="Empaques" />
+                  Empaques</label
+                >
+                <label
+                  ><input type="checkbox" name="usosMarca" value="Sitio web" />
+                  Sitio web</label
+                >
+                <label
+                  ><input type="checkbox" name="usosMarca" value="Documentos" />
+                  Documentos / presentaciones</label
+                >
+                <label
+                  ><input type="checkbox" name="usosMarca" value="Avisos" />
+                  Avisos / señalética</label
+                >
+                <label
+                  ><input type="checkbox" name="usosMarca" value="Uniformes" />
+                  Uniformes / vehículos</label
+                >
+              </div>
+            </fieldset>
+          </div>
+        </section>
+
+        <!-- Paso 7 -->
+        <section class="step" data-step="7" aria-labelledby="step7Title">
+          <h2 id="step7Title">Paso 7. Tiempo y presupuesto</h2>
+          <div class="grid">
+            <fieldset class="field">
+              <legend>¿Hay una fecha límite fija?</legend>
+              <div class="radio-row">
+                <label
+                  ><input type="radio" name="fechaLimiteFija" value="No" />
+                  No</label
+                >
+                <label
+                  ><input type="radio" name="fechaLimiteFija" value="Sí" />
+                  Sí</label
+                >
+              </div>
+            </fieldset>
+            <label class="field" data-fecha-limite hidden>
+              <span>Fecha límite</span>
+              <input type="date" name="fechaLimite" />
+            </label>
+            <fieldset class="field">
+              <legend>¿Tienes un rango de presupuesto estimado?</legend>
+              <div class="radio-column">
+                <label
+                  ><input type="radio" name="presupuesto" value="No idea" /> Aún
+                  no tengo idea</label
+                >
+                <label
+                  ><input type="radio" name="presupuesto" value="Bajo" />
+                  Bajo</label
+                >
+                <label
+                  ><input type="radio" name="presupuesto" value="Medio" />
+                  Medio</label
+                >
+                <label
+                  ><input type="radio" name="presupuesto" value="Alto" />
+                  Alto</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="presupuesto"
+                    value="Prefiero hablar"
+                  />
+                  Prefiero hablarlo en la reunión</label
+                >
+              </div>
+            </fieldset>
+            <fieldset class="field">
+              <legend>¿Qué tan rápido necesitas avanzar?</legend>
+              <div class="radio-row">
+                <label
+                  ><input type="radio" name="prioridad" value="Normal" />
+                  Normal</label
+                >
+                <label
+                  ><input type="radio" name="prioridad" value="Rápido" />
+                  Rápido</label
+                >
+                <label
+                  ><input type="radio" name="prioridad" value="Urgente" />
+                  Urgente</label
+                >
+              </div>
+            </fieldset>
+          </div>
+        </section>
+
+        <!-- Paso 8 -->
+        <section class="step" data-step="8" aria-labelledby="step8Title">
+          <h2 id="step8Title">Paso 8. Aprobaciones y comunicación</h2>
+          <div class="grid">
+            <label class="field">
+              <span>¿Quién toma la decisión final? (nombre y cargo)</span>
+              <input type="text" name="decisionFinal" maxlength="120" />
+            </label>
+            <label class="field">
+              <span>¿Cuántas personas revisarán?</span>
+              <input type="number" name="personasRevisan" min="1" max="20" />
+            </label>
+            <fieldset class="field">
+              <legend>Forma principal de contacto</legend>
+              <div class="radio-row">
+                <label
+                  ><input
+                    type="radio"
+                    name="contactoPreferido"
+                    value="WhatsApp"
+                  />
+                  WhatsApp</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="contactoPreferido"
+                    value="Correo"
+                  />
+                  Correo</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="contactoPreferido"
+                    value="Reuniones virtuales"
+                  />
+                  Reuniones virtuales</label
+                >
+              </div>
+            </fieldset>
+            <fieldset class="field">
+              <legend>¿Cada cuánto puedes responder a avances?</legend>
+              <div class="radio-row">
+                <label
+                  ><input
+                    type="radio"
+                    name="tiempoRespuesta"
+                    value="1-2 días"
+                  />
+                  1–2 días</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="tiempoRespuesta"
+                    value="3-5 días"
+                  />
+                  3–5 días</label
+                >
+                <label
+                  ><input
+                    type="radio"
+                    name="tiempoRespuesta"
+                    value="Más de 5 días"
+                  />
+                  Más de 5 días</label
+                >
+              </div>
+            </fieldset>
+          </div>
+        </section>
+
+        <!-- Paso 9 -->
+        <section class="step" data-step="9" aria-labelledby="step9Title">
+          <h2 id="step9Title">Paso 9. Riesgos o detalles</h2>
+          <div class="grid">
+            <label class="field full">
+              <span>¿Hay algo que pueda retrasar el proyecto?</span>
+              <textarea
+                name="riesgos"
+                rows="2"
+                maxlength="300"
+                placeholder="Ej.: Depende de aprobación de junta."
+              ></textarea>
+              <small class="char-counter" data-for="riesgos"></small>
+            </label>
+            <label class="field full">
+              <span>¿Alguna aclaración o comentario final?</span>
+              <textarea
+                name="comentariosFinales"
+                rows="2"
+                maxlength="400"
+              ></textarea>
+              <small class="char-counter" data-for="comentariosFinales"></small>
+            </label>
+            <fieldset class="field">
+              <legend>
+                ¿Deseas firmar un acuerdo de confidencialidad (NDA)?
+              </legend>
+              <div class="radio-row">
+                <label><input type="radio" name="nda" value="Sí" /> Sí</label>
+                <label><input type="radio" name="nda" value="No" /> No</label>
+                <label
+                  ><input type="radio" name="nda" value="No aplica" /> No
+                  aplica</label
+                >
+              </div>
+            </fieldset>
+          </div>
+        </section>
+
+        <!-- Paso 10 -->
+        <section class="step" data-step="10" aria-labelledby="step10Title">
+          <h2 id="step10Title">Paso 10. Confirmación</h2>
+          <p>Revisa y marca las casillas para finalizar.</p>
+          <div class="grid confirm-grid">
+            <label class="checkbox-line">
+              <input type="checkbox" name="confirmVeracidad" required />
+              Confirmo que la información es verdadera *
+            </label>
+            <label class="checkbox-line">
+              <input type="checkbox" name="confirmDatos" required /> Autorizo el
+              uso de los datos para gestionar este proyecto *
+            </label>
+            <label class="checkbox-line">
+              <input type="checkbox" name="confirmDerechos" required /> Tengo
+              derechos o permisos sobre los materiales que comparto *
+            </label>
+            <label class="checkbox-line">
+              <input type="checkbox" name="optInRecursos" /> Quiero recibir
+              novedades y recursos útiles (Opcional)
+            </label>
+          </div>
+          <div class="summary-wrapper">
+            <button type="button" class="btn-secondary" id="verResumen">
+              Ver resumen antes de enviar
+            </button>
+          </div>
+        </section>
+
+        <!-- Navegación -->
+        <nav class="nav-steps" aria-label="Navegación de pasos">
+          <button type="button" class="btn-secondary" id="prevBtn" disabled>
+            Anterior
+          </button>
+          <button type="button" class="btn-primary" id="nextBtn">
+            Siguiente
+          </button>
+          <button type="submit" class="btn-primary" id="submitBtn" hidden>
+            Enviar formulario
+          </button>
+          <button type="button" class="btn-tertiary" id="saveBtn" hidden>
+            Guardar y continuar luego
+          </button>
+        </nav>
+      </form>
+
+      <!-- Modal resumen -->
+      <dialog id="summaryDialog" aria-label="Resumen del formulario">
+        <h3>Resumen</h3>
+        <pre id="summaryContent"></pre>
+        <div class="dialog-actions">
+          <button type="button" class="btn-secondary" id="closeSummary">
+            Cerrar
+          </button>
+          <button type="button" class="btn-primary" id="downloadJson">
+            Descargar JSON
+          </button>
+        </div>
+      </dialog>
+
+      <!-- Mensaje final -->
+      <section id="successMessage" class="success hidden" aria-live="assertive">
+        <h2>¡Gracias! Recibimos tu información.</h2>
+        <p>
+          Te contactaremos para la reunión inicial. Revisa tu correo para el
+          resumen.
+        </p>
+        <button type="button" class="btn-secondary" id="restart">
+          Iniciar nuevo formulario
+        </button>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <div class="footer-content">
+        <img src="assets/shamy-logotipo.svg" alt="Shamy" class="footer-logo" />
+        <small
+          >&copy; 2025 Shamy Creative Studio. Tratamiento de datos conforme Ley
+          1581 de 2012.</small
+        >
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
