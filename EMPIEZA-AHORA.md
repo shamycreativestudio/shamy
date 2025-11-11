@@ -31,106 +31,67 @@ Debes ver la lista de briefs (incluido el que enviaste antes).
 
 ---
 
-## 🌐 PASO 2: Deploy a Railway (10 minutos)
+## 🌐 PASO 2: Backend ya desplegado en Fly.io ✅
 
-### 2.1. Commit y push a GitHub
-
-```powershell
-cd "d:\Trabajo\Shamy\Web\shamy"
-
-git add .
-git commit -m "feat: backend con deployment en la nube configurado"
-git push origin main
-```
-
-### 2.2. Crear cuenta en Railway
-
-1. Abre: **https://railway.app/**
-2. Click en **"Start a New Project"**
-3. Click en **"Login with GitHub"**
-4. Autoriza Railway para acceder a tus repositorios
-
-### 2.3. Deploy desde GitHub
-
-1. Click en **"Deploy from GitHub repo"**
-2. Busca tu repositorio: **`Narex04/shamy`**
-3. Click en tu repositorio
-4. Railway detectará automáticamente Node.js
-5. Click en **"Deploy Now"**
-6. **Espera 2-3 minutos** mientras se despliega
-
-### 2.4. Configurar variables de entorno
-
-1. En Railway, click en tu proyecto
-2. Click en la pestaña **"Variables"**
-3. Click en **"+ New Variable"** y añade cada una:
+**¡BUENAS NOTICIAS!** Tu backend ya está desplegado y funcionando en:
 
 ```
-NODE_ENV=production
-```
-```
-ADMIN_USERNAME=admin
-```
-```
-ADMIN_PASSWORD=ShaMyS3cur3P@ss2025
-```
-_(👆 Cambia esto por tu password seguro)_
-
-```
-CORS_ORIGIN=https://narex04.github.io
+https://shamy-backend.fly.dev
 ```
 
-4. Click en **"Deploy"** para reiniciar con las nuevas variables
+### Verifica que funciona:
 
-### 2.5. Obtener tu URL
-
-1. Ve a **"Settings" → "Networking"**
-2. Click en **"Generate Domain"**
-3. Railway te dará una URL como:
+1. **Abre en tu navegador:**
    ```
-   https://shamy-production.up.railway.app
+   https://shamy-backend.fly.dev
    ```
-4. **¡COPIA ESTA URL!** La necesitarás en el siguiente paso
+   
+   **✅ DEBES VER:**
+   ```json
+   {"status":"ok","message":"Shamy Branding Backend"}
+   ```
+
+2. **Panel de administración:**
+   ```
+   https://shamy-backend.fly.dev/api/admin/panel
+   ```
+   
+   **Login:**
+   - Usuario: `admin`
+   - Password: `shamy2025`
+   
+   **✅ DEBES VER:**
+   El panel de administración con la lista de briefs.
+
+### Características del deployment:
+
+- ✅ **Siempre activo** - No se apaga por inactividad
+- ✅ **Base de datos persistente** - Volumen de 1GB en Fly.io
+- ✅ **HTTPS automático** - Certificado SSL incluido
+- ✅ **Región iad** (Ashburn, Virginia) - Cerca de Colombia
+- ✅ **CORS configurado** para GitHub Pages
 
 ---
 
-## 🔧 PASO 3: Conectar frontend con tu backend en Railway (3 minutos)
+## 🔧 PASO 3: Frontend ya configurado ✅
 
-### 3.1. Actualizar config.js
-
-Abre el archivo `branding/config.js` y busca esta línea:
+Tu archivo `branding/config.js` ya está configurado con la URL correcta:
 
 ```javascript
-API_URL: 'https://TU-URL-AQUI.up.railway.app',
+API_URL: 'https://shamy-backend.fly.dev',
 ```
 
-Reemplázala con **TU URL DE RAILWAY** que copiaste en el paso anterior:
-
-```javascript
-API_URL: 'https://shamy-production.up.railway.app',  // 👈 TU URL AQUÍ
-```
-
-### 3.2. Commit y push
-
-```powershell
-git add branding/config.js
-git commit -m "config: actualizar URL de producción de Railway"
-git push origin main
-```
-
-### 3.3. Esperar a que GitHub Pages se actualice
-
-GitHub Pages puede tardar 1-2 minutos en actualizarse. Espera un poco.
+**Esto significa que tu formulario en GitHub Pages ya está conectado al backend en Fly.io.**
 
 ---
 
 ## 🎉 ¡PROBAR QUE TODO FUNCIONA!
 
-### Test 1: Backend en Railway está activo
+### Test 1: Backend en Fly.io está activo
 
-Abre en tu navegador tu URL de Railway:
+Abre en tu navegador:
 ```
-https://TU-URL.up.railway.app
+https://shamy-backend.fly.dev
 ```
 
 **✅ DEBES VER:**
@@ -138,25 +99,25 @@ https://TU-URL.up.railway.app
 {"status":"ok","message":"Shamy Branding Backend"}
 ```
 
-### Test 2: Panel admin en Railway
+### Test 2: Panel admin en Fly.io
 
 Abre:
 ```
-https://TU-URL.up.railway.app/api/admin/panel
+https://shamy-backend.fly.dev/api/admin/panel
 ```
 
 **Login:**
 - Usuario: `admin`
-- Password: `ShaMyS3cur3P@ss2025` (el que configuraste)
+- Password: `shamy2025`
 
 **✅ DEBES VER:**
-El panel de administración sin errores (aunque todavía no tenga briefs desde producción).
+El panel de administración con los briefs almacenados.
 
 ### Test 3: Formulario desde GitHub Pages
 
 1. Abre tu formulario en GitHub Pages:
    ```
-   https://narex04.github.io/shamy/branding/
+   https://shamycreativestudio.github.io/shamy/branding/
    ```
 
 2. **Abre la consola del navegador (F12)**
@@ -164,14 +125,14 @@ El panel de administración sin errores (aunque todavía no tenga briefs desde p
 3. **✅ DEBES VER:**
    ```
    🌍 Entorno: Production
-   🔌 Conectando al API: https://shamy-production.up.railway.app
+   🔌 API URL: https://shamy-backend.fly.dev
    ```
 
 4. **Llena el formulario y envía**
 
-5. **Ve al panel de Railway:**
+5. **Ve al panel de Fly.io:**
    ```
-   https://TU-URL.up.railway.app/api/admin/panel
+   https://shamy-backend.fly.dev/api/admin/panel
    ```
 
 6. **✅ DEBES VER:**
@@ -181,14 +142,15 @@ El panel de administración sin errores (aunque todavía no tenga briefs desde p
 
 ## ✅ ¡FELICIDADES! 🎊
 
-Si todos los tests pasaron, tienes:
+Tu sistema está completamente operativo:
 
-- ✅ Formulario en GitHub Pages funcionando
-- ✅ Backend en Railway guardando datos
-- ✅ Panel de administración accesible desde cualquier lugar
+- ✅ Formulario en GitHub Pages: `https://shamycreativestudio.github.io/shamy/branding/`
+- ✅ Backend en Fly.io (siempre activo): `https://shamy-backend.fly.dev`
+- ✅ Panel de administración: `https://shamy-backend.fly.dev/api/admin/panel`
+- ✅ Base de datos persistente con volumen de 1GB
 - ✅ Sistema completamente en la nube
-- ✅ Sincronización configurada
-- ✅ Todo gratis ($0/mes)
+- ✅ HTTPS y certificados SSL automáticos
+- ✅ **Gratis en el tier de Fly.io**
 
 ---
 
@@ -198,8 +160,8 @@ Si quieres descargar los briefs de la nube a tu computadora local:
 
 ```powershell
 .\scripts\sync-from-cloud.ps1 `
-  -CloudUrl "https://TU-URL.up.railway.app" `
-  -Password "ShaMyS3cur3P@ss2025"
+  -CloudUrl "https://shamy-backend.fly.dev" `
+  -Password "shamy2025"
 ```
 
 Esto creará un backup en: `backups/backup_YYYY-MM-DD_HH-mm-ss.json`
@@ -213,25 +175,25 @@ Esto creará un backup en: `backups/backup_YYYY-MM-DD_HH-mm-ss.json`
 **Causa:** CORS no está configurado correctamente.
 
 **Solución:**
-1. Ve a Railway → Variables
-2. Verifica que `CORS_ORIGIN` sea: `https://narex04.github.io`
-3. Reinicia el deployment
+1. Verifica que el backend esté activo: `https://shamy-backend.fly.dev`
+2. CORS ya está configurado para: `https://shamycreativestudio.github.io`
 
 ### Error: 401 Unauthorized en el panel
 
 **Causa:** Password incorrecto.
 
 **Solución:**
-1. Verifica el password en Railway → Variables → `ADMIN_PASSWORD`
-2. Usa ese mismo password para hacer login
+- Usuario: `admin`
+- Password: `shamy2025`
 
-### Railway muestra errores en los logs
+### Fly.io muestra errores en los logs
 
 **Solución:**
-1. Ve a Railway → Deployments
-2. Click en el deployment
-3. Lee los logs
-4. Si dice "module not found", verifica que `package.json` tenga todas las dependencias
+```powershell
+C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamy-backend
+```
+
+Esto te mostrará los logs en tiempo real.
 
 ---
 
@@ -248,26 +210,33 @@ Si quieres más detalles:
 
 ## 💡 PRÓXIMOS PASOS (OPCIONAL)
 
-1. **Configurar dominio personalizado** en Railway
-2. **Migrar a PostgreSQL** (más robusto que SQLite)
+1. **Configurar dominio personalizado** en Fly.io
+2. **Aumentar tamaño del volumen** si necesitas más de 1GB
 3. **Configurar Cloudinary** para archivos en la nube
 4. **Configurar notificaciones por email** cuando llegue un brief
+5. **Escalar recursos** si aumenta el tráfico
 
 ---
 
-## 🎯 RESUMEN DE LOS 3 PASOS
+## 🎯 RESUMEN - Tu Sistema Ya Está Listo
 
 ```
-1️⃣  npm run dev
-   → Verifica panel funciona en localhost
+✅ Backend: https://shamy-backend.fly.dev
+   → Node.js + Express + SQLite
+   → Siempre activo (no se apaga)
+   → Base de datos persistente (1GB)
+   → Región: iad (Ashburn, Virginia)
 
-2️⃣  Deploy a Railway
-   → Push a GitHub → Login Railway → Deploy → Config variables → Obtener URL
+✅ Frontend: https://shamycreativestudio.github.io/shamy/branding/
+   → GitHub Pages
+   → Conectado al backend
+   → CORS configurado
 
-3️⃣  Actualizar config.js
-   → Cambiar URL en config.js → Push a GitHub → Probar desde GitHub Pages
+✅ Panel Admin: https://shamy-backend.fly.dev/api/admin/panel
+   → Usuario: admin
+   → Password: shamy2025
 
-✅ ¡LISTO! Sistema completo en la nube
+✅ ¡TODO FUNCIONANDO!
 ```
 
 ---
