@@ -1,5 +1,9 @@
 /* Form wizard logic, validation, data serialization */
 
+// Obtener la URL del API desde config.js
+const API_URL = window.SHAMY_CONFIG?.API_URL || "http://localhost:3000";
+console.log("🔌 Conectando al API:", API_URL);
+
 const form = document.getElementById("briefForm");
 const steps = Array.from(document.querySelectorAll(".step"));
 const prevBtn = document.getElementById("prevBtn");
@@ -251,16 +255,63 @@ nextBtn.addEventListener("click", () => {
   currentStep = nextStepIndex();
   showStep();
 });
-form.addEventListener("submit", (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   if (!validateStep(currentStep)) return;
+
   const data = collectData();
-  // Simulated submission
-  setTimeout(() => {
-    console.log("Submitted data:", data);
+
+  // Deshabilitar botón de envío
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Enviando...";
+
+  try {
+    // Crear FormData para enviar archivos
+    const formData = new FormData();
+
+    // Añadir todos los datos como JSON
+    for (const [key, value] of Object.entries(data)) {
+      if (key !== "meta") {
+        formData.append(
+          key,
+          typeof value === "object" ? JSON.stringify(value) : value
+        );
+      }
+    }
+
+    // Añadir archivos si existen
+    if (uploadedFiles && uploadedFiles.length > 0) {
+      uploadedFiles.forEach((file) => {
+        formData.append("files", file);
+      });
+    }
+
+    // Enviar al servidor usando la URL configurada
+    console.log("📤 Enviando brief al servidor...");
+    const response = await fetch(`${API_URL}/api/briefs`, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!response.ok) {
+      throw new Error("Error al enviar el formulario");
+    }
+
+    const result = await response.json();
+    console.log("Brief enviado exitosamente:", result);
+
     showSuccess();
     localStorage.removeItem(STORAGE_KEY);
-  }, 400);
+  } catch (error) {
+    console.error("Error al enviar:", error);
+    alert(
+      "Hubo un error al enviar el formulario. Por favor, intenta de nuevo o descarga el JSON y envíalo por correo."
+    );
+
+    // Re-habilitar botón
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Enviar formulario";
+  }
 });
 
 // Determine next step accounting for hidden rediseño step

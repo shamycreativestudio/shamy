@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: shamy-backend
+    runtime: node
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: ADMIN_USERNAME
+        value: admin
+      - key: ADMIN_PASSWORD
+        generateValue: true
+      - key: CORS_ORIGIN
+        value: https://narex04.github.io,https://shamy.com
