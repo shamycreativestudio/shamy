@@ -12,8 +12,8 @@ git add .
 # Primer commit
 git commit -m "Initial commit: Shamy Creative Studio website with branding brief form"
 
-# Conecta con tu repositorio de GitHub (REEMPLAZA TU-USUARIO)
-git remote add origin https://github.com/TU-USUARIO/shamy.git
+# Conecta con tu repositorio de GitHub (REEMPLAZA Narex04)
+git remote add origin https://github.com/Narex04/shamy.git
 
 # Asegura que la rama sea main
 git branch -M main
@@ -22,3 +22,4 @@ git branch -M main
 git push -u origin main
 
 # ¡Listo! Ahora ve a GitHub Settings → Pages para activar GitHub Pages
+

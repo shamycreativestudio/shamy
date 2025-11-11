@@ -6,7 +6,7 @@ Sitio web oficial de **Shamy Creative Studio** - Diseño de marca con propósito
 
 ## 🌐 Sitio web
 
-Visita: [https://TU-USUARIO.github.io/shamy](https://TU-USUARIO.github.io/shamy)
+Visita: [https://Narex04.github.io/shamy](https://Narex04.github.io/shamy)
 
 ## 📁 Estructura del proyecto
 
@@ -58,8 +58,8 @@ Este sitio está configurado para funcionar con GitHub Pages:
    - Carpeta: `/` (root)
 
 2. **Acceso:**
-   - URL principal: `https://TU-USUARIO.github.io/shamy/`
-   - Brief de branding: `https://TU-USUARIO.github.io/shamy/branding/`
+   - URL principal: `https://Narex04.github.io/shamy/`
+   - Brief de branding: `https://Narex04.github.io/shamy/branding/`
 
 ## 🛠️ Tecnologías
 
@@ -97,3 +97,4 @@ Este sitio está configurado para funcionar con GitHub Pages:
 ---
 
 **Contacto:** [Tu email/contacto aquí]
+

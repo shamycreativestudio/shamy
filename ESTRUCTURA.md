@@ -36,14 +36,14 @@ shamy/                                    ← Repositorio principal
 
 ## 🌐 URLs resultantes en GitHub Pages
 
-Suponiendo que tu usuario de GitHub es **TU-USUARIO**:
+Suponiendo que tu usuario de GitHub es **Narex04**:
 
 | Sección | URL | Estado |
 |---------|-----|--------|
-| 🏠 **Página principal** | `https://TU-USUARIO.github.io/shamy/` | Landing temporal |
-| 📝 **Brief de branding** | `https://TU-USUARIO.github.io/shamy/branding/` | ✅ **Funcional** |
-| 🎨 Design | `https://TU-USUARIO.github.io/shamy/design/` | ⏳ Próximamente |
-| 💻 Web | `https://TU-USUARIO.github.io/shamy/web/` | ⏳ Próximamente |
+| 🏠 **Página principal** | `https://Narex04.github.io/shamy/` | Landing temporal |
+| 📝 **Brief de branding** | `https://Narex04.github.io/shamy/branding/` | ✅ **Funcional** |
+| 🎨 Design | `https://Narex04.github.io/shamy/design/` | ⏳ Próximamente |
+| 💻 Web | `https://Narex04.github.io/shamy/web/` | ⏳ Próximamente |
 
 ---
 
@@ -88,7 +88,7 @@ Suponiendo que tu usuario de GitHub es **TU-USUARIO**:
    - Source: main / (root)
 
 5. **Personalizar README**
-   - Reemplazar `TU-USUARIO` con tu usuario real
+   - Reemplazar `Narex04` con tu usuario real
 
 ---
 
@@ -103,3 +103,4 @@ Suponiendo que tu usuario de GitHub es **TU-USUARIO**:
 ---
 
 **© 2025 Shamy Creative Studio**
+

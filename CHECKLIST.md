@@ -40,7 +40,7 @@
 
 - [ ] Tienes una cuenta de GitHub
 - [ ] Sabes tu nombre de usuario de GitHub
-- [ ] Has actualizado `TU-USUARIO` en los archivos:
+- [ ] Has actualizado `Narex04` en los archivos:
   - [ ] `README.md`
   - [ ] `DEPLOY.md`
   - [ ] `SETUP.sh`
@@ -69,8 +69,8 @@ git commit -m "Initial commit: Shamy Creative Studio website with branding brief
 # Nombre: shamy
 # No inicialices con README
 
-# 7. Conectar con GitHub (REEMPLAZA TU-USUARIO)
-git remote add origin https://github.com/TU-USUARIO/shamy.git
+# 7. Conectar con GitHub (REEMPLAZA Narex04)
+git remote add origin https://github.com/Narex04/shamy.git
 
 # 8. Verificar la conexión
 git remote -v
@@ -80,7 +80,7 @@ git branch -M main
 git push -u origin main
 
 # 10. Activar GitHub Pages
-# Ve a: https://github.com/TU-USUARIO/shamy/settings/pages
+# Ve a: https://github.com/Narex04/shamy/settings/pages
 # Source: main / (root)
 # Save
 ```
@@ -89,8 +89,8 @@ git push -u origin main
 
 Espera 2-3 minutos y verifica:
 
-- [ ] `https://TU-USUARIO.github.io/shamy/` carga correctamente
-- [ ] `https://TU-USUARIO.github.io/shamy/branding/` funciona
+- [ ] `https://Narex04.github.io/shamy/` carga correctamente
+- [ ] `https://Narex04.github.io/shamy/branding/` funciona
 - [ ] Los estilos se aplican correctamente
 - [ ] Las imágenes cargan
 - [ ] No hay errores en la consola (F12)
@@ -129,12 +129,13 @@ Espera 2-3 minutos y verifica:
 
 Una vez completado, tendrás:
 
-✅ Repositorio público en GitHub: `github.com/TU-USUARIO/shamy`  
-✅ Sitio web live: `https://TU-USUARIO.github.io/shamy/`  
-✅ Formulario de brief funcional: `https://TU-USUARIO.github.io/shamy/branding/`  
+✅ Repositorio público en GitHub: `github.com/Narex04/shamy`  
+✅ Sitio web live: `https://Narex04.github.io/shamy/`  
+✅ Formulario de brief funcional: `https://Narex04.github.io/shamy/branding/`  
 ✅ Estructura lista para escalar con nuevas secciones  
 ✅ Documentación completa para mantener el proyecto  
 
 ---
 
 **¡Éxito! 🚀**
+

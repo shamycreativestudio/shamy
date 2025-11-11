@@ -24,7 +24,7 @@ git commit -m "Initial commit: Shamy Creative Studio website"
 
 ```bash
 # Conectar con tu repo de GitHub
-git remote add origin https://github.com/TU-USUARIO/shamy.git
+git remote add origin https://github.com/Narex04/shamy.git
 
 # Renombrar branch a main (si es necesario)
 git branch -M main
@@ -46,8 +46,8 @@ git push -u origin main
 ### 5. Acceder a tu sitio
 
 Tu sitio estará disponible en:
-- **Página principal:** `https://TU-USUARIO.github.io/shamy/`
-- **Formulario branding:** `https://TU-USUARIO.github.io/shamy/branding/`
+- **Página principal:** `https://Narex04.github.io/shamy/`
+- **Formulario branding:** `https://Narex04.github.io/shamy/branding/`
 
 ## 🔄 Actualizaciones futuras
 
@@ -66,7 +66,7 @@ GitHub Pages se actualiza automáticamente en 1-2 minutos.
 ### Actualizar el README.md
 
 Edita `README.md` y reemplaza:
-- `TU-USUARIO` con tu usuario de GitHub
+- `Narex04` con tu usuario de GitHub
 - Agrega tu email/contacto en la sección de contacto
 
 ### Dominio personalizado (opcional)
@@ -79,7 +79,7 @@ Si tienes un dominio propio:
 4. Configura DNS en tu proveedor:
    - Tipo: CNAME
    - Host: www
-   - Value: TU-USUARIO.github.io
+   - Value: Narex04.github.io
 
 ## ✅ Checklist antes de subir
 
@@ -113,3 +113,4 @@ Si tienes un dominio propio:
 ---
 
 ¡Listo para lanzar! 🚀
+
