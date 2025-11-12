@@ -111,8 +111,14 @@ p {
 .logo-container:hover .main-logo {
   /* Oculta el segmento central del logo dejando visible solo S (0-25%) y ] (88%-100%) */
   clip-path: polygon(
-    0% 0%, 25% 0%, 25% 100%, 0% 100%,
-    88% 0%, 100% 0%, 100% 100%, 88% 100%
+    0% 0%,
+    25% 0%,
+    25% 100%,
+    0% 100%,
+    88% 0%,
+    100% 0%,
+    100% 100%,
+    88% 100%
   );
   filter: brightness(1.05);
 }
@@ -365,9 +371,9 @@ textarea:focus {
 }
 
 .btn-icon.remove {
-  background: #ffe4e4;
-  color: #b72626;
-  border: 1px solid #ffc8c8;
+  background: #ffffff;
+  color: #d84343;
+  border: 1px solid #d84343;
   padding: 0.45rem 0.65rem;
   font-size: 1rem;
   line-height: 1;
@@ -377,11 +383,12 @@ textarea:focus {
 }
 
 .btn-icon.remove:hover {
-  background: #ffdad9;
+  background: #d84343;
+  color: #ffffff;
 }
 
 .upload-zone {
-  background: #f0f5fa;
+  background: #ffffff;
   border: 2px dashed #b6c3d1;
   padding: 1rem;
   border-radius: var(--radius-sm);
@@ -395,7 +402,7 @@ textarea:focus {
 
 .upload-zone:focus,
 .upload-zone:hover {
-  background: #e4edf7;
+  background: #ffffff;
   border-color: var(--accent);
   outline: none;
 }
@@ -617,8 +624,9 @@ dialog h3 {
 }
 
 .chip {
-  background: #e4eefc;
-  color: #1f436b;
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid var(--border);
   padding: 0.35rem 0.7rem;
   font-size: 0.65rem;
   border-radius: 20px;
@@ -630,7 +638,7 @@ dialog h3 {
 .chip button {
   background: transparent;
   border: none;
-  color: #0d3358;
+  color: #000000;
   font-size: 0.85rem;
   padding: 0 0.2rem;
   cursor: pointer;
