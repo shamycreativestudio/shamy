@@ -716,4 +716,9 @@ const tagline = document.getElementById("tagline");
 if (tagline) {
   // Set the text content always visible for CSS transition
   tagline.textContent = "branding";
+  console.log("✅ Tagline configurado:", tagline.textContent);
+  console.log("📏 Tagline width:", window.getComputedStyle(tagline).width);
+  console.log("👁️ Tagline opacity:", window.getComputedStyle(tagline).opacity);
+} else {
+  console.error("❌ No se encontró el elemento tagline");
 }
