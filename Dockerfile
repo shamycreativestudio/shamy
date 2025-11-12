@@ -13,8 +13,8 @@ RUN npm ci --only=production
 # Copiar el resto de los archivos
 COPY . .
 
-# Crear directorio para la base de datos si no existe
-RUN mkdir -p database
+# Copiar explícitamente el archivo de configuración de la base de datos
+COPY database/db.js database/db.js
 
 # Exponer el puerto
 EXPOSE 8080
