@@ -86,50 +86,34 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0;
+  gap: 0.5rem;
   cursor: pointer;
   position: relative;
-  height: 50px;
-  overflow: hidden;
 }
 
 .main-logo {
   height: 50px;
   width: auto;
-  min-width: 280px;
-  transition: all 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  max-width: 280px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
-  position: relative;
-  clip-path: inset(0 0 0 0);
-}
-
-/* Animación: ocultar letras centrales moviendo clip-path */
-.logo-container:hover .main-logo {
-  /* Mueve el logo a la izquierda y recorta las letras del medio */
-  transform: translateX(-92px);
-  /* Clip-path que oculta las letras h,a,m,y (del 22% al 88%) */
-  clip-path: polygon(
-    0% 0%, 22% 0%, 22% 100%, 0% 100%,
-    88% 0%, 100% 0%, 100% 100%, 88% 100%
-  );
 }
 
 .tagline {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 1.5rem;
   color: #ffffff;
   white-space: nowrap;
+  overflow: hidden;
+  width: 0;
   opacity: 0;
-  transform: translateX(-20px);
-  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s,
-    transform 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s;
-  margin-left: 0.5rem;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease 0.1s;
 }
 
 .logo-container:hover .tagline {
+  width: 7.5rem;
   opacity: 1;
-  transform: translateX(0);
 }
 
 .header-content {
@@ -207,10 +191,10 @@ p {
 }
 
 form {
-  background: var(--panel);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow);
-  border-radius: var(--radius);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
   padding: 2rem 2rem 3rem;
 }
 
