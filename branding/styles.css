@@ -41,7 +41,7 @@ p {
 .app-header {
   padding: 0;
   text-align: center;
-  background: #ffffff;
+  background: var(--bg);
 }
 
 .top-bar {
