@@ -89,12 +89,12 @@ p {
   gap: 0.5rem;
   cursor: pointer;
   position: relative;
+  overflow: visible;
 }
 
 .main-logo {
   height: 50px;
   width: auto;
-  max-width: 280px;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
 }
