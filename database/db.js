@@ -6,7 +6,13 @@ const Database = require("better-sqlite3");
 const path = require("path");
 const fs = require("fs");
 
-const DB_PATH = process.env.DB_PATH || path.join(__dirname, "briefs.db");
+// En producción (Fly.io), usar /data para persistencia
+// En desarrollo, usar el directorio local
+const DB_PATH =
+  process.env.DB_PATH ||
+  (process.env.NODE_ENV === "production"
+    ? "/data/briefs.db"
+    : path.join(__dirname, "briefs.db"));
 
 // Asegurar que el directorio existe
 const dbDir = path.dirname(DB_PATH);

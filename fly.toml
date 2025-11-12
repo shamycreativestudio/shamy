@@ -45,4 +45,4 @@ primary_region = "iad" # Ashburn, Virginia - más cerca de Colombia
 
 [mounts]
   source = "shamy_data"
-  destination = "/app/database"
+  destination = "/data"

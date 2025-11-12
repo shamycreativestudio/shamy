@@ -9,6 +9,7 @@ Tu backend está completamente desplegado y operativo en:
 **Panel de Administración:** https://shamy-backend.fly.dev/api/admin/panel
 
 **Credenciales:**
+
 - Usuario: `admin`
 - Password: `shamy2025`
 
@@ -19,6 +20,7 @@ Tu backend está completamente desplegado y operativo en:
 ### Plataforma: Fly.io
 
 **Razones de elección:**
+
 - ✅ **Siempre activo** - No se apaga por inactividad (a diferencia de Render)
 - ✅ **Gratis** - Incluido en el tier gratuito
 - ✅ **Sin límite de horas** - Funciona 24/7
@@ -130,6 +132,7 @@ Snapshot retention: 5 días
 ```
 
 **Ventajas:**
+
 - Datos persisten entre deployments
 - Backups automáticos cada 5 días
 - Encriptación habilitada
@@ -140,12 +143,14 @@ Snapshot retention: 5 días
 ## 🌐 Endpoints Disponibles
 
 ### API Base
+
 ```
 GET  https://shamy-backend.fly.dev/
 → {"status":"ok","message":"Shamy Branding Backend"}
 ```
 
 ### Briefs
+
 ```
 POST   /api/briefs                    - Crear nuevo brief
 GET    /api/briefs                    - Listar todos los briefs
@@ -157,11 +162,13 @@ GET    /api/briefs/:id/files/:fileId  - Descargar archivo
 ```
 
 ### Panel Admin
+
 ```
 GET /api/admin/panel - Panel de administración (requiere autenticación)
 ```
 
 ### Health Check
+
 ```
 GET /health - Estado del servidor
 ```
@@ -171,20 +178,24 @@ GET /health - Estado del servidor
 ## 🔒 Seguridad Configurada
 
 ### CORS
+
 - Origen permitido: `https://shamycreativestudio.github.io`
 - Métodos: GET, POST, PUT, DELETE
 - Credenciales: Habilitadas
 
 ### Rate Limiting
+
 - 100 requests por 15 minutos por IP
 - Protección contra ataques de fuerza bruta
 
 ### Helmet
+
 - Protección de headers HTTP
 - XSS Protection
 - Content Security Policy
 
 ### Autenticación
+
 - Basic Auth para panel admin
 - Credenciales en variables de entorno
 - No almacenadas en código
@@ -232,21 +243,25 @@ flyctl logs --app shamy-backend
 ## 📈 Monitoreo y Mantenimiento
 
 ### Ver Estado
+
 ```powershell
 C:\Users\shamu\.fly\bin\flyctl.exe status --app shamy-backend
 ```
 
 ### Ver Logs en Tiempo Real
+
 ```powershell
 C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamy-backend
 ```
 
 ### Reiniciar Aplicación
+
 ```powershell
 C:\Users\shamu\.fly\bin\flyctl.exe apps restart shamy-backend
 ```
 
 ### Ver Métricas
+
 ```powershell
 C:\Users\shamu\.fly\bin\flyctl.exe dashboard shamy-backend
 ```
@@ -276,6 +291,7 @@ Fly.io construirá una nueva imagen Docker y desplegará automáticamente.
 ### Tier Gratuito de Fly.io
 
 **Incluye:**
+
 - 3 máquinas compartidas
 - 256MB RAM por máquina
 - 1GB volumen persistente
@@ -283,6 +299,7 @@ Fly.io construirá una nueva imagen Docker y desplegará automáticamente.
 - HTTPS y certificados SSL
 
 **Tu uso actual:**
+
 - 1 máquina (quedan 2 disponibles)
 - 256MB RAM
 - 1GB volumen
@@ -351,6 +368,7 @@ flyctl certs create tudominio.com --app shamy-backend
 ```
 
 Luego configurar DNS:
+
 ```
 CNAME @ shamy-backend.fly.dev
 ```
@@ -377,6 +395,7 @@ flyctl scale count 2 --app shamy-backend
 ### 4. Monitoreo Avanzado
 
 Configurar alertas en el dashboard de Fly.io para:
+
 - CPU > 80%
 - RAM > 80%
 - Errores 5xx

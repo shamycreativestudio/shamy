@@ -8,24 +8,28 @@ npm run dev
 ```
 
 **Espera a ver:**
+
 ```
 ✅ Servidor corriendo en http://localhost:3000
 ✅ Panel admin: http://localhost:3000/api/admin/panel
 ```
 
 **Luego abre en tu navegador:**
+
 ```
 http://localhost:3000/api/admin/panel
 ```
 
 **Login:**
+
 - Usuario: `admin`
 - Password: `shamy2025`
 
 **✅ RESULTADO ESPERADO:**
-Debes ver la lista de briefs (incluido el que enviaste antes). 
+Debes ver la lista de briefs (incluido el que enviaste antes).
 
 **❌ SI NO FUNCIONA:**
+
 - Verifica que no haya errores en la consola de PowerShell
 - Intenta con `Ctrl+C` y luego `npm run dev` de nuevo
 
@@ -42,24 +46,28 @@ https://shamy-backend.fly.dev
 ### Verifica que funciona:
 
 1. **Abre en tu navegador:**
+
    ```
    https://shamy-backend.fly.dev
    ```
-   
+
    **✅ DEBES VER:**
+
    ```json
-   {"status":"ok","message":"Shamy Branding Backend"}
+   { "status": "ok", "message": "Shamy Branding Backend" }
    ```
 
 2. **Panel de administración:**
+
    ```
    https://shamy-backend.fly.dev/api/admin/panel
    ```
-   
+
    **Login:**
+
    - Usuario: `admin`
    - Password: `shamy2025`
-   
+
    **✅ DEBES VER:**
    El panel de administración con la lista de briefs.
 
@@ -90,23 +98,27 @@ API_URL: 'https://shamy-backend.fly.dev',
 ### Test 1: Backend en Fly.io está activo
 
 Abre en tu navegador:
+
 ```
 https://shamy-backend.fly.dev
 ```
 
 **✅ DEBES VER:**
+
 ```json
-{"status":"ok","message":"Shamy Branding Backend"}
+{ "status": "ok", "message": "Shamy Branding Backend" }
 ```
 
 ### Test 2: Panel admin en Fly.io
 
 Abre:
+
 ```
 https://shamy-backend.fly.dev/api/admin/panel
 ```
 
 **Login:**
+
 - Usuario: `admin`
 - Password: `shamy2025`
 
@@ -116,6 +128,7 @@ El panel de administración con los briefs almacenados.
 ### Test 3: Formulario desde GitHub Pages
 
 1. Abre tu formulario en GitHub Pages:
+
    ```
    https://shamycreativestudio.github.io/shamy/branding/
    ```
@@ -123,6 +136,7 @@ El panel de administración con los briefs almacenados.
 2. **Abre la consola del navegador (F12)**
 
 3. **✅ DEBES VER:**
+
    ```
    🌍 Entorno: Production
    🔌 API URL: https://shamy-backend.fly.dev
@@ -131,6 +145,7 @@ El panel de administración con los briefs almacenados.
 4. **Llena el formulario y envía**
 
 5. **Ve al panel de Fly.io:**
+
    ```
    https://shamy-backend.fly.dev/api/admin/panel
    ```
@@ -175,6 +190,7 @@ Esto creará un backup en: `backups/backup_YYYY-MM-DD_HH-mm-ss.json`
 **Causa:** CORS no está configurado correctamente.
 
 **Solución:**
+
 1. Verifica que el backend esté activo: `https://shamy-backend.fly.dev`
 2. CORS ya está configurado para: `https://shamycreativestudio.github.io`
 
@@ -183,12 +199,14 @@ Esto creará un backup en: `backups/backup_YYYY-MM-DD_HH-mm-ss.json`
 **Causa:** Password incorrecto.
 
 **Solución:**
+
 - Usuario: `admin`
 - Password: `shamy2025`
 
 ### Fly.io muestra errores en los logs
 
 **Solución:**
+
 ```powershell
 C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamy-backend
 ```
