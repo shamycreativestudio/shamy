@@ -278,7 +278,7 @@
               </div>
             </fieldset>
             <label class="field full">
-              <span>Objetivos secundarios (Opcional, máximo 2)</span>
+              <span>Objetivos secundarios (opcional, máximo 2)</span>
               <div class="chip-input" data-max="2">
                 <input
                   type="text"
@@ -356,7 +356,7 @@
               <small class="char-counter" data-for="publicoClientes"></small>
             </label>
             <label class="field">
-              <span>Rango de edad más común (Opcional)</span>
+              <span>Rango de edad más común (opcional)</span>
               <input
                 type="text"
                 name="rangoEdad"
@@ -470,6 +470,30 @@
               ></textarea>
               <small class="char-counter" data-for="marcaInspiracion"></small>
             </label>
+            <div class="field full">
+              <span>Imágenes de referencia o inspiración (opcional)</span>
+              <small class="hint">Sube imágenes de diseños, colores o estilos que te gusten como referencia</small>
+              <div
+                class="upload-zone"
+                id="uploadZoneReferencias"
+                tabindex="0"
+                aria-label="Zona para subir imágenes de referencia"
+              >
+                <p>Arrastra aquí o haz clic para seleccionar imágenes</p>
+                <input
+                  type="file"
+                  id="fileInputReferencias"
+                  multiple
+                  accept=".png,.jpg,.jpeg,.webp,.pdf"
+                  hidden
+                />
+                <ul
+                  id="fileListReferencias"
+                  class="file-list"
+                  aria-label="Imágenes de referencia seleccionadas"
+                ></ul>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -1041,19 +1065,19 @@
           <div class="grid confirm-grid">
             <label class="checkbox-line">
               <input type="checkbox" name="confirmVeracidad" />
-              Confirmo que la información es verdadera (opcional)
+              Confirmo que la información es verdadera
             </label>
             <label class="checkbox-line">
               <input type="checkbox" name="confirmDatos" /> Autorizo el uso de
-              los datos para gestionar este proyecto (opcional)
+              los datos para gestionar este proyecto
             </label>
             <label class="checkbox-line">
               <input type="checkbox" name="confirmDerechos" /> Tengo derechos o
-              permisos sobre los materiales que comparto (opcional)
+              permisos sobre los materiales que comparto
             </label>
             <label class="checkbox-line">
               <input type="checkbox" name="optInRecursos" /> Quiero recibir
-              novedades y recursos útiles (Opcional)
+              novedades y recursos útiles
             </label>
           </div>
           <div class="summary-wrapper">

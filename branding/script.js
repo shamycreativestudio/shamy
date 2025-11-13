@@ -196,12 +196,18 @@ form.addEventListener("change", (e) => {
   }
 });
 
-// File upload zone
+// File upload zones (rediseño materials + referencias)
 const uploadZone = document.getElementById("uploadZone");
 const fileInput = document.getElementById("fileInput");
 const fileList = document.getElementById("fileList");
 let uploadedFiles = [];
 
+const uploadZoneReferencias = document.getElementById("uploadZoneReferencias");
+const fileInputReferencias = document.getElementById("fileInputReferencias");
+const fileListReferencias = document.getElementById("fileListReferencias");
+let uploadedReferencias = [];
+
+// Setup upload zone for rediseño materials
 if (uploadZone) {
   uploadZone.addEventListener("click", () => fileInput.click());
   uploadZone.addEventListener("dragover", (e) => {
@@ -214,16 +220,34 @@ if (uploadZone) {
   uploadZone.addEventListener("drop", (e) => {
     e.preventDefault();
     uploadZone.classList.remove("dragover");
-    handleFiles(e.dataTransfer.files);
+    handleFiles(e.dataTransfer.files, uploadedFiles, renderFileList);
   });
-  fileInput.addEventListener("change", () => handleFiles(fileInput.files));
+  fileInput.addEventListener("change", () => handleFiles(fileInput.files, uploadedFiles, renderFileList));
 }
 
-function handleFiles(fileListInput) {
-  Array.from(fileListInput).forEach((file) => {
-    uploadedFiles.push(file);
+// Setup upload zone for referencias
+if (uploadZoneReferencias) {
+  uploadZoneReferencias.addEventListener("click", () => fileInputReferencias.click());
+  uploadZoneReferencias.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    uploadZoneReferencias.classList.add("dragover");
   });
-  renderFileList();
+  uploadZoneReferencias.addEventListener("dragleave", () =>
+    uploadZoneReferencias.classList.remove("dragover")
+  );
+  uploadZoneReferencias.addEventListener("drop", (e) => {
+    e.preventDefault();
+    uploadZoneReferencias.classList.remove("dragover");
+    handleFiles(e.dataTransfer.files, uploadedReferencias, renderFileListReferencias);
+  });
+  fileInputReferencias.addEventListener("change", () => handleFiles(fileInputReferencias.files, uploadedReferencias, renderFileListReferencias));
+}
+
+function handleFiles(fileListInput, targetArray, renderFn) {
+  Array.from(fileListInput).forEach((file) => {
+    targetArray.push(file);
+  });
+  renderFn();
 }
 
 function renderFileList() {
@@ -237,6 +261,20 @@ function renderFileList() {
       renderFileList();
     });
     fileList.appendChild(li);
+  });
+}
+
+function renderFileListReferencias() {
+  fileListReferencias.innerHTML = "";
+  uploadedReferencias.forEach((file, idx) => {
+    const li = document.createElement("li");
+    li.innerHTML = `<span>${escapeHTML(file.name)}</span>
+      <button type="button" class="btn-icon remove" aria-label="Quitar archivo">&times;</button>`;
+    li.querySelector("button").addEventListener("click", () => {
+      uploadedReferencias.splice(idx, 1);
+      renderFileListReferencias();
+    });
+    fileListReferencias.appendChild(li);
   });
 }
 
@@ -263,7 +301,7 @@ form.addEventListener("submit", async (e) => {
   submitBtn.textContent = "Enviando...";
 
   try {
-    // Convertir archivos a base64
+    // Convertir archivos de rediseño a base64
     const imagenesBase64 = [];
     if (uploadedFiles && uploadedFiles.length > 0) {
       for (const file of uploadedFiles) {
@@ -273,6 +311,19 @@ form.addEventListener("submit", async (e) => {
           reader.readAsDataURL(file);
         });
         imagenesBase64.push(base64);
+      }
+    }
+
+    // Convertir imágenes de referencia a base64
+    const referenciasBase64 = [];
+    if (uploadedReferencias && uploadedReferencias.length > 0) {
+      for (const file of uploadedReferencias) {
+        const base64 = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result);
+          reader.readAsDataURL(file);
+        });
+        referenciasBase64.push(base64);
       }
     }
 
@@ -289,6 +340,7 @@ form.addEventListener("submit", async (e) => {
       timeline: data.fechaEntregaIdeal || "",
       referencias: data.marcaInspiracion || "",
       imagenes: imagenesBase64,
+      imagenesReferencia: referenciasBase64,
     };
 
     // Enviar al servidor usando la URL configurada
