@@ -1,7 +1,10 @@
-// Obtener API_URL desde config.js
-const API_URL = window.SHAMY_CONFIG?.API_URL || "https://shamy.vercel.app";
+// API_URL ya está definido por config.js como variable global
+// Solo verificar que esté disponible
+if (!window.SHAMY_CONFIG?.API_URL) {
+  console.error("❌ ERROR: config.js no cargó correctamente");
+}
 
-console.log("🔌 Admin Panel - API URL:", API_URL);
+console.log("🔌 Admin Panel conectando a:", window.SHAMY_CONFIG?.API_URL);
 
 let credentials = null;
 let allBriefs = [];
@@ -64,7 +67,7 @@ async function loadBriefs() {
   tableContainer.innerHTML = '<div class="loading"><div class="spinner"></div><p>Cargando briefs...</p></div>';
 
   try {
-    const response = await fetch(`${API_URL}/api/briefs`, {
+    const response = await fetch(`${window.SHAMY_CONFIG.API_URL}/api/briefs`, {
       headers: {
         Authorization: `Basic ${credentials}`,
         "Content-Type": "application/json",
@@ -224,7 +227,7 @@ async function deleteBrief(id) {
   if (!confirm("¿Estás seguro de que quieres eliminar este brief?")) return;
 
   try {
-    const response = await fetch(`${API_URL}/api/briefs?id=${id}`, {
+    const response = await fetch(`${window.SHAMY_CONFIG.API_URL}/api/briefs?id=${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Basic ${credentials}`,
