@@ -1,7 +1,8 @@
 /* Form wizard logic, validation, data serialization */
 
-// Obtener la URL del API desde config.js
-const API_URL = window.SHAMY_CONFIG?.API_URL || "http://localhost:3000";
+// Obtener la URL del API desde config.js (ya declarada en config.js)
+// No redeclarar con const, solo asignar
+let API_URL = window.SHAMY_CONFIG?.API_URL || "http://localhost:3000";
 console.log("🔌 Conectando al API:", API_URL);
 
 const form = document.getElementById("briefForm");
