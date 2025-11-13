@@ -9,7 +9,7 @@ const CONFIG = {
     ENV_NAME: "Development",
   },
   production: {
-    API_URL: "https://shamy-83ghttcn6-shamy-creative-studios-projects.vercel.app",
+    API_URL: "https://shamy.vercel.app",
     ENV_NAME: "Production",
   },
 };
