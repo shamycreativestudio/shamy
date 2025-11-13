@@ -281,16 +281,16 @@ form.addEventListener("submit", async (e) => {
 
     // Preparar datos para Vercel/Notion
     const payload = {
-      nombre: data.nombre || '',
-      email: data.email || '',
-      empresa: data.empresa || '',
-      telefono: data.telefono || '',
-      descripcion: data.descripcionProyecto || '',
-      industria: data.industria || '',
-      publico: data.publicoObjetivo || '',
+      nombre: data.contactoNombreCargo || data.empresaNombre || '',
+      email: data.contactoEmail || '',
+      empresa: data.empresaNombre || '',
+      telefono: data.contactoTelefono || '',
+      descripcion: data.descripcionBreve || '',
+      industria: data.cobertura?.join(', ') || '',
+      publico: data.publicoClientes || '',
       presupuesto: data.presupuesto || '',
-      timeline: data.timeline || '',
-      referencias: data.referencias || '',
+      timeline: data.fechaEntregaIdeal || '',
+      referencias: data.marcaInspiracion || '',
       imagenes: imagenesBase64
     };
 
@@ -299,9 +299,9 @@ form.addEventListener("submit", async (e) => {
     const response = await fetch(`${API_URL}/api/submit`, {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(payload)
+      body: JSON.stringify(payload),
     });
 
     if (!response.ok) {
