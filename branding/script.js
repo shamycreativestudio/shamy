@@ -355,30 +355,30 @@ form.addEventListener("submit", async (e) => {
       descripcion: data.descripcionBreve?.trim() || "",
       cobertura: data.cobertura || [],
       fechaEntregaIdeal: data.fechaEntregaIdeal || "",
-      
+
       // Objetivos
       objetivoPrincipal: data.objetivoPrincipal || "",
       objetivoOtro: data.objetivoOtro?.trim() || "",
       objetivosSecundarios: data.objetivosSecundarios || [],
       mediciones: data.mediciones || [],
       medicionesOtro: data.medicionesOtro?.trim() || "",
-      
+
       // Público
       publicoClientes: data.publicoClientes?.trim() || "",
       rangoEdad: data.rangoEdad?.trim() || "",
       publicoProblema: data.publicoProblema?.trim() || "",
       publicoEleccion: data.publicoEleccion?.trim() || "",
       estilo: data.estilo || "",
-      
+
       // Competencia
       competidores: data.competidores || [],
       competenciaVentajas: data.competenciaVentajas?.trim() || "",
       competenciaMejoras: data.competenciaMejoras?.trim() || "",
       marcaInspiracion: data.marcaInspiracion?.trim() || "",
-      
+
       // Rediseño (si aplica)
       redisenio: data.redisenio || null,
-      
+
       // Entregables
       entregables: data.entregables || [],
       entregablesOtro: data.entregablesOtro?.trim() || "",
@@ -387,24 +387,24 @@ form.addEventListener("submit", async (e) => {
       necesitaFotoVideo: data.necesitaFotoVideo || "",
       listaFotoVideo: data.listaFotoVideo?.trim() || "",
       usosMarca: data.usosMarca || [],
-      
+
       // Tiempo y presupuesto
       presupuesto: data.presupuesto || "",
       fechaLimiteFija: data.fechaLimiteFija || "",
       fechaLimite: data.fechaLimite || "",
       prioridad: data.prioridad || "",
-      
+
       // Aprobaciones y comunicación
       decisionFinal: data.decisionFinal?.trim() || "",
       personasRevisan: data.personasRevisan || "",
       contactoPreferido: data.contactoPreferido || "",
       tiempoRespuesta: data.tiempoRespuesta || "",
-      
+
       // Riesgos
       riesgos: data.riesgos?.trim() || "",
       comentariosFinales: data.comentariosFinales?.trim() || "",
       nda: data.nda || "",
-      
+
       // Confirmaciones
       confirmaciones: {
         veracidad: data.confirmVeracidad,
@@ -412,11 +412,11 @@ form.addEventListener("submit", async (e) => {
         tieneDerechos: data.confirmDerechos,
         recibirNovedades: data.optInRecursos,
       },
-      
+
       // Imágenes
       imagenes: imagenesBase64,
       imagenesReferencia: referenciasBase64,
-      
+
       // Metadata
       meta: data.meta,
     };
@@ -501,7 +501,12 @@ function showStep() {
   prevBtn.disabled = currentStep === 1;
   nextBtn.hidden = currentStep === totalSteps;
   submitBtn.hidden = currentStep !== totalSteps;
-  saveBtn.hidden = currentStep < 3; // allow saving after step 3
+  
+  // Permitir guardar desde paso 1 si hay algún dato ingresado
+  const hasAnyData = form.querySelector('input:not([type="hidden"]):not([type="file"]):not([type="checkbox"]):not([type="radio"])')?.value.trim() ||
+                     form.querySelector('input[type="checkbox"]:checked, input[type="radio"]:checked') ||
+                     form.querySelector('textarea')?.value.trim();
+  saveBtn.hidden = !hasAnyData;
 
   updateProgress();
   updateRedisenioVisibility();
@@ -863,7 +868,14 @@ saveBtn.addEventListener("click", () => {
     STORAGE_KEY,
     JSON.stringify({ step: currentStep, data })
   );
-  alert("Progreso guardado. Puedes cerrar y volver más tarde.");
+  
+  // Advertencia sobre imágenes si hay alguna cargada
+  const hasImages = uploadedFiles.length > 0 || uploadedReferencias.length > 0;
+  const mensaje = hasImages
+    ? "Progreso guardado. Puedes cerrar y volver más tarde.\n\n⚠️ Nota: Si recarga la página, las imágenes cargadas no se guardarán y deberán ser resubidas."
+    : "Progreso guardado. Puedes cerrar y volver más tarde.";
+  
+  alert(mensaje);
 });
 
 // Restore if exists
@@ -1025,6 +1037,19 @@ function escapeHTML(str) {
 function cssEscape(str) {
   return str.replace(/"/g, '\\"');
 }
+
+// Listener para detectar cuando el usuario ingresa datos y habilitar botón guardar
+form.addEventListener("input", () => {
+  if (currentStep === 1) {
+    const hasAnyData = Array.from(form.querySelectorAll('input:not([type="hidden"]):not([type="file"]), textarea')).some(el => {
+      if (el.type === 'checkbox' || el.type === 'radio') {
+        return el.checked;
+      }
+      return el.value.trim();
+    });
+    saveBtn.hidden = !hasAnyData;
+  }
+});
 
 // Initial
 showStep();
