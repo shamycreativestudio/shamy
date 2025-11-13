@@ -14,20 +14,27 @@
         <p>Ingresa tus credenciales para acceder</p>
         <form id="loginForm">
           <input type="text" id="username" placeholder="Usuario" required />
-          <input type="password" id="password" placeholder="Contraseña" required />
+          <input
+            type="password"
+            id="password"
+            placeholder="Contraseña"
+            required
+          />
           <button type="submit">Iniciar sesión</button>
         </form>
-        <div id="loginError" class="error-message" style="display: none;"></div>
+        <div id="loginError" class="error-message" style="display: none"></div>
       </div>
     </div>
 
     <!-- Panel Principal (oculto hasta login) -->
-    <div id="adminPanel" style="display: none;">
+    <div id="adminPanel" style="display: none">
       <header>
         <div class="container">
           <h1>🎨 Panel de Administración - Shamy Branding</h1>
-          <div style="display: flex; gap: 1rem; align-items: center;">
-            <button class="btn btn-primary" onclick="loadBriefs()">🔄 Actualizar</button>
+          <div style="display: flex; gap: 1rem; align-items: center">
+            <button class="btn btn-primary" onclick="loadBriefs()">
+              🔄 Actualizar
+            </button>
             <button class="btn btn-primary" onclick="logout()">🚪 Salir</button>
           </div>
         </div>
@@ -56,7 +63,8 @@
 
         <!-- Filtros -->
         <div class="filters">
-          <label>Estado:
+          <label
+            >Estado:
             <select id="filterEstado" onchange="applyFilters()">
               <option value="">Todos</option>
               <option value="Nuevo">Nuevo</option>
@@ -64,10 +72,18 @@
               <option value="Completado">Completado</option>
             </select>
           </label>
-          <label>Buscar:
-            <input type="text" id="searchInput" placeholder="Nombre o email..." onkeyup="applyFilters()" />
+          <label
+            >Buscar:
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Nombre o email..."
+              onkeyup="applyFilters()"
+            />
           </label>
-          <button class="btn btn-primary" onclick="loadBriefs()">🔍 Buscar</button>
+          <button class="btn btn-primary" onclick="loadBriefs()">
+            🔍 Buscar
+          </button>
         </div>
 
         <!-- Tabla de briefs -->

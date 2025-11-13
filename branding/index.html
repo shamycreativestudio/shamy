@@ -8,7 +8,7 @@
       name="description"
       content="Formulario sencillo para recolectar información inicial de tu proyecto de marca."
     />
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -72,35 +72,24 @@
           <h2 id="step1Title">Paso 1. Datos básicos</h2>
           <div class="grid">
             <label class="field">
-              <span>Nombre de tu empresa o marca *</span>
-              <input
-                type="text"
-                name="empresaNombre"
-                required
-                maxlength="100"
-              />
+              <span>Nombre de tu empresa o marca</span>
+              <input type="text" name="empresaNombre" maxlength="100" />
               <small class="hint">Ej.: Café La Montaña</small>
             </label>
             <label class="field">
-              <span>Tu nombre y cargo *</span>
-              <input
-                type="text"
-                name="contactoNombreCargo"
-                required
-                maxlength="120"
-              />
+              <span>Tu nombre y cargo</span>
+              <input type="text" name="contactoNombreCargo" maxlength="120" />
               <small class="hint">Ej.: Ana Gómez - Gerente</small>
             </label>
             <label class="field">
-              <span>Correo electrónico de contacto *</span>
-              <input type="email" name="contactoEmail" required />
+              <span>Correo electrónico de contacto</span>
+              <input type="email" name="contactoEmail" />
             </label>
             <label class="field">
-              <span>Celular / WhatsApp *</span>
+              <span>Celular / WhatsApp</span>
               <input
                 type="tel"
                 name="contactoTelefono"
-                required
                 pattern="^[0-9+()\\-\\s]{8,20}$"
               />
               <small class="hint">Ej.: 3001234567</small>
@@ -110,7 +99,7 @@
               <input type="text" name="ciudad" maxlength="60" />
             </label>
             <fieldset class="field">
-              <legend>¿Qué necesitas principalmente? *</legend>
+              <legend>¿Qué necesitas principalmente?</legend>
               <div
                 class="checkbox-column"
                 data-required-group="necesidadesPrincipales"
@@ -188,10 +177,9 @@
               </div>
             </fieldset>
             <label class="field full">
-              <span>Breve descripción de lo que haces *</span>
+              <span>Breve descripción de lo que haces</span>
               <textarea
                 name="descripcionBreve"
-                required
                 maxlength="280"
                 rows="2"
                 placeholder="Ej.: Vendemos café especial de origen Nariño."
@@ -1052,16 +1040,16 @@
           <p>Revisa y marca las casillas para finalizar.</p>
           <div class="grid confirm-grid">
             <label class="checkbox-line">
-              <input type="checkbox" name="confirmVeracidad" required />
-              Confirmo que la información es verdadera *
+              <input type="checkbox" name="confirmVeracidad" />
+              Confirmo que la información es verdadera (opcional)
             </label>
             <label class="checkbox-line">
-              <input type="checkbox" name="confirmDatos" required /> Autorizo el
-              uso de los datos para gestionar este proyecto *
+              <input type="checkbox" name="confirmDatos" /> Autorizo el uso de
+              los datos para gestionar este proyecto (opcional)
             </label>
             <label class="checkbox-line">
-              <input type="checkbox" name="confirmDerechos" required /> Tengo
-              derechos o permisos sobre los materiales que comparto *
+              <input type="checkbox" name="confirmDerechos" /> Tengo derechos o
+              permisos sobre los materiales que comparto (opcional)
             </label>
             <label class="checkbox-line">
               <input type="checkbox" name="optInRecursos" /> Quiero recibir

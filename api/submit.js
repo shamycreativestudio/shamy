@@ -52,11 +52,16 @@ module.exports = async (req, res) => {
       imagenes, // Base64 de imágenes
     } = req.body;
 
-    // Validación básica
-    if (!nombre || !email) {
+    // Validación básica relajada: exigir al menos un medio de contacto
+    const safeNombre =
+      (nombre && nombre.trim()) || (empresa && empresa.trim()) || "Sin nombre";
+    const safeEmail = email && email.trim() ? email.trim() : null;
+    const safeTelefono = telefono && telefono.trim() ? telefono.trim() : null;
+
+    if (!safeEmail && !safeTelefono) {
       return res.status(400).json({
-        error: "Nombre y email son requeridos",
-        received: { nombre, email },
+        error: "Proporciona al menos un medio de contacto (email o teléfono)",
+        received: { email, telefono },
       });
     }
 
@@ -83,13 +88,13 @@ module.exports = async (req, res) => {
           title: [
             {
               text: {
-                content: nombre,
+                content: safeNombre,
               },
             },
           ],
         },
         Email: {
-          email: email,
+          email: safeEmail,
         },
         Empresa: {
           rich_text: [
@@ -101,7 +106,7 @@ module.exports = async (req, res) => {
           ],
         },
         Telefono: {
-          phone_number: telefono || null,
+          phone_number: safeTelefono,
         },
         Presupuesto: {
           select: presupuesto ? { name: presupuesto } : null,

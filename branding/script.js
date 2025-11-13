@@ -359,6 +359,7 @@ function showStep() {
 
   updateProgress();
   updateRedisenioVisibility();
+  updateContactWarning();
   scrollToTop();
 }
 
@@ -381,26 +382,15 @@ function validateStep(stepNumber) {
   const stepEl = steps.find((s) => parseInt(s.dataset.step, 10) === stepNumber);
   if (!stepEl) return true;
 
-  // Required fields by attribute
-  stepEl.querySelectorAll("[required]").forEach((field) => {
-    if (!field.value.trim()) {
-      markError(field, "Este campo es obligatorio");
-      valid = false;
-    } else if (field.type === "email" && !isValidEmail(field.value)) {
-      markError(field, "Ingresa un correo válido");
-      valid = false;
-    }
-  });
-
-  // Custom requirement: at least one principal need in step 1
-  if (stepNumber === 1) {
-    const checked = Array.from(
-      necesidadesGroup.querySelectorAll("input[type=checkbox]:checked")
-    );
-    if (checked.length === 0) {
-      markGroupError(necesidadesGroup, "Selecciona al menos una opción");
-      valid = false;
-    }
+  // Solo validar formato de email si hay valor
+  const emailInput = stepEl.querySelector('input[name="contactoEmail"]');
+  if (
+    emailInput &&
+    emailInput.value.trim() &&
+    !isValidEmail(emailInput.value)
+  ) {
+    markError(emailInput, "Ingresa un correo válido");
+    valid = false;
   }
 
   return valid;
@@ -435,6 +425,64 @@ function markGroupError(group, msg) {
 
 function isValidEmail(email) {
   return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
+}
+
+// Show non-blocking hint if both email and phone are empty (Step 1)
+function updateContactWarning() {
+  if (currentStep !== 1) return;
+  const stepEl = steps.find((s) => parseInt(s.dataset.step, 10) === 1);
+  if (!stepEl) return;
+  const emailInput = stepEl.querySelector('input[name="contactoEmail"]');
+  const phoneInput = stepEl.querySelector('input[name="contactoTelefono"]');
+  if (!emailInput || !phoneInput) return;
+
+  // Bottom warning (after phone field)
+  let warn = stepEl.querySelector("#contactWarning");
+  if (!warn) {
+    const phoneField = phoneInput.closest(".field");
+    warn = document.createElement("div");
+    warn.id = "contactWarning";
+    warn.className = "info";
+    warn.style.marginTop = "0";
+    warn.textContent =
+      "Recomendación: deja tu correo o teléfono para poder contactarte.";
+    (phoneField || stepEl).insertAdjacentElement("afterend", warn);
+  }
+
+  // Top warning (right below the step title)
+  let warnTop = stepEl.querySelector("#contactWarningTop");
+  if (!warnTop) {
+    const titleEl = stepEl.querySelector("#step1Title");
+    warnTop = document.createElement("div");
+    warnTop.id = "contactWarningTop";
+    warnTop.className = "info";
+    warnTop.textContent =
+      "Recomendación: deja tu correo o teléfono para poder contactarte.";
+    if (titleEl) {
+      titleEl.insertAdjacentElement("afterend", warnTop);
+    } else {
+      stepEl.insertAdjacentElement("afterbegin", warnTop);
+    }
+  }
+
+  const bothEmpty = !emailInput.value.trim() && !phoneInput.value.trim();
+  warn.style.display = bothEmpty ? "block" : "none";
+  warnTop.style.display = bothEmpty ? "block" : "none";
+
+  // Update on input changes
+  const update = () => {
+    const empty = !emailInput.value.trim() && !phoneInput.value.trim();
+    warn.style.display = empty ? "block" : "none";
+    warnTop.style.display = empty ? "block" : "none";
+  };
+  if (!emailInput.dataset.contactWarnBound) {
+    emailInput.addEventListener("input", update);
+    emailInput.dataset.contactWarnBound = "1";
+  }
+  if (!phoneInput.dataset.contactWarnBound) {
+    phoneInput.addEventListener("input", update);
+    phoneInput.dataset.contactWarnBound = "1";
+  }
 }
 
 // Data collection
