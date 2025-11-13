@@ -1,10 +1,6 @@
 /* Form wizard logic, validation, data serialization */
 
-// Obtener la URL del API desde config.js (ya declarada en config.js)
-// No redeclarar con const, solo asignar
-let API_URL = window.SHAMY_CONFIG?.API_URL || "http://localhost:3000";
-console.log("🔌 Conectando al API:", API_URL);
-
+// Obtener la URL del API desde config.js (window.SHAMY_CONFIG.API_URL)
 const form = document.getElementById("briefForm");
 const steps = Array.from(document.querySelectorAll(".step"));
 const prevBtn = document.getElementById("prevBtn");
@@ -297,7 +293,7 @@ form.addEventListener("submit", async (e) => {
 
     // Enviar al servidor usando la URL configurada
     console.log("📤 Enviando brief al servidor...");
-    const response = await fetch(`${API_URL}/api/submit`, {
+    const response = await fetch(`${window.SHAMY_CONFIG.API_URL}/api/submit`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
