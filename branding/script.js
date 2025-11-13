@@ -617,7 +617,20 @@ function markError(field, msg) {
   const m = document.createElement("div");
   m.className = "error-msg";
   m.textContent = msg;
-  field.insertAdjacentElement("afterend", m);
+  
+  // Si es un checkbox dentro de .checkbox-line, insertar después del label padre
+  if (field.type === 'checkbox' && field.closest('.checkbox-line')) {
+    const label = field.closest('.checkbox-line');
+    label.style.position = 'relative';
+    m.style.position = 'absolute';
+    m.style.right = '0.6rem';
+    m.style.top = '50%';
+    m.style.transform = 'translateY(-50%)';
+    m.style.marginTop = '0';
+    label.insertAdjacentElement("beforeend", m);
+  } else {
+    field.insertAdjacentElement("afterend", m);
+  }
 }
 
 function markGroupError(group, msg) {

@@ -499,6 +499,7 @@ button {
   background: #ffffff;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
+  position: relative;
 }
 
 .confirm-grid {
