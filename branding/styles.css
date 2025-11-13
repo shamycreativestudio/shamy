@@ -486,7 +486,7 @@ button {
   box-shadow: var(--shadow);
   border-radius: var(--radius);
   padding: 2rem 1.4rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
   text-align: center;
 }
 

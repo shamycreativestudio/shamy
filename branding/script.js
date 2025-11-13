@@ -998,17 +998,18 @@ function fillForm(data) {
 // Success
 function showSuccess() {
   // Ocultar todos los pasos del formulario
-  steps.forEach(step => step.classList.remove('active'));
-  steps.forEach(step => step.style.display = 'none');
-  
+  steps.forEach((step) => step.classList.remove("active"));
+  steps.forEach((step) => (step.style.display = "none"));
+
   // Ocultar navegación, barra de progreso y todos los botones
-  document.querySelector(".progress-wrapper")?.classList.add("hidden");
+  const progressWrapper = document.querySelector(".progress-wrapper");
+  if (progressWrapper) progressWrapper.style.display = "none";
   document.querySelector(".nav-steps")?.classList.add("hidden");
   prevBtn.style.display = "none";
   nextBtn.style.display = "none";
   submitBtn.style.display = "none";
   saveBtn.style.display = "none";
-  
+
   // Mostrar solo mensaje de éxito
   successMessage.classList.remove("hidden");
   successMessage.style.display = "block";
@@ -1023,20 +1024,22 @@ restartBtn.addEventListener("click", () => {
   fileList.innerHTML = "";
   fileListReferencias.innerHTML = "";
   document.querySelectorAll(".chips").forEach((c) => (c.innerHTML = ""));
-  
+
   // Restaurar visibilidad de elementos
   successMessage.classList.add("hidden");
   successMessage.style.display = "none";
+  const progressWrapper = document.querySelector(".progress-wrapper");
+  if (progressWrapper) progressWrapper.style.display = "";
   document.querySelector(".progress-wrapper")?.classList.remove("hidden");
   document.querySelector(".nav-steps")?.classList.remove("hidden");
-  
+
   // Restaurar display de los pasos y botones
-  steps.forEach(step => step.style.display = '');
-  prevBtn.style.display = '';
-  nextBtn.style.display = '';
-  submitBtn.style.display = '';
-  saveBtn.style.display = '';
-  
+  steps.forEach((step) => (step.style.display = ""));
+  prevBtn.style.display = "";
+  nextBtn.style.display = "";
+  submitBtn.style.display = "";
+  saveBtn.style.display = "";
+
   currentStep = 1;
   showStep();
 });
