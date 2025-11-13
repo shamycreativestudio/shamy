@@ -1001,9 +1001,13 @@ function showSuccess() {
   steps.forEach(step => step.classList.remove('active'));
   steps.forEach(step => step.style.display = 'none');
   
-  // Ocultar navegación y barra de progreso
+  // Ocultar navegación, barra de progreso y todos los botones
   document.querySelector(".progress-wrapper")?.classList.add("hidden");
   document.querySelector(".nav-steps")?.classList.add("hidden");
+  prevBtn.style.display = "none";
+  nextBtn.style.display = "none";
+  submitBtn.style.display = "none";
+  saveBtn.style.display = "none";
   
   // Mostrar solo mensaje de éxito
   successMessage.classList.remove("hidden");
@@ -1026,8 +1030,12 @@ restartBtn.addEventListener("click", () => {
   document.querySelector(".progress-wrapper")?.classList.remove("hidden");
   document.querySelector(".nav-steps")?.classList.remove("hidden");
   
-  // Restaurar display de los pasos
+  // Restaurar display de los pasos y botones
   steps.forEach(step => step.style.display = '');
+  prevBtn.style.display = '';
+  nextBtn.style.display = '';
+  submitBtn.style.display = '';
+  saveBtn.style.display = '';
   
   currentStep = 1;
   showStep();
