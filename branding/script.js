@@ -501,12 +501,25 @@ function showStep() {
   prevBtn.disabled = currentStep === 1;
   nextBtn.hidden = currentStep === totalSteps;
   submitBtn.hidden = currentStep !== totalSteps;
-  
-  // Permitir guardar desde paso 1 si hay algún dato ingresado
-  const hasAnyData = form.querySelector('input:not([type="hidden"]):not([type="file"]):not([type="checkbox"]):not([type="radio"])')?.value.trim() ||
-                     form.querySelector('input[type="checkbox"]:checked, input[type="radio"]:checked') ||
-                     form.querySelector('textarea')?.value.trim();
-  saveBtn.hidden = !hasAnyData;
+
+  // Permitir guardar en cualquier paso si hay algún dato ingresado
+  // En paso 1: requiere al menos una interacción
+  // En otros pasos: siempre visible (ya hay progreso)
+  if (currentStep === 1) {
+    const hasAnyData = Array.from(
+      form.querySelectorAll(
+        'input:not([type="hidden"]):not([type="file"]), textarea'
+      )
+    ).some((el) => {
+      if (el.type === "checkbox" || el.type === "radio") {
+        return el.checked;
+      }
+      return el.value.trim();
+    });
+    saveBtn.hidden = !hasAnyData;
+  } else {
+    saveBtn.hidden = false; // Siempre visible después del paso 1
+  }
 
   updateProgress();
   updateRedisenioVisibility();
@@ -868,13 +881,13 @@ saveBtn.addEventListener("click", () => {
     STORAGE_KEY,
     JSON.stringify({ step: currentStep, data })
   );
-  
+
   // Advertencia sobre imágenes si hay alguna cargada
   const hasImages = uploadedFiles.length > 0 || uploadedReferencias.length > 0;
   const mensaje = hasImages
     ? "Progreso guardado. Puedes cerrar y volver más tarde.\n\n⚠️ Nota: Si recarga la página, las imágenes cargadas no se guardarán y deberán ser resubidas."
     : "Progreso guardado. Puedes cerrar y volver más tarde.";
-  
+
   alert(mensaje);
 });
 
@@ -984,11 +997,17 @@ function fillForm(data) {
 
 // Success
 function showSuccess() {
-  // Ocultar formulario completo, navegación y barra de progreso
-  form.classList.add("hidden");
+  // Ocultar todos los pasos del formulario
+  steps.forEach(step => step.classList.remove('active'));
+  steps.forEach(step => step.style.display = 'none');
+  
+  // Ocultar navegación y barra de progreso
   document.querySelector(".progress-wrapper")?.classList.add("hidden");
   document.querySelector(".nav-steps")?.classList.add("hidden");
+  
+  // Mostrar solo mensaje de éxito
   successMessage.classList.remove("hidden");
+  successMessage.style.display = "block";
   scrollToTop();
 }
 
@@ -1000,10 +1019,16 @@ restartBtn.addEventListener("click", () => {
   fileList.innerHTML = "";
   fileListReferencias.innerHTML = "";
   document.querySelectorAll(".chips").forEach((c) => (c.innerHTML = ""));
+  
+  // Restaurar visibilidad de elementos
   successMessage.classList.add("hidden");
+  successMessage.style.display = "none";
   document.querySelector(".progress-wrapper")?.classList.remove("hidden");
   document.querySelector(".nav-steps")?.classList.remove("hidden");
-  form.classList.remove("hidden");
+  
+  // Restaurar display de los pasos
+  steps.forEach(step => step.style.display = '');
+  
   currentStep = 1;
   showStep();
 });
@@ -1041,8 +1066,12 @@ function cssEscape(str) {
 // Listener para detectar cuando el usuario ingresa datos y habilitar botón guardar
 form.addEventListener("input", () => {
   if (currentStep === 1) {
-    const hasAnyData = Array.from(form.querySelectorAll('input:not([type="hidden"]):not([type="file"]), textarea')).some(el => {
-      if (el.type === 'checkbox' || el.type === 'radio') {
+    const hasAnyData = Array.from(
+      form.querySelectorAll(
+        'input:not([type="hidden"]):not([type="file"]), textarea'
+      )
+    ).some((el) => {
+      if (el.type === "checkbox" || el.type === "radio") {
         return el.checked;
       }
       return el.value.trim();

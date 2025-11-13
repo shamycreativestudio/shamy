@@ -182,7 +182,7 @@ p {
   position: absolute;
   top: 50%;
   left: var(--progress, 0%);
-  transform: translate(-50%, -50%);
+  transform: translate(-80%, -50%);
   font-size: 0.85rem;
   font-weight: 700;
   color: #ffffff;
