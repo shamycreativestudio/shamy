@@ -93,15 +93,21 @@ module.exports = async (req, res) => {
 • Empresa: ${payload.empresa || "N/A"}
 • Contacto: ${payload.nombre || "N/A"}
 • Ciudad: ${payload.ciudad || "N/A"}
-• Necesidades: ${payload.necesidadesPrincipales?.join(", ") || "N/A"}${payload.necesidadesOtro ? ` (Otro: ${payload.necesidadesOtro})` : ""}
+• Necesidades: ${payload.necesidadesPrincipales?.join(", ") || "N/A"}${
+      payload.necesidadesOtro ? ` (Otro: ${payload.necesidadesOtro})` : ""
+    }
 • Descripción: ${payload.descripcion || "N/A"}
 • Cobertura: ${payload.cobertura?.join(", ") || "N/A"}
 • Fecha ideal: ${payload.fechaEntregaIdeal || "N/A"}
 
 🎯 OBJETIVOS
-• Principal: ${payload.objetivoPrincipal || "N/A"}${payload.objetivoOtro ? ` (${payload.objetivoOtro})` : ""}
+• Principal: ${payload.objetivoPrincipal || "N/A"}${
+      payload.objetivoOtro ? ` (${payload.objetivoOtro})` : ""
+    }
 • Secundarios: ${payload.objetivosSecundarios?.join(", ") || "N/A"}
-• Mediciones: ${payload.mediciones?.join(", ") || "N/A"}${payload.medicionesOtro ? ` (Otro: ${payload.medicionesOtro})` : ""}
+• Mediciones: ${payload.mediciones?.join(", ") || "N/A"}${
+      payload.medicionesOtro ? ` (Otro: ${payload.medicionesOtro})` : ""
+    }
 
 👥 PÚBLICO
 • Clientes: ${payload.publicoClientes || "N/A"}
@@ -111,7 +117,10 @@ module.exports = async (req, res) => {
 • Estilo: ${payload.estilo || "N/A"}
 
 🏆 COMPETENCIA
-• Competidores: ${payload.competidores?.map((c) => `${c.nombre} (${c.url})`).join(", ") || "N/A"}
+• Competidores: ${
+      payload.competidores?.map((c) => `${c.nombre} (${c.url})`).join(", ") ||
+      "N/A"
+    }
 • Ventajas: ${payload.competenciaVentajas || "N/A"}
 • A mejorar: ${payload.competenciaMejoras || "N/A"}
 • Marcas inspiración: ${payload.marcaInspiracion || "N/A"}
@@ -119,15 +128,25 @@ module.exports = async (req, res) => {
 ${
   payload.redisenio
     ? `♻️ REDISEÑO
-• Motivos: ${payload.redisenio.motivos?.join(", ") || "N/A"}${payload.redisenio.motivosOtro ? ` (${payload.redisenio.motivosOtro})` : ""}
-• Mantener: ${payload.redisenio.mantener?.join(", ") || "N/A"}${payload.redisenio.mantenerOtro ? ` (${payload.redisenio.mantenerOtro})` : ""}
+• Motivos: ${payload.redisenio.motivos?.join(", ") || "N/A"}${
+        payload.redisenio.motivosOtro
+          ? ` (${payload.redisenio.motivosOtro})`
+          : ""
+      }
+• Mantener: ${payload.redisenio.mantener?.join(", ") || "N/A"}${
+        payload.redisenio.mantenerOtro
+          ? ` (${payload.redisenio.mantenerOtro})`
+          : ""
+      }
 • Cambiar: ${payload.redisenio.cambiarSiOSi || "N/A"}
 
 `
     : ""
 }
 📦 ENTREGABLES
-• Diseños: ${payload.entregables?.join(", ") || "N/A"}${payload.entregablesOtro ? ` (Otro: ${payload.entregablesOtro})` : ""}
+• Diseños: ${payload.entregables?.join(", ") || "N/A"}${
+      payload.entregablesOtro ? ` (Otro: ${payload.entregablesOtro})` : ""
+    }
 • Web: ${payload.necesitaWeb || "N/A"}
 • Hosting/Dominio: ${payload.hostingDominio || "N/A"}
 • Foto/Video: ${payload.necesitaFotoVideo || "N/A"}
@@ -225,7 +244,9 @@ ${
                 object: "block",
                 type: "heading_2",
                 heading_2: {
-                  rich_text: [{ type: "text", text: { content: "Imágenes de rediseño" } }],
+                  rich_text: [
+                    { type: "text", text: { content: "Imágenes de rediseño" } },
+                  ],
                 },
               },
               ...imagenesUrls.map((url) => ({
@@ -244,7 +265,12 @@ ${
                 object: "block",
                 type: "heading_2",
                 heading_2: {
-                  rich_text: [{ type: "text", text: { content: "Imágenes de referencia" } }],
+                  rich_text: [
+                    {
+                      type: "text",
+                      text: { content: "Imágenes de referencia" },
+                    },
+                  ],
                 },
               },
               ...referenciasUrls.map((url) => ({

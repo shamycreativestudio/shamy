@@ -72,8 +72,7 @@ module.exports = async (req, res) => {
             let currentSection = null;
             for (const block of blocks.results) {
               if (block.type === "paragraph") {
-                const text =
-                  block.paragraph?.rich_text[0]?.text?.content || "";
+                const text = block.paragraph?.rich_text[0]?.text?.content || "";
                 contenido += text + "\n";
               } else if (block.type === "heading_2") {
                 const heading =
