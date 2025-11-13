@@ -222,12 +222,16 @@ if (uploadZone) {
     uploadZone.classList.remove("dragover");
     handleFiles(e.dataTransfer.files, uploadedFiles, renderFileList);
   });
-  fileInput.addEventListener("change", () => handleFiles(fileInput.files, uploadedFiles, renderFileList));
+  fileInput.addEventListener("change", () =>
+    handleFiles(fileInput.files, uploadedFiles, renderFileList)
+  );
 }
 
 // Setup upload zone for referencias
 if (uploadZoneReferencias) {
-  uploadZoneReferencias.addEventListener("click", () => fileInputReferencias.click());
+  uploadZoneReferencias.addEventListener("click", () =>
+    fileInputReferencias.click()
+  );
   uploadZoneReferencias.addEventListener("dragover", (e) => {
     e.preventDefault();
     uploadZoneReferencias.classList.add("dragover");
@@ -238,9 +242,19 @@ if (uploadZoneReferencias) {
   uploadZoneReferencias.addEventListener("drop", (e) => {
     e.preventDefault();
     uploadZoneReferencias.classList.remove("dragover");
-    handleFiles(e.dataTransfer.files, uploadedReferencias, renderFileListReferencias);
+    handleFiles(
+      e.dataTransfer.files,
+      uploadedReferencias,
+      renderFileListReferencias
+    );
   });
-  fileInputReferencias.addEventListener("change", () => handleFiles(fileInputReferencias.files, uploadedReferencias, renderFileListReferencias));
+  fileInputReferencias.addEventListener("change", () =>
+    handleFiles(
+      fileInputReferencias.files,
+      uploadedReferencias,
+      renderFileListReferencias
+    )
+  );
 }
 
 function handleFiles(fileListInput, targetArray, renderFn) {
@@ -329,19 +343,26 @@ form.addEventListener("submit", async (e) => {
 
     // Preparar datos para Vercel/Notion
     const payload = {
-      nombre: data.contactoNombreCargo || data.empresaNombre || "",
-      email: data.contactoEmail || "",
-      empresa: data.empresaNombre || "",
-      telefono: data.contactoTelefono || "",
-      descripcion: data.descripcionBreve || "",
+      nombre: data.contactoNombreCargo?.trim() || data.empresaNombre?.trim() || "",
+      email: data.contactoEmail?.trim() || "",
+      empresa: data.empresaNombre?.trim() || "",
+      telefono: data.contactoTelefono?.trim() || "",
+      descripcion: data.descripcionBreve?.trim() || "",
       industria: data.cobertura?.join(", ") || "",
-      publico: data.publicoClientes || "",
+      publico: data.publicoClientes?.trim() || "",
       presupuesto: data.presupuesto || "",
       timeline: data.fechaEntregaIdeal || "",
-      referencias: data.marcaInspiracion || "",
+      referencias: data.marcaInspiracion?.trim() || "",
       imagenes: imagenesBase64,
       imagenesReferencia: referenciasBase64,
     };
+
+    // Debug: mostrar lo que se va a enviar
+    console.log("📦 Payload preparado:", {
+      ...payload,
+      imagenes: `${imagenesBase64.length} imágenes`,
+      imagenesReferencia: `${referenciasBase64.length} referencias`
+    });
 
     // Enviar al servidor usando la URL configurada
     console.log("📤 Enviando brief al servidor...");
@@ -477,8 +498,6 @@ function markGroupError(group, msg) {
 function isValidEmail(email) {
   return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email);
 }
-
-
 
 // Data collection
 function collectData() {
