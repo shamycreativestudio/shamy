@@ -71,8 +71,8 @@ a7c940c - fix: actualizar .dockerignore para incluir database/db.js
 ### ☁️ **3. FLY.IO (BACKEND)**
 
 ```
-✅ URL: https://shamy-backend.fly.dev/
-✅ App: shamy-backend
+✅ URL: https://shamycreativestudio.fly.dev/
+✅ App: shamycreativestudio
 ✅ Estado: STARTED (corriendo)
 ✅ Región: iad (US East)
 ✅ Health checks: 1/1 PASSING
@@ -81,7 +81,7 @@ a7c940c - fix: actualizar .dockerignore para incluir database/db.js
 **Deployment actual:**
 
 ```
-Image: shamy-backend:deployment-01K9V5YW5MDQ22ZPBAADBA1H6A
+Image: shamycreativestudio:deployment-01K9V5YW5MDQ22ZPBAADBA1H6A
 Version: 6
 Machine: 2876936c1723e8
 Last updated: 2025-11-12T04:43:11Z
@@ -139,8 +139,8 @@ Accesibilidad: Pública
 
 ```
 Estado: 🟢 OPERATIVO
-URL: https://shamy-backend.fly.dev/
-Panel Admin: https://shamy-backend.fly.dev/api/admin/panel
+URL: https://shamycreativestudio.fly.dev/
+Panel Admin: https://shamycreativestudio.fly.dev/api/admin/panel
 Credenciales: admin / shamy2025
 Última actualización: deployment-01K9V5YW5MDQ22ZPBAADBA1H6A
 ```
@@ -289,19 +289,19 @@ git log --oneline -5
 git log --oneline origin/main -3
 
 # 4. Ver estado del backend
-C:\Users\shamu\.fly\bin\flyctl.exe status --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe status --app shamycreativestudio
 
 # 5. Ver logs del backend
-C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamycreativestudio
 
 # 6. Probar frontend
 # Abrir: https://shamycreativestudio.github.io/shamy/branding/
 
 # 7. Probar backend
-# Abrir: https://shamy-backend.fly.dev/
+# Abrir: https://shamycreativestudio.fly.dev/
 
 # 8. Probar panel admin
-# Abrir: https://shamy-backend.fly.dev/api/admin/panel
+# Abrir: https://shamycreativestudio.fly.dev/api/admin/panel
 ```
 
 ---

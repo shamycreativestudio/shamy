@@ -303,7 +303,7 @@ PORT=80
 
 ```powershell
 npm install -g pm2
-pm2 start server.js --name shamy-backend
+pm2 start server.js --name shamycreativestudio
 pm2 startup
 pm2 save
 ```
@@ -312,14 +312,14 @@ pm2 save
 
 ```powershell
 pm2 status
-pm2 logs shamy-backend
+pm2 logs shamycreativestudio
 ```
 
 ### Detener PM2
 
 ```powershell
-pm2 stop shamy-backend
-pm2 delete shamy-backend
+pm2 stop shamycreativestudio
+pm2 delete shamycreativestudio
 ```
 
 ---

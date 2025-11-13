@@ -220,7 +220,7 @@ curl -u admin:shamy2025 http://localhost:3000/api/briefs/1
 3. **Usar PM2** para mantener el proceso:
    ```bash
    npm install -g pm2
-   pm2 start server.js --name shamy-backend
+   pm2 start server.js --name shamycreativestudio
    ```
 4. **Nginx** como proxy reverso (opcional)
 

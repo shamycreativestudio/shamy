@@ -4,9 +4,9 @@
 
 Tu backend está completamente desplegado y operativo en:
 
-**URL Principal:** https://shamy-backend.fly.dev
+**URL Principal:** https://shamycreativestudio.fly.dev
 
-**Panel de Administración:** https://shamy-backend.fly.dev/api/admin/panel
+**Panel de Administración:** https://shamycreativestudio.fly.dev/api/admin/panel
 
 **Credenciales:**
 
@@ -67,7 +67,7 @@ CMD ["node", "server.js"]
 ### 2. `fly.toml`
 
 ```toml
-app = "shamy-backend"
+app = "shamycreativestudio"
 primary_region = "iad"
 
 [env]
@@ -111,7 +111,7 @@ database/*.db-wal
 
 ```javascript
 production: {
-  API_URL: "https://shamy-backend.fly.dev",
+  API_URL: "https://shamycreativestudio.fly.dev",
   ENV_NAME: "Production",
 }
 ```
@@ -145,7 +145,7 @@ Snapshot retention: 5 días
 ### API Base
 
 ```
-GET  https://shamy-backend.fly.dev/
+GET  https://shamycreativestudio.fly.dev/
 → {"status":"ok","message":"Shamy Branding Backend"}
 ```
 
@@ -208,7 +208,7 @@ GET /health - Estado del servidor
 
 ```powershell
 # 1. Crear volumen persistente
-flyctl volumes create shamy_data --region iad --size 1 --app shamy-backend
+flyctl volumes create shamy_data --region iad --size 1 --app shamycreativestudio
 
 # 2. Configurar variables de entorno
 flyctl secrets set \
@@ -216,16 +216,16 @@ flyctl secrets set \
   ADMIN_USERNAME=admin \
   ADMIN_PASSWORD=shamy2025 \
   CORS_ORIGIN=https://shamycreativestudio.github.io \
-  --app shamy-backend
+  --app shamycreativestudio
 
 # 3. Desplegar aplicación
 flyctl deploy
 
 # 4. Verificar estado
-flyctl status --app shamy-backend
+flyctl status --app shamycreativestudio
 
 # 5. Ver logs
-flyctl logs --app shamy-backend
+flyctl logs --app shamycreativestudio
 ```
 
 ### Resultado del Deployment
@@ -235,7 +235,7 @@ flyctl logs --app shamy-backend
 ✓ Building image done (49 MB)
 ✓ DNS configuration verified
 ✓ Deployment successful
-✓ Visit: https://shamy-backend.fly.dev/
+✓ Visit: https://shamycreativestudio.fly.dev/
 ```
 
 ---
@@ -245,25 +245,25 @@ flyctl logs --app shamy-backend
 ### Ver Estado
 
 ```powershell
-C:\Users\shamu\.fly\bin\flyctl.exe status --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe status --app shamycreativestudio
 ```
 
 ### Ver Logs en Tiempo Real
 
 ```powershell
-C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamycreativestudio
 ```
 
 ### Reiniciar Aplicación
 
 ```powershell
-C:\Users\shamu\.fly\bin\flyctl.exe apps restart shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe apps restart shamycreativestudio
 ```
 
 ### Ver Métricas
 
 ```powershell
-C:\Users\shamu\.fly\bin\flyctl.exe dashboard shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe dashboard shamycreativestudio
 ```
 
 ---
@@ -317,20 +317,20 @@ Fly.io construirá una nueva imagen Docker y desplegará automáticamente.
 
 ```powershell
 # Ver estado
-flyctl status --app shamy-backend
+flyctl status --app shamycreativestudio
 
 # Ver logs
-flyctl logs --app shamy-backend
+flyctl logs --app shamycreativestudio
 
 # Reiniciar
-flyctl apps restart shamy-backend
+flyctl apps restart shamycreativestudio
 ```
 
 ### Error de base de datos
 
 ```powershell
 # Conectarse vía SSH a la máquina
-flyctl ssh console --app shamy-backend
+flyctl ssh console --app shamycreativestudio
 
 # Verificar que el volumen esté montado
 ls -la /app/database
@@ -342,7 +342,7 @@ ls -la /app/database/briefs.db
 ### Actualizar variables de entorno
 
 ```powershell
-flyctl secrets set NUEVA_VARIABLE=valor --app shamy-backend
+flyctl secrets set NUEVA_VARIABLE=valor --app shamycreativestudio
 ```
 
 Esto reiniciará automáticamente la aplicación.
@@ -364,13 +364,13 @@ Esto reiniciará automáticamente la aplicación.
 
 ```powershell
 # Agregar dominio personalizado
-flyctl certs create tudominio.com --app shamy-backend
+flyctl certs create tudominio.com --app shamycreativestudio
 ```
 
 Luego configurar DNS:
 
 ```
-CNAME @ shamy-backend.fly.dev
+CNAME @ shamycreativestudio.fly.dev
 ```
 
 ### 2. Aumentar Recursos
@@ -389,7 +389,7 @@ Si necesitas más recursos:
 
 ```powershell
 # Escalar a 2 máquinas
-flyctl scale count 2 --app shamy-backend
+flyctl scale count 2 --app shamycreativestudio
 ```
 
 ### 4. Monitoreo Avanzado
@@ -432,7 +432,7 @@ Tu sistema Shamy está completamente desplegado y funcionando:
 │  ↓ HTTPS + CORS                            │
 │                                             │
 │  BACKEND (Fly.io)                           │
-│  https://shamy-backend.fly.dev             │
+│  https://shamycreativestudio.fly.dev             │
 │  - Node.js + Express                        │
 │  - SQLite en volumen persistente            │
 │  - Siempre activo (no duerme)              │
@@ -440,7 +440,7 @@ Tu sistema Shamy está completamente desplegado y funcionando:
 │  ↓ Admin Panel                             │
 │                                             │
 │  PANEL DE ADMINISTRACIÓN                    │
-│  https://shamy-backend.fly.dev/.../panel   │
+│  https://shamycreativestudio.fly.dev/.../panel   │
 │  - Ver briefs                               │
 │  - Cambiar estados                          │
 │  - Gestionar datos                          │

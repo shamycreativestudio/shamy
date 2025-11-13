@@ -330,7 +330,7 @@ node_modules/
 ```yaml
 services:
   - type: web
-    name: shamy-backend
+    name: shamycreativestudio
     env: node
     buildCommand: npm install
     startCommand: npm start

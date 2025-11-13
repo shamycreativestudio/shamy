@@ -40,7 +40,7 @@ Debes ver la lista de briefs (incluido el que enviaste antes).
 **¡BUENAS NOTICIAS!** Tu backend ya está desplegado y funcionando en:
 
 ```
-https://shamy-backend.fly.dev
+https://shamycreativestudio.fly.dev
 ```
 
 ### Verifica que funciona:
@@ -48,7 +48,7 @@ https://shamy-backend.fly.dev
 1. **Abre en tu navegador:**
 
    ```
-   https://shamy-backend.fly.dev
+   https://shamycreativestudio.fly.dev
    ```
 
    **✅ DEBES VER:**
@@ -60,7 +60,7 @@ https://shamy-backend.fly.dev
 2. **Panel de administración:**
 
    ```
-   https://shamy-backend.fly.dev/api/admin/panel
+   https://shamycreativestudio.fly.dev/api/admin/panel
    ```
 
    **Login:**
@@ -86,7 +86,7 @@ https://shamy-backend.fly.dev
 Tu archivo `branding/config.js` ya está configurado con la URL correcta:
 
 ```javascript
-API_URL: 'https://shamy-backend.fly.dev',
+API_URL: 'https://shamycreativestudio.fly.dev',
 ```
 
 **Esto significa que tu formulario en GitHub Pages ya está conectado al backend en Fly.io.**
@@ -100,7 +100,7 @@ API_URL: 'https://shamy-backend.fly.dev',
 Abre en tu navegador:
 
 ```
-https://shamy-backend.fly.dev
+https://shamycreativestudio.fly.dev
 ```
 
 **✅ DEBES VER:**
@@ -114,7 +114,7 @@ https://shamy-backend.fly.dev
 Abre:
 
 ```
-https://shamy-backend.fly.dev/api/admin/panel
+https://shamycreativestudio.fly.dev/api/admin/panel
 ```
 
 **Login:**
@@ -139,7 +139,7 @@ El panel de administración con los briefs almacenados.
 
    ```
    🌍 Entorno: Production
-   🔌 API URL: https://shamy-backend.fly.dev
+   🔌 API URL: https://shamycreativestudio.fly.dev
    ```
 
 4. **Llena el formulario y envía**
@@ -147,7 +147,7 @@ El panel de administración con los briefs almacenados.
 5. **Ve al panel de Fly.io:**
 
    ```
-   https://shamy-backend.fly.dev/api/admin/panel
+   https://shamycreativestudio.fly.dev/api/admin/panel
    ```
 
 6. **✅ DEBES VER:**
@@ -160,8 +160,8 @@ El panel de administración con los briefs almacenados.
 Tu sistema está completamente operativo:
 
 - ✅ Formulario en GitHub Pages: `https://shamycreativestudio.github.io/shamy/branding/`
-- ✅ Backend en Fly.io (siempre activo): `https://shamy-backend.fly.dev`
-- ✅ Panel de administración: `https://shamy-backend.fly.dev/api/admin/panel`
+- ✅ Backend en Fly.io (siempre activo): `https://shamycreativestudio.fly.dev`
+- ✅ Panel de administración: `https://shamycreativestudio.fly.dev/api/admin/panel`
 - ✅ Base de datos persistente con volumen de 1GB
 - ✅ Sistema completamente en la nube
 - ✅ HTTPS y certificados SSL automáticos
@@ -175,7 +175,7 @@ Si quieres descargar los briefs de la nube a tu computadora local:
 
 ```powershell
 .\scripts\sync-from-cloud.ps1 `
-  -CloudUrl "https://shamy-backend.fly.dev" `
+  -CloudUrl "https://shamycreativestudio.fly.dev" `
   -Password "shamy2025"
 ```
 
@@ -191,7 +191,7 @@ Esto creará un backup en: `backups/backup_YYYY-MM-DD_HH-mm-ss.json`
 
 **Solución:**
 
-1. Verifica que el backend esté activo: `https://shamy-backend.fly.dev`
+1. Verifica que el backend esté activo: `https://shamycreativestudio.fly.dev`
 2. CORS ya está configurado para: `https://shamycreativestudio.github.io`
 
 ### Error: 401 Unauthorized en el panel
@@ -208,7 +208,7 @@ Esto creará un backup en: `backups/backup_YYYY-MM-DD_HH-mm-ss.json`
 **Solución:**
 
 ```powershell
-C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamycreativestudio
 ```
 
 Esto te mostrará los logs en tiempo real.
@@ -239,7 +239,7 @@ Si quieres más detalles:
 ## 🎯 RESUMEN - Tu Sistema Ya Está Listo
 
 ```
-✅ Backend: https://shamy-backend.fly.dev
+✅ Backend: https://shamycreativestudio.fly.dev
    → Node.js + Express + SQLite
    → Siempre activo (no se apaga)
    → Base de datos persistente (1GB)
@@ -250,7 +250,7 @@ Si quieres más detalles:
    → Conectado al backend
    → CORS configurado
 
-✅ Panel Admin: https://shamy-backend.fly.dev/api/admin/panel
+✅ Panel Admin: https://shamycreativestudio.fly.dev/api/admin/panel
    → Usuario: admin
    → Password: shamy2025
 

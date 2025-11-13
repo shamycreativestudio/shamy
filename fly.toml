@@ -1,6 +1,6 @@
 # Fly.io configuration for Shamy Backend
 
-app = "shamy-backend"
+app = "shamycreativestudio"
 primary_region = "iad" # Ashburn, Virginia - más cerca de Colombia
 
 [env]

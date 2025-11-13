@@ -42,7 +42,7 @@ https://shamycreativestudio.github.io/shamy/branding/
 ### **Panel de Administración:**
 
 ```
-https://shamy-backend.fly.dev/api/admin/panel
+https://shamycreativestudio.fly.dev/api/admin/panel
 ```
 
 **Credenciales actuales:**
@@ -63,7 +63,7 @@ https://shamy-backend.fly.dev/api/admin/panel
 ### **Backend API (Solo para desarrollo):**
 
 ```
-https://shamy-backend.fly.dev/
+https://shamycreativestudio.fly.dev/
 ```
 
 **Endpoints disponibles:**
@@ -103,7 +103,7 @@ https://shamy-backend.fly.dev/
                  ▼
 ┌─────────────────────────────────────────────────────┐
 │  BACKEND - Fly.io                                   │
-│  https://shamy-backend.fly.dev/                     │
+│  https://shamycreativestudio.fly.dev/               │
 │                                                      │
 │  • server.js        → Servidor Express              │
 │  • routes/briefs.js → Gestión de briefs             │
@@ -162,7 +162,7 @@ El cliente ingresa:
 
 ```javascript
 // Automático - script.js
-fetch("https://shamy-backend.fly.dev/api/briefs", {
+fetch("https://shamycreativestudio.fly.dev/api/briefs", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify(formData),
@@ -171,7 +171,7 @@ fetch("https://shamy-backend.fly.dev/api/briefs", {
 
 ### **Paso 4: Tú revisas en el panel**
 
-1. Abres: `https://shamy-backend.fly.dev/api/admin/panel`
+1. Abres: `https://shamycreativestudio.fly.dev/api/admin/panel`
 2. Ingresas: `admin` / `shamy2025`
 3. Ves lista de todos los briefs recibidos
 4. Haces clic en cualquier brief para ver detalles completos
@@ -195,7 +195,7 @@ fetch("https://shamy-backend.fly.dev/api/briefs", {
 ### **Acceso:**
 
 ```
-URL: https://shamy-backend.fly.dev/api/admin/panel
+URL: https://shamycreativestudio.fly.dev/api/admin/panel
 Usuario: admin
 Contraseña: shamy2025
 ```
@@ -364,7 +364,7 @@ const formData = {
 
 ### **¿Qué es el Backend?**
 
-El servidor que recibe, procesa y almacena los briefs en `shamy-backend.fly.dev`
+El servidor que recibe, procesa y almacena los briefs en `shamycreativestudio.fly.dev`
 
 ### **Archivos principales:**
 
@@ -418,7 +418,7 @@ git push origin main
 
 ```bash
 # Desplegar nueva versión
-C:\Users\shamu\.fly\bin\flyctl.exe deploy --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe deploy --app shamycreativestudio
 
 # Espera 2-3 minutos mientras se construye y despliega
 ```
@@ -427,7 +427,7 @@ C:\Users\shamu\.fly\bin\flyctl.exe deploy --app shamy-backend
 
 ```bash
 # Ver logs en tiempo real
-C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamycreativestudio
 
 # Deberías ver:
 # ✅ Base de datos inicializada correctamente
@@ -621,13 +621,13 @@ router.post("/", async (req, res) => {
 
 ```bash
 # Cambiar usuario
-C:\Users\shamu\.fly\bin\flyctl.exe secrets set ADMIN_USERNAME=nuevo_usuario --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe secrets set ADMIN_USERNAME=nuevo_usuario --app shamycreativestudio
 
 # Cambiar contraseña
-C:\Users\shamu\.fly\bin\flyctl.exe secrets set ADMIN_PASSWORD=nueva_contraseña_segura --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe secrets set ADMIN_PASSWORD=nueva_contraseña_segura --app shamycreativestudio
 
 # Ver secretos configurados (sin mostrar valores)
-C:\Users\shamu\.fly\bin\flyctl.exe secrets list --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe secrets list --app shamycreativestudio
 ```
 
 ### **8.2 Variables de entorno actuales**
@@ -651,7 +651,7 @@ CORS_ORIGIN=http://localhost:5500
 
 ```bash
 # Ejemplo: Agregar clave de API externa
-C:\Users\shamu\.fly\bin\flyctl.exe secrets set API_KEY=tu-clave-secreta --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe secrets set API_KEY=tu-clave-secreta --app shamycreativestudio
 
 # Usar en el código
 const apiKey = process.env.API_KEY;
@@ -693,31 +693,31 @@ git diff
 
 ```bash
 # Desplegar nueva versión
-C:\Users\shamu\.fly\bin\flyctl.exe deploy --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe deploy --app shamycreativestudio
 
 # Ver logs en tiempo real
-C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamycreativestudio
 
 # Ver estado de la app
-C:\Users\shamu\.fly\bin\flyctl.exe status --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe status --app shamycreativestudio
 
 # Ver información de la máquina
-C:\Users\shamu\.fly\bin\flyctl.exe machine list --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe machine list --app shamycreativestudio
 
 # Reiniciar la aplicación
-C:\Users\shamu\.fly\bin\flyctl.exe machine restart --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe machine restart --app shamycreativestudio
 
 # Conectar por SSH al servidor
-C:\Users\shamu\.fly\bin\flyctl.exe ssh console --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe ssh console --app shamycreativestudio
 
 # Ver configuración actual
-C:\Users\shamu\.fly\bin\flyctl.exe config show --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe config show --app shamycreativestudio
 
 # Ver uso de recursos
-C:\Users\shamu\.fly\bin\flyctl.exe machine status --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe machine status --app shamycreativestudio
 
 # Escalar recursos (si es necesario)
-C:\Users\shamu\.fly\bin\flyctl.exe scale vm shared-cpu-2x --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe scale vm shared-cpu-2x --app shamycreativestudio
 ```
 
 ### **9.3 NPM (Node.js)**
@@ -752,7 +752,7 @@ npm cache clean --force
 
 ```bash
 # Conectar a la base de datos en Fly.io
-C:\Users\shamu\.fly\bin\flyctl.exe ssh console --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe ssh console --app shamycreativestudio
 
 # Dentro del servidor
 sqlite3 /data/briefs.db
@@ -782,14 +782,14 @@ SELECT COUNT(*) FROM briefs;  # Contar briefs
 
 ```javascript
 // branding/config.js
-const API_URL = "https://shamy-backend.fly.dev"; // ← Verificar que sea correcta
+const API_URL = "https://shamycreativestudio.fly.dev"; // ← Verificar que sea correcta
 ```
 
 2. **Verificar CORS:**
 
 ```bash
 # Ver configuración de CORS
-C:\Users\shamu\.fly\bin\flyctl.exe secrets list --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe secrets list --app shamycreativestudio
 
 # Debe incluir:
 CORS_ORIGIN=https://shamycreativestudio.github.io
@@ -816,7 +816,7 @@ CORS_ORIGIN=https://shamycreativestudio.github.io
 
 ```bash
 # Ver logs
-C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamycreativestudio
 
 # Debe mostrar:
 # ✅ Base de datos inicializada correctamente
@@ -849,7 +849,7 @@ Ctrl+Shift+Del → Borrar caché e historial
 1. **Ver logs de build:**
 
 ```bash
-C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamycreativestudio
 ```
 
 2. **Verificar Dockerfile:**
@@ -869,7 +869,7 @@ CMD ["node", "server.js"]
 3. **Reconstruir con --no-cache:**
 
 ```bash
-C:\Users\shamu\.fly\bin\flyctl.exe deploy --no-cache --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe deploy --no-cache --app shamycreativestudio
 ```
 
 ### **10.4 Base de datos se reinicia/pierde datos**
@@ -885,7 +885,7 @@ C:\Users\shamu\.fly\bin\flyctl.exe deploy --no-cache --app shamy-backend
 
 ```bash
 # Ver volúmenes
-C:\Users\shamu\.fly\bin\flyctl.exe volumes list --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe volumes list --app shamycreativestudio
 
 # Debe mostrar:
 # shamy_data | 1GB | iad
@@ -920,22 +920,22 @@ const DB_PATH =
 1. **Verificar estado:**
 
 ```bash
-C:\Users\shamu\.fly\bin\flyctl.exe status --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe status --app shamycreativestudio
 ```
 
 2. **Reiniciar aplicación:**
 
 ```bash
-C:\Users\shamu\.fly\bin\flyctl.exe machine restart --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe machine restart --app shamycreativestudio
 ```
 
 3. **Ver máquinas:**
 
 ```bash
-C:\Users\shamu\.fly\bin\flyctl.exe machine list --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe machine list --app shamycreativestudio
 
 # Si la máquina está stopped:
-C:\Users\shamu\.fly\bin\flyctl.exe machine start <machine-id> --app shamy-backend
+C:\Users\shamu\.fly\bin\flyctl.exe machine start <machine-id> --app shamycreativestudio
 ```
 
 ### **10.6 Cambios no se reflejan en GitHub Pages**
@@ -1093,8 +1093,8 @@ GitHub Pages:
 └── Sin logs de acceso (limitación de GitHub Pages)
 
 Fly.io:
-├── Logs en tiempo real: flyctl logs --app shamy-backend
-├── Métricas de CPU/RAM: flyctl status --app shamy-backend
+├── Logs en tiempo real: flyctl logs --app shamycreativestudio
+├── Métricas de CPU/RAM: flyctl status --app shamycreativestudio
 ├── Health checks automáticos cada 30s
 └── Alertas por email si la app cae (configurar)
 
@@ -1215,15 +1215,15 @@ grep -r "palabra" *.md
 1. **Revisa esta guía** → Sección 10 (Resolución de Problemas)
 2. **Ver logs:**
    ```bash
-   C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamy-backend
+   C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamycreativestudio
    ```
 3. **Verificar estado:**
    ```bash
-   C:\Users\shamu\.fly\bin\flyctl.exe status --app shamy-backend
+   C:\Users\shamu\.fly\bin\flyctl.exe status --app shamycreativestudio
    ```
 4. **Reiniciar si es necesario:**
    ```bash
-   C:\Users\shamu\.fly\bin\flyctl.exe machine restart --app shamy-backend
+   C:\Users\shamu\.fly\bin\flyctl.exe machine restart --app shamycreativestudio
    ```
 
 ### **Contacto:**

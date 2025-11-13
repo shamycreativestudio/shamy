@@ -9,7 +9,7 @@ const CONFIG = {
     ENV_NAME: "Development",
   },
   production: {
-    API_URL: "https://shamy-backend.fly.dev",
+    API_URL: "https://shamycreativestudio.fly.dev",
     ENV_NAME: "Production",
   },
 };

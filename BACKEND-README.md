@@ -207,7 +207,7 @@ Almacena la información de archivos adjuntos (con relación a briefs).
 5. **Usar PM2 para mantener el proceso:**
    ```bash
    npm install -g pm2
-   pm2 start server.js --name shamy-backend
+   pm2 start server.js --name shamycreativestudio
    pm2 startup
    pm2 save
    ```
