@@ -1,13 +1,16 @@
 # Dockerfile para Shamy Backend
 FROM node:18-alpine
 
+# Instalar dependencias de compilación para better-sqlite3
+RUN apk add --no-cache python3 make g++
+
 # Establecer directorio de trabajo
 WORKDIR /app
 
 # Copiar package.json y package-lock.json
 COPY package*.json ./
 
-# Instalar dependencias
+# Instalar dependencias (esto compilará better-sqlite3 correctamente)
 RUN npm ci --only=production
 
 # Copiar el resto de los archivos
