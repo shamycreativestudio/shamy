@@ -567,6 +567,24 @@ function validateStep(stepNumber) {
         markError(phoneInput, "Completa al menos tu correo o tu teléfono");
       valid = false;
     }
+  } else if (stepNumber === 10) {
+    // Paso 10: validar checkboxes obligatorios
+    const confirmVeracidad = stepEl.querySelector('input[name="confirmVeracidad"]');
+    const confirmDatos = stepEl.querySelector('input[name="confirmDatos"]');
+    const confirmDerechos = stepEl.querySelector('input[name="confirmDerechos"]');
+
+    if (!confirmVeracidad?.checked) {
+      markError(confirmVeracidad, "Debes confirmar que la información es verdadera");
+      valid = false;
+    }
+    if (!confirmDatos?.checked) {
+      markError(confirmDatos, "Debes autorizar el uso de los datos");
+      valid = false;
+    }
+    if (!confirmDerechos?.checked) {
+      markError(confirmDerechos, "Debes confirmar que tienes derechos sobre los materiales");
+      valid = false;
+    }
   } else {
     // Otros pasos: solo validar formato de email si hay valor
     const emailInput = stepEl.querySelector('input[name="contactoEmail"]');
