@@ -295,7 +295,7 @@ function renderFileListReferencias() {
 // Navigation
 prevBtn.addEventListener("click", () => {
   if (currentStep > 1) {
-    currentStep--;
+    currentStep = prevStepIndex();
     showStep();
   }
 });
@@ -376,7 +376,9 @@ form.addEventListener("submit", async (e) => {
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
-      throw new Error(errorData.error || "Error al enviar el formulario");
+      const errorMsg = errorData.error || "Error al enviar el formulario";
+      console.error("❌ Error del servidor:", errorMsg, errorData);
+      throw new Error(errorMsg);
     }
 
     const result = await response.json();
@@ -390,9 +392,14 @@ form.addEventListener("submit", async (e) => {
     localStorage.removeItem(STORAGE_KEY);
   } catch (error) {
     console.error("❌ Error al enviar:", error);
-    alert(
-      "Hubo un error al enviar el formulario. Por favor, intenta de nuevo o descarga el JSON y envíalo por correo."
-    );
+    
+    // Mensaje específico si es el error de contacto
+    let userMsg = "Hubo un error al enviar el formulario. Por favor, intenta de nuevo o descarga el JSON y envíalo por correo.";
+    if (error.message.includes("medio de contacto")) {
+      userMsg = "Por favor, completa al menos tu correo electrónico O tu teléfono en el Paso 1 para poder contactarte.";
+    }
+    
+    alert(userMsg);
 
     // Re-habilitar botón
     submitBtn.disabled = false;
