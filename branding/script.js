@@ -972,9 +972,10 @@ function fillForm(data) {
 
 // Success
 function showSuccess() {
-  // Ocultar formulario completo y mostrar solo mensaje de éxito
+  // Ocultar formulario completo, navegación y barra de progreso
   form.classList.add("hidden");
   document.querySelector(".progress-wrapper")?.classList.add("hidden");
+  document.querySelector(".nav-steps")?.classList.add("hidden");
   successMessage.classList.remove("hidden");
   scrollToTop();
 }
@@ -989,6 +990,7 @@ restartBtn.addEventListener("click", () => {
   document.querySelectorAll(".chips").forEach((c) => (c.innerHTML = ""));
   successMessage.classList.add("hidden");
   document.querySelector(".progress-wrapper")?.classList.remove("hidden");
+  document.querySelector(".nav-steps")?.classList.remove("hidden");
   form.classList.remove("hidden");
   currentStep = 1;
   showStep();
