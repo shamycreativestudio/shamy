@@ -278,17 +278,17 @@ form.addEventListener("submit", async (e) => {
 
     // Preparar datos para Vercel/Notion
     const payload = {
-      nombre: data.contactoNombreCargo || data.empresaNombre || '',
-      email: data.contactoEmail || '',
-      empresa: data.empresaNombre || '',
-      telefono: data.contactoTelefono || '',
-      descripcion: data.descripcionBreve || '',
-      industria: data.cobertura?.join(', ') || '',
-      publico: data.publicoClientes || '',
-      presupuesto: data.presupuesto || '',
-      timeline: data.fechaEntregaIdeal || '',
-      referencias: data.marcaInspiracion || '',
-      imagenes: imagenesBase64
+      nombre: data.contactoNombreCargo || data.empresaNombre || "",
+      email: data.contactoEmail || "",
+      empresa: data.empresaNombre || "",
+      telefono: data.contactoTelefono || "",
+      descripcion: data.descripcionBreve || "",
+      industria: data.cobertura?.join(", ") || "",
+      publico: data.publicoClientes || "",
+      presupuesto: data.presupuesto || "",
+      timeline: data.fechaEntregaIdeal || "",
+      referencias: data.marcaInspiracion || "",
+      imagenes: imagenesBase64,
     };
 
     // Enviar al servidor usando la URL configurada
@@ -308,6 +308,10 @@ form.addEventListener("submit", async (e) => {
 
     const result = await response.json();
     console.log("✅ Brief enviado exitosamente:", result);
+
+    // Re-habilitar botón antes de showSuccess
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Enviar formulario";
 
     showSuccess();
     localStorage.removeItem(STORAGE_KEY);

@@ -37,7 +37,7 @@ module.exports = async (req, res) => {
   try {
     // Log para debugging
     console.log("📥 Datos recibidos:", JSON.stringify(req.body, null, 2));
-    
+
     const {
       nombre,
       email,
@@ -54,9 +54,9 @@ module.exports = async (req, res) => {
 
     // Validación básica
     if (!nombre || !email) {
-      return res.status(400).json({ 
+      return res.status(400).json({
         error: "Nombre y email son requeridos",
-        received: { nombre, email }
+        received: { nombre, email },
       });
     }
 
@@ -162,7 +162,7 @@ module.exports = async (req, res) => {
     return res.status(500).json({
       error: "Error al guardar el brief",
       details: error.message,
-      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+      stack: process.env.NODE_ENV === "development" ? error.stack : undefined,
     });
   }
 };
