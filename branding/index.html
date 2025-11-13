@@ -54,7 +54,7 @@
       <div class="header-content">
         <h1>Inicia tu proyecto de marca</h1>
         <p class="subtitle">
-          Completa lo que puedas. Si no sabes algo, déjalo en blanco.
+          Completa lo que puedas. Los campos con asterisco (*) son obligatorios.
         </p>
       </div>
     </header>
@@ -82,11 +82,11 @@
               <small class="hint">Ej.: Ana Gómez - Gerente</small>
             </label>
             <label class="field">
-              <span>Correo electrónico de contacto</span>
+              <span>Correo electrónico de contacto *</span>
               <input type="email" name="contactoEmail" />
             </label>
             <label class="field">
-              <span>Celular / WhatsApp</span>
+              <span>Celular / WhatsApp *</span>
               <input
                 type="tel"
                 name="contactoTelefono"
@@ -472,7 +472,10 @@
             </label>
             <div class="field full">
               <span>Imágenes de referencia o inspiración (opcional)</span>
-              <small class="hint">Sube imágenes de diseños, colores o estilos que te gusten como referencia</small>
+              <small class="hint"
+                >Sube imágenes de diseños, colores o estilos que te gusten como
+                referencia</small
+              >
               <div
                 class="upload-zone"
                 id="uploadZoneReferencias"
@@ -1080,9 +1083,10 @@
               novedades y recursos útiles
             </label>
           </div>
+          <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e0e0e0;" />
           <div class="summary-wrapper">
             <button type="button" class="btn-secondary" id="verResumen">
-              Ver resumen antes de enviar
+              Ver resumen de tus respuestas
             </button>
           </div>
         </section>
@@ -1106,14 +1110,11 @@
 
       <!-- Modal resumen -->
       <dialog id="summaryDialog" aria-label="Resumen del formulario">
-        <h3>Resumen</h3>
-        <pre id="summaryContent"></pre>
+        <h3>Resumen de tus respuestas</h3>
+        <div id="summaryContent" class="summary-readable"></div>
         <div class="dialog-actions">
           <button type="button" class="btn-secondary" id="closeSummary">
             Cerrar
-          </button>
-          <button type="button" class="btn-primary" id="downloadJson">
-            Descargar JSON
           </button>
         </div>
       </dialog>
