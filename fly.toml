@@ -10,9 +10,9 @@ primary_region = "iad" # Ashburn, Virginia - más cerca de Colombia
 [http_service]
   internal_port = 8080
   force_https = true
-  auto_stop_machines = false  # IMPORTANTE: No se duerme automáticamente
-  auto_start_machines = true
-  min_machines_running = 1    # Siempre al menos 1 máquina corriendo
+  auto_stop_machines = true   # Se apaga cuando no hay tráfico (100% GRATIS)
+  auto_start_machines = true  # Se enciende automáticamente cuando alguien visita
+  min_machines_running = 0    # Puede estar apagada = $0.00
 
 [[services]]
   protocol = "tcp"
