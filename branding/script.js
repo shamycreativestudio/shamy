@@ -341,27 +341,91 @@ form.addEventListener("submit", async (e) => {
       }
     }
 
-    // Preparar datos para Vercel/Notion
+    // Preparar datos completos para Vercel/Notion
     const payload = {
-      nombre: data.contactoNombreCargo?.trim() || data.empresaNombre?.trim() || "",
+      // Datos básicos
+      nombre:
+        data.contactoNombreCargo?.trim() || data.empresaNombre?.trim() || "",
       email: data.contactoEmail?.trim() || "",
       empresa: data.empresaNombre?.trim() || "",
       telefono: data.contactoTelefono?.trim() || "",
+      ciudad: data.ciudad?.trim() || "",
+      necesidadesPrincipales: data.necesidadesPrincipales || [],
+      necesidadesOtro: data.necesidadesOtro?.trim() || "",
       descripcion: data.descripcionBreve?.trim() || "",
-      industria: data.cobertura?.join(", ") || "",
-      publico: data.publicoClientes?.trim() || "",
+      cobertura: data.cobertura || [],
+      fechaEntregaIdeal: data.fechaEntregaIdeal || "",
+      
+      // Objetivos
+      objetivoPrincipal: data.objetivoPrincipal || "",
+      objetivoOtro: data.objetivoOtro?.trim() || "",
+      objetivosSecundarios: data.objetivosSecundarios || [],
+      mediciones: data.mediciones || [],
+      medicionesOtro: data.medicionesOtro?.trim() || "",
+      
+      // Público
+      publicoClientes: data.publicoClientes?.trim() || "",
+      rangoEdad: data.rangoEdad?.trim() || "",
+      publicoProblema: data.publicoProblema?.trim() || "",
+      publicoEleccion: data.publicoEleccion?.trim() || "",
+      estilo: data.estilo || "",
+      
+      // Competencia
+      competidores: data.competidores || [],
+      competenciaVentajas: data.competenciaVentajas?.trim() || "",
+      competenciaMejoras: data.competenciaMejoras?.trim() || "",
+      marcaInspiracion: data.marcaInspiracion?.trim() || "",
+      
+      // Rediseño (si aplica)
+      redisenio: data.redisenio || null,
+      
+      // Entregables
+      entregables: data.entregables || [],
+      entregablesOtro: data.entregablesOtro?.trim() || "",
+      necesitaWeb: data.necesitaWeb || "",
+      hostingDominio: data.hostingDominio || "",
+      necesitaFotoVideo: data.necesitaFotoVideo || "",
+      listaFotoVideo: data.listaFotoVideo?.trim() || "",
+      usosMarca: data.usosMarca || [],
+      
+      // Tiempo y presupuesto
       presupuesto: data.presupuesto || "",
-      timeline: data.fechaEntregaIdeal || "",
-      referencias: data.marcaInspiracion?.trim() || "",
+      fechaLimiteFija: data.fechaLimiteFija || "",
+      fechaLimite: data.fechaLimite || "",
+      prioridad: data.prioridad || "",
+      
+      // Aprobaciones y comunicación
+      decisionFinal: data.decisionFinal?.trim() || "",
+      personasRevisan: data.personasRevisan || "",
+      contactoPreferido: data.contactoPreferido || "",
+      tiempoRespuesta: data.tiempoRespuesta || "",
+      
+      // Riesgos
+      riesgos: data.riesgos?.trim() || "",
+      comentariosFinales: data.comentariosFinales?.trim() || "",
+      nda: data.nda || "",
+      
+      // Confirmaciones
+      confirmaciones: {
+        veracidad: data.confirmVeracidad,
+        autorizaDatos: data.confirmDatos,
+        tieneDerechos: data.confirmDerechos,
+        recibirNovedades: data.optInRecursos,
+      },
+      
+      // Imágenes
       imagenes: imagenesBase64,
       imagenesReferencia: referenciasBase64,
+      
+      // Metadata
+      meta: data.meta,
     };
 
     // Debug: mostrar lo que se va a enviar
     console.log("📦 Payload preparado:", {
       ...payload,
       imagenes: `${imagenesBase64.length} imágenes`,
-      imagenesReferencia: `${referenciasBase64.length} referencias`
+      imagenesReferencia: `${referenciasBase64.length} referencias`,
     });
 
     // Enviar al servidor usando la URL configurada
@@ -392,13 +456,15 @@ form.addEventListener("submit", async (e) => {
     localStorage.removeItem(STORAGE_KEY);
   } catch (error) {
     console.error("❌ Error al enviar:", error);
-    
+
     // Mensaje específico si es el error de contacto
-    let userMsg = "Hubo un error al enviar el formulario. Por favor, intenta de nuevo.";
+    let userMsg =
+      "Hubo un error al enviar el formulario. Por favor, intenta de nuevo.";
     if (error.message.includes("medio de contacto")) {
-      userMsg = "Por favor, completa al menos tu correo electrónico O tu teléfono en el Paso 1 para poder contactarte.";
+      userMsg =
+        "Por favor, completa al menos tu correo electrónico O tu teléfono en el Paso 1 para poder contactarte.";
     }
-    
+
     alert(userMsg);
 
     // Re-habilitar botón
@@ -465,20 +531,22 @@ function validateStep(stepNumber) {
   if (stepNumber === 1) {
     const emailInput = stepEl.querySelector('input[name="contactoEmail"]');
     const phoneInput = stepEl.querySelector('input[name="contactoTelefono"]');
-    
+
     const hasEmail = emailInput && emailInput.value.trim();
     const hasPhone = phoneInput && phoneInput.value.trim();
-    
+
     // Validar formato de email si hay valor
     if (hasEmail && !isValidEmail(emailInput.value)) {
       markError(emailInput, "Ingresa un correo válido");
       valid = false;
     }
-    
+
     // Exigir al menos uno de los dos
     if (!hasEmail && !hasPhone) {
-      if (emailInput) markError(emailInput, "Completa al menos tu correo O tu teléfono");
-      if (phoneInput) markError(phoneInput, "Completa al menos tu correo O tu teléfono");
+      if (emailInput)
+        markError(emailInput, "Completa al menos tu correo o tu teléfono");
+      if (phoneInput)
+        markError(phoneInput, "Completa al menos tu correo o tu teléfono");
       valid = false;
     }
   } else {
@@ -639,79 +707,152 @@ document.getElementById("closeSummary").addEventListener("click", () => {
 
 function generateReadableSummary(data) {
   let html = '<div style="max-height: 60vh; overflow-y: auto; padding: 1rem;">';
-  
+
   // Paso 1: Datos básicos
-  if (data.empresaNombre || data.contactoNombreCargo || data.contactoEmail || data.contactoTelefono) {
-    html += '<h4>📋 Datos básicos</h4><ul>';
-    if (data.empresaNombre) html += `<li><strong>Empresa:</strong> ${escapeHTML(data.empresaNombre)}</li>`;
-    if (data.contactoNombreCargo) html += `<li><strong>Contacto:</strong> ${escapeHTML(data.contactoNombreCargo)}</li>`;
-    if (data.contactoEmail) html += `<li><strong>Email:</strong> ${escapeHTML(data.contactoEmail)}</li>`;
-    if (data.contactoTelefono) html += `<li><strong>Teléfono:</strong> ${escapeHTML(data.contactoTelefono)}</li>`;
-    if (data.ciudad) html += `<li><strong>Ciudad:</strong> ${escapeHTML(data.ciudad)}</li>`;
-    if (data.necesidadesPrincipales?.length) html += `<li><strong>Necesidades:</strong> ${data.necesidadesPrincipales.join(', ')}</li>`;
-    if (data.descripcionBreve) html += `<li><strong>Descripción:</strong> ${escapeHTML(data.descripcionBreve)}</li>`;
-    if (data.cobertura?.length) html += `<li><strong>Cobertura:</strong> ${data.cobertura.join(', ')}</li>`;
-    if (data.fechaEntregaIdeal) html += `<li><strong>Fecha ideal:</strong> ${data.fechaEntregaIdeal}</li>`;
-    html += '</ul>';
+  if (
+    data.empresaNombre ||
+    data.contactoNombreCargo ||
+    data.contactoEmail ||
+    data.contactoTelefono
+  ) {
+    html += "<h4>📋 Datos básicos</h4><ul>";
+    if (data.empresaNombre)
+      html += `<li><strong>Empresa:</strong> ${escapeHTML(
+        data.empresaNombre
+      )}</li>`;
+    if (data.contactoNombreCargo)
+      html += `<li><strong>Contacto:</strong> ${escapeHTML(
+        data.contactoNombreCargo
+      )}</li>`;
+    if (data.contactoEmail)
+      html += `<li><strong>Email:</strong> ${escapeHTML(
+        data.contactoEmail
+      )}</li>`;
+    if (data.contactoTelefono)
+      html += `<li><strong>Teléfono:</strong> ${escapeHTML(
+        data.contactoTelefono
+      )}</li>`;
+    if (data.ciudad)
+      html += `<li><strong>Ciudad:</strong> ${escapeHTML(data.ciudad)}</li>`;
+    if (data.necesidadesPrincipales?.length)
+      html += `<li><strong>Necesidades:</strong> ${data.necesidadesPrincipales.join(
+        ", "
+      )}</li>`;
+    if (data.descripcionBreve)
+      html += `<li><strong>Descripción:</strong> ${escapeHTML(
+        data.descripcionBreve
+      )}</li>`;
+    if (data.cobertura?.length)
+      html += `<li><strong>Cobertura:</strong> ${data.cobertura.join(
+        ", "
+      )}</li>`;
+    if (data.fechaEntregaIdeal)
+      html += `<li><strong>Fecha ideal:</strong> ${data.fechaEntregaIdeal}</li>`;
+    html += "</ul>";
   }
-  
+
   // Paso 2: Objetivos
-  if (data.objetivoPrincipal || data.objetivosSecundarios?.length || data.mediciones?.length) {
-    html += '<h4>🎯 Objetivos</h4><ul>';
-    if (data.objetivoPrincipal) html += `<li><strong>Objetivo principal:</strong> ${data.objetivoPrincipal}</li>`;
-    if (data.objetivosSecundarios?.length) html += `<li><strong>Objetivos secundarios:</strong> ${data.objetivosSecundarios.join(', ')}</li>`;
-    if (data.mediciones?.length) html += `<li><strong>Mediciones:</strong> ${data.mediciones.join(', ')}</li>`;
-    html += '</ul>';
+  if (
+    data.objetivoPrincipal ||
+    data.objetivosSecundarios?.length ||
+    data.mediciones?.length
+  ) {
+    html += "<h4>🎯 Objetivos</h4><ul>";
+    if (data.objetivoPrincipal)
+      html += `<li><strong>Objetivo principal:</strong> ${data.objetivoPrincipal}</li>`;
+    if (data.objetivosSecundarios?.length)
+      html += `<li><strong>Objetivos secundarios:</strong> ${data.objetivosSecundarios.join(
+        ", "
+      )}</li>`;
+    if (data.mediciones?.length)
+      html += `<li><strong>Mediciones:</strong> ${data.mediciones.join(
+        ", "
+      )}</li>`;
+    html += "</ul>";
   }
-  
+
   // Paso 3: Público
   if (data.publicoClientes || data.estilo) {
-    html += '<h4>👥 Público objetivo</h4><ul>';
-    if (data.publicoClientes) html += `<li><strong>Clientes:</strong> ${escapeHTML(data.publicoClientes)}</li>`;
-    if (data.rangoEdad) html += `<li><strong>Edad:</strong> ${escapeHTML(data.rangoEdad)}</li>`;
-    if (data.publicoProblema) html += `<li><strong>Problema que resuelves:</strong> ${escapeHTML(data.publicoProblema)}</li>`;
-    if (data.publicoEleccion) html += `<li><strong>Por qué te eligen:</strong> ${escapeHTML(data.publicoEleccion)}</li>`;
+    html += "<h4>👥 Público objetivo</h4><ul>";
+    if (data.publicoClientes)
+      html += `<li><strong>Clientes:</strong> ${escapeHTML(
+        data.publicoClientes
+      )}</li>`;
+    if (data.rangoEdad)
+      html += `<li><strong>Edad:</strong> ${escapeHTML(data.rangoEdad)}</li>`;
+    if (data.publicoProblema)
+      html += `<li><strong>Problema que resuelves:</strong> ${escapeHTML(
+        data.publicoProblema
+      )}</li>`;
+    if (data.publicoEleccion)
+      html += `<li><strong>Por qué te eligen:</strong> ${escapeHTML(
+        data.publicoEleccion
+      )}</li>`;
     if (data.estilo) html += `<li><strong>Estilo:</strong> ${data.estilo}</li>`;
-    html += '</ul>';
+    html += "</ul>";
   }
-  
+
   // Paso 4: Competencia
   if (data.competidores?.length || data.marcaInspiracion) {
-    html += '<h4>🏆 Competencia e inspiración</h4><ul>';
+    html += "<h4>🏆 Competencia e inspiración</h4><ul>";
     if (data.competidores?.length) {
-      html += '<li><strong>Competidores:</strong><ul>';
-      data.competidores.forEach(c => {
-        if (c.nombre) html += `<li>${escapeHTML(c.nombre)}${c.url ? ` (${escapeHTML(c.url)})` : ''}</li>`;
+      html += "<li><strong>Competidores:</strong><ul>";
+      data.competidores.forEach((c) => {
+        if (c.nombre)
+          html += `<li>${escapeHTML(c.nombre)}${
+            c.url ? ` (${escapeHTML(c.url)})` : ""
+          }</li>`;
       });
-      html += '</ul></li>';
+      html += "</ul></li>";
     }
-    if (data.competenciaVentajas) html += `<li><strong>Tus ventajas:</strong> ${escapeHTML(data.competenciaVentajas)}</li>`;
-    if (data.competenciaMejoras) html += `<li><strong>A mejorar:</strong> ${escapeHTML(data.competenciaMejoras)}</li>`;
-    if (data.marcaInspiracion) html += `<li><strong>Marcas que te gustan:</strong> ${escapeHTML(data.marcaInspiracion)}</li>`;
-    html += '</ul>';
+    if (data.competenciaVentajas)
+      html += `<li><strong>Tus ventajas:</strong> ${escapeHTML(
+        data.competenciaVentajas
+      )}</li>`;
+    if (data.competenciaMejoras)
+      html += `<li><strong>A mejorar:</strong> ${escapeHTML(
+        data.competenciaMejoras
+      )}</li>`;
+    if (data.marcaInspiracion)
+      html += `<li><strong>Marcas que te gustan:</strong> ${escapeHTML(
+        data.marcaInspiracion
+      )}</li>`;
+    html += "</ul>";
   }
-  
+
   // Paso 6: Entregables
   if (data.entregables?.length || data.necesitaWeb || data.necesitaFotoVideo) {
-    html += '<h4>📦 Entregables</h4><ul>';
-    if (data.entregables?.length) html += `<li><strong>Diseños:</strong> ${data.entregables.join(', ')}</li>`;
-    if (data.necesitaWeb) html += `<li><strong>Web:</strong> ${data.necesitaWeb}</li>`;
-    if (data.necesitaFotoVideo) html += `<li><strong>Foto/Video:</strong> ${data.necesitaFotoVideo}</li>`;
-    if (data.usosMarca?.length) html += `<li><strong>Usos principales:</strong> ${data.usosMarca.join(', ')}</li>`;
-    html += '</ul>';
+    html += "<h4>📦 Entregables</h4><ul>";
+    if (data.entregables?.length)
+      html += `<li><strong>Diseños:</strong> ${data.entregables.join(
+        ", "
+      )}</li>`;
+    if (data.necesitaWeb)
+      html += `<li><strong>Web:</strong> ${data.necesitaWeb}</li>`;
+    if (data.necesitaFotoVideo)
+      html += `<li><strong>Foto/Video:</strong> ${data.necesitaFotoVideo}</li>`;
+    if (data.usosMarca?.length)
+      html += `<li><strong>Usos principales:</strong> ${data.usosMarca.join(
+        ", "
+      )}</li>`;
+    html += "</ul>";
   }
-  
+
   // Paso 7: Tiempo y presupuesto
   if (data.presupuesto || data.prioridad) {
-    html += '<h4>💰 Presupuesto y tiempos</h4><ul>';
-    if (data.presupuesto) html += `<li><strong>Presupuesto:</strong> ${data.presupuesto}</li>`;
-    if (data.fechaLimiteFija) html += `<li><strong>Fecha límite fija:</strong> ${data.fechaLimiteFija}</li>`;
-    if (data.fechaLimite) html += `<li><strong>Fecha límite:</strong> ${data.fechaLimite}</li>`;
-    if (data.prioridad) html += `<li><strong>Prioridad:</strong> ${data.prioridad}</li>`;
-    html += '</ul>';
+    html += "<h4>💰 Presupuesto y tiempos</h4><ul>";
+    if (data.presupuesto)
+      html += `<li><strong>Presupuesto:</strong> ${data.presupuesto}</li>`;
+    if (data.fechaLimiteFija)
+      html += `<li><strong>Fecha límite fija:</strong> ${data.fechaLimiteFija}</li>`;
+    if (data.fechaLimite)
+      html += `<li><strong>Fecha límite:</strong> ${data.fechaLimite}</li>`;
+    if (data.prioridad)
+      html += `<li><strong>Prioridad:</strong> ${data.prioridad}</li>`;
+    html += "</ul>";
   }
-  
-  html += '</div>';
+
+  html += "</div>";
   return html;
 }
 
@@ -833,7 +974,7 @@ function fillForm(data) {
 function showSuccess() {
   // Ocultar formulario completo y mostrar solo mensaje de éxito
   form.classList.add("hidden");
-  document.querySelector('.progress-wrapper')?.classList.add("hidden");
+  document.querySelector(".progress-wrapper")?.classList.add("hidden");
   successMessage.classList.remove("hidden");
   scrollToTop();
 }
@@ -847,7 +988,7 @@ restartBtn.addEventListener("click", () => {
   fileListReferencias.innerHTML = "";
   document.querySelectorAll(".chips").forEach((c) => (c.innerHTML = ""));
   successMessage.classList.add("hidden");
-  document.querySelector('.progress-wrapper')?.classList.remove("hidden");
+  document.querySelector(".progress-wrapper")?.classList.remove("hidden");
   form.classList.remove("hidden");
   currentStep = 1;
   showStep();

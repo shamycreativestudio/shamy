@@ -188,14 +188,50 @@ function viewBrief(id) {
 
   const body = document.getElementById("modalBody");
 
-  // Preparar imágenes
+  // Helper para parsear el contenido estructurado que viene de Notion
+  const parseContentBlock = (brief) => {
+    // Si el brief tiene un bloque de contenido estructurado, parsearlo
+    if (brief.contenido) {
+      return brief.contenido;
+    }
+    return null;
+  };
+
+  const contenido = parseContentBlock(brief);
+
+  // Preparar imágenes de rediseño
   let imagenesHTML = "";
   if (brief.imagenes && brief.imagenes.length > 0) {
     imagenesHTML = `
       <div class="detail-section">
-        <h3>Imágenes de Referencia (${brief.imagenes.length})</h3>
+        <h3>♻️ Imágenes de Rediseño (${brief.imagenes.length})</h3>
         <div class="detail-grid">
           ${brief.imagenes
+            .map(
+              (img) => `
+            <div class="detail-item">
+              <img src="${
+                img.url || img
+              }" alt="Rediseño" style="width: 100%; border-radius: 4px; cursor: pointer;" onclick="window.open('${
+                img.url || img
+              }', '_blank')">
+            </div>
+          `
+            )
+            .join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  // Preparar imágenes de referencia
+  let referenciasHTML = "";
+  if (brief.referencias && brief.referencias.length > 0) {
+    referenciasHTML = `
+      <div class="detail-section">
+        <h3>🖼️ Imágenes de Referencia (${brief.referencias.length})</h3>
+        <div class="detail-grid">
+          ${brief.referencias
             .map(
               (img) => `
             <div class="detail-item">
@@ -215,7 +251,7 @@ function viewBrief(id) {
 
   body.innerHTML = `
     <div class="detail-section">
-      <h3>Datos Básicos</h3>
+      <h3>📋 Datos Básicos</h3>
       <div class="detail-grid">
         <div class="detail-item"><label>Nombre</label><div class="value">${
           brief.nombre || "-"
@@ -232,9 +268,6 @@ function viewBrief(id) {
         <div class="detail-item"><label>Presupuesto</label><div class="value">${
           brief.presupuesto || "-"
         }</div></div>
-        <div class="detail-item"><label>Timeline</label><div class="value">${
-          brief.timeline || "-"
-        }</div></div>
         <div class="detail-item"><label>Estado</label><div class="value"><span class="badge badge-${(
           brief.estado || "Nuevo"
         )
@@ -247,26 +280,23 @@ function viewBrief(id) {
     </div>
 
     ${
-      brief.descripcion
-        ? `<div class="detail-section"><h3>Descripción</h3><div class="detail-item"><div class="value">${brief.descripcion}</div></div></div>`
+      contenido
+        ? `<div class="detail-section">
+            <h3>📄 Información Completa</h3>
+            <div class="detail-item">
+              <div class="value" style="white-space: pre-wrap; font-family: 'Segoe UI', sans-serif; line-height: 1.6;">${contenido}</div>
+            </div>
+          </div>`
         : ""
     }
-    ${
-      brief.publico
-        ? `<div class="detail-section"><h3>Público Objetivo</h3><div class="detail-item"><div class="value">${brief.publico}</div></div></div>`
-        : ""
-    }
-    ${
-      brief.referencias
-        ? `<div class="detail-section"><h3>Referencias</h3><div class="detail-item"><div class="value">${brief.referencias}</div></div></div>`
-        : ""
-    }
+
     ${imagenesHTML}
+    ${referenciasHTML}
 
     <div class="detail-section">
-      <h3>Datos Completos (JSON)</h3>
+      <h3>🔍 Datos Técnicos (JSON)</h3>
       <details>
-        <summary style="cursor: pointer; font-weight: 600; color: #666;">Ver JSON completo</summary>
+        <summary style="cursor: pointer; font-weight: 600; color: #666;">Ver estructura completa del brief</summary>
         <pre style="background: #f8f9fa; padding: 1rem; border-radius: 4px; overflow-x: auto; font-size: 0.75rem; margin-top: 1rem;">${JSON.stringify(
           brief,
           null,
