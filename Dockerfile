@@ -13,7 +13,7 @@ COPY package*.json ./
 # Instalar dependencias (esto compilará better-sqlite3 correctamente)
 RUN npm ci --only=production
 
-# Copiar el resto de los archivos
+# Copiar el resto de los archivos (excepto node_modules por .dockerignore)
 COPY . .
 
 # Copiar explícitamente el archivo de configuración de la base de datos

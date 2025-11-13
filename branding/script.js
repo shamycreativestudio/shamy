@@ -266,44 +266,56 @@ form.addEventListener("submit", async (e) => {
   submitBtn.textContent = "Enviando...";
 
   try {
-    // Crear FormData para enviar archivos
-    const formData = new FormData();
-
-    // Añadir todos los datos como JSON
-    for (const [key, value] of Object.entries(data)) {
-      if (key !== "meta") {
-        formData.append(
-          key,
-          typeof value === "object" ? JSON.stringify(value) : value
-        );
+    // Convertir archivos a base64
+    const imagenesBase64 = [];
+    if (uploadedFiles && uploadedFiles.length > 0) {
+      for (const file of uploadedFiles) {
+        const base64 = await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => resolve(reader.result);
+          reader.readAsDataURL(file);
+        });
+        imagenesBase64.push(base64);
       }
     }
 
-    // Añadir archivos si existen
-    if (uploadedFiles && uploadedFiles.length > 0) {
-      uploadedFiles.forEach((file) => {
-        formData.append("files", file);
-      });
-    }
+    // Preparar datos para Vercel/Notion
+    const payload = {
+      nombre: data.nombre || '',
+      email: data.email || '',
+      empresa: data.empresa || '',
+      telefono: data.telefono || '',
+      descripcion: data.descripcionProyecto || '',
+      industria: data.industria || '',
+      publico: data.publicoObjetivo || '',
+      presupuesto: data.presupuesto || '',
+      timeline: data.timeline || '',
+      referencias: data.referencias || '',
+      imagenes: imagenesBase64
+    };
 
     // Enviar al servidor usando la URL configurada
     console.log("📤 Enviando brief al servidor...");
-    const response = await fetch(`${API_URL}/api/briefs`, {
+    const response = await fetch(`${API_URL}/api/submit`, {
       method: "POST",
-      body: formData,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
     });
 
     if (!response.ok) {
-      throw new Error("Error al enviar el formulario");
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || "Error al enviar el formulario");
     }
 
     const result = await response.json();
-    console.log("Brief enviado exitosamente:", result);
+    console.log("✅ Brief enviado exitosamente:", result);
 
     showSuccess();
     localStorage.removeItem(STORAGE_KEY);
   } catch (error) {
-    console.error("Error al enviar:", error);
+    console.error("❌ Error al enviar:", error);
     alert(
       "Hubo un error al enviar el formulario. Por favor, intenta de nuevo o descarga el JSON y envíalo por correo."
     );

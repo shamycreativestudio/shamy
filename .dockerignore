@@ -1,9 +1,19 @@
-node_modules
+# Dependencies
+node_modules/
 npm-debug.log
-.git
+
+# Git
+.git/
 .gitignore
+
+# Documentation
 README.md
+*.md
+
+# Environment
 .env
 .DS_Store
-*.md
+
+# Database (local)
 database/briefs.db
+*.db
