@@ -1,4 +1,36 @@
+:root {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --muted: #666666;
+  --border: #e5e5e5;
+  --accent: #000000;
+}
+
+body.dark-mode {
+  --bg: #1a1a1a;
+  --text: #ffffff;
+  --muted: #a0a0a0;
+  --border: #333333;
+  --accent: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Onest", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
+}
+
+.container {
   width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 4rem 0;
 }
@@ -294,6 +326,59 @@
   line-height: 1.8;
 }
 
+/* Global Top Bar */
+.global-top-bar {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  z-index: 1000;
+}
+
+.top-bar-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .top-bar-controls {
+  background: rgba(30, 30, 30, 0.8);
+}
+
+.ui-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text);
+  transition: opacity 0.2s ease;
+}
+
+.ui-toggle:hover {
+  opacity: 0.7;
+}
+
+.ui-toggle svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+.divider {
+  color: var(--border);
+  font-size: 0.8rem;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .portfolio-grid {
@@ -307,5 +392,10 @@
   .project-modal-content {
     padding: 1.5rem;
     width: 95%;
+  }
+
+  .global-top-bar {
+    top: 1rem;
+    left: 1rem;
   }
 }
