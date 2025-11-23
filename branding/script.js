@@ -569,12 +569,19 @@ function validateStep(stepNumber) {
     }
   } else if (stepNumber === 10) {
     // Paso 10: validar checkboxes obligatorios
-    const confirmVeracidad = stepEl.querySelector('input[name="confirmVeracidad"]');
+    const confirmVeracidad = stepEl.querySelector(
+      'input[name="confirmVeracidad"]'
+    );
     const confirmDatos = stepEl.querySelector('input[name="confirmDatos"]');
-    const confirmDerechos = stepEl.querySelector('input[name="confirmDerechos"]');
+    const confirmDerechos = stepEl.querySelector(
+      'input[name="confirmDerechos"]'
+    );
 
     if (!confirmVeracidad?.checked) {
-      markError(confirmVeracidad, "Debes confirmar que la información es verdadera");
+      markError(
+        confirmVeracidad,
+        "Debes confirmar que la información es verdadera"
+      );
       valid = false;
     }
     if (!confirmDatos?.checked) {
@@ -582,7 +589,10 @@ function validateStep(stepNumber) {
       valid = false;
     }
     if (!confirmDerechos?.checked) {
-      markError(confirmDerechos, "Debes confirmar que tienes derechos sobre los materiales");
+      markError(
+        confirmDerechos,
+        "Debes confirmar que tienes derechos sobre los materiales"
+      );
       valid = false;
     }
   } else {
@@ -617,16 +627,16 @@ function markError(field, msg) {
   const m = document.createElement("div");
   m.className = "error-msg";
   m.textContent = msg;
-  
+
   // Si es un checkbox dentro de .checkbox-line, insertar después del label padre
-  if (field.type === 'checkbox' && field.closest('.checkbox-line')) {
-    const label = field.closest('.checkbox-line');
-    label.style.position = 'relative';
-    m.style.position = 'absolute';
-    m.style.right = '0.6rem';
-    m.style.top = '50%';
-    m.style.transform = 'translateY(-50%)';
-    m.style.marginTop = '0';
+  if (field.type === "checkbox" && field.closest(".checkbox-line")) {
+    const label = field.closest(".checkbox-line");
+    label.style.position = "relative";
+    m.style.position = "absolute";
+    m.style.right = "0.6rem";
+    m.style.top = "50%";
+    m.style.transform = "translateY(-50%)";
+    m.style.marginTop = "0";
     label.insertAdjacentElement("beforeend", m);
   } else {
     field.insertAdjacentElement("afterend", m);

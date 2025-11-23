@@ -4,7 +4,7 @@
   "description": "Sistema de briefs 100% gratis - Notion + Vercel + Cloudinary",
   "main": "api/submit.js",
   "scripts": {
-    "dev": "vercel dev",
+    "start": "vercel dev",
     "deploy": "vercel --prod"
   },
   "keywords": [
