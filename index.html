@@ -25,29 +25,32 @@
           alt="Shamy Creative Studio"
           class="logo"
         />
-        <h1>Próximamente</h1>
-        <p class="tagline">Diseño de marca con propósito</p>
+        <h1>shamy] portfolio</h1>
+        <p class="tagline">
+          branding · coding · animating · drawing · modeling
+        </p>
       </header>
 
       <main class="content">
-        <section class="services">
-          <div class="service-card">
-            <h2>shamy] branding</h2>
-            <p>Estrategia y diseño de identidad de marca</p>
-            <a href="branding/" class="btn-primary">Iniciar brief →</a>
-          </div>
+        <!-- Filters -->
+        <div class="filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="branding">Branding</button>
+          <button class="filter-btn" data-filter="coding">Coding</button>
+          <button class="filter-btn" data-filter="animating">Animating</button>
+          <button class="filter-btn" data-filter="drawing">Drawing</button>
+          <button class="filter-btn" data-filter="modeling">Modeling</button>
+        </div>
 
-          <div class="service-card coming-soon">
-            <h2>shamy] design</h2>
-            <p>Diseño gráfico y editorial</p>
-            <span class="badge">Próximamente</span>
-          </div>
+        <!-- Portfolio Grid -->
+        <div class="portfolio-grid" id="portfolioGrid">
+          <!-- Projects will be injected here by JS -->
+        </div>
 
-          <div class="service-card coming-soon">
-            <h2>shamy] web</h2>
-            <p>Desarrollo web y experiencias digitales</p>
-            <span class="badge">Próximamente</span>
-          </div>
+        <!-- CTA Section -->
+        <section class="cta-section">
+          <h2>Interested in working together?</h2>
+          <a href="branding/" class="btn-primary">Start a Project →</a>
         </section>
       </main>
 
@@ -55,5 +58,23 @@
         <small>&copy; 2025 Shamy]™ Creative Studio.</small>
       </footer>
     </div>
+
+    <!-- Lightbox Modal -->
+    <div class="modal" id="lightbox">
+      <button class="close-modal">&times;</button>
+      <img src="" alt="Full view" class="lightbox-img" id="lightboxImg" />
+    </div>
+
+    <!-- Project Details Modal -->
+    <div class="modal" id="projectModal">
+      <button class="close-modal">&times;</button>
+      <div class="project-modal-content">
+        <div class="modal-content-body">
+          <!-- Content injected by JS -->
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/portfolio.js"></script>
   </body>
 </html>
