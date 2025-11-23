@@ -20,26 +20,48 @@
   <body>
     <div class="container">
       <header class="hero">
-        <img
-          src="assets/img/shamy-logotipo.svg"
-          alt="Shamy Creative Studio"
-          class="logo"
-        />
-        <h1>shamy] portfolio</h1>
-        <p class="tagline">
-          branding · coding · animating · drawing · modeling
-        </p>
-      </header>
-
-      <main class="content">
-        <!-- Filters -->
-        <div class="filters">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="branding">Branding</button>
-          <button class="filter-btn" data-filter="coding">Coding</button>
-          <button class="filter-btn" data-filter="animating">Animating</button>
-          <button class="filter-btn" data-filter="drawing">Drawing</button>
-          <button class="filter-btn" data-filter="modeling">Modeling</button>
+          <button
+            class="filter-btn active"
+            data-filter="all"
+            data-i18n="nav.all"
+          >
+            All
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="branding"
+            data-i18n="nav.branding"
+          >
+            Branding
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="coding"
+            data-i18n="nav.coding"
+          >
+            Coding
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="animating"
+            data-i18n="nav.animating"
+          >
+            Animating
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="drawing"
+            data-i18n="nav.drawing"
+          >
+            Drawing
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="modeling"
+            data-i18n="nav.modeling"
+          >
+            Modeling
+          </button>
         </div>
 
         <!-- Portfolio Grid -->
@@ -49,13 +71,17 @@
 
         <!-- CTA Section -->
         <section class="cta-section">
-          <h2>Interested in working together?</h2>
-          <a href="branding/" class="btn-primary">Start a Project →</a>
+          <h2 data-i18n="cta.title">Interested in working together?</h2>
+          <a href="branding/" class="btn-primary" data-i18n="cta.button"
+            >Start a Project →</a
+          >
         </section>
       </main>
 
       <footer class="footer">
-        <small>&copy; 2025 Shamy]™ Creative Studio.</small>
+        <small data-i18n="footer.copyright"
+          >&copy; 2025 Shamy]™ Creative Studio.</small
+        >
       </footer>
     </div>
 
@@ -75,6 +101,7 @@
       </div>
     </div>
 
+    <script src="assets/js/ui-core.js"></script>
     <script src="assets/js/portfolio.js"></script>
   </body>
 </html>

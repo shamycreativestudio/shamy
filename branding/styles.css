@@ -14,6 +14,18 @@
   font-size: 16px;
 }
 
+body.dark-mode {
+  --bg: #121212;
+  --panel: #1e1e1e;
+  --border: #333333;
+  --accent: #ffffff;
+  --accent-rgb: 255, 255, 255;
+  --text: #e0e0e0;
+  --muted: #a0a0a0;
+  --shadow: 0 2px 12px -2px rgba(0, 0, 0, 0.3);
+  --focus: 0 0 0 3px rgba(255, 255, 255, 0.15);
+}
+
 * {
   box-sizing: border-box;
 }
@@ -151,7 +163,7 @@ p {
 }
 
 .progress-wrapper {
-  background: #ffffff;
+  background: var(--panel);
   border-radius: 100px;
   padding: 4px;
   margin: 0 auto 2rem;
@@ -160,7 +172,7 @@ p {
 }
 
 .progress-bar {
-  background: #ffffff;
+  background: var(--panel);
   height: 32px;
   border-radius: 100px;
   position: relative;
@@ -256,7 +268,7 @@ input[type="url"],
 input[type="date"],
 textarea {
   border: 2px solid var(--border);
-  background: #ffffff;
+  background: var(--panel);
   padding: 0.75rem 0.85rem;
   font: inherit;
   border-radius: var(--radius-sm);
@@ -273,7 +285,7 @@ input:focus,
 textarea:focus {
   outline: none;
   border-color: var(--accent);
-  background: #fff;
+  background: var(--panel);
   box-shadow: var(--focus);
 }
 
@@ -344,7 +356,7 @@ textarea:focus {
 }
 
 .btn-icon.remove {
-  background: #ffffff;
+  background: var(--panel);
   color: #d84343;
   border: 1px solid #d84343;
   padding: 0.45rem 0.65rem;
@@ -361,7 +373,7 @@ textarea:focus {
 }
 
 .upload-zone {
-  background: #ffffff;
+  background: var(--panel);
   border: 2px dashed #b6c3d1;
   padding: 1rem;
   border-radius: var(--radius-sm);
@@ -375,7 +387,7 @@ textarea:focus {
 
 .upload-zone:focus,
 .upload-zone:hover {
-  background: #ffffff;
+  background: var(--panel);
   border-color: var(--accent);
   outline: none;
 }
@@ -389,7 +401,7 @@ textarea:focus {
 }
 
 .file-list li {
-  background: #fff;
+  background: var(--panel);
   border: 1px solid var(--border);
   padding: 0.45rem 0.6rem;
   margin-bottom: 0.4rem;
@@ -439,7 +451,7 @@ button {
 }
 
 .btn-secondary {
-  background: #ffffff;
+  background: var(--panel);
   color: var(--accent);
   font-weight: 600;
   border: 1px solid var(--border);
@@ -466,7 +478,7 @@ button {
 }
 
 .info {
-  background: #ffffff;
+  background: var(--panel);
   border-left: 4px solid var(--accent);
   color: var(--text);
   padding: 0.85rem 1rem;
@@ -481,7 +493,7 @@ button {
 }
 
 .success {
-  background: #ffffff;
+  background: var(--panel);
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
   border-radius: var(--radius);
@@ -496,7 +508,7 @@ button {
   gap: 0.6rem;
   font-size: 0.82rem;
   padding: 0.45rem 0.6rem;
-  background: #ffffff;
+  background: var(--panel);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   position: relative;
@@ -513,7 +525,7 @@ dialog {
   padding: 1.2rem 1.2rem 1rem;
   max-width: 680px;
   width: 90%;
-  background: #ffffff;
+  background: var(--panel);
   box-shadow: 0 8px 30px -6px rgba(0, 0, 0, 0.25);
 }
 
@@ -586,7 +598,7 @@ dialog h3 {
 
 .chip-origin {
   border: 1px dashed var(--border);
-  background: #ffffff;
+  background: var(--panel);
 }
 
 .chips {
@@ -597,8 +609,8 @@ dialog h3 {
 }
 
 .chip {
-  background: #ffffff;
-  color: #000000;
+  background: var(--panel);
+  color: var(--text);
   border: 1px solid var(--border);
   padding: 0.35rem 0.7rem;
   font-size: 0.65rem;
