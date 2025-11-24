@@ -12,331 +12,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700;900&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="app-header">
-      <div class="top-bar" id="topBar">
-        <div class="logo-container">
-          <img
-            src="assets/shamy-logotipo-white.svg"
-            alt="Shamy"
-            class="main-logo"
-            id="mainLogo"
-          />
-          <span class="tagline" id="tagline" data-i18n="hero.tagline"
-            >branding · coding · animating · drawing · modeling</span
-          >
-        </div>
-        <button
-          type="button"
-          class="btn-reset"
-          id="resetBtn"
-          title="Empezar de nuevo"
-          data-i18n="form.reset"
-        >
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
-            <path d="M3 3v5h5" />
-          </svg>
-          Empezar de nuevo
-        </button>
-      </div>
-      <div class="header-content">
-        <h1 data-i18n="form.title">Inicia tu proyecto de marca</h1>
-        <p class="subtitle" data-i18n="form.subtitle">
-          Completa lo que puedas. Los campos con asterisco (*) son obligatorios.
-        </p>
-      </div>
-    </header>
-
-    <main id="app" class="container" aria-live="polite">
-      <div class="progress-wrapper" aria-label="Progreso del formulario">
-        <div class="progress-bar" id="progressBar">
-          <span id="progressText">0%</span>
-        </div>
-      </div>
-
-      <form id="briefForm" novalidate>
-        <!-- Paso 1 -->
-        <!-- Paso 1 -->
-        <section class="step active" data-step="1" aria-labelledby="step1Title">
-          <h2 id="step1Title" data-i18n="form.step1">Paso 1. Datos básicos</h2>
-          <div class="grid">
-            <label class="field">
-              <span data-i18n="form.brandName"
-                >Nombre de tu empresa o marca</span
-              >
-              <input
-                type="text"
-                name="empresaNombre"
-                maxlength="100"
-                data-i18n="form.brandName"
-              />
-              <small class="hint">Ej.: Café La Montaña</small>
-            </label>
-            <label class="field">
-              <span data-i18n="form.name">Tu nombre y cargo</span>
-              <input
-                type="text"
-                name="contactoNombreCargo"
-                maxlength="120"
-                data-i18n="form.name"
-              />
-              <small class="hint">Ej.: Ana Gómez - Gerente</small>
-            </label>
-            <label class="field">
-              <span data-i18n="form.email">Correo electrónico *</span>
-              <input type="email" name="contactoEmail" />
-            </label>
-            <label class="field">
-              <span data-i18n="form.phone">Celular / WhatsApp *</span>
-              <input
-                type="tel"
-                name="contactoTelefono"
-                pattern="^[0-9+()\\-\\s]{8,20}$"
-              />
-              <small class="hint">Ej.: 3001234567</small>
-            </label>
-            <label class="field">
-              <span data-i18n="form.city">Ciudad principal donde operas</span>
-              <input
-                type="text"
-                name="ciudad"
-                maxlength="60"
-                data-i18n="form.city"
-              />
-            </label>
-            <fieldset class="field">
-              <legend data-i18n="form.needs">
-                ¿Qué necesitas principalmente?
-              </legend>
-              <div
-                class="checkbox-column"
-                data-required-group="necesidadesPrincipales"
-              >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="necesidadesPrincipales"
-                    value="Crear marca"
-                  />
-                  <span data-i18n="form.needs.create"
-                    >Crear una marca desde cero</span
-                  ></label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="necesidadesPrincipales"
-                    value="Rediseño"
-                  />
-                  <span data-i18n="form.needs.redesign"
-                    >Mejorar / actualizar mi marca (rediseño)</span
-                  ></label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="necesidadesPrincipales"
-                    value="Empaques"
-                  />
-                  <span data-i18n="form.needs.packaging"
-                    >Diseñar empaques / etiquetas</span
-                  ></label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="necesidadesPrincipales"
-                    value="Redes"
-                  />
-                  <span data-i18n="form.needs.social"
-                    >Diseño para redes sociales</span
-                  ></label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="necesidadesPrincipales"
-                    value="Web"
-                  />
-                  <span data-i18n="form.needs.web"
-                    >Página web / tienda online</span
-                  ></label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="necesidadesPrincipales"
-                    value="Impresos"
-                  />
-                  <span data-i18n="form.needs.print"
-                    >Material impreso</span
-                  ></label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="necesidadesPrincipales"
-                    value="FotoVideo"
-                  />
-                  <span data-i18n="form.needs.photo">Fotos o video</span></label
-                >
-                <label class="other-wrap">
-                  <input
-                    type="checkbox"
-                    name="necesidadesPrincipales"
-                    value="Otro"
-                  />
-                  <span data-i18n="form.needs.other">Otro:</span>
-                  <input
-                    type="text"
-                    name="necesidadesOtro"
-                    placeholder="Describe brevemente"
-                    disabled
-                  />
-                </label>
-              </div>
-            </fieldset>
-            <label class="field full">
-              <span data-i18n="form.desc"
-                >Breve descripción de lo que haces</span
-              >
-              <textarea
-                name="descripcionBreve"
-                maxlength="280"
-                rows="2"
-                placeholder="Ej.: Vendemos café especial de origen Nariño."
-                data-i18n="form.desc.placeholder"
-              ></textarea>
-              <small class="char-counter" data-for="descripcionBreve"></small>
-            </label>
-            <fieldset class="field">
-              <legend data-i18n="form.scope">
-                ¿Hasta dónde quieres llegar con tu proyecto?
-              </legend>
-              <div class="checkbox-row">
-                <label
-                  ><input type="checkbox" name="cobertura" value="Local" />
-                  <span data-i18n="form.scope.local"
-                    >Ciudad / Local</span
-                  ></label
-                >
-                <label
-                  ><input type="checkbox" name="cobertura" value="Regional" />
-                  <span data-i18n="form.scope.regional"
-                    >Región / Departamento</span
-                  ></label
-                >
-                <label
-                  ><input type="checkbox" name="cobertura" value="Nacional" />
-                  <span data-i18n="form.scope.national">Nacional</span></label
-                >
-                <label
-                  ><input
-                    type="checkbox"
-                    name="cobertura"
-                    value="Internacional"
-                  />
-                  <span data-i18n="form.scope.international"
-                    >Internacional</span
-                  ></label
-                >
-              </div>
-            </fieldset>
-            <label class="field">
-              <span data-i18n="form.deadline"
-                >Fecha ideal de lanzamiento o entrega</span
-              >
-              <input type="date" name="fechaEntregaIdeal" />
-            </label>
-          </div>
-        </section>
-
-        <!-- Paso 2 -->
-        <!-- Paso 2 -->
-        <section class="step" data-step="2" aria-labelledby="step2Title">
-          <h2 id="step2Title" data-i18n="form.step2">Paso 2. Objetivos</h2>
-          <div class="grid">
-            <fieldset class="field">
-              <legend data-i18n="form.objective">
-                ¿Cuál es tu objetivo principal? (elige uno)
-              </legend>
-              <div class="radio-column">
-                <label
-                  ><input
-                    type="radio"
-                    name="objetivoPrincipal"
-                    value="Vender más"
-                  />
-                  <span data-i18n="form.obj.sell">Vender más</span></label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    name="objetivoPrincipal"
-                    value="Lanzar nuevo producto"
-                  />
-                  <span data-i18n="form.obj.launch"
-                    >Lanzar un nuevo producto/servicio</span
-                  ></label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    name="objetivoPrincipal"
-                    value="Verse profesional"
-                  />
-                  <span data-i18n="form.obj.pro"
-                    >Verse más profesional</span
-                  ></label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    name="objetivoPrincipal"
-                    value="Diferenciarse"
-                  />
-                  <span data-i18n="form.obj.diff"
-                    >Diferenciarse de la competencia</span
-                  ></label
-                >
-                <label
-                  ><input
-                    type="radio"
-                    name="objetivoPrincipal"
-                    value="Mejorar digital"
-                  />
-                  <span data-i18n="form.obj.digital"
-                    >Mejorar presencia digital</span
-                  ></label
-                >
-                <label class="other-wrap">
-                  <input type="radio" name="objetivoPrincipal" value="Otro" />
-                  <span data-i18n="form.obj.other">Otro:</span>
-                  <input
-                    type="text"
-                    name="objetivoOtro"
-                    placeholder="Escribe tu objetivo"
-                    disabled
-                  />
-                </label>
-              </div>
-            </fieldset>
-            <label class="field full">
               <span data-i18n="form.secObj"
                 >Objetivos secundarios (opcional, máximo 2)</span
               >
@@ -345,7 +20,7 @@
                   type="text"
                   placeholder="Escribe y presiona Enter"
                   class="chip-origin"
-                  data-i18n="form.secObj.placeholder"
+                  data-i18n-placeholder="form.secObj.placeholder"
                 />
                 <div
                   class="chips"
@@ -403,6 +78,7 @@
                     type="text"
                     name="medicionesOtro"
                     placeholder="Otra métrica"
+                    data-i18n-placeholder="form.metrics.other.placeholder"
                     disabled
                   />
                 </label>
@@ -571,7 +247,7 @@
               <span data-i18n="form.refImages"
                 >Imágenes de referencia o inspiración (opcional)</span
               >
-              <small class="hint" data-i18n="form.refImages.hint"
+              <small class="hint" data-i18n="form.hint.files"
                 >Sube imágenes de diseños, colores o estilos que te gusten como
                 referencia. Máximo 10 archivos, 10 MB por archivo</small
               >
@@ -747,7 +423,7 @@
               <span data-i18n="form.currentAssets"
                 >Sube lo que tengas (logo, piezas anteriores)</span
               >
-              <small class="hint" data-i18n="form.refImages.hint"
+              <small class="hint" data-i18n="form.hint.upload"
                 >Máximo 10 archivos, 10 MB por archivo</small
               >
               <div
@@ -1239,9 +915,9 @@
         <div class="form-actions">
           <button
             type="button"
-            class="btn-secondary"
+            class="btn-primary"
             id="prevBtn"
-            hidden
+            id="prevBtn"
             data-i18n="form.prev"
           >
             Anterior
@@ -1300,6 +976,7 @@
     </footer>
 
     <!-- Cargar configuración ANTES del script principal -->
+    <script src="../assets/js/ui-core.js"></script>
     <script src="config.js"></script>
     <script src="script.js"></script>
   </body>

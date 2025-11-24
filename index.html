@@ -2,13 +2,8 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shamy Creative Studio</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta
-      name="description"
-      content="Shamy] Creative Studio - Diseño de marca y estrategia creativa"
-    />
-    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,101 +13,186 @@
     <link rel="stylesheet" href="assets/css/main.css" />
   </head>
   <body>
-    <div class="container">
-      <header class="hero">
-        <img src="assets/img/logo.svg" alt="Shamy Creative Studio" class="logo" />
-        <h1 data-i18n="hero.title">Shamy Creative Studio</h1>
-        <p class="tagline" data-i18n="hero.tagline">
-          branding · coding · animating · drawing · modeling
-        </p>
+    <!-- Navigation Capsules -->
+    <nav class="navbar-capsules">
+      <!-- Logo Capsule -->
+      <div class="nav-capsule logo-capsule">
+        <a href="#" class="nav-logo-link">
+          <img src="assets/img/shamy-logotipo.svg" alt="Shamy Creative Studio" class="nav-logo" id="mainLogo" />
+        </a>
+      </div>
+
+      <!-- Links Capsule -->
+      <div class="nav-capsule links-capsule">
+        <div class="nav-links">
+          <a href="#portfolioGrid" data-i18n="nav.work">Portafolio</a>
+          <a href="#services" data-i18n="nav.services">Servicios</a>
+          <a href="#about" data-i18n="nav.about">Nosotros</a>
+          <a href="#contact" data-i18n="nav.contact">Contacto</a>
+        </div>
+      </div>
+
+      <!-- Controls Capsule -->
+      <div class="nav-capsule controls-capsule">
+        <div class="nav-controls" id="navControls">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+    </nav>
+
+    <div id="page-content">
+
+      <!-- Hero Section -->
+      <header class="hero-section">
+        <div class="hero-content">
+          <h1 class="hero-title animate-on-scroll" data-i18n="hero.title">
+            <span class="line">CREAMOS</span>
+            <span class="line">EXPERIENCIAS</span>
+            <span class="line">DIGITALES</span>
+          </h1>
+          <p class="hero-subtitle animate-on-scroll delay-100" data-i18n="hero.subtitle">Branding estratégico y diseño web inmersivo.</p>
+          <a href="#portfolioGrid" class="btn-primary hero-cta animate-on-scroll delay-200" data-i18n="hero.cta">Ver Proyectos</a>
+        </div>
+      </header>
+
+      <div class="container">
         <div class="filters">
           <button
             class="filter-btn active"
             data-filter="all"
-            data-i18n="nav.all"
+            data-i18n="filter.all"
           >
-            All
+            Todos
           </button>
           <button
             class="filter-btn"
             data-filter="branding"
-            data-i18n="nav.branding"
+            data-i18n="filter.branding"
           >
             Branding
           </button>
           <button
             class="filter-btn"
             data-filter="coding"
-            data-i18n="nav.coding"
+            data-i18n="filter.coding"
           >
             Coding
           </button>
           <button
             class="filter-btn"
             data-filter="animating"
-            data-i18n="nav.animating"
+            data-i18n="filter.animating"
           >
             Animating
           </button>
-          <button
+          <!-- <button
             class="filter-btn"
             data-filter="drawing"
-            data-i18n="nav.drawing"
+            data-i18n="filter.drawing"
           >
             Drawing
           </button>
           <button
             class="filter-btn"
             data-filter="modeling"
-            data-i18n="nav.modeling"
+            data-i18n="filter.modeling"
           >
             Modeling
-          </button>
-          <button
-            class="filter-btn"
-            data-filter="modeling"
-            data-i18n="nav.modeling"
-          >
-            Modeling
-          </button>
-        </div>
-      </header>
-
-        <!-- Portfolio Grid -->
-        <div class="portfolio-grid" id="portfolioGrid">
-          <!-- Projects will be injected here by JS -->
+          </button> -->
         </div>
 
-        <!-- CTA Section -->
-        <section class="cta-section">
-          <h2 data-i18n="cta.title">Interested in working together?</h2>
-          <a href="branding/" class="btn-primary" data-i18n="cta.button"
-            >Start a project →</a
-          >
-        </section>
-      </main>
+          <!-- Portfolio Grid -->
+          <div class="portfolio-grid" id="portfolioGrid">
+            <!-- Projects will be injected here by JS -->
+          </div>
 
-      <footer class="footer">
-        <small data-i18n="footer.copyright"
-          >&copy; 2025 Shamy]™ Creative Studio.</small
-        >
-      </footer>
-    </div>
+          <!-- Marquee Section -->
+          <div class="marquee-section">
+            <div class="marquee-track">
+              <div class="marquee-content" data-i18n="marquee.text">
+                ESTRATEGIA • BRANDING • DISEÑO WEB • DESARROLLO • ANIMACIÓN •
+              </div>
+              <div class="marquee-content" aria-hidden="true" data-i18n="marquee.text">
+                ESTRATEGIA • BRANDING • DISEÑO WEB • DESARROLLO • ANIMACIÓN •
+              </div>
+              <div class="marquee-content" aria-hidden="true" data-i18n="marquee.text">
+                ESTRATEGIA • BRANDING • DISEÑO WEB • DESARROLLO • ANIMACIÓN •
+              </div>
+              <div class="marquee-content" aria-hidden="true" data-i18n="marquee.text">
+                ESTRATEGIA • BRANDING • DISEÑO WEB • DESARROLLO • ANIMACIÓN •
+              </div>
+            </div>
+          </div>
 
-    <!-- Lightbox Modal -->
-    <div class="modal" id="lightbox">
-      <button class="close-modal">&times;</button>
-      <img src="" alt="Full view" class="lightbox-img" id="lightboxImg" />
-    </div>
+          <!-- Services Section -->
+          <section id="services" class="services-section">
+              <h2 class="section-title animate-on-scroll" data-i18n="services.title">Nuestros Servicios</h2>
+              <div class="services-grid">
+                <div class="service-card animate-on-scroll delay-100">
+                  <div class="service-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                  </div>
+                  <h3 data-i18n="services.card1.title">Estrategia de Marca</h3>
+                  <p data-i18n="services.card1.desc">Definimos la esencia, voz y propósito de tu marca para conectar con tu audiencia ideal.</p>
+                </div>
+                <div class="service-card animate-on-scroll delay-200">
+                  <div class="service-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+                  </div>
+                  <h3 data-i18n="services.card2.title">Identidad Visual</h3>
+                  <p data-i18n="services.card2.desc">Logos, sistemas de diseño y guías de estilo que hacen tu marca inolvidable.</p>
+                </div>
+                <div class="service-card animate-on-scroll delay-300">
+                  <div class="service-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                  </div>
+                  <h3 data-i18n="services.card3.title">Desarrollo Web</h3>
+                  <p data-i18n="services.card3.desc">Sitios web rápidos y responsivos optimizados para conversión y experiencia de usuario.</p>
+                </div>
+              </div>
+          </section>
 
-    <!-- Project Details Modal -->
-    <div class="modal" id="projectModal">
-      <button class="close-modal">&times;</button>
-      <div class="project-modal-content">
-        <div class="modal-content-body">
+          <!-- About Section -->
+          <section id="about" class="about-section">
+              <div class="about-content">
+                <div class="about-image-placeholder animate-on-scroll">
+                   <img src="assets/img/shamy-isotipo.svg" alt="Shamy Logo" class="about-logo-fallback" loading="lazy" />
+                </div>
+                <div class="about-text animate-on-scroll delay-200">
+                  <h2 class="section-title" data-i18n="about.title">Sobre Nosotros</h2>
+                  <p data-i18n="about.desc">Somos un estudio creativo digital obsesionado con el diseño limpio y la funcionalidad. Creemos que cada píxel cuenta y la tecnología debe servir a la historia de tu marca.</p>
+                  <div class="about-stats">
+                    <div class="stat">
+                      <span class="stat-number">5+</span>
+                      <span class="stat-label" data-i18n="about.stat1">Años de Exp.</span>
+                    </div>
+                    <div class="stat">
+                      <span class="stat-number">50+</span>
+                      <span class="stat-label" data-i18n="about.stat2">Proyectos</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </section>
+
+          <!-- CTA Section -->
+          <section id="contact" class="cta-section animate-on-scroll">
+            <div class="cta-content">
+              <h2 data-i18n="cta.title">¿Interesado en trabajar juntos?</h2>
+              <!-- <a href="branding/" class="btn-primary cta-btn" data-i18n="cta.button">Iniciar un proyecto →</a> -->
+              <p class="cta-email" data-i18n="cta.email">Escríbenos a: shamy.creativestudio@gmail.com</p>
+            </div>
+          </section>
+        </main>
+
           <!-- Content injected by JS -->
         </div>
       </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="project-modal">
+      <!-- Modal content will be generated by portfolio.js -->
     </div>
 
     <script src="assets/js/ui-core.js"></script>

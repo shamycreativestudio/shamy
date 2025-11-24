@@ -5,210 +5,190 @@
 
 const translations = {
   es: {
-    "nav.all": "Todos",
-    "nav.branding": "Branding",
-    "nav.coding": "Coding",
-    "nav.animating": "Animating",
-    "nav.drawing": "Drawing",
-    "nav.modeling": "Modeling",
-    "hero.tagline": "branding · coding · animating · drawing · modeling",
+    "nav.work": "Portafolio",
+    "nav.services": "Servicios",
+    "nav.about": "Nosotros",
+    "nav.contact": "Contacto",
+    "filter.all": "Todos",
+    "filter.branding": "Branding",
+    "filter.coding": "Coding",
+    "filter.animating": "Animating",
+    "filter.drawing": "Drawing",
+    "filter.modeling": "Modeling",
+    "hero.title":
+      "<span class='line'>CREAMOS</span><span class='line'>EXPERIENCIAS</span><span class='line'>DIGITALES</span>",
+    "hero.subtitle": "Branding estratégico y diseño web inmersivo.",
+    "hero.cta": "Ver Proyectos",
+    "marquee.text":
+      "ESTRATEGIA • BRANDING • DISEÑO WEB • DESARROLLO • ANIMACIÓN •",
+    "services.title": "Nuestros Servicios",
+    "services.card1.title": "Estrategia de Marca",
+    "services.card1.desc":
+      "Definimos la esencia, voz y propósito de tu marca para conectar con tu audiencia ideal.",
+    "services.card2.title": "Identidad Visual",
+    "services.card2.desc":
+      "Logos, sistemas de diseño y guías de estilo que hacen tu marca inolvidable.",
+    "services.card3.title": "Desarrollo Web",
+    "services.card3.desc":
+      "Sitios web rápidos y responsivos optimizados para conversión y experiencia de usuario.",
+    "about.title": "Sobre Nosotros",
+    "about.desc":
+      "Somos un estudio creativo digital obsesionado con el diseño limpio y la funcionalidad. Creemos que cada píxel cuenta y la tecnología debe servir a la historia de tu marca.",
+    "about.stat1": "Años de Exp.",
+    "about.stat2": "Proyectos",
     "cta.title": "¿Interesado en trabajar juntos?",
-    "cta.button": "Iniciar un Proyecto →",
-    "footer.copyright": "&copy; 2025 Shamy]™ Creative Studio.",
+    "cta.button": "Iniciar un proyecto →",
+    "cta.email": "Escríbenos a: shamy.creativestudio@gmail.com",
     "portfolio.noResults": "No se encontraron proyectos en esta categoría.",
-    "form.title": "Brief de Marca",
-    "form.subtitle": "Cuéntanos sobre tu proyecto",
-    "form.step1": "Contacto",
-    "form.step2": "Marca",
-    "form.step3": "Objetivos",
-    "form.step4": "Estilo",
-    "form.next": "Siguiente",
-    "form.prev": "Anterior",
+
+    // BRANDING PROJECTS
+    "project.branding.dantano.title": "D'Antaño",
+    "project.branding.dantano.desc":
+      "Una delicatessen especializada en quesos y embutidos tradicionales de alta calidad.",
+    "project.branding.fromtheocean.title": "From the Ocean",
+    "project.branding.fromtheocean.desc":
+      "Una fundación ambiental hipotética dedicada a la conservación de los océanos.",
+    "project.branding.robertcapa.title": "Robert Capa",
+    "project.branding.robertcapa.desc":
+      "Un whisky de malta hipotético de alta gama inspirado históricamente.",
+    "project.branding.zeth.title": "Zeth",
+    "project.branding.zeth.desc":
+      "Una tipografía display con intrincadas letras inspiradas en animales salvajes.",
+    "project.branding.summergroove.title": "Summer Groove",
+    "project.branding.summergroove.desc":
+      "Un evento musical hipotético inspirado en la estética retro de los 70.",
+    "project.branding.whopperking.title": "Whopper King",
+    "project.branding.whopperking.desc":
+      "Rediseño visual conceptual para una cadena de hamburguesas premium.",
+    "project.branding.aemg.title": "AEMG",
+    "project.branding.aemg.desc":
+      "Identidad visual corporativa para una asociación estudiantil.",
+    "project.branding.curcuns.title": "Juego de Guaguas",
+    "project.branding.curcuns.desc":
+      'Un festival tradicional inspirado en las "guaguas de pan" (figuras de pan).',
+    "project.branding.dosefes.title": "Dos Efes",
+    "project.branding.dosefes.desc":
+      "Una farmacia funcional con un enfoque moderno centrado en el paciente.",
+    "project.branding.sompa.title": "Sonpa",
+    "project.branding.sompa.desc":
+      "Una banda moderna de fusión reggae con un estilo diverso y dinámico.",
+    "project.branding.antaera.title": "Bitácora",
+    "project.branding.antaera.desc":
+      "Un pub temático de arte y diseño ubicado en una casa colonial.",
+
+    // CODING PROJECTS
+    "project.coding.cvdll.title":
+      "Cartilla Interactiva - Santuario de Las Lajas",
+    "project.coding.cvdll.desc":
+      "Cartilla infográfica sobre la Virgen de las Lajas y el Santuario de Las Lajas.",
+
+    // ANIMATING PROJECTS
+    "project.animating.corazonesalrescate.title": "Corazones al Rescate",
+    "project.animating.corazonesalrescate.desc":
+      "Animación para una fundación sin ánimo de lucro dedicada al cuidado de los animales.",
+
+    "form.title": "Brief de tu marca",
+    "form.subtitle":
+      "Completa lo que puedas. Los campos con asterisco (*) son obligatorios.",
     "form.submit": "Enviar Brief",
-    "form.name": "Nombre Completo",
-    "form.email": "Correo Electrónico",
-    "form.company": "Empresa / Organización",
-    "form.phone": "Teléfono (Opcional)",
-    "form.brandName": "Nombre de la Marca",
-    "form.currentSite": "Sitio Web Actual (Si tiene)",
-    "form.city": "Ciudad principal donde operas",
-    "form.needs": "¿Qué necesitas principalmente?",
-    "form.needs.create": "Crear una marca desde cero",
-    "form.needs.redesign": "Mejorar / actualizar mi marca (rediseño)",
-    "form.needs.packaging": "Diseñar empaques / etiquetas",
-    "form.needs.social": "Diseño para redes sociales",
-    "form.needs.web": "Página web / tienda online",
-    "form.needs.print": "Material impreso",
-    "form.needs.photo": "Fotos o video",
-    "form.needs.other": "Otro:",
-    "form.desc": "Breve descripción de lo que haces",
-    "form.desc.placeholder": "Ej.: Vendemos café especial de origen Nariño.",
-    "form.scope": "¿Hasta dónde quieres llegar con tu proyecto?",
-    "form.scope.local": "Ciudad / Local",
-    "form.scope.regional": "Región / Departamento",
-    "form.scope.national": "Nacional",
-    "form.scope.international": "Internacional",
-    "form.deadline": "Fecha ideal de lanzamiento o entrega",
-    "form.objective": "¿Cuál es tu objetivo principal? (elige uno)",
-    "form.obj.sell": "Vender más",
-    "form.obj.launch": "Lanzar un nuevo producto/servicio",
-    "form.obj.pro": "Verse más profesional",
-    "form.obj.diff": "Diferenciarse de la competencia",
-    "form.obj.digital": "Mejorar presencia digital",
-    "form.obj.other": "Otro:",
-    "form.secObj": "Objetivos secundarios (opcional, máximo 2)",
-    "form.secObj.placeholder": "Escribe y presiona Enter",
-    "form.metrics": "¿Qué te gustaría medir?",
-    "form.metrics.visits": "Visitas a la página",
-    "form.metrics.msgs": "Consultas / mensajes",
-    "form.metrics.sales": "Ventas",
-    "form.metrics.followers": "Seguidores / interacción",
-    "form.metrics.recall": "Recordación",
-    "form.audience": "¿Quiénes son tus clientes principales?",
-    "form.audience.placeholder":
-      "Ej.: Jóvenes universitarios que buscan snacks saludables.",
-    "form.age": "Rango de edad más común (opcional)",
-    "form.problem": "¿Qué problema o necesidad les ayudas a resolver?",
-    "form.problem.placeholder":
-      "Ej.: Acceso a café de calidad sin pagar precios altos.",
-    "form.why": "¿Por qué crees que te elegirían a ti?",
-    "form.style": "Estilo que te gustaría transmitir",
-    "form.style.classic": "Más clásico / serio",
-    "form.style.modern": "Más moderno / actual",
-    "form.style.mixed": "Una mezcla",
-    "form.competitors": "Nombra 1 a 3 competidores (Nombre y enlace)",
-    "form.comp.add": "Añadir otro",
-    "form.comp.better": "¿En qué sientes que eres mejor?",
-    "form.comp.improve": "¿En qué crees que podrías mejorar?",
-    "form.inspiration": "¿Hay alguna marca que te guste? ¿Por qué?",
-    "form.refImages": "Imágenes de referencia o inspiración (opcional)",
-    "form.refImages.hint":
-      "Sube imágenes de diseños, colores o estilos que te gusten como referencia. Máximo 10 archivos, 10 MB por archivo",
-    "form.step5.title": "Paso 5. Rediseño / Actualizar marca",
-    "form.step5.info":
-      "Este bloque aparece porque seleccionaste que quieres rediseñar o actualizar tu marca.",
-    "form.whyChange": "¿Por qué quieres cambiar tu marca?",
-    "form.keep": "¿Qué quieres mantener?",
-    "form.mustChange": "¿Qué quieres que se cambie sí o sí?",
-    "form.currentAssets": "Sube lo que tengas (logo, piezas anteriores)",
-    "form.step6.title": "Paso 6. Entregables y materiales",
-    "form.deliverables": "¿Qué necesitas que diseñemos?",
-    "form.del.identity": "Identidad",
-    "form.del.digital": "Digital",
-    "form.del.print": "Impresos",
-    "form.del.av": "Audiovisual",
-    "form.web.needed": "¿Necesitas página web?",
-    "form.web.domain": "¿Tienes dominio y hosting?",
-    "form.budget": "Presupuesto estimado (Opcional)",
-    "form.comments": "Comentarios finales o dudas",
-    "form.reset": "Empezar de nuevo",
-    "theme.light": "Modo Claro",
-    "theme.dark": "Modo Oscuro",
+    "form.save": "Guardar",
+    "form.reset": "Reiniciar",
+    "alert.reset":
+      "¿Estás seguro de que quieres empezar de nuevo? Se perderá todo el progreso no guardado.",
+    "alert.saved": "¡Progreso guardado! Puedes volver más tarde.",
   },
   en: {
-    "nav.all": "All",
-    "nav.branding": "Branding",
-    "nav.coding": "Coding",
-    "nav.animating": "Animating",
-    "nav.drawing": "Drawing",
-    "nav.modeling": "Modeling",
-    "hero.tagline": "branding · coding · animating · drawing · modeling",
+    "nav.work": "Portfolio",
+    "nav.services": "Services",
+    "nav.about": "About",
+    "nav.contact": "Contact",
+    "filter.all": "All",
+    "filter.branding": "Branding",
+    "filter.coding": "Coding",
+    "filter.animating": "Animating",
+    "filter.drawing": "Drawing",
+    "filter.modeling": "Modeling",
+    "hero.title":
+      "<span class='line'>WE CRAFT</span><span class='line'>DIGITAL</span><span class='line'>EXPERIENCES</span>",
+    "hero.subtitle": "Strategic branding & immersive web design.",
+    "hero.cta": "View Projects",
+    "marquee.text":
+      "STRATEGY • BRANDING • WEB DESIGN • DEVELOPMENT • ANIMATION •",
+    "services.title": "Our Services",
+    "services.card1.title": "Brand Strategy",
+    "services.card1.desc":
+      "We define your brand's essence, voice, and purpose to connect with your ideal audience.",
+    "services.card2.title": "Visual Identity",
+    "services.card2.desc":
+      "Logos, design systems, and style guides that make your brand unforgettable.",
+    "services.card3.title": "Web Development",
+    "services.card3.desc":
+      "Fast, responsive websites optimized for conversion and user experience.",
+    "about.title": "About Us",
+    "about.desc":
+      "We are a digital creative studio obsessed with clean design and functionality. We believe every pixel counts and technology should serve your brand's story.",
+    "about.stat1": "Years Exp.",
+    "about.stat2": "Projects",
     "cta.title": "Interested in working together?",
-    "cta.button": "Start a Project →",
-    "footer.copyright": "&copy; 2025 Shamy]™ Creative Studio.",
+    "cta.button": "Start a project →",
+    "cta.email": "Write to us at: shamy.creativestudio@gmail.com",
     "portfolio.noResults": "No projects found in this category.",
+
+    // BRANDING PROJECTS
+    "project.branding.dantano.title": "D'Antaño",
+    "project.branding.dantano.desc":
+      "A delicatessen specializing in high-quality, traditional cheeses and meats.",
+    "project.branding.fromtheocean.title": "From the Ocean",
+    "project.branding.fromtheocean.desc":
+      "A hypothetical environmental foundation dedicated to ocean conservation.",
+    "project.branding.robertcapa.title": "Robert Capa",
+    "project.branding.robertcapa.desc":
+      "A hypothetical high-end, historically-inspired single malt whiskey.",
+    "project.branding.zeth.title": "Zeth",
+    "project.branding.zeth.desc":
+      "A display typeface with intricate lettering inspired by wild animals.",
+    "project.branding.summergroove.title": "Summer Groove",
+    "project.branding.summergroove.desc":
+      "A hypothetical musical event inspired by the retro aesthetics of the 70s.",
+    "project.branding.whopperking.title": "Whopper King",
+    "project.branding.whopperking.desc":
+      "Conceptual visual redesign for a premium burger chain.",
+    "project.branding.aemg.title": "AEMG",
+    "project.branding.aemg.desc":
+      "Corporate visual identity for a student association.",
+    "project.branding.curcuns.title": "Juego de Guaguas",
+    "project.branding.curcuns.desc":
+      'A traditional festival inspired by "guaguas de pan" (bread figures).',
+    "project.branding.dosefes.title": "Dos Efes",
+    "project.branding.dosefes.desc":
+      "A functional pharmacy with a modern, patient-centered approach.",
+    "project.branding.sompa.title": "Sonpa",
+    "project.branding.sompa.desc":
+      "A modern reggae fusion band with a diverse and dynamic style.",
+    "project.branding.antaera.title": "Bitácora",
+    "project.branding.antaera.desc":
+      "An art and design-themed pub located in a colonial house.",
+
+    // CODING PROJECTS
+    "project.coding.cvdll.title":
+      "Interactive Booklet - Sanctuary of Las Lajas",
+    "project.coding.cvdll.desc":
+      "Infographic booklet about the Virgin of Las Lajas and the Sanctuary of Las Lajas.",
+
+    // ANIMATING PROJECTS
+    "project.animating.corazonesalrescate.title": "Corazones al Rescate",
+    "project.animating.corazonesalrescate.desc":
+      "Animation for a non-profit foundation dedicated to animal care.",
+
     "form.title": "Brand Brief",
-    "form.subtitle": "Tell us about your project",
-    "form.step1": "Contact",
-    "form.step2": "Brand",
-    "form.step3": "Goals",
-    "form.step4": "Style",
-    "form.next": "Next",
-    "form.prev": "Previous",
+    "form.subtitle":
+      "Complete what you can. Fields with an asterisk (*) are mandatory.",
     "form.submit": "Submit Brief",
-    "form.name": "Full Name",
-    "form.email": "Email Address",
-    "form.company": "Company / Organization",
-    "form.phone": "Phone (Optional)",
-    "form.brandName": "Brand Name",
-    "form.currentSite": "Current Website (If any)",
-    "form.industry": "Industry / Sector",
-    "form.description": "Project Description",
-    "form.upload": "Upload Files",
-    "form.uploadHint": "Drag files here or click to select",
-    "form.city": "Main City",
-    "form.needs": "What do you need mainly?",
-    "form.needs.create": "Create a brand from scratch",
-    "form.needs.redesign": "Improve / update my brand (rebrand)",
-    "form.needs.packaging": "Design packaging / labels",
-    "form.needs.social": "Social media design",
-    "form.needs.web": "Website / Online store",
-    "form.needs.print": "Print material",
-    "form.needs.photo": "Photos or video",
-    "form.needs.other": "Other:",
-    "form.desc": "Brief description of what you do",
-    "form.desc.placeholder": "Ex: We sell specialty coffee from Nariño.",
-    "form.scope": "How far do you want to reach?",
-    "form.scope.local": "City / Local",
-    "form.scope.regional": "Region / State",
-    "form.scope.national": "National",
-    "form.scope.international": "International",
-    "form.deadline": "Ideal launch or delivery date",
-    "form.objective": "What is your main goal? (choose one)",
-    "form.obj.sell": "Sell more",
-    "form.obj.launch": "Launch a new product/service",
-    "form.obj.pro": "Look more professional",
-    "form.obj.diff": "Differentiate from competition",
-    "form.obj.digital": "Improve digital presence",
-    "form.obj.other": "Other:",
-    "form.secObj": "Secondary goals (optional, max 2)",
-    "form.secObj.placeholder": "Type and press Enter",
-    "form.metrics": "What would you like to measure?",
-    "form.metrics.visits": "Page visits",
-    "form.metrics.msgs": "Inquiries / messages",
-    "form.metrics.sales": "Sales",
-    "form.metrics.followers": "Followers / engagement",
-    "form.metrics.recall": "Brand recall",
-    "form.audience": "Who are your main customers?",
-    "form.audience.placeholder":
-      "Ex: University students looking for healthy snacks.",
-    "form.age": "Common age range (optional)",
-    "form.problem": "What problem or need do you help them solve?",
-    "form.problem.placeholder":
-      "Ex: Access to quality coffee without high prices.",
-    "form.why": "Why do you think they would choose you?",
-    "form.style": "Style you would like to convey",
-    "form.style.classic": "More classic / serious",
-    "form.style.modern": "More modern / current",
-    "form.style.mixed": "A mix",
-    "form.competitors": "Name 1 to 3 competitors (Name and link)",
-    "form.comp.add": "Add another",
-    "form.comp.better": "In what do you feel you are better?",
-    "form.comp.improve": "In what do you think you could improve?",
-    "form.inspiration": "Is there any brand you like? Why?",
-    "form.refImages": "Reference or inspiration images (optional)",
-    "form.refImages.hint":
-      "Upload images of designs, colors or styles you like as reference. Max 10 files, 10 MB per file",
-    "form.step5.title": "Step 5. Rebrand / Update brand",
-    "form.step5.info":
-      "This block appears because you selected that you want to rebrand or update your brand.",
-    "form.whyChange": "Why do you want to change your brand?",
-    "form.keep": "What do you want to keep?",
-    "form.mustChange": "What do you want to be changed no matter what?",
-    "form.currentAssets": "Upload what you have (logo, previous pieces)",
-    "form.step6.title": "Step 6. Deliverables and materials",
-    "form.deliverables": "What do you need us to design?",
-    "form.del.identity": "Identity",
-    "form.del.digital": "Digital",
-    "form.del.print": "Print",
-    "form.del.av": "Audiovisual",
-    "form.web.needed": "Do you need a website?",
-    "form.web.domain": "Do you have domain and hosting?",
-    "form.budget": "Estimated budget (Optional)",
-    "form.comments": "Final comments or doubts",
-    "form.reset": "Start over",
-    "theme.light": "Light Mode",
-    "theme.dark": "Dark Mode",
+    "form.save": "Save",
+    "form.reset": "Reset",
+    "alert.reset":
+      "Are you sure you want to start over? All unsaved progress will be lost.",
+    "alert.saved": "Progress saved! You can come back later.",
   },
 };
 
@@ -216,6 +196,7 @@ class UICore {
   constructor() {
     this.lang = localStorage.getItem("shamy_lang") || "es";
     this.theme = localStorage.getItem("shamy_theme") || "light";
+    this.translations = translations;
     this.init();
   }
 
@@ -226,6 +207,136 @@ class UICore {
     this.bindEvents();
   }
 
+  applyTheme() {
+    if (this.theme === "dark") {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+    this.updateLogo();
+  }
+
+  applyLang() {
+    const elements = document.querySelectorAll("[data-i18n]");
+    elements.forEach((el) => {
+      const key = el.getAttribute("data-i18n");
+      if (this.translations[this.lang][key]) {
+        el.innerHTML = this.translations[this.lang][key];
+      }
+    });
+
+    const inputs = document.querySelectorAll("[data-i18n-placeholder]");
+    inputs.forEach((input) => {
+      const key = input.getAttribute("data-i18n-placeholder");
+      if (this.translations[this.lang][key]) {
+        input.placeholder = this.translations[this.lang][key];
+      }
+    });
+  }
+
+  renderControls() {
+    const navContainer = document.getElementById("navControls");
+
+    if (navContainer) {
+      navContainer.innerHTML = `
+        <button id="langToggle" class="ui-toggle" title="Switch Language">
+           <!-- Icon injected by updateToggleIcons -->
+        </button>
+        <span class="divider">|</span>
+        <button id="themeToggle" class="ui-toggle" title="Switch Theme">
+           <!-- Icon injected by updateToggleIcons -->
+        </button>
+      `;
+    } else {
+      const existing = document.querySelector(".global-top-bar");
+      if (existing) existing.remove();
+
+      const topBar = document.createElement("div");
+      topBar.className = "global-top-bar";
+      topBar.innerHTML = `
+        <div class="top-bar-controls">
+          <button id="langToggle" class="ui-toggle">
+             <!-- Icon injected by updateToggleIcons -->
+          </button>
+          <span class="divider">|</span>
+          <button id="themeToggle" class="ui-toggle">
+             <!-- Icon injected by updateToggleIcons -->
+          </button>
+        </div>
+      `;
+      document.body.appendChild(topBar);
+    }
+
+    this.updateToggleIcons();
+
+    const langBtn = document.getElementById("langToggle");
+    const themeBtn = document.getElementById("themeToggle");
+
+    if (langBtn) langBtn.addEventListener("click", () => this.toggleLang());
+    if (themeBtn) themeBtn.addEventListener("click", () => this.toggleTheme());
+  }
+
+  updateToggleIcons() {
+    const langBtn = document.getElementById("langToggle");
+    const themeBtn = document.getElementById("themeToggle");
+
+    if (langBtn) {
+      langBtn.innerHTML = `<span style="font-size: 0.8rem; font-weight: 600;">${this.lang.toUpperCase()}</span>`;
+    }
+
+    if (themeBtn) {
+      if (this.theme === "dark") {
+        themeBtn.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+      } else {
+        themeBtn.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+      }
+    }
+  }
+
+  updateLogo() {
+    const logo = document.getElementById("mainLogo");
+    if (logo) {
+      const isDark = this.theme === "dark";
+      const logoName = isDark
+        ? "shamy-logotipo-white.svg"
+        : "shamy-logotipo.svg";
+
+      const currentSrc = logo.getAttribute("src");
+      const pathParts = currentSrc.split("/");
+      pathParts.pop();
+      const pathPrefix = pathParts.join("/");
+
+      logo.src = `${pathPrefix}/${logoName}`;
+    }
+  }
+
+  bindEvents() {
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.1,
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    this.observer = observer;
+    this.observeElements();
+  }
+
+  observeElements() {
+    const elements = document.querySelectorAll(
+      ".animate-on-scroll:not(.visible)"
+    );
+    elements.forEach((el) => this.observer.observe(el));
+  }
+
   toggleTheme() {
     this.theme = this.theme === "light" ? "dark" : "light";
     localStorage.setItem("shamy_theme", this.theme);
@@ -234,85 +345,28 @@ class UICore {
   }
 
   toggleLang() {
-    this.lang = this.lang === "es" ? "en" : "es";
-    localStorage.setItem("shamy_lang", this.lang);
-    this.applyLang();
-    this.updateToggleIcons();
-  }
+    // Start transition
+    document.body.classList.add("lang-changing");
 
-  applyTheme() {
-    if (this.theme === "dark") {
-      document.body.classList.add("dark-mode");
-    } else {
-      document.body.classList.remove("dark-mode");
-    }
-  }
+    // Wait for fade out
+    setTimeout(() => {
+      this.lang = this.lang === "es" ? "en" : "es";
+      localStorage.setItem("shamy_lang", this.lang);
+      this.applyLang();
+      this.updateToggleIcons();
 
-  applyLang() {
-    document.documentElement.lang = this.lang;
-    const elements = document.querySelectorAll("[data-i18n]");
-    elements.forEach((el) => {
-      const key = el.dataset.i18n;
-      if (translations[this.lang][key]) {
-        if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
-          el.placeholder = translations[this.lang][key];
-        } else {
-          el.innerHTML = translations[this.lang][key];
-        }
-      }
-    });
-  }
+      window.dispatchEvent(
+        new CustomEvent("langChange", { detail: { lang: this.lang } })
+      );
 
-  renderControls() {
-    const topBar = document.createElement("div");
-    topBar.className = "global-top-bar";
-    topBar.innerHTML = `
-      <div class="top-bar-controls">
-        <button id="langToggle" class="ui-toggle" aria-label="Toggle Language">
-          <span style="font-size: 0.8rem; font-weight: 600;">${
-            this.lang === "es" ? "ES" : "EN"
-          }</span>
-        </button>
-        <span class="divider"></span>
-        <button id="themeToggle" class="ui-toggle" aria-label="Toggle Theme">
-          ${
-            this.theme === "light"
-              ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`
-              : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`
-          }
-        </button>
-      </div>
-    `;
-
-    // Insert as first child of body
-    document.body.insertBefore(topBar, document.body.firstChild);
-  }
-
-  updateToggleIcons() {
-    const langBtn = document.getElementById("langToggle");
-    const themeBtn = document.getElementById("themeToggle");
-    if (langBtn)
-      langBtn.innerHTML = `<span style="font-size: 0.8rem; font-weight: 600;">${
-        this.lang === "es" ? "ES" : "EN"
-      }</span>`;
-    if (themeBtn)
-      themeBtn.innerHTML =
-        this.theme === "light"
-          ? `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`
-          : `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
-  }
-
-  bindEvents() {
-    document
-      .getElementById("langToggle")
-      ?.addEventListener("click", () => this.toggleLang());
-    document
-      .getElementById("themeToggle")
-      ?.addEventListener("click", () => this.toggleTheme());
+      // End transition (fade in)
+      setTimeout(() => {
+        document.body.classList.remove("lang-changing");
+      }, 50);
+    }, 300); // Match CSS transition duration
   }
 }
 
-// Initialize on load
 document.addEventListener("DOMContentLoaded", () => {
   window.uiCore = new UICore();
 });

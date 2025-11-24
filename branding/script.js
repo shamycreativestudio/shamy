@@ -499,6 +499,7 @@ function showStep() {
 
   // Buttons visibility
   prevBtn.disabled = currentStep === 1;
+  prevBtn.hidden = false; // Ensure it's visible (just disabled on step 1)
   nextBtn.hidden = currentStep === totalSteps;
   submitBtn.hidden = currentStep !== totalSteps;
 
@@ -925,9 +926,13 @@ saveBtn.addEventListener("click", () => {
 
   // Advertencia sobre imágenes si hay alguna cargada
   const hasImages = uploadedFiles.length > 0 || uploadedReferencias.length > 0;
-  const mensaje = hasImages
-    ? "Progreso guardado. Puedes cerrar y volver más tarde.\n\n⚠️ Nota: Si recarga la página, las imágenes cargadas no se guardarán y deberán ser resubidas."
-    : "Progreso guardado. Puedes cerrar y volver más tarde.";
+
+  const t = (key) =>
+    window.uiCore && window.uiCore.translations[window.uiCore.lang][key]
+      ? window.uiCore.translations[window.uiCore.lang][key]
+      : key;
+
+  const mensaje = hasImages ? t("alert.saved.images") : t("alert.saved");
 
   alert(mensaje);
 });
@@ -1087,11 +1092,11 @@ restartBtn.addEventListener("click", () => {
 
 // Reset button handler
 resetBtn.addEventListener("click", () => {
-  if (
-    confirm(
-      "¿Estás seguro de que quieres empezar de nuevo? Se borrarán todos los datos guardados."
-    )
-  ) {
+  const t = (key) =>
+    window.uiCore && window.uiCore.translations[window.uiCore.lang][key]
+      ? window.uiCore.translations[window.uiCore.lang][key]
+      : key;
+  if (confirm(t("alert.reset"))) {
     localStorage.removeItem(STORAGE_KEY);
     form.reset();
     uploadedFiles = [];
