@@ -774,7 +774,6 @@ body.dark-mode .top-bar-controls {
 
 .modal-category {
   color: var(--muted);
-  text-transform: uppercase;
   font-size: 0.9rem;
   letter-spacing: 2px;
   margin-bottom: 2rem;
