@@ -292,11 +292,17 @@ function renderProjects() {
 
       const updateImage = () => {
         imgElement.style.opacity = "0";
-        setTimeout(() => {
+        const loader = new Image();
+        loader.onload = () => {
           imgElement.src = cardGallery[imgIndex];
           imgElement.style.opacity = "1";
           updateArrows();
-        }, 200);
+        };
+        loader.onerror = () => {
+          imgElement.src = cardGallery[imgIndex];
+          updateArrows();
+        };
+        loader.src = cardGallery[imgIndex];
       };
 
       prevBtn.addEventListener("click", (e) => {
