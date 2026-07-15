@@ -519,20 +519,16 @@ body.dark-mode .nav-capsule {
   padding: 0 1rem;
 }
 
-.about-image-placeholder {
-  background: linear-gradient(45deg, var(--border), var(--bg));
-  aspect-ratio: 1/1;
-  border-radius: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--border);
+.about-logo {
+  width: 70%;
+  max-width: 220px;
+  height: auto;
+  filter: brightness(0);
+  transition: filter 0.3s ease;
 }
 
-.about-logo-fallback {
-  width: 40%;
-  opacity: 0.2;
-  filter: grayscale(100%);
+body.dark-mode .about-logo {
+  filter: brightness(0) invert(1);
 }
 
 .about-text h2 {
