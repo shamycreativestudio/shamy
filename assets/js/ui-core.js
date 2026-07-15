@@ -11,7 +11,7 @@ const translations = {
     "nav.contact": "Contacto",
     "filter.all": "Todos",
     "filter.branding": "Branding",
-    "filter.interfaces": "Interfaces",
+    "filter.coding": "Coding",
     "filter.animating": "Animación",
     "filter.drawing": "Drawing",
     "filter.modeling": "Modeling",
@@ -76,10 +76,10 @@ const translations = {
     "project.branding.antaera.desc":
       "Un pub temático de arte y diseño ubicado en una casa colonial.",
 
-    // INTERFACES PROJECTS
-    "project.interfaces.cvdll.title":
+    // CODING PROJECTS
+    "project.coding.cvdll.title":
       "Cartilla interactiva - Santuario de Las Lajas",
-    "project.interfaces.cvdll.desc":
+    "project.coding.cvdll.desc":
       "Cartilla infográfica sobre la Virgen de las Lajas y el Santuario de Las Lajas.",
 
     // ANIMATING PROJECTS
@@ -104,7 +104,7 @@ const translations = {
     "nav.contact": "Contact",
     "filter.all": "All",
     "filter.branding": "Branding",
-    "filter.interfaces": "Interfaces",
+    "filter.coding": "Coding",
     "filter.animating": "Animation",
     "filter.drawing": "Drawing",
     "filter.modeling": "Modeling",
@@ -169,10 +169,10 @@ const translations = {
     "project.branding.antaera.desc":
       "An art and design-themed pub located in a colonial house.",
 
-    // INTERFACES PROJECTS
-    "project.interfaces.cvdll.title":
+    // CODING PROJECTS
+    "project.coding.cvdll.title":
       "Interactive booklet - Sanctuary of Las Lajas",
-    "project.interfaces.cvdll.desc":
+    "project.coding.cvdll.desc":
       "Infographic booklet about the Virgin of Las Lajas and the Sanctuary of Las Lajas.",
 
     // ANIMATING PROJECTS
