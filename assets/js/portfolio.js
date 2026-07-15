@@ -149,12 +149,12 @@ const projects = [
     allowExpand: true,
   },
 
-  // CODING PROJECTS
+  // INTERFACES PROJECTS
   {
     id: 12,
-    titleKey: "project.coding.cvdll.title",
-    descKey: "project.coding.cvdll.desc",
-    category: "coding",
+    titleKey: "project.interfaces.cvdll.title",
+    descKey: "project.interfaces.cvdll.desc",
+    category: "interfaces",
     year: 2025,
     url: "https://cvdll.github.io/CVDLL/",
     coverImage: "assets/img/portfolio/coding/001_cvdll/00.png",

@@ -11,16 +11,16 @@ const translations = {
     "nav.contact": "Contacto",
     "filter.all": "Todos",
     "filter.branding": "Branding",
-    "filter.coding": "Coding",
-    "filter.animating": "Animating",
+    "filter.interfaces": "Interfaces",
+    "filter.animating": "Animación",
     "filter.drawing": "Drawing",
     "filter.modeling": "Modeling",
     "hero.title":
-      "<span class='line'>CREAMOS</span><span class='line'>EXPERIENCIAS</span><span class='line'>DIGITALES</span>",
-    "hero.subtitle": "Branding estratégico y diseño web inmersivo.",
+      "<span class='line'>Creamos</span><span class='line'>experiencias</span><span class='line'>digitales</span>",
+    "hero.subtitle": "Branding estratégico, diseño editorial e interfaces con propósito.",
     "hero.cta": "Ver Proyectos",
     "marquee.text":
-      "ESTRATEGIA • BRANDING • DISEÑO WEB • DESARROLLO • ANIMACIÓN •",
+      "Estrategia • Branding • Diseño editorial • Interfaces UI/UX • Animación •",
     "services.title": "Nuestros Servicios",
     "services.card1.title": "Estrategia de Marca",
     "services.card1.desc":
@@ -28,12 +28,12 @@ const translations = {
     "services.card2.title": "Identidad Visual",
     "services.card2.desc":
       "Logos, sistemas de diseño y guías de estilo que hacen tu marca inolvidable.",
-    "services.card3.title": "Desarrollo Web",
+    "services.card3.title": "Diseño UI/UX",
     "services.card3.desc":
-      "Sitios web rápidos y responsivos optimizados para conversión y experiencia de usuario.",
-    "about.title": "Sobre Nosotros",
+      "Interfaces intuitivas y experiencias digitales que conectan con tu audiencia.",
+    "about.title": "Sobre nosotros",
     "about.desc":
-      "Somos un estudio creativo digital obsesionado con el diseño limpio y la funcionalidad. Creemos que cada píxel cuenta y la tecnología debe servir a la historia de tu marca.",
+      "Somos un estudio creativo especializado en branding, diseño editorial e interfaces digitales. Creemos que cada píxel cuenta y que el diseño debe contar la historia de tu marca.",
     "about.stat1": "Años de Exp.",
     "about.stat2": "Proyectos",
     "cta.title": "¿Interesado en trabajar juntos?",
@@ -76,10 +76,10 @@ const translations = {
     "project.branding.antaera.desc":
       "Un pub temático de arte y diseño ubicado en una casa colonial.",
 
-    // CODING PROJECTS
-    "project.coding.cvdll.title":
-      "Cartilla Interactiva - Santuario de Las Lajas",
-    "project.coding.cvdll.desc":
+    // INTERFACES PROJECTS
+    "project.interfaces.cvdll.title":
+      "Cartilla interactiva - Santuario de Las Lajas",
+    "project.interfaces.cvdll.desc":
       "Cartilla infográfica sobre la Virgen de las Lajas y el Santuario de Las Lajas.",
 
     // ANIMATING PROJECTS
@@ -104,16 +104,16 @@ const translations = {
     "nav.contact": "Contact",
     "filter.all": "All",
     "filter.branding": "Branding",
-    "filter.coding": "Coding",
-    "filter.animating": "Animating",
+    "filter.interfaces": "Interfaces",
+    "filter.animating": "Animation",
     "filter.drawing": "Drawing",
     "filter.modeling": "Modeling",
     "hero.title":
-      "<span class='line'>WE CRAFT</span><span class='line'>DIGITAL</span><span class='line'>EXPERIENCES</span>",
-    "hero.subtitle": "Strategic branding & immersive web design.",
+      "<span class='line'>We craft</span><span class='line'>digital</span><span class='line'>experiences</span>",
+    "hero.subtitle": "Strategic branding, editorial design & purposeful interfaces.",
     "hero.cta": "View Projects",
     "marquee.text":
-      "STRATEGY • BRANDING • WEB DESIGN • DEVELOPMENT • ANIMATION •",
+      "Strategy • Branding • Editorial design • UI/UX • Animation •",
     "services.title": "Our Services",
     "services.card1.title": "Brand Strategy",
     "services.card1.desc":
@@ -121,12 +121,12 @@ const translations = {
     "services.card2.title": "Visual Identity",
     "services.card2.desc":
       "Logos, design systems, and style guides that make your brand unforgettable.",
-    "services.card3.title": "Web Development",
+    "services.card3.title": "UI/UX Design",
     "services.card3.desc":
-      "Fast, responsive websites optimized for conversion and user experience.",
+      "Intuitive interfaces and digital experiences that connect with your audience.",
     "about.title": "About Us",
     "about.desc":
-      "We are a digital creative studio obsessed with clean design and functionality. We believe every pixel counts and technology should serve your brand's story.",
+      "We are a creative studio specialized in branding, editorial design and digital interfaces. We believe every pixel matters and design should tell your brand's story.",
     "about.stat1": "Years Exp.",
     "about.stat2": "Projects",
     "cta.title": "Interested in working together?",
@@ -169,10 +169,10 @@ const translations = {
     "project.branding.antaera.desc":
       "An art and design-themed pub located in a colonial house.",
 
-    // CODING PROJECTS
-    "project.coding.cvdll.title":
-      "Interactive Booklet - Sanctuary of Las Lajas",
-    "project.coding.cvdll.desc":
+    // INTERFACES PROJECTS
+    "project.interfaces.cvdll.title":
+      "Interactive booklet - Sanctuary of Las Lajas",
+    "project.interfaces.cvdll.desc":
       "Infographic booklet about the Virgin of Las Lajas and the Sanctuary of Las Lajas.",
 
     // ANIMATING PROJECTS
