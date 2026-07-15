@@ -30,7 +30,7 @@ const translations = {
       "Logos, sistemas de diseño y guías de estilo que hacen tu marca inolvidable.",
     "services.card3.title": "Diseño UI/UX",
     "services.card3.desc":
-      "Interfaces web intuitivas y experiencias digitales con enfoque en diseño, no solo en código.",
+      "Interfaces web intuitivas y experiencias digitales con enfoque en diseño.",
     "about.title": "Sobre nosotros",
     "about.desc":
       "Somos un estudio creativo especializado en branding, diseño editorial e interfaces digitales. Creemos que cada píxel cuenta y que el diseño debe contar la historia de tu marca.",
