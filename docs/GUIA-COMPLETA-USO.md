@@ -1,8 +1,12 @@
 # 📋 GUÍA COMPLETA: Sistema Shamy - Manual de Uso y Mantenimiento
 
-> **Última actualización:** 12 de noviembre de 2025  
-> **Versión:** 1.0  
-> **Estado:** ✅ Sistema desplegado y funcionando
+> **Última actualización:** Julio 2026  
+> **Versión:** 2.0  
+> **Estado:** ✅ Sistema desplegado y funcionando en Vercel
+
+> ⚠️ **Nota:** Este documento fue migrado de la arquitectura anterior (GitHub Pages + Railway/Fly.io).
+> La arquitectura actual es **Vercel + Notion API + Cloudinary**.
+> Si encuentras referencias a GitHub Pages, Railway, Render o Fly.io, considera que están obsoletas.
 
 ---
 
@@ -12,8 +16,7 @@
 2. [Cómo Funciona el Sistema](#-2-cómo-funciona-el-sistema)
 3. [Flujo de Trabajo Completo](#-3-flujo-de-trabajo-completo)
 4. [Panel de Administración](#-4-panel-de-administración)
-5. [Actualizar el Frontend (GitHub Pages)](#-5-actualizar-el-frontend-github-pages)
-6. [Actualizar el Backend (Fly.io)](#-6-actualizar-el-backend-flyio)
+5. [Actualizar el sitio (Vercel)](#-5-actualizar-el-sitio-vercel)
 7. [Ejemplos de Mejoras Comunes](#-7-ejemplos-de-mejoras-comunes)
 8. [Gestión de Credenciales](#-8-gestión-de-credenciales)
 9. [Comandos Útiles](#-9-comandos-útiles)
@@ -24,25 +27,31 @@
 
 ## 🎯 1. ENLACES PRINCIPALES
 
+### **Página principal:**
+
+```
+https://shamy.vercel.app
+```
+
 ### **Formulario para Clientes:**
 
 ```
-https://shamycreativestudio.github.io/shamy/branding/
+https://shamy.vercel.app/branding/
 ```
 
 **Uso:**
 
 - ✅ Envía este enlace a tus clientes por email, WhatsApp o redes sociales
 - ✅ El cliente llena el formulario con los detalles de su proyecto
-- ✅ Al enviar, la información se guarda automáticamente en tu base de datos
-- ✅ Puedes revisar todos los briefs desde el panel de administración
+- ✅ Al enviar, la información se guarda automáticamente en Notion
+- ✅ Puedes revisar todos los briefs desde la API de administración
 
 ---
 
-### **Panel de Administración:**
+### **API de Administración:**
 
 ```
-https://shamycreativestudio.fly.dev/api/admin/panel
+https://shamy.vercel.app/api/briefs
 ```
 
 **Credenciales actuales:**
@@ -90,45 +99,42 @@ https://shamycreativestudio.fly.dev/
                  │
                  ▼
 ┌─────────────────────────────────────────────────────┐
-│  FRONTEND - GitHub Pages                            │
-│  https://shamycreativestudio.github.io/shamy/       │
+│  FRONTEND - Vercel                                  │
+│  https://shamy.vercel.app                           │
 │                                                      │
-│  • index.html  → Estructura del formulario          │
-│  • styles.css  → Diseño y estilos                   │
-│  • script.js   → Validación y envío                 │
+│  • index.html  → Página principal + portfolio       │
+│  • branding/   → Formulario de brief                │
+│  • ui-core.js  → Theme + Idioma                     │
+│  • portfolio.js → Galería de proyectos              │
 └────────────────┬────────────────────────────────────┘
                  │
-                 │ 2. Envía datos (POST)
+                 │ 2. Envía datos (POST /api/submit)
                  │
                  ▼
 ┌─────────────────────────────────────────────────────┐
-│  BACKEND - Fly.io                                   │
-│  https://shamycreativestudio.fly.dev/               │
+│  BACKEND - Vercel Serverless Functions              │
+│  https://shamy.vercel.app/api/                      │
 │                                                      │
-│  • server.js        → Servidor Express              │
-│  • routes/briefs.js → Gestión de briefs             │
-│  • routes/admin.js  → Panel de administración       │
-│  • database/db.js   → Conexión a SQLite             │
+│  • submit.js  → Recibe brief, sube imágenes         │
+│  • briefs.js  → CRUD de briefs (admin)              │
 └────────────────┬────────────────────────────────────┘
                  │
-                 │ 3. Guarda en base de datos
+                 ├── 3a. Guarda en Notion
                  │
                  ▼
 ┌─────────────────────────────────────────────────────┐
-│  BASE DE DATOS - SQLite (Persistente)               │
-│  /data/briefs.db                                    │
-│                                                      │
-│  • Almacenamiento en volumen Fly.io (1GB)           │
-│  • Datos persisten entre reinicios                  │
-│  • Backups automáticos                              │
+│  BASE DE DATOS - Notion API                         │
+│  • Briefs guardados como páginas en Notion          │
+│  • Consultables desde cualquier lugar               │
 └─────────────────────────────────────────────────────┘
                  │
-                 │ 4. Consulta desde panel admin
+                 ├── 3b. Imágenes a Cloudinary
                  │
                  ▼
 ┌─────────────────────────────────────────────────────┐
-│  ADMINISTRADOR                                       │
-│  (Tú - Panel web)                                   │
+│  IMÁGENES - Cloudinary                              │
+│  • Archivos subidos por el cliente                  │
+│  • Almacenamiento en la nube                        │
 └─────────────────────────────────────────────────────┘
 ```
 
@@ -141,7 +147,7 @@ https://shamycreativestudio.fly.dev/
 ```
 Tú → Envías por WhatsApp/Email → Cliente
      "Hola, llena este formulario para tu proyecto:
-      https://shamycreativestudio.github.io/shamy/branding/"
+      https://shamy.vercel.app/branding/"
 ```
 
 ### **Paso 2: Cliente llena el formulario**
@@ -245,25 +251,28 @@ GET /api/briefs?industria=tecnologia
 
 ---
 
-## 🌐 5. ACTUALIZAR EL FRONTEND (GitHub Pages)
+## 🌐 5. ACTUALIZAR EL SITIO (Vercel)
 
 ### **¿Qué es el Frontend?**
 
-El formulario que ven tus clientes en `shamycreativestudio.github.io/shamy/branding/`
+Todo el sitio (página principal + formulario) está en `https://shamy.vercel.app`
 
 ### **Archivos principales:**
 
 ```
-branding/
-├── index.html           → Estructura HTML del formulario
-├── styles.css           → Estilos, colores, diseño
-├── script.js            → Lógica, validación, envío
-├── config.js            → Configuración (URL del backend)
-├── README.md            → Documentación del formulario
-└── assets/
-    ├── favicon.svg
-    ├── shamy-logotipo.svg
-    └── shamy-logotipo-white.svg
+branding/               → Formulario de branding
+├── index.html          → Estructura HTML del formulario
+├── styles.css          → Estilos, colores, diseño
+├── script.js           → Lógica, validación, envío
+└── config.js           → Configuración (URL del API)
+
+assets/js/              → JavaScript del sitio principal
+├── ui-core.js          → Theme (dark/light) + Idioma (ES/EN)
+└── portfolio.js        → Proyectos, filtros, galería
+
+api/                    → Vercel Serverless Functions
+├── submit.js           → Recibe brief → Notion + Cloudinary
+└── briefs.js           → CRUD de briefs (admin)
 ```
 
 ### **Proceso de actualización:**
@@ -275,219 +284,90 @@ branding/
 cd "d:\Trabajo\Shamy\Web\shamy"
 code .
 
-# Editar archivos necesarios:
-# - branding/index.html (para cambiar estructura)
-# - branding/styles.css (para cambiar diseño)
-# - branding/script.js (para cambiar funcionalidad)
+# Ejemplos de archivos que puedes editar:
+# - index.html (página principal)
+# - branding/index.html (formulario)
+# - assets/css/main.css (estilos)
+# - assets/js/portfolio.js (portfolio)
+# - api/submit.js (backend)
 ```
 
 #### **5.2 Probar cambios localmente**
 
 ```bash
-# Abrir index.html en el navegador
-# O usar Live Server en VS Code
-# Ctrl+Shift+P → "Live Server: Open with Live Server"
+# Opción A: Abrir directo en navegador
+# Abre d:\Trabajo\Shamy\Web\shamy\index.html
+
+# Opción B: Servidor local Vercel (simula producción)
+npx vercel dev
+# Abre http://localhost:3000
 ```
 
-#### **5.3 Subir a GitHub**
-
-```bash
-git add branding/
-git commit -m "Actualizo diseño del formulario"
-git push origin main
-```
-
-#### **5.4 Verificar despliegue**
-
-```
-✅ Espera 1-2 minutos
-✅ Visita: https://shamycreativestudio.github.io/shamy/branding/
-✅ Verifica que los cambios estén aplicados
-```
-
-### **Ejemplos comunes de cambios:**
-
-#### **Cambiar colores:**
-
-```css
-/* branding/styles.css */
-:root {
-  --accent: #ff6b35; /* Color principal (antes #000000) */
-  --bg: #f7f7f7; /* Fondo de página */
-  --panel: #ffffff; /* Fondo de paneles */
-  --text: #2c3e50; /* Color de texto */
-  --muted: #95a5a6; /* Texto secundario */
-}
-```
-
-#### **Cambiar textos:**
-
-```html
-<!-- branding/index.html -->
-<h1>Cuéntanos sobre tu proyecto</h1>
-<!-- Cambiar este título -->
-<p>Completa el formulario para empezar</p>
-<!-- Cambiar este subtítulo -->
-```
-
-#### **Agregar nuevo campo:**
-
-```html
-<!-- branding/index.html - Agregar dentro del <form> -->
-<div class="field">
-  <label for="telefono">
-    <span class="label-text">Teléfono de contacto</span>
-  </label>
-  <input
-    type="tel"
-    id="telefono"
-    name="telefono"
-    placeholder="+52 55 1234 5678"
-    required
-  />
-</div>
-```
-
-```javascript
-// branding/script.js - Agregar en formData
-const formData = {
-  nombre: document.getElementById("nombre").value,
-  email: document.getElementById("email").value,
-  telefono: document.getElementById("telefono").value, // ← Nuevo
-  // ... resto de campos
-};
-```
-
----
-
-## 🔧 6. ACTUALIZAR EL BACKEND (Fly.io)
-
-### **¿Qué es el Backend?**
-
-El servidor que recibe, procesa y almacena los briefs en `shamycreativestudio.fly.dev`
-
-### **Archivos principales:**
-
-```
-/
-├── server.js               → Servidor Express principal
-├── routes/
-│   ├── briefs.js          → API de briefs (GET, POST, DELETE)
-│   └── admin.js           → Panel de administración
-├── database/
-│   └── db.js              → Conexión y queries SQLite
-├── package.json           → Dependencias Node.js
-├── Dockerfile             → Configuración del contenedor
-└── fly.toml               → Configuración de Fly.io
-```
-
-### **Proceso de actualización:**
-
-#### **6.1 Hacer cambios localmente**
-
-```bash
-# Editar archivos necesarios:
-# - server.js (para cambiar rutas o middleware)
-# - routes/briefs.js (para modificar API de briefs)
-# - routes/admin.js (para personalizar panel admin)
-# - database/db.js (para cambiar esquema de BD)
-```
-
-#### **6.2 Probar localmente**
-
-```bash
-# Instalar dependencias si es necesario
-npm install
-
-# Iniciar servidor local
-npm run dev
-
-# Probar en http://localhost:3000
-# Ctrl+C para detener
-```
-
-#### **6.3 Subir cambios a GitHub**
+#### **5.3 Subir a GitHub (despliegue automático)**
 
 ```bash
 git add .
-git commit -m "Mejoro API de briefs"
+git commit -m "Descripción de los cambios"
 git push origin main
 ```
 
-#### **6.4 Desplegar a Fly.io**
-
-```bash
-# Desplegar nueva versión
-C:\Users\shamu\.fly\bin\flyctl.exe deploy --app shamycreativestudio
-
-# Espera 2-3 minutos mientras se construye y despliega
-```
-
-#### **6.5 Verificar despliegue**
-
-```bash
-# Ver logs en tiempo real
-C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamycreativestudio
-
-# Deberías ver:
-# ✅ Base de datos inicializada correctamente
-# ✅ Servidor corriendo en puerto 8080
-# ✅ Health check passing
-```
+✅ **Vercel se redeploya automáticamente** en 1-2 minutos.
+✅ La web se actualiza sola.
 
 ### **Ejemplos comunes de cambios:**
 
-#### **Agregar campo a la base de datos:**
+#### **Cambiar colores del sitio principal:**
 
-```javascript
-// database/db.js
-const createTableQuery = `
-  CREATE TABLE IF NOT EXISTS briefs (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    nombre TEXT NOT NULL,
-    email TEXT NOT NULL,
-    empresa TEXT,
-    telefono TEXT,  -- ← Nuevo campo
-    // ... resto de campos
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-  )
-`;
+```css
+/* assets/css/main.css */
+:root {
+  --bg: #ffffff;
+  --text: #1a1a1a;
+  --muted: #666666;
+  --accent: #000000;
+}
 ```
 
-#### **Modificar endpoint:**
+#### **Agregar/quitar proyectos del portfolio:**
 
 ```javascript
-// routes/briefs.js
-router.post("/", async (req, res) => {
-  const {
-    nombre,
-    email,
-    empresa,
-    telefono, // ← Nuevo campo
-    // ... resto de campos
-  } = req.body;
-
-  // Validación del nuevo campo
-  if (!telefono || telefono.length < 10) {
-    return res.status(400).json({
-      error: "Teléfono inválido",
-    });
-  }
-
-  // ... resto del código
-});
+// assets/js/portfolio.js - Agregar nuevo objeto al array projects
+{
+  id: 14,
+  titleKey: "project.branding.miproject.title",
+  descKey: "project.branding.miproject.desc",
+  category: "branding",
+  year: 2026,
+  coverImage: "assets/img/portfolio/branding/014_miproject/00.png",
+  gallery: [
+    "assets/img/portfolio/branding/014_miproject/00.png",
+    "assets/img/portfolio/branding/014_miproject/01.png",
+  ],
+  allowExpand: true,
+}
 ```
 
-#### **Cambiar puerto del servidor:**
+#### **Agregar traducciones (ES/EN):**
 
 ```javascript
-// server.js
-const PORT = process.env.PORT || 3000; // Cambiar 3000 por el puerto deseado
+// assets/js/ui-core.js - Dentro del objeto translations
+// En la sección "es":
+"hero.title": "<span class='line'>CREAMOS</span><span class='line'>EXPERIENCIAS</span><span class='line'>DIGITALES</span>",
+
+// En la sección "en":
+"hero.title": "<span class='line'>WE CRAFT</span><span class='line'>DIGITAL</span><span class='line'>EXPERIENCES</span>",
+```
+
+#### **Modificar el backend (Serverless Functions):**
+
+```javascript
+// api/submit.js - Modificar lógica de envío
+// Ejemplo: cambiar validación o agregar campos
 ```
 
 ---
 
-## 💡 7. EJEMPLOS DE MEJORAS COMUNES
+## 💡 6. EJEMPLOS DE MEJORAS COMUNES
 
 ### **7.1 Personalizar colores de marca**
 
@@ -977,47 +857,36 @@ https://github.com/shamycreativestudio/shamy/actions
 ```
 Frontend:
 ├── HTML5          → Estructura semántica
-├── CSS3           → Estilos modernos (CSS Variables)
+├── CSS3           → Estilos (CSS Variables, Grid, Flexbox)
 ├── JavaScript     → Vanilla JS (sin frameworks)
-└── GitHub Pages   → Hosting estático gratuito
+└── Vercel         → Hosting y CDN
 
 Backend:
-├── Node.js 18     → Runtime de JavaScript
-├── Express.js     → Framework web minimalista
-├── SQLite3        → Base de datos embebida
-├── Basic Auth     → Autenticación simple
-└── Fly.io         → Hosting de aplicaciones
+├── Node.js 18     → Runtime
+├── Vercel Functions → Serverless (api/submit.js, api/briefs.js)
+├── Notion API     → Base de datos (@notionhq/client)
+├── Cloudinary     → Almacenamiento de imágenes
+└── Basic Auth     → Autenticación admin
 
 Infraestructura:
 ├── Git/GitHub     → Control de versiones
-├── Docker         → Containerización
-├── Fly.io Volume  → Almacenamiento persistente (1GB)
-└── HTTPS/SSL      → Seguridad (automático en ambos)
+├── Vercel         → Hosting + CI/CD automático
+├── Notion         → Base de datos (no-code)
+└── Cloudinary     → Imágenes en la nube
 ```
 
-### **11.2 Estructura de la Base de Datos**
+### **11.2 Estructura de Datos (Notion)**
 
-```sql
--- Tabla: briefs
-CREATE TABLE briefs (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,  -- ID único auto-incremental
-  nombre TEXT NOT NULL,                  -- Nombre del cliente
-  email TEXT NOT NULL,                   -- Email de contacto
-  empresa TEXT,                          -- Nombre de empresa/proyecto
-  descripcion TEXT,                      -- Descripción del proyecto
-  industria TEXT,                        -- Sector/industria
-  publico TEXT,                          -- Público objetivo
-  presupuesto TEXT,                      -- Rango de presupuesto
-  timeline TEXT,                         -- Timeline deseado
-  referencias TEXT,                      -- Referencias visuales/URLs
-  created_at DATETIME DEFAULT CURRENT_TIMESTAMP  -- Fecha de creación
-);
+Los briefs se guardan como páginas en una base de datos de Notion con las siguientes propiedades:
 
--- Índices para búsqueda rápida
-CREATE INDEX idx_email ON briefs(email);
-CREATE INDEX idx_empresa ON briefs(empresa);
-CREATE INDEX idx_created_at ON briefs(created_at DESC);
-```
+- **Nombre** (title) — Nombre del contacto/empresa
+- **Email** (email) — Email de contacto
+- **Empresa** (rich_text) — Nombre de la empresa
+- **Teléfono** (phone) — Teléfono de contacto
+- **Presupuesto** (select) — Rango de presupuesto
+- **Estado** (select) — Nuevo / En progreso / Completado
+- **Contenido completo** (blocks) — Texto estructurado con todos los datos del brief
+- **Imágenes** (blocks) — Imágenes de rediseño y referencias subidas a Cloudinary
 
 ### **11.3 Flujo de Datos Detallado**
 
@@ -1025,186 +894,87 @@ CREATE INDEX idx_created_at ON briefs(created_at DESC);
 1. CLIENTE LLENA FORMULARIO
    ├── Usuario ingresa datos en branding/index.html
    ├── JavaScript valida campos en tiempo real
-   ├── Click en "Enviar" → evento submit
-   └── script.js captura datos del formulario
+   ├── Sube archivos (drag & drop)
+   └── Click en "Enviar" → evento submit
 
-2. FRONTEND ENVÍA DATOS
-   ├── fetch() hace POST a /api/briefs
-   ├── Headers: Content-Type: application/json
-   ├── Body: JSON con todos los campos
-   └── CORS permite comunicación cross-origin
+2. FRONTEND PROCESA DATOS
+   ├── script.js captura datos del formulario
+   ├── Convierte archivos a Base64
+   ├── Construye payload JSON
+   └── fetch() POST a /api/submit
 
-3. BACKEND RECIBE PETICIÓN
-   ├── Express.js recibe en routes/briefs.js
-   ├── Middleware CORS valida origen
-   ├── Body-parser parsea JSON
-   └── Validación de campos requeridos
+3. VERCEL SERVERLESS FUNCTION (api/submit.js)
+   ├── Recibe el payload
+   ├── Sube imágenes a Cloudinary → obtiene URLs
+   ├── Prepara contenido estructurado
+   └── Crea página en Notion con datos + URLs de imágenes
 
-4. BASE DE DATOS GUARDA
-   ├── database/db.js prepara query SQL
-   ├── INSERT INTO briefs VALUES (...)
-   ├── SQLite escribe en /data/briefs.db
-   └── Retorna ID del nuevo registro
-
-5. RESPUESTA AL CLIENTE
-   ├── Backend retorna { success: true, id: 123 }
+4. RESPUESTA AL CLIENTE
+   ├── Backend retorna { success: true, id: "page_id" }
    ├── Frontend muestra mensaje de éxito
-   ├── Formulario se resetea
-   └── Usuario puede cerrar la página
+   └── Formulario se resetea
 
-6. ADMIN CONSULTA DATOS
-   ├── Admin abre /api/admin/panel
-   ├── Autenticación Basic Auth
-   ├── SELECT * FROM briefs ORDER BY created_at DESC
-   ├── HTML renderizado con todos los briefs
-   └── Interfaz interactiva con JavaScript
+5. ADMIN CONSULTA BRIEFS
+   ├── GET /api/briefs (con Basic Auth)
+   ├── Serverless consulta Notion database
+   ├── Retorna JSON con todos los briefs
+   └── Se puede consumir desde cualquier cliente HTTP
 ```
 
-### **11.4 Seguridad Implementada**
+### **11.4 Seguridad**
 
-```
-Frontend:
-├── Validación de campos en cliente (JS)
-├── Sanitización de inputs HTML
-├── HTTPS obligatorio (GitHub Pages)
-└── CSP headers (Content Security Policy)
+- ✅ CORS configurado por variable de entorno
+- ✅ HTTPS (Vercel lo provee automáticamente)
+- ✅ Basic Authentication para endpoints admin
+- ✅ Validación de datos en servidor
+- ✅ Variables de entorno para tokens y credenciales
+- ✅ Sin archivos .env en el repositorio
 
-Backend:
-├── CORS restringido a dominio específico
-├── Validación de datos en servidor
-├── SQL Prepared Statements (previene injection)
-├── Basic Authentication para admin
-├── Rate limiting (futuro)
-└── HTTPS obligatorio (Fly.io)
+### **11.5 Monitoreo**
 
-Base de Datos:
-├── Sin acceso directo desde internet
-├── Solo accesible desde aplicación
-├── Backups automáticos en volumen
-└── Encriptación en reposo (Fly.io)
-```
-
-### **11.5 Monitoreo y Logs**
-
-```
-GitHub Pages:
-├── Ver deployments: github.com/shamycreativestudio/shamy/actions
-├── Ver commits: github.com/shamycreativestudio/shamy/commits
-└── Sin logs de acceso (limitación de GitHub Pages)
-
-Fly.io:
-├── Logs en tiempo real: flyctl logs --app shamycreativestudio
-├── Métricas de CPU/RAM: flyctl status --app shamycreativestudio
-├── Health checks automáticos cada 30s
-└── Alertas por email si la app cae (configurar)
-
-Errores:
-├── Frontend: Console del navegador (F12)
-├── Backend: Logs de Fly.io
-└── Base de datos: Logs de SQLite en stderr
-```
-
-### **11.6 Escalabilidad**
-
-```
-Actual (Tier gratuito):
-├── Frontend: Ilimitado (GitHub Pages)
-├── Backend: 256MB RAM, 1 CPU compartido
-├── BD: 1GB de almacenamiento
-└── Capacidad: ~1000 briefs, ~10,000 visitas/mes
-
-Escalar horizontalmente:
-├── Aumentar RAM: flyctl scale vm shared-cpu-1x --memory 512
-├── Más CPUs: flyctl scale vm shared-cpu-2x
-├── Múltiples regiones: flyctl regions add lax mia
-└── Load balancing automático (Fly.io)
-
-Escalar verticalmente:
-├── Migrar BD a PostgreSQL
-├── Agregar Redis para caché
-├── CDN para assets estáticos
-└── Separar frontend en Vercel/Netlify
-```
+- **Vercel Dashboard:** `https://vercel.com/shamycreativestudio/shamy`
+- **Logs de Functions:** Vercel → Deployments → Function Logs
+- **Notion:** Revisar base de datos directamente
+- **Cloudinary:** Dashboard de uso y almacenamiento
+- **GitHub:** `github.com/shamycreativestudio/shamy/actions`
 
 ---
 
 ## 📚 RECURSOS ADICIONALES
 
-### **Documentación oficial:**
-
-- [Express.js](https://expressjs.com/)
-- [SQLite](https://www.sqlite.org/docs.html)
-- [Fly.io](https://fly.io/docs/)
-- [GitHub Pages](https://docs.github.com/pages)
-
-### **Archivos de referencia en este proyecto:**
-
-- `README.md` → Documentación general del proyecto
-- `DEPLOYMENT-FLYIO.md` → Guía detallada de despliegue
-- `BACKEND-README.md` → Documentación técnica del backend
-- `branding/README.md` → Documentación del formulario
-
-### **Comandos rápidos:**
-
-```bash
-# Ver esta guía
-cat GUIA-COMPLETA-USO.md
-
-# Ver estructura del proyecto
-tree -L 2
-
-# Buscar en documentación
-grep -r "palabra" *.md
-```
+- [Vercel Docs](https://vercel.com/docs)
+- [Notion API](https://developers.notion.com/)
+- [Cloudinary Node.js SDK](https://cloudinary.com/documentation/node_integration)
+- [GitHub](https://github.com/shamycreativestudio/shamy)
 
 ---
 
 ## ✨ TIPS Y MEJORES PRÁCTICAS
 
-### **Para clientes:**
-
-- ✅ Envía el enlace del formulario por WhatsApp con contexto
-- ✅ Explica brevemente qué información necesitas
-- ✅ Menciona que tomará 5-10 minutos completarlo
-- ✅ Asegura privacidad y confidencialidad
-
-### **Para ti como admin:**
-
-- ✅ Revisa el panel diariamente
-- ✅ Responde rápido a nuevos briefs
-- ✅ Elimina briefs antiguos cada mes
-- ✅ Haz backup de la BD mensualmente
-- ✅ Actualiza credenciales cada 6 meses
-
 ### **Para desarrollo:**
 
-- ✅ Siempre prueba localmente antes de desplegar
+- ✅ Prueba localmente con `npx vercel dev`
 - ✅ Usa commits descriptivos en git
 - ✅ Mantén documentación actualizada
-- ✅ Revisa logs regularmente
+- ✅ Revisa logs de Vercel si algo falla
 - ✅ No subas archivos .env a GitHub
 
 ---
 
 ## 🎓 GLOSARIO DE TÉRMINOS
 
-| Término          | Definición                                  |
-| ---------------- | ------------------------------------------- |
-| **Frontend**     | Parte visual que ve el usuario (formulario) |
-| **Backend**      | Servidor que procesa y guarda datos         |
-| **API**          | Interfaz para comunicar frontend y backend  |
-| **Endpoint**     | URL específica de la API (ej: /api/briefs)  |
-| **Deploy**       | Subir código al servidor de producción      |
-| **Commit**       | Guardar cambios en el historial de Git      |
-| **Push**         | Enviar commits locales a GitHub             |
-| **Pull**         | Traer cambios de GitHub a local             |
-| **CORS**         | Permiso para que frontend use backend       |
-| **ENV**          | Variables de entorno (configuración)        |
-| **Volume**       | Disco persistente en Fly.io                 |
-| **Health Check** | Verificación automática de que app funciona |
-| **SSH**          | Conexión remota al servidor                 |
-| **SQLite**       | Base de datos simple embebida               |
-| **Express**      | Framework web para Node.js                  |
+| Término            | Definición                                    |
+| ------------------ | --------------------------------------------- |
+| **Frontend**       | Parte visual que ve el usuario                |
+| **Backend**        | Lógica del servidor (Serverless Functions)    |
+| **API**            | Interfaz para comunicar frontend y backend    |
+| **Serverless**     | Código que corre en la nube sin servidor propio |
+| **Endpoint**       | URL específica de la API (ej: /api/submit)    |
+| **Deploy**         | Subir código a producción                     |
+| **Commit**         | Guardar cambios en el historial de Git        |
+| **Push**           | Enviar commits locales a GitHub               |
+| **CORS**           | Permiso para que frontend use backend         |
+| **ENV**            | Variables de entorno (configuración)          |
 
 ---
 
@@ -1212,57 +982,25 @@ grep -r "palabra" *.md
 
 ### **Si algo no funciona:**
 
-1. **Revisa esta guía** → Sección 10 (Resolución de Problemas)
-2. **Ver logs:**
-   ```bash
-   C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamycreativestudio
-   ```
-3. **Verificar estado:**
-   ```bash
-   C:\Users\shamu\.fly\bin\flyctl.exe status --app shamycreativestudio
-   ```
-4. **Reiniciar si es necesario:**
-   ```bash
-   C:\Users\shamu\.fly\bin\flyctl.exe machine restart --app shamycreativestudio
-   ```
-
-### **Contacto:**
-
-- **GitHub Issues:** [github.com/shamycreativestudio/shamy/issues](https://github.com/shamycreativestudio/shamy/issues)
-- **Email:** (tu email de contacto)
+1. **Revisa Vercel Dashboard** → Logs de la Function
+2. **Verifica variables de entorno** en Vercel
+3. **Revisa GitHub Actions** para ver si el deploy fue exitoso
 
 ---
 
 ## 📅 MANTENIMIENTO RECOMENDADO
 
-### **Diario:**
-
-- ✅ Revisar panel admin por nuevos briefs
-- ✅ Verificar que formulario esté accesible
-
-### **Semanal:**
-
-- ✅ Revisar logs por errores
-- ✅ Verificar espacio en BD (si crece mucho)
-
 ### **Mensual:**
-
-- ✅ Eliminar briefs antiguos/completados
+- ✅ Revisar briefs en Notion
 - ✅ Actualizar dependencias: `npm update`
-- ✅ Revisar métricas de uso en Fly.io
+- ✅ Revisar almacenamiento en Cloudinary
 
 ### **Semestral:**
-
 - ✅ Cambiar contraseña del admin
 - ✅ Revisar y actualizar documentación
-- ✅ Backup completo de la base de datos
 
 ---
 
-**Última actualización:** 12 de noviembre de 2025  
-**Versión del sistema:** 1.0.0  
+**Última actualización:** Julio 2026  
+**Versión del sistema:** 2.0 (Vercel + Notion + Cloudinary)  
 **Estado:** ✅ En producción y funcionando
-
----
-
-¡Listo! Ahora tienes toda la información para gestionar tu sistema Shamy de forma profesional. 🚀
