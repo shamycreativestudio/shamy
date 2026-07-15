@@ -511,8 +511,8 @@ body.dark-mode .nav-capsule {
 
 .about-content {
   display: grid;
-  grid-template-columns: 0.8fr 1fr;
-  gap: 2rem;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
