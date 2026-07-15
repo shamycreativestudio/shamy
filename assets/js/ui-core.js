@@ -18,19 +18,19 @@ const translations = {
     "hero.title":
       "<span class='line'>Creamos</span><span class='line'>experiencias</span><span class='line'>digitales</span>",
     "hero.subtitle": "Branding estratégico, diseño editorial e interfaces con propósito.",
-    "hero.cta": "Ver Proyectos",
+    "hero.cta": "Ver proyectos",
     "marquee.text":
       "Estrategia • Branding • Diseño editorial • Interfaces UI/UX • Animación •",
-    "services.title": "Nuestros Servicios",
-    "services.card1.title": "Estrategia de Marca",
+    "services.title": "Nuestros servicios",
+    "services.card1.title": "Estrategia de marca",
     "services.card1.desc":
       "Definimos la esencia, voz y propósito de tu marca para conectar con tu audiencia ideal.",
-    "services.card2.title": "Identidad Visual",
+    "services.card2.title": "Identidad visual",
     "services.card2.desc":
       "Logos, sistemas de diseño y guías de estilo que hacen tu marca inolvidable.",
     "services.card3.title": "Diseño UI/UX",
     "services.card3.desc":
-      "Interfaces intuitivas y experiencias digitales que conectan con tu audiencia.",
+      "Interfaces web intuitivas y experiencias digitales con enfoque en diseño, no solo en código.",
     "about.title": "Sobre nosotros",
     "about.desc":
       "Somos un estudio creativo especializado en branding, diseño editorial e interfaces digitales. Creemos que cada píxel cuenta y que el diseño debe contar la historia de tu marca.",
