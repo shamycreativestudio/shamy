@@ -47,6 +47,12 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+@media (pointer: fine) {
+  body, body *, a, button {
+    cursor: none !important;
+  }
+}
+
 #page-content,
 .navbar-capsules {
   transition: opacity 0.3s ease, filter 0.3s ease;
@@ -121,13 +127,13 @@ body.lang-changing .navbar-capsules {
 .nav-capsule {
   position: absolute;
   top: 1.5rem;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   padding: 0.5rem 1.5rem;
   border-radius: 50px;
-  border: 1px solid var(--border);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,7 +142,9 @@ body.lang-changing .navbar-capsules {
 }
 
 body.dark-mode .nav-capsule {
-  background: rgba(30, 30, 30, 0.8);
+  background: rgba(30, 30, 30, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 /* Logo Capsule */
@@ -1070,9 +1078,8 @@ body.dark-mode .top-bar-controls {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
-  margin-top: -10px;
-  margin-left: -10px;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
 }
 
@@ -1081,26 +1088,23 @@ body:hover .custom-cursor {
 }
 
 .custom-cursor.active {
-  width: 100px;
-  height: 100px;
-  margin-top: -50px;
-  margin-left: -50px;
-  background: var(--text);
+  transform: translate(-50%, -50%) scale(4);
+  background: rgba(255, 255, 255, 0.1);
   mix-blend-mode: normal;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+body.dark-mode .custom-cursor.active {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .custom-cursor .cursor-text {
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: var(--bg);
-  letter-spacing: 1px;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  white-space: nowrap;
-}
-
-.custom-cursor.active .cursor-text {
-  opacity: 1;
+  display: none;
 }
 
 @media (pointer: coarse) {
@@ -1167,10 +1171,10 @@ body:hover .custom-cursor {
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 999px;
   padding: 0.4rem 0.8rem;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);

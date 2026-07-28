@@ -446,7 +446,6 @@ class UICore {
     const cursor = document.getElementById("customCursor");
     if (!cursor || window.matchMedia("(pointer: coarse)").matches) return;
 
-    const cursorText = cursor.querySelector(".cursor-text");
     let mouseX = 0, mouseY = 0;
     let cursorX = 0, cursorY = 0;
 
@@ -458,7 +457,7 @@ class UICore {
     const animateCursor = () => {
       cursorX += (mouseX - cursorX) * 0.2;
       cursorY += (mouseY - cursorY) * 0.2;
-      cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0)`;
+      cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
       requestAnimationFrame(animateCursor);
     };
 
@@ -466,17 +465,14 @@ class UICore {
 
     // Event delegation for project cards
     document.addEventListener("mouseover", (e) => {
-      const card = e.target.closest(".project-card");
+      const card = e.target.closest(".project-card") || e.target.closest("a") || e.target.closest("button");
       if (card) {
         cursor.classList.add("active");
-        if (cursorText) {
-          cursorText.textContent = this.translations[this.lang]["cursor.view"] || "VER PROYECTO";
-        }
       }
     });
 
     document.addEventListener("mouseout", (e) => {
-      const card = e.target.closest(".project-card");
+      const card = e.target.closest(".project-card") || e.target.closest("a") || e.target.closest("button");
       if (card) {
         cursor.classList.remove("active");
       }
