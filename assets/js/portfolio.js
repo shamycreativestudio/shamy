@@ -557,7 +557,7 @@ function renderProjects() {
           setTimeout(() => {
             imgElement.src = cardGallery[imgIndex];
             const glowEl = card.querySelector('.card-glow');
-            if (glowEl) glowEl.style.backgroundImage = \`url('\${cardGallery[imgIndex]}')\`;
+            if (glowEl) glowEl.style.backgroundImage = `url('${cardGallery[imgIndex]}')`;
             imgElement.style.opacity = "1";
             updateArrows();
           }, 200);
@@ -566,7 +566,7 @@ function renderProjects() {
           setTimeout(() => {
             imgElement.src = cardGallery[imgIndex];
             const glowEl = card.querySelector('.card-glow');
-            if (glowEl) glowEl.style.backgroundImage = \`url('\${cardGallery[imgIndex]}')\`;
+            if (glowEl) glowEl.style.backgroundImage = `url('${cardGallery[imgIndex]}')`;
             updateArrows();
           }, 200);
         };
