@@ -158,11 +158,22 @@ body.dark-mode .nav-capsule {
   padding: 0;
 }
 
+.nav-logo-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.25rem; /* Restored size */
+}
+
 .nav-logo {
   height: 24px;
   width: auto;
   display: block;
-  padding: 0.5rem 1.5rem;
+  transition: filter 0.3s ease;
+}
+
+.nav-logo-link:hover .nav-logo {
+  filter: drop-shadow(0 0 10px var(--text));
 }
 
 /* Links Capsule */
@@ -191,11 +202,12 @@ body.dark-mode .nav-capsule {
   text-transform: uppercase;
   letter-spacing: 1px;
   position: relative;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, text-shadow 0.3s ease, opacity 0.3s ease;
 }
 
 .nav-links a:hover {
-  opacity: 0.7;
+  opacity: 1;
+  text-shadow: 0 0 12px var(--text);
 }
 
 /* Controls Capsule */
@@ -215,16 +227,17 @@ body.dark-mode .nav-capsule {
   border: none;
   color: var(--text);
   cursor: pointer;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.25rem; /* Restored size */
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 1;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, filter 0.3s ease;
 }
 
 .ui-toggle:hover {
-  opacity: 0.7;
+  opacity: 1;
+  filter: drop-shadow(0 0 10px var(--text));
 }
 
 /* Hero Section
