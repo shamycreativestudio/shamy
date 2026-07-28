@@ -829,6 +829,119 @@ body.dark-mode .top-bar-controls {
   margin-bottom: 3rem;
 }
 
+/* Case Study Layout Styles
+   ========================================================================== */
+.case-study-header {
+  margin-bottom: 2rem;
+}
+
+.case-study-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1.5rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 2.5rem;
+}
+
+.meta-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.meta-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--muted);
+}
+
+.deliverables-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.deliverable-tag {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.palette-swatches {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.color-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.color-swatch:hover {
+  transform: scale(1.2);
+}
+
+.case-study-narrative {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.narrative-card {
+  padding: 1.75rem;
+  border-radius: 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  transition: border-color 0.3s ease;
+}
+
+.narrative-card:hover {
+  border-color: var(--text);
+}
+
+.narrative-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.narrative-card p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.case-study-media {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.case-study-media:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
 .modal-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -941,9 +1054,191 @@ body.dark-mode .top-bar-controls {
   background: var(--panel);
 }
 
+/* Custom Magnetic Cursor
+   ========================================================================== */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: var(--text);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+  margin-top: -10px;
+  margin-left: -10px;
+  opacity: 0;
+}
+
+body:hover .custom-cursor {
+  opacity: 1;
+}
+
+.custom-cursor.active {
+  width: 100px;
+  height: 100px;
+  margin-top: -50px;
+  margin-left: -50px;
+  background: var(--text);
+  mix-blend-mode: normal;
+}
+
+.custom-cursor .cursor-text {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--bg);
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.custom-cursor.active .cursor-text {
+  opacity: 1;
+}
+
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+/* Hero Badge & CTA Group
+   ========================================================================== */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Mobile Floating Tab Bar (Taste Skill iOS App Style)
+   ========================================================================== */
+.mobile-tabbar {
+  position: fixed;
+  bottom: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.3rem;
+  width: calc(100% - 2.5rem);
+  max-width: 420px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.dark-mode .mobile-tabbar {
+  background: rgba(24, 24, 27, 0.88);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-tabbar .tab-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.5rem 0.8rem;
+  border-radius: 50px;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  transition: all 0.25s ease;
+  flex: 1;
+  text-align: center;
+}
+
+.mobile-tabbar .tab-item svg {
+  stroke: var(--muted);
+  transition: stroke 0.25s ease, transform 0.25s ease;
+}
+
+.mobile-tabbar .tab-item.active {
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+body.dark-mode .mobile-tabbar .tab-item.active {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mobile-tabbar .tab-item.active svg {
+  stroke: var(--text);
+  transform: translateY(-1px);
+}
+
+@media (min-width: 769px) {
+  .mobile-tabbar {
+    display: none !important;
+  }
+}
+
 /* Responsive Design
    ========================================================================== */
 @media (max-width: 768px) {
+  body {
+    padding-bottom: 80px; /* Space for floating tab bar */
+  }
+
   .portfolio-grid {
     grid-template-columns: 1fr;
   }
@@ -962,7 +1257,7 @@ body.dark-mode .top-bar-controls {
   }
 
   .hero-title {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .project-modal-content {
@@ -997,14 +1292,13 @@ body.dark-mode .top-bar-controls {
   .services-grid {
     grid-template-columns: 1fr;
   }
-}
 
-@media (max-width: 768px) {
   .footer {
-    padding: 2rem 0;
+    padding: 2rem 0 5rem 0;
   }
 
   .footer-email a {
     font-size: 0.95rem;
   }
 }
+

@@ -3,7 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shamy Creative Studio</title>
+    <title>Shamy Creative Studio — Branding, Editorial & UI/UX</title>
+    <meta name="description" content="Estudio creativo especializado en branding estratégico, diseño editorial, animación e interfaces digitales con propósito." />
+    <meta property="og:title" content="Shamy Creative Studio" />
+    <meta property="og:description" content="Branding estratégico, diseño editorial e interfaces digitales con propósito." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/img/shamy-logotipo.svg" />
     <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,7 +19,12 @@
     <link rel="stylesheet" href="assets/css/main.css" />
   </head>
   <body>
-    <!-- Navigation Capsules -->
+    <!-- Custom Magnetic Cursor -->
+    <div class="custom-cursor" id="customCursor">
+      <span class="cursor-text"></span>
+    </div>
+
+    <!-- Navigation Capsules (Desktop) -->
     <nav class="navbar-capsules">
       <!-- Logo Capsule -->
       <div class="nav-capsule logo-capsule">
@@ -46,13 +56,20 @@
       <!-- Hero Section -->
       <header class="hero-section">
         <div class="hero-content">
+          <div class="hero-badge animate-on-scroll">
+            <span class="badge-dot"></span>
+            <span data-i18n="hero.badge">Boutique Creative Studio 2026</span>
+          </div>
           <h1 class="hero-title animate-on-scroll" data-i18n="hero.title">
             <span class="line">Creamos</span>
             <span class="line">experiencias</span>
             <span class="line">digitales</span>
           </h1>
           <p class="hero-subtitle animate-on-scroll delay-100" data-i18n="hero.subtitle">Branding estratégico, diseño editorial e interfaces con propósito.</p>
-          <a href="#portfolioGrid" class="btn-primary hero-cta animate-on-scroll delay-200" data-i18n="hero.cta">Ver proyectos</a>
+          <div class="hero-cta-group animate-on-scroll delay-200">
+            <a href="#portfolioGrid" class="btn-primary hero-cta" data-i18n="hero.cta">Ver proyectos</a>
+            <a href="branding/" class="btn-secondary hero-brief-btn" data-i18n="hero.brief">Brief Interactivo →</a>
+          </div>
         </div>
       </header>
 
@@ -84,22 +101,8 @@
             data-filter="animating"
             data-i18n="filter.animating"
           >
-            Animating
+            Animación
           </button>
-          <!-- <button
-            class="filter-btn"
-            data-filter="drawing"
-            data-i18n="filter.drawing"
-          >
-            Drawing
-          </button>
-          <button
-            class="filter-btn"
-            data-filter="modeling"
-            data-i18n="filter.modeling"
-          >
-            Modeling
-          </button> -->
         </div>
 
           <!-- Portfolio Grid -->
@@ -178,16 +181,33 @@
           <section id="contact" class="cta-section animate-on-scroll">
             <div class="cta-content">
               <h2 data-i18n="cta.title">¿Interesado en trabajar juntos?</h2>
-              <!-- <a href="branding/" class="btn-primary cta-btn" data-i18n="cta.button">Iniciar un proyecto →</a> -->
+              <a href="branding/" class="btn-primary cta-btn" data-i18n="cta.button">Iniciar un proyecto →</a>
               <p class="cta-email" data-i18n="cta.email">Escríbenos a: shamy.creativestudio@gmail.com</p>
             </div>
           </section>
         </main>
-
-          <!-- Content injected by JS -->
-        </div>
       </div>
     </div>
+
+    <!-- Mobile Floating Tab Bar -->
+    <nav class="mobile-tabbar" id="mobileTabbar">
+      <a href="#portfolioGrid" class="tab-item active" data-tab="portfolioGrid">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span data-i18n="nav.work">Portafolio</span>
+      </a>
+      <a href="#services" class="tab-item" data-tab="services">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 17 12 22 12"></polyline></svg>
+        <span data-i18n="nav.services">Servicios</span>
+      </a>
+      <a href="#about" class="tab-item" data-tab="about">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span data-i18n="nav.about">Nosotros</span>
+      </a>
+      <a href="#contact" class="tab-item" data-tab="contact">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <span data-i18n="nav.contact">Contacto</span>
+      </a>
+    </nav>
 
     <!-- Project Modal -->
     <div id="projectModal" class="project-modal">
@@ -206,3 +226,4 @@
     <script src="assets/js/portfolio.js"></script>
   </body>
 </html>
+
