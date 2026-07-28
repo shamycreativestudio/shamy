@@ -257,7 +257,7 @@ body.dark-mode .nav-capsule {
   border: none;
   color: var(--text);
   cursor: pointer;
-  padding: 0 1.25rem; /* Adjusted for width */
+  padding: 0 2rem; /* Increased significantly for more horizontal breathing room */
   min-height: 44px; /* Fixed height to match all capsules */
   display: flex;
   align-items: center;
