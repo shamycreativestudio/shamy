@@ -488,12 +488,12 @@ body.dark-mode .nav-capsule {
   height: 100%;
   background-size: cover;
   background-position: center;
-  filter: blur(25px);
+  filter: blur(12px); /* Reduced for better performance and a more subtle glow */
   opacity: 0;
   transition: opacity 0.5s ease;
   z-index: -1;
   border-radius: 8px;
-  transform: scale(0.95);
+  transform: scale(0.95) translateZ(0); /* translateZ forces hardware acceleration to prevent lag */
 }
 
 .project-card:hover .card-glow {
@@ -1158,7 +1158,7 @@ body.dark-mode .top-bar-controls {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px var(--text); /* Creates a glow that matches the text color (white in dark mode, black in light mode) */
 }
 
 .btn-secondary {
