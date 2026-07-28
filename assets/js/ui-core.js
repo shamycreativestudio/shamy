@@ -347,7 +347,6 @@ class UICore {
         <button id="langToggle" class="ui-toggle" title="Switch Language">
            <!-- Icon injected by updateToggleIcons -->
         </button>
-        <span class="divider">|</span>
         <button id="themeToggle" class="ui-toggle" title="Switch Theme">
            <!-- Icon injected by updateToggleIcons -->
         </button>
@@ -363,7 +362,6 @@ class UICore {
           <button id="langToggle" class="ui-toggle">
              <!-- Icon injected by updateToggleIcons -->
           </button>
-          <span class="divider">|</span>
           <button id="themeToggle" class="ui-toggle">
              <!-- Icon injected by updateToggleIcons -->
           </button>
