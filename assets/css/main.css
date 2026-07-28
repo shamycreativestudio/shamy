@@ -34,6 +34,7 @@ html {
   scroll-behavior: smooth;
   background-color: var(--bg);
   transition: background-color 0.3s ease;
+  overflow-x: hidden;
 }
 
 body {
@@ -1415,7 +1416,7 @@ body.dark-mode .mobile-tabbar .tab-item.active {
   }
 
   .about-content {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     text-align: center;
   }
 
