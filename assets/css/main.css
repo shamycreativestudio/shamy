@@ -1082,8 +1082,8 @@ body.dark-mode .top-bar-controls {
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translate(-50%, -50%) scale(1);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease, border 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
 }
 
@@ -1091,8 +1091,23 @@ body:hover .custom-cursor {
   opacity: 1;
 }
 
-.custom-cursor.active {
-  transform: translate(-50%, -50%) scale(4.5);
+.custom-cursor.active-subtle {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.4);
+  mix-blend-mode: normal;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+body.dark-mode .custom-cursor.active-subtle {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.custom-cursor.active-crystal {
+  width: 100px;
+  height: 100px;
   background: rgba(255, 255, 255, 0.15);
   mix-blend-mode: normal;
   border: 1px solid rgba(255, 255, 255, 0.6);
@@ -1103,7 +1118,7 @@ body:hover .custom-cursor {
   -webkit-backdrop-filter: blur(24px) saturate(150%);
 }
 
-body.dark-mode .custom-cursor.active {
+body.dark-mode .custom-cursor.active-crystal {
   background: rgba(20, 20, 20, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-top-color: rgba(255, 255, 255, 0.25);

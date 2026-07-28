@@ -463,18 +463,20 @@ class UICore {
 
     requestAnimationFrame(animateCursor);
 
-    // Event delegation for project cards
+    // Event delegation for cursor hover effects
     document.addEventListener("mouseover", (e) => {
-      const card = e.target.closest(".project-card") || e.target.closest("a") || e.target.closest("button");
-      if (card) {
-        cursor.classList.add("active");
+      if (e.target.closest(".project-card")) {
+        cursor.classList.add("active-crystal");
+      } else if (e.target.closest("a") || e.target.closest("button")) {
+        cursor.classList.add("active-subtle");
       }
     });
 
     document.addEventListener("mouseout", (e) => {
-      const card = e.target.closest(".project-card") || e.target.closest("a") || e.target.closest("button");
-      if (card) {
-        cursor.classList.remove("active");
+      if (e.target.closest(".project-card")) {
+        cursor.classList.remove("active-crystal");
+      } else if (e.target.closest("a") || e.target.closest("button")) {
+        cursor.classList.remove("active-subtle");
       }
     });
   }
