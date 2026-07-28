@@ -469,14 +469,36 @@ body.dark-mode .nav-capsule {
   aspect-ratio: 16/9; /* Changed to 16:9 for portfolio images */
   background: var(--panel);
   border-radius: 8px;
-  overflow: hidden;
+  /* overflow: hidden removed to allow glow to bleed out */
 }
 
 .card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 8px;
   transition: opacity 0.2s ease;
+}
+
+.card-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  filter: blur(25px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+  border-radius: 8px;
+  transform: scale(0.95);
+}
+
+.project-card:hover .card-glow {
+  opacity: 0.8;
+  transform: scale(1.05);
 }
 
 /* Card Controls (Hover) */
@@ -486,7 +508,8 @@ body.dark-mode .nav-capsule {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2);
+  background: transparent; /* Removed darkening overlay */
+  border-radius: 8px;
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;

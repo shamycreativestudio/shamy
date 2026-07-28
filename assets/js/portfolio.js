@@ -504,6 +504,7 @@ function renderProjects() {
     // Create Card HTML
     card.innerHTML = `
       <div class="card-media">
+        <div class="card-glow" style="background-image: url('${project.coverImage}')"></div>
         <img src="${
           project.coverImage
         }" alt="${title}" class="card-img" data-index="0" loading="lazy">
@@ -555,6 +556,8 @@ function renderProjects() {
         loader.onload = () => {
           setTimeout(() => {
             imgElement.src = cardGallery[imgIndex];
+            const glowEl = card.querySelector('.card-glow');
+            if (glowEl) glowEl.style.backgroundImage = \`url('\${cardGallery[imgIndex]}')\`;
             imgElement.style.opacity = "1";
             updateArrows();
           }, 200);
@@ -562,6 +565,8 @@ function renderProjects() {
         loader.onerror = () => {
           setTimeout(() => {
             imgElement.src = cardGallery[imgIndex];
+            const glowEl = card.querySelector('.card-glow');
+            if (glowEl) glowEl.style.backgroundImage = \`url('\${cardGallery[imgIndex]}')\`;
             updateArrows();
           }, 200);
         };
