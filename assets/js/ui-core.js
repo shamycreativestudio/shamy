@@ -22,7 +22,7 @@ const translations = {
     "hero.cta": "Ver proyectos",
     "hero.brief": "Brief Interactivo →",
     "marquee.text":
-      "Estrategia • Branding • Diseño editorial • Interfaces UI/UX • Animación •",
+      "Estrategia • Branding • Diseño editorial • Desarrollo UX-UI • Animación •",
     "services.title": "Nuestros servicios",
     "services.card1.title": "Estrategia de marca",
     "services.card1.desc":
@@ -30,7 +30,7 @@ const translations = {
     "services.card2.title": "Identidad visual",
     "services.card2.desc":
       "Logos, sistemas de diseño y guías de estilo que hacen tu marca inolvidable.",
-    "services.card3.title": "Diseño UI/UX",
+    "services.card3.title": "Desarrollo UX-UI",
     "services.card3.desc":
       "Interfaces web intuitivas y experiencias digitales con enfoque en diseño.",
     "about.title": "Sobre nosotros",
@@ -166,7 +166,7 @@ const translations = {
     "hero.cta": "View Projects",
     "hero.brief": "Interactive Brief →",
     "marquee.text":
-      "Strategy • Branding • Editorial design • UI/UX • Animation •",
+      "Strategy • Branding • Editorial design • UX-UI Development • Animation •",
     "services.title": "Our Services",
     "services.card1.title": "Brand Strategy",
     "services.card1.desc":
@@ -174,7 +174,7 @@ const translations = {
     "services.card2.title": "Visual Identity",
     "services.card2.desc":
       "Logos, design systems, and style guides that make your brand unforgettable.",
-    "services.card3.title": "UI/UX Design",
+    "services.card3.title": "UX-UI Development",
     "services.card3.desc":
       "Intuitive interfaces and digital experiences that connect with your audience.",
     "about.title": "About Us",
