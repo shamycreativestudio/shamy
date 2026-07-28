@@ -196,10 +196,10 @@ body.dark-mode .nav-capsule {
   justify-content: center;
   text-decoration: none;
   color: var(--text);
-  font-weight: 600;
+  font-weight: 300; /* Changed to light/delgadita per user request */
   font-size: 0.85rem;
-  text-transform: capitalize; /* Changed from lowercase per user request */
-  letter-spacing: 1px;
+  text-transform: capitalize;
+  letter-spacing: 0.5px; /* Reduced separation */
   position: relative;
   transition: color 0.3s ease, text-shadow 0.3s ease, opacity 0.3s ease;
 }
@@ -226,12 +226,13 @@ body.dark-mode .nav-capsule {
   border: none;
   color: var(--text);
   cursor: pointer;
-  padding: 0.4rem 1rem;
+  padding: 0.6rem 1.2rem; /* Adjusted to fix width while keeping vertical height */
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 1;
   transition: opacity 0.3s ease, filter 0.3s ease;
+  transform: translateZ(0); /* Prevent layout flickering during filter transition */
 }
 
 .ui-toggle:hover {
