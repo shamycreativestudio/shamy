@@ -465,7 +465,7 @@ class UICore {
     document.addEventListener("mouseover", (e) => {
       if (e.target.closest(".project-card")) {
         cursor.classList.add("active-crystal");
-      } else if (e.target.closest("a") || e.target.closest("button")) {
+      } else if (e.target.closest("a") || e.target.closest("button") || e.target.closest(".nav-capsule")) {
         cursor.classList.add("active-subtle");
       }
     });
@@ -473,7 +473,7 @@ class UICore {
     document.addEventListener("mouseout", (e) => {
       if (e.target.closest(".project-card")) {
         cursor.classList.remove("active-crystal");
-      } else if (e.target.closest("a") || e.target.closest("button")) {
+      } else if (e.target.closest("a") || e.target.closest("button") || e.target.closest(".nav-capsule")) {
         cursor.classList.remove("active-subtle");
       }
     });
