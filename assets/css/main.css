@@ -162,7 +162,7 @@ body.dark-mode .nav-capsule {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.6rem 1.25rem; /* Restored size */
+  padding: 0.6rem 1.5rem; /* Increased to restore size */
 }
 
 .nav-logo {
@@ -189,7 +189,7 @@ body.dark-mode .nav-capsule {
 }
 
 .nav-links a {
-  padding: 0.5rem 1.5rem;
+  padding: 0.6rem 2.5rem; /* Increased significantly to compensate for removed gap */
   flex: 1;
   text-align: center;
   display: flex;
@@ -199,7 +199,7 @@ body.dark-mode .nav-capsule {
   color: var(--text);
   font-weight: 600;
   font-size: 0.85rem;
-  text-transform: uppercase;
+  text-transform: lowercase; /* Changed from uppercase per user request */
   letter-spacing: 1px;
   position: relative;
   transition: color 0.3s ease, text-shadow 0.3s ease, opacity 0.3s ease;
@@ -227,7 +227,7 @@ body.dark-mode .nav-capsule {
   border: none;
   color: var(--text);
   cursor: pointer;
-  padding: 0.6rem 1.25rem; /* Restored size */
+  padding: 0.6rem 1.5rem; /* Increased to restore size */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1129,7 +1129,7 @@ body.dark-mode .top-bar-controls {
   left: 0;
   width: 20px;
   height: 20px;
-  background: var(--text);
+  background: #ffffff; /* Must be white for difference blending to invert correctly in light mode */
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
