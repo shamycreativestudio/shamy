@@ -551,16 +551,18 @@ function renderProjects() {
       };
 
       const updateImage = () => {
-        imgElement.style.opacity = "0";
+        const mediaEl = card.querySelector('.card-media');
+        mediaEl.classList.add('is-loading'); // Triggers the fade out of img, glow, and buttons
+
         const loader = new Image();
         loader.onload = () => {
           setTimeout(() => {
             imgElement.src = cardGallery[imgIndex];
             const glowEl = card.querySelector('.card-glow');
             if (glowEl) glowEl.style.backgroundImage = `url('${cardGallery[imgIndex]}')`;
-            imgElement.style.opacity = "1";
             updateArrows();
-          }, 200);
+            mediaEl.classList.remove('is-loading'); // Triggers the fade in (if hovered)
+          }, 400); // 400ms gives time for the CSS opacity transition to finish
         };
         loader.onerror = () => {
           setTimeout(() => {
@@ -568,7 +570,8 @@ function renderProjects() {
             const glowEl = card.querySelector('.card-glow');
             if (glowEl) glowEl.style.backgroundImage = `url('${cardGallery[imgIndex]}')`;
             updateArrows();
-          }, 200);
+            mediaEl.classList.remove('is-loading');
+          }, 400);
         };
         loader.src = cardGallery[imgIndex];
       };
