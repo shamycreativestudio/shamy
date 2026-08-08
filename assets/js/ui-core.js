@@ -453,8 +453,8 @@ class UICore {
     });
 
     const animateCursor = () => {
-      cursorX += (mouseX - cursorX) * 0.2;
-      cursorY += (mouseY - cursorY) * 0.2;
+      cursorX += (mouseX - cursorX) * 0.6; // Increased from 0.2 for much faster response
+      cursorY += (mouseY - cursorY) * 0.6;
       cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
       requestAnimationFrame(animateCursor);
     };
