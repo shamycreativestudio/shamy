@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shamy Creative Studio — Branding, Editorial & UI/UX</title>
+    <meta name="description" content="Estudio creativo especializado en branding estratégico, diseño editorial, animación e interfaces digitales con propósito." />
+    <meta property="og:title" content="Shamy Creative Studio" />
+    <meta property="og:description" content="Branding estratégico, diseño editorial e interfaces digitales con propósito." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/img/shamy-logotipo.svg" />
+    <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
+  <body>
+    <!-- Custom Magnetic Cursor -->
+    <div class="custom-cursor" id="customCursor">
+      <span class="cursor-text"></span>
+    </div>
+
+    <!-- Navigation Capsules (Desktop) -->
+    <nav class="navbar-capsules">
+      <!-- Logo Capsule -->
+      <div class="nav-capsule logo-capsule">
+        <a href="#" class="nav-logo-link">
+          <img src="assets/img/shamy-logotipo.svg" alt="Shamy Creative Studio" class="nav-logo" id="mainLogo" />
+        </a>
+      </div>
+
+      <!-- Links Capsule -->
+      <div class="nav-capsule links-capsule">
+        <div class="nav-links">
+          <a href="#portfolioGrid" data-i18n="nav.work">Portafolio</a>
+          <a href="#services" data-i18n="nav.services">Servicios</a>
+          <a href="#about" data-i18n="nav.about">Nosotros</a>
+          <a href="#contact" data-i18n="nav.contact">Contacto</a>
+        </div>
+      </div>
+
+      <!-- Controls Capsule -->
+      <div class="nav-capsule controls-capsule">
+        <div class="nav-controls" id="navControls">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+    </nav>
+
+    <div id="page-content">
+
+      <!-- Hero Section -->
+      <header class="hero-section">
+        <div class="hero-content">
+          <h1 class="hero-title animate-on-scroll" data-i18n="hero.title">
+            <span class="line">Creamos</span>
+            <span class="line">experiencias</span>
+            <span class="line">digitales</span>
+          </h1>
+          <p class="hero-subtitle animate-on-scroll delay-100" data-i18n="hero.subtitle">Branding estratégico, diseño editorial e interfaces con propósito.</p>
+          <div class="hero-cta-group animate-on-scroll delay-200">
+            <a href="#portfolioGrid" class="btn-primary hero-cta" data-i18n="hero.cta">Ver proyectos</a>
+          </div>
+        </div>
+      </header>
+
+      <div class="container">
+        <div class="filters">
+          <button
+            class="filter-btn active"
+            data-filter="all"
+            data-i18n="filter.all"
+          >
+            Todos
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="branding"
+            data-i18n="filter.branding"
+          >
+            Branding
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="coding"
+            data-i18n="filter.coding"
+          >
+            Coding
+          </button>
+          <button
+            class="filter-btn"
+            data-filter="animating"
+            data-i18n="filter.animating"
+          >
+            Animación
+          </button>
+        </div>
+
+          <!-- Portfolio Grid -->
+          <div class="portfolio-grid" id="portfolioGrid">
+            <!-- Projects will be injected here by JS -->
+          </div>
+
+          <!-- Marquee Section -->
+          <div class="marquee-section">
+            <div class="marquee-track">
+              <div class="marquee-content" data-i18n="marquee.text">
+                Estrategia • Branding • Diseño editorial • Desarrollo UX-UI • Animación •
+              </div>
+              <div class="marquee-content" aria-hidden="true" data-i18n="marquee.text">
+                Estrategia • Branding • Diseño editorial • Desarrollo UX-UI • Animación •
+              </div>
+              <div class="marquee-content" aria-hidden="true" data-i18n="marquee.text">
+                Estrategia • Branding • Diseño editorial • Desarrollo UX-UI • Animación •
+              </div>
+              <div class="marquee-content" aria-hidden="true" data-i18n="marquee.text">
+                Estrategia • Branding • Diseño editorial • Desarrollo UX-UI • Animación •
+              </div>
+            </div>
+          </div>
+
+          <!-- Services Section -->
+          <section id="services" class="services-section">
+              <h2 class="section-title animate-on-scroll" data-i18n="services.title">Nuestros servicios</h2>
+              <div class="services-grid">
+                <div class="service-card animate-on-scroll delay-100">
+                  <div class="service-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 16v-4"></path><path d="M12 8h.01"></path></svg>
+                  </div>
+                  <h3 data-i18n="services.card1.title">Estrategia de marca</h3>
+                  <p data-i18n="services.card1.desc">Definimos la esencia, voz y propósito de tu marca para conectar con tu audiencia ideal.</p>
+                </div>
+                <div class="service-card animate-on-scroll delay-200">
+                  <div class="service-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"></path><path d="M2 2l7.586 7.586"></path><circle cx="11" cy="11" r="2"></circle></svg>
+                  </div>
+                  <h3 data-i18n="services.card2.title">Identidad visual</h3>
+                  <p data-i18n="services.card2.desc">Logos, sistemas de diseño y guías de estilo que hacen tu marca inolvidable.</p>
+                </div>
+                <div class="service-card animate-on-scroll delay-300">
+                  <div class="service-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="4" ry="4"></rect><line x1="8" y1="2" x2="8" y2="22"></line><line x1="16" y1="2" x2="16" y2="22"></line></svg>
+                  </div>
+                  <h3 data-i18n="services.card3.title">Desarrollo UX-UI</h3>
+                  <p data-i18n="services.card3.desc">Interfaces web intuitivas y experiencias digitales con enfoque en diseño.</p>
+                </div>
+              </div>
+          </section>
+
+          <!-- About Section -->
+          <section id="about" class="about-section">
+              <div class="about-content">
+                 <img src="assets/img/shamy-isotipo.svg" alt="Shamy Logo" class="about-logo animate-on-scroll" />
+                <div class="about-text animate-on-scroll delay-200">
+                  <h2 class="section-title" data-i18n="about.title">Sobre nosotros</h2>
+                  <p data-i18n="about.desc">Somos un estudio creativo especializado en branding, diseño editorial e interfaces digitales. Creemos que cada píxel cuenta y que el diseño debe contar la historia de tu marca.</p>
+                  <div class="about-stats">
+                    <div class="stat">
+                      <span class="stat-number">5+</span>
+                      <span class="stat-label" data-i18n="about.stat1">Años de Exp.</span>
+                    </div>
+                    <div class="stat">
+                      <span class="stat-number">50+</span>
+                      <span class="stat-label" data-i18n="about.stat2">Proyectos</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </section>
+
+          <!-- CTA Section -->
+          <section id="contact" class="cta-section animate-on-scroll">
+            <div class="cta-content">
+              <h2 data-i18n="cta.title">¿Interesado en trabajar juntos?</h2>
+              <a href="branding/" class="btn-primary cta-btn" data-i18n="cta.button">Iniciar un proyecto →</a>
+              <p class="cta-email" data-i18n="cta.email">Escríbenos a: shamy.creativestudio@gmail.com</p>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <!-- Mobile Floating Tab Bar -->
+    <nav class="mobile-tabbar" id="mobileTabbar">
+      <a href="#portfolioGrid" class="tab-item active" data-tab="portfolioGrid">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+        <span data-i18n="nav.work">Portafolio</span>
+      </a>
+      <a href="#services" class="tab-item" data-tab="services">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+        <span data-i18n="nav.services">Servicios</span>
+      </a>
+      <a href="#about" class="tab-item" data-tab="about">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+        <span data-i18n="nav.about">Nosotros</span>
+      </a>
+      <a href="#contact" class="tab-item" data-tab="contact">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+        <span data-i18n="nav.contact">Contacto</span>
+      </a>
+    </nav>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="project-modal">
+      <!-- Modal content will be generated by portfolio.js -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+      <div class="footer-content">
+        <p class="footer-brand">Shamy]&reg; Creative Studio &mdash; 2026</p>
+        <p class="footer-rights">Todos los derechos reservados.</p>
+      </div>
+    </footer>
+
+    <script src="assets/js/ui-core.js"></script>
+    <script src="assets/js/portfolio.js"></script>
+  </body>
+</html>
+
