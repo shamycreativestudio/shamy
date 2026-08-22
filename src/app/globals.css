@@ -2812,7 +2812,7 @@ body.dark-mode .about-photo-img {
   font-weight: 500;
 }
 
-/* Founder Portrait Architectural Stage */
+/* Founder Portrait 3D Pop-out Circle Avatar */
 .about-clean-media {
   position: relative;
   display: flex;
@@ -2829,58 +2829,82 @@ body.dark-mode .about-photo-img {
   transform: translateX(-50%);
   width: 100%;
   height: 90%;
-  background: radial-gradient(circle at 50% 65%, rgba(var(--text-rgb), 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 65%, rgba(var(--text-rgb), 0.1) 0%, transparent 70%);
   filter: blur(50px);
   z-index: 0;
   pointer-events: none;
 }
 
-.about-portrait-stage {
+.popout-avatar-stage {
   position: relative;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
   width: 100%;
-  max-width: 480px;
-  line-height: 0;
+  max-width: 400px;
+  height: 460px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 0 auto;
+  z-index: 1;
 }
 
-.about-portrait-backdrop {
+/* The Circle Backdrop */
+.avatar-circle-bg {
   position: absolute;
   bottom: 0;
-  left: 6%;
-  right: 6%;
-  height: 84%;
-  border-radius: 240px 240px 0 0;
-  background: linear-gradient(180deg, var(--panel) 0%, rgba(var(--text-rgb), 0.02) 100%);
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--panel) 0%, rgba(var(--text-rgb), 0.04) 100%);
   border: 1px solid var(--border);
-  border-bottom: none;
-  box-shadow: inset 0 2px 8px rgba(255, 255, 255, 0.4), 0 20px 40px rgba(0, 0, 0, 0.04);
+  box-shadow: 
+    inset 0 2px 8px rgba(255, 255, 255, 0.5),
+    0 24px 48px rgba(0, 0, 0, 0.08);
   z-index: 0;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease, border-color 0.3s ease;
 }
 
-body.dark-mode .about-portrait-backdrop {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: inset 0 2px 8px rgba(255, 255, 255, 0.05), 0 20px 40px rgba(0, 0, 0, 0.3);
+body.dark-mode .avatar-circle-bg {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    inset 0 2px 8px rgba(255, 255, 255, 0.08),
+    0 24px 48px rgba(0, 0, 0, 0.45);
 }
 
-.about-png-img {
-  position: relative;
+/* The Bottom-Cropping Wrapper (matches circle curve on bottom half, uncropped at top) */
+.avatar-crop-wrapper {
+  position: absolute;
+  bottom: 0;
+  width: 380px;
+  height: 460px;
+  border-radius: 0 0 190px 190px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   z-index: 1;
+  pointer-events: none;
+}
+
+/* The Portrait Image (pops out from the top of the circle) */
+.avatar-popout-img {
   width: 100%;
-  max-width: 480px;
+  max-width: 440px;
   height: auto;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.18));
+  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.18));
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(0);
 }
 
-.about-portrait-stage:hover .about-png-img {
-  transform: translateY(-4px) scale(1.015);
+.popout-avatar-stage:hover .avatar-popout-img {
+  transform: translateY(-8px) scale(1.02);
+}
+
+.popout-avatar-stage:hover .avatar-circle-bg {
+  transform: scale(1.02);
+  border-color: var(--text);
 }
 
 @media (max-width: 960px) {
@@ -2894,11 +2918,21 @@ body.dark-mode .about-portrait-backdrop {
   .about-clean-media {
     margin-top: 1rem;
   }
-  .about-portrait-stage {
-    max-width: 360px;
+  .popout-avatar-stage {
+    max-width: 300px;
+    height: 350px;
   }
-  .about-png-img {
-    max-width: 360px;
+  .avatar-circle-bg {
+    width: 280px;
+    height: 280px;
+  }
+  .avatar-crop-wrapper {
+    width: 280px;
+    height: 350px;
+    border-radius: 0 0 140px 140px;
+  }
+  .avatar-popout-img {
+    max-width: 320px;
   }
 }
 

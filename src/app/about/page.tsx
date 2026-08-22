@@ -90,24 +90,26 @@ export default function AboutPage() {
               </motion.div>
             </div>
 
-            {/* Right Column: Founder Cutout PNG on Architectural Arch Stage */}
+            {/* Right Column: 3D Pop-out Circle Avatar */}
             <motion.div
               className="about-clean-media"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.94, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="about-png-glow" aria-hidden="true" />
-              <div className="about-portrait-stage">
-                <div className="about-portrait-backdrop" aria-hidden="true" />
-                <Image
-                  src="/assets/img/shamy-founder.png"
-                  alt="Samuel Woodcock - Shamy Creative Studio"
-                  width={520}
-                  height={620}
-                  priority
-                  className="about-png-img"
-                />
+              <div className="popout-avatar-stage">
+                <div className="avatar-circle-bg" aria-hidden="true" />
+                <div className="avatar-crop-wrapper">
+                  <Image
+                    src="/assets/img/shamy-founder.png"
+                    alt="Samuel Woodcock - Shamy Creative Studio"
+                    width={480}
+                    height={540}
+                    priority
+                    className="avatar-popout-img"
+                  />
+                </div>
               </div>
             </motion.div>
           </div>
