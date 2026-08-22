@@ -160,7 +160,7 @@ export const translations: Record<LangKey, Record<string, string>> = {
     "filter.all": "All",
     "filter.branding": "Branding",
     "filter.coding": "Coding",
-    "filter.animating": "Animation",
+    "filter.animating": "Animating",
     "filter.drawing": "Drawing",
     "filter.modeling": "Modeling",
     "hero.badge": "Boutique Creative Studio 2026",

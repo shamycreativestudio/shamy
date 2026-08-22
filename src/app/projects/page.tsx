@@ -50,7 +50,7 @@ export default function ProjectsPage() {
 
       {/* 2. Filter Pills */}
       <section className="container" style={{ paddingTop: "1rem" }}>
-        <div className="filters" style={{ justifyContent: "flex-start", marginBottom: "2.5rem" }}>
+        <div className="filters" style={{ justifyContent: "flex-start", marginBottom: "2.5rem", gap: "8px" }}>
           {filterTabs.map((tab) => {
             const isActive = filter === tab.key;
             return (
@@ -64,7 +64,9 @@ export default function ProjectsPage() {
                   background: "transparent",
                   border: "none",
                   cursor: "pointer",
-                  padding: "8px 20px",
+                  padding: "8px 0",
+                  width: "115px",
+                  minWidth: "115px",
                   borderRadius: "50px",
                   fontSize: "0.85rem",
                   fontWeight: isActive ? 600 : 400,
@@ -73,12 +75,20 @@ export default function ProjectsPage() {
                   display: "inline-flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  textAlign: "center",
                 }}
               >
                 {isActive && (
                   <motion.div
                     layoutId="portfolio-filter-pill"
                     className="filter-active-pill"
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      borderRadius: "50px",
+                      background: "var(--text)",
+                      zIndex: 0,
+                    }}
                     transition={{
                       type: "spring",
                       stiffness: 400,
