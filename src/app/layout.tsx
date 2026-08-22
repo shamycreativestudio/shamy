@@ -11,6 +11,13 @@ import PageTransition from "@/components/PageTransition";
 export const metadata: Metadata = {
   title: "Shamy Creative Studio",
   description: "Branding · Diseño Editorial · UX/UI",
+  icons: {
+    icon: [
+      { url: "/assets/img/favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/assets/img/favicon.svg",
+    apple: "/assets/img/favicon.svg",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -21,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       suppressHydrationWarning
     >
       <head>
+        <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;700;900&display=swap" rel="stylesheet" />
