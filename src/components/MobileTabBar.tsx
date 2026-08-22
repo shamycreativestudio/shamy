@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { House, Compass, Images, User } from "@phosphor-icons/react";
 import { useTranslation } from "./TranslationProvider";
 import LiquidGlass from "./LiquidGlass";
@@ -49,32 +49,27 @@ export default function MobileTabBar() {
               href={tab.href} 
               className={`tab-item ${isActive ? "active" : ""}`}
             >
-              <AnimatePresence>
-                {isActive && (
-                  <motion.div
-                    layoutId="mobile-tab-active-pill"
-                    className="mobile-tabbar-pill"
-                    initial={{ opacity: 0, scale: 0.82 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.82 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 420,
-                      damping: 28,
-                      mass: 0.6,
-                    }}
-                  >
-                    <LiquidGlass
-                      radius={24}
-                      depth={3}
-                      blur={1}
-                      strength={40}
-                      backgroundColor="var(--active-pill-glass-bg)"
-                      chromaticAberration={0}
-                    />
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {isActive && (
+                <motion.div
+                  layoutId="mobile-tab-active-pill"
+                  className="mobile-tabbar-pill"
+                  transition={{
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 30,
+                    mass: 0.8,
+                  }}
+                >
+                  <LiquidGlass
+                    radius={24}
+                    depth={3}
+                    blur={1}
+                    strength={40}
+                    backgroundColor="var(--active-pill-glass-bg)"
+                    chromaticAberration={0}
+                  />
+                </motion.div>
+              )}
               <span className="tab-item-content">
                 <IconComponent size={20} weight={isActive ? "fill" : "regular"} />
                 <span>{tab.label}</span>

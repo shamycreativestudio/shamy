@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { useTranslation } from "./TranslationProvider";
 import LiquidGlass from "./LiquidGlass";
 
@@ -114,32 +114,27 @@ export default function Navbar() {
                 onClick={(e) => handleNavClick(item.href, e)}
                 className={`nav-link-item ${isActive ? "active" : ""}`}
               >
-                <AnimatePresence>
-                  {isActive && (
-                    <motion.div
-                      layoutId="navbar-active-pill"
-                      className="nav-active-pill"
-                      initial={{ opacity: 0, scale: 0.82 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.82 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 420,
-                        damping: 28,
-                        mass: 0.6,
-                      }}
-                    >
-                      <LiquidGlass
-                        radius={18}
-                        depth={3}
-                        blur={1}
-                        strength={32}
-                        backgroundColor="var(--active-pill-glass-bg)"
-                        chromaticAberration={0}
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {isActive && (
+                  <motion.div
+                    layoutId="navbar-active-pill"
+                    className="nav-active-pill"
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 30,
+                      mass: 0.8,
+                    }}
+                  >
+                    <LiquidGlass
+                      radius={18}
+                      depth={3}
+                      blur={1}
+                      strength={32}
+                      backgroundColor="var(--active-pill-glass-bg)"
+                      chromaticAberration={0}
+                    />
+                  </motion.div>
+                )}
                 <span className="nav-link-label">{item.label}</span>
               </Link>
             );
