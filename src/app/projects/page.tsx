@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
+import { ArrowRight } from "@phosphor-icons/react";
 import { projects } from "@/data/projects";
 import { useTranslation } from "@/components/TranslationProvider";
 
@@ -136,6 +137,20 @@ export default function ProjectsPage() {
             )}
           </AnimatePresence>
         </motion.div>
+      </section>
+
+      {/* 4. CTA Final */}
+      <section id="contact" className="container py-20 text-center">
+        <div className="cta-section">
+          <div className="cta-content">
+            <h2 className="text-3xl font-bold mb-8">{t("cta.title")}</h2>
+            <Link href="/brief" className="btn-primary" style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+              <span>{t("cta.button")}</span>
+              <ArrowRight size={18} weight="bold" />
+            </Link>
+            <p className="mt-8 text-muted">{t("cta.email")}</p>
+          </div>
+        </div>
       </section>
     </main>
   );
