@@ -26,7 +26,7 @@ export default function ProjectsPage() {
   return (
     <main id="page-content">
       {/* 1. Minimal Portfolio Hero */}
-      <section className="hero-asymmetric" style={{ minHeight: "40vh", paddingTop: "7.5rem", paddingBottom: "2rem" }}>
+      <section className="hero-asymmetric">
         <div className="hero-ambient-orb" aria-hidden="true" />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <motion.h1 
