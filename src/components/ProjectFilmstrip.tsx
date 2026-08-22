@@ -56,10 +56,8 @@ export default function ProjectFilmstrip() {
                   className="filmstrip-img"
                 />
                 <div className="filmstrip-overlay">
-                  <div className="filmstrip-glass-pill">
-                    <span className="filmstrip-title">{t(item.project.titleKey)}</span>
-                    <span className="filmstrip-cat">{item.project.category}</span>
-                  </div>
+                  <h3 className="filmstrip-title">{t(item.project.titleKey)}</h3>
+                  <span className="filmstrip-cat">{item.project.category} · {item.project.year}</span>
                 </div>
               </div>
             </Link>
@@ -68,7 +66,7 @@ export default function ProjectFilmstrip() {
       </div>
 
       {/* Row 2: Rightward Infinite Scroll */}
-      <div className="filmstrip-track-wrapper" style={{ marginTop: "12px" }}>
+      <div className="filmstrip-track-wrapper" style={{ marginTop: "6px" }}>
         <div className="filmstrip-track filmstrip-right">
           {fullRow2.map((item, idx) => (
             <Link
@@ -89,10 +87,8 @@ export default function ProjectFilmstrip() {
                   className="filmstrip-img"
                 />
                 <div className="filmstrip-overlay">
-                  <div className="filmstrip-glass-pill">
-                    <span className="filmstrip-title">{t(item.project.titleKey)}</span>
-                    <span className="filmstrip-cat">{item.project.category}</span>
-                  </div>
+                  <h3 className="filmstrip-title">{t(item.project.titleKey)}</h3>
+                  <span className="filmstrip-cat">{item.project.category} · {item.project.year}</span>
                 </div>
               </div>
             </Link>
