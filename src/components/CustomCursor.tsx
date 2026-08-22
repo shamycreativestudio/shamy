@@ -1,72 +1,113 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import LiquidGlass from "./LiquidGlass";
+
+type CursorMode = "default" | "subtle" | "crystal";
 
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
+  const [mode, setMode] = useState<CursorMode>("default");
 
   useEffect(() => {
-    // Only enable custom cursor for pointer devices
-    if (window.matchMedia("(pointer: coarse)").matches) return;
-    
     const cursor = cursorRef.current;
-    if (!cursor) return;
+    if (!cursor || window.matchMedia("(pointer: coarse)").matches) return;
 
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-    let animationFrameId: number;
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let cursorX = window.innerWidth / 2;
+    let cursorY = window.innerHeight / 2;
+    let velX = 0;
+    let velY = 0;
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const onMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
     };
 
-    const animateCursor = () => {
-      // Fast tracking for minimal lag
-      cursorX += (mouseX - cursorX) * 0.6;
-      cursorY += (mouseY - cursorY) * 0.6;
-      cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
-      animationFrameId = requestAnimationFrame(animateCursor);
-    };
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
 
-    document.addEventListener("mousemove", handleMouseMove);
-    animationFrameId = requestAnimationFrame(animateCursor);
+    const onMouseOver = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
 
-    // Hover effects logic
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
       if (target.closest(".project-card")) {
-        cursor.classList.add("active-crystal");
-      } else if (target.closest("a") || target.closest("button") || target.closest(".nav-capsule") || target.closest("input") || target.closest("textarea")) {
-        cursor.classList.add("active-subtle");
+        cursor.className = "custom-cursor active-crystal";
+        setMode("crystal");
+      } else if (target.closest("a, button, .nav-capsule, .ui-toggle, .filter-btn")) {
+        cursor.className = "custom-cursor active-subtle";
+        setMode("subtle");
       }
     };
 
-    const handleMouseOut = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
+    const onMouseOut = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+
       if (target.closest(".project-card")) {
         cursor.classList.remove("active-crystal");
-      } else if (target.closest("a") || target.closest("button") || target.closest(".nav-capsule") || target.closest("input") || target.closest("textarea")) {
+        setMode((prev) => (prev === "crystal" ? "default" : prev));
+      } else if (target.closest("a, button, .nav-capsule, .ui-toggle, .filter-btn")) {
         cursor.classList.remove("active-subtle");
+        setMode((prev) => (prev === "subtle" ? "default" : prev));
       }
     };
 
-    document.addEventListener("mouseover", handleMouseOver);
-    document.addEventListener("mouseout", handleMouseOut);
+    window.addEventListener("mouseover", onMouseOver, { passive: true });
+    window.addEventListener("mouseout", onMouseOut, { passive: true });
+
+    let animFrame: number;
+    const animate = () => {
+      // Calculate velocity
+      const dx = mouseX - cursorX;
+      const dy = mouseY - cursorY;
+      
+      // Update cursor position with lerp
+      cursorX += dx * 0.4;
+      cursorY += dy * 0.4;
+      
+      // We translate first, then center
+      cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
+      
+      animFrame = requestAnimationFrame(animate);
+    };
+
+    animFrame = requestAnimationFrame(animate);
 
     return () => {
-      document.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseover", handleMouseOver);
-      document.removeEventListener("mouseout", handleMouseOut);
-      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseover", onMouseOver);
+      window.removeEventListener("mouseout", onMouseOut);
+      cancelAnimationFrame(animFrame);
     };
   }, []);
 
+  if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) {
+    return null;
+  }
+
+  // Dynamic props for LiquidGlass based on cursor size
+  // Default is arbitrary since it's hidden, but we keep it sane
+  const glassProps = {
+    crystal: { size: 70, depth: 5, blur: 1, strength: 40, chromaticAberration: 2 },
+    subtle:  { size: 36, depth: 3, blur: 0.5, strength: 15, chromaticAberration: 1 },
+    default: { size: 24, depth: 3, blur: 0.5, strength: 15, chromaticAberration: 1 },
+  }[mode];
+
   return (
-    <div className="custom-cursor" ref={cursorRef} id="customCursor">
-      <span className="cursor-text"></span>
+    <div ref={cursorRef} className="custom-cursor">
+      <LiquidGlass
+        width={glassProps.size}
+        height={glassProps.size}
+        radius={100} // Circle
+        depth={glassProps.depth}
+        blur={glassProps.blur}
+        strength={glassProps.strength}
+        backgroundColor="rgba(255,255,255,0.03)"
+        chromaticAberration={glassProps.chromaticAberration}
+        fallbackMode="blur"
+      />
     </div>
   );
 }
+

@@ -1,77 +1,140 @@
+"use client";
+
 import Link from "next/link";
-import Image from "next/image";
+import { motion } from "motion/react";
+import { 
+  Compass, 
+  Sparkle, 
+  BookOpen, 
+  Desktop, 
+  PlayCircle,
+  ArrowRight
+} from "@phosphor-icons/react";
+import { useTranslation } from "@/components/TranslationProvider";
+import ProjectFilmstrip from "@/components/ProjectFilmstrip";
 
 export default function Home() {
+  const { t } = useTranslation();
+
+  const servicesList = [
+    { title: t("services.s1.title"), slug: "estrategia-de-marca", icon: Compass },
+    { title: t("services.s2.title"), slug: "identidad-visual", icon: Sparkle },
+    { title: t("services.s3.title"), slug: "diseno-editorial", icon: BookOpen },
+    { title: t("services.s4.title"), slug: "diseno-de-interfaces", icon: Desktop },
+    { title: t("services.s5.title"), slug: "motion-graphics", icon: PlayCircle },
+  ];
+
   return (
     <main id="page-content">
-      {/* Hero Section */}
-      <header className="hero-section">
-        <div className="hero-content">
-          <h1 className="hero-title animate-on-scroll">
-            <span className="line">Eleva</span>
-            <span className="line">tu marca al</span>
-            <span className="line">siguiente nivel</span>
-          </h1>
-          <p className="hero-subtitle animate-on-scroll delay-100">
-            Especialistas en Branding estratégico, Diseño Editorial y experiencias UX/UI.
-          </p>
-          <div className="hero-cta-group animate-on-scroll delay-200">
-            <Link href="/projects" className="btn-primary hero-cta">
-              Explorar Proyectos
-            </Link>
+      {/* 1. Asymmetric Hero Section */}
+      <section className="hero-asymmetric">
+        <div className="hero-ambient-orb" aria-hidden="true" />
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+          <div className="hero-grid-layout">
+            <div>
+              <motion.h1 
+                className="hero-headline"
+                initial={{ opacity: 0, y: 24 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                dangerouslySetInnerHTML={{ __html: t("hero.title") }}
+              />
+              
+              <motion.p 
+                className="hero-desc"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+              >
+                {t("hero.subtitle")}
+              </motion.p>
+              
+              <motion.div 
+                className="hero-cta-pill-group"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.22, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <Link href="/projects" className="btn-primary">
+                  {t("hero.cta")}
+                </Link>
+                <Link href="/brief" className="btn-secondary">
+                  {t("cta.button")}
+                </Link>
+              </motion.div>
+            </div>
           </div>
         </div>
-      </header>
+      </section>
 
-      {/* Featured Projects Section */}
+      {/* 2. Marquee Strip */}
+      <section className="marquee-section" aria-label="Especialidades del estudio">
+        <div className="marquee-track">
+          <div className="marquee-content">{t("marquee.text")}</div>
+          <div className="marquee-content" aria-hidden="true">{t("marquee.text")}</div>
+          <div className="marquee-content" aria-hidden="true">{t("marquee.text")}</div>
+        </div>
+      </section>
+
+      {/* 3. Infinite Project Filmstrip (Flagship Visual Component) */}
+      <ProjectFilmstrip />
+
+      {/* 4. Services Strip Preview */}
       <section className="container py-20">
-        <div className="section-header text-center mb-16">
-          <h2 className="text-3xl font-bold mb-4">Proyectos Destacados</h2>
-          <p className="text-muted">Una pequeña selección de nuestro mejor trabajo.</p>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4">{t("services.title")}</h2>
+          <p className="text-muted mx-auto" style={{ maxWidth: "45ch" }}>
+            {t("services.strip.subtitle")}
+          </p>
         </div>
-        
-        <div className="grid">
-          {/* Mock Featured Project 1 */}
-          <article className="project-card animate-on-scroll">
-            <div className="project-image-wrapper">
-              <Image 
-                src="/assets/img/portafolio/sinergia/sinergia.jpg" 
-                alt="Sinergia - Identidad de Marca"
-                width={800}
-                height={600}
-                className="project-image"
-              />
-              <div className="project-overlay">
-                <span className="project-category">Branding</span>
-                <h3 className="project-title">Sinergia</h3>
-              </div>
-            </div>
-            <Link href="/projects/sinergia" className="project-link" aria-label="Ver proyecto Sinergia" />
-          </article>
-          
-          {/* Mock Featured Project 2 */}
-          <article className="project-card animate-on-scroll delay-100">
-            <div className="project-image-wrapper">
-              <Image 
-                src="/assets/img/portafolio/acmi/acmi.jpg" 
-                alt="Acta Médica Colombiana"
-                width={800}
-                height={600}
-                className="project-image"
-              />
-              <div className="project-overlay">
-                <span className="project-category">Diseño Editorial</span>
-                <h3 className="project-title">Acta Médica Colombiana</h3>
-              </div>
-            </div>
-            <Link href="/projects/acmi" className="project-link" aria-label="Ver proyecto Acta Médica" />
-          </article>
+
+        <div className="services-strip-container">
+          {servicesList.map((srv, idx) => {
+            const IconComponent = srv.icon;
+            return (
+              <Link 
+                key={idx} 
+                href={`/services/${srv.slug}`} 
+                className="service-chip"
+              >
+                <span className="service-chip-icon">
+                  <IconComponent size={20} weight="regular" />
+                </span>
+                <span>{srv.title}</span>
+              </Link>
+            );
+          })}
         </div>
-        
+
         <div className="text-center mt-12">
-          <Link href="/projects" className="btn-secondary">
-            Ver portafolio completo
+          <Link 
+            href="/services" 
+            style={{ 
+              display: "inline-flex", 
+              alignItems: "center", 
+              gap: "8px", 
+              color: "var(--text)", 
+              textDecoration: "none", 
+              fontWeight: 600,
+              fontSize: "0.95rem"
+            }}
+          >
+            {t("services.explore")}
           </Link>
+        </div>
+      </section>
+
+      {/* 5. CTA Final (Organic Floating Style) */}
+      <section className="container py-20 text-center">
+        <div className="cta-section">
+          <div className="cta-content">
+            <h2 className="text-3xl font-bold mb-8">{t("cta.title")}</h2>
+            <Link href="/brief" className="btn-primary" style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}>
+              <span>{t("cta.button")}</span>
+              <ArrowRight size={18} weight="bold" />
+            </Link>
+            <p className="mt-8 text-muted">{t("cta.email")}</p>
+          </div>
         </div>
       </section>
     </main>

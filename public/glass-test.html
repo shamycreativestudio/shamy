@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liquid Glass — Test Page</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            /* Fondo con imagen ruidosa para que la distorsión sea visible */
+            background: 
+                linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            color: #fff;
+            padding: 2rem;
+        }
+
+        /* Fondo con patrón para que la distorsión se note */
+        .bg-pattern {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.1) 40px, rgba(255,255,255,0.1) 41px),
+                repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.1) 40px, rgba(255,255,255,0.1) 41px);
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        p.subtitle {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .test-card {
+            text-align: center;
+        }
+
+        .test-card h3 {
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
+
+        .test-card p {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            margin-top: 0.25rem;
+        }
+
+        /* Texto detrás del glass para ver la distorsión */
+        .behind-text {
+            position: relative;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .behind-text .text-bg {
+            font-size: 1.5rem;
+            line-height: 1.4;
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .behind-text glass-element {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        /* Info section */
+        .info-box {
+            background: rgba(0,0,0,0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .info-box code {
+            background: rgba(255,255,255,0.15);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.85em;
+        }
+
+        #browser-info {
+            font-weight: 700;
+            color: #ffd700;
+        }
+
+        /* Navbar test */
+        .navbar-test {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .nav-pill {
+            position: relative;
+            overflow: hidden;
+            border-radius: 50px;
+        }
+
+        .nav-pill-content {
+            position: relative;
+            z-index: 1;
+            padding: 12px 28px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-pill glass-element {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        /* Debug section */
+        .debug-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .debug-item {
+            text-align: center;
+        }
+
+        .debug-item p {
+            margin-top: 0.5rem;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+
+    <div class="content">
+        <h1>🧪 Liquid Glass — Test Page</h1>
+        <p class="subtitle">Página de prueba independiente (sin React/Next.js) para verificar el Web Component</p>
+
+        <!-- Browser info -->
+        <div class="info-box">
+            <strong>Navegador detectado:</strong> <span id="browser-info">Cargando...</span><br>
+            <strong>SVG Filter Support:</strong> <span id="svg-support">Verificando...</span><br>
+            <strong>backdrop-filter:</strong> <span id="backdrop-support">Verificando...</span><br>
+            <strong>Nota:</strong> El efecto de distorsión completo <code>feDisplacementMap</code> solo funciona en navegadores basados en <code>Chromium</code> (Chrome, Edge, Opera, Brave). Firefox y Safari muestran el fallback con blur.
+        </div>
+
+        <!-- ============================================ -->
+        <h2>Test 1: Tamaño Fijo (fixed width/height)</h2>
+        <div class="test-grid">
+            <div class="test-card">
+                <glass-element
+                    width="200"
+                    height="200"
+                    radius="30"
+                    depth="5"
+                    blur="1"
+                    strength="40"
+                    background-color="rgba(255,255,255,0.3)"
+                    chromatic-aberration="2">
+                    <div style="font-size: 3rem;">⭐</div>
+                </glass-element>
+                <h3>Suave</h3>
+                <p>depth=5, strength=40, blur=1, CA=2</p>
+            </div>
+
+            <div class="test-card">
+                <glass-element
+                    width="200"
+                    height="200"
+                    radius="30"
+                    depth="10"
+                    blur="2"
+                    strength="80"
+                    background-color="rgba(255,255,255,0.3)"
+                    chromatic-aberration="4">
+                    <div style="font-size: 3rem;">💎</div>
+                </glass-element>
+                <h3>Medio</h3>
+                <p>depth=10, strength=80, blur=2, CA=4</p>
+            </div>
+
+            <div class="test-card">
+                <glass-element
+                    width="200"
+                    height="200"
+                    radius="30"
+                    depth="20"
+                    blur="3"
+                    strength="150"
+                    background-color="rgba(255,255,255,0.2)"
+                    chromatic-aberration="8">
+                    <div style="font-size: 3rem;">🔮</div>
+                </glass-element>
+                <h3>Intenso</h3>
+                <p>depth=20, strength=150, blur=3, CA=8</p>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <h2>Test 2: Circular (radius alto)</h2>
+        <div class="test-grid">
+            <div class="test-card">
+                <glass-element
+                    width="150"
+                    height="150"
+                    radius="100"
+                    depth="8"
+                    blur="1"
+                    strength="60"
+                    background-color="rgba(255,255,255,0.15)"
+                    chromatic-aberration="3">
+                    <div style="font-size: 2rem;">🌙</div>
+                </glass-element>
+                <h3>Circular</h3>
+                <p>150×150, radius=100</p>
+            </div>
+
+            <div class="test-card">
+                <glass-element
+                    width="80"
+                    height="80"
+                    radius="100"
+                    depth="5"
+                    blur="1"
+                    strength="40"
+                    background-color="rgba(255,255,255,0.05)"
+                    chromatic-aberration="2">
+                    <div style="font-size: 1.5rem;">🖱️</div>
+                </glass-element>
+                <h3>Cursor Size (70-80px)</h3>
+                <p>Simula el tamaño del cursor</p>
+            </div>
+
+            <div class="test-card">
+                <glass-element
+                    width="48"
+                    height="48"
+                    radius="32"
+                    depth="5"
+                    blur="1"
+                    strength="40"
+                    background-color="rgba(255,255,255,0.4)"
+                    chromatic-aberration="2">
+                    <div style="font-size: 1.2rem;">⭐</div>
+                </glass-element>
+                <h3>Ejemplo del README</h3>
+                <p>48×48 (valores del ejemplo original)</p>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <h2>Test 3: Navbar Pills (como en tu sitio)</h2>
+        <div class="navbar-test">
+            <div class="nav-pill">
+                <glass-element
+                    width="120"
+                    height="48"
+                    radius="50"
+                    depth="6"
+                    blur="1"
+                    strength="50"
+                    background-color="rgba(255,255,255,0.08)"
+                    chromatic-aberration="2">
+                </glass-element>
+                <span class="nav-pill-content">Logo</span>
+            </div>
+
+            <div class="nav-pill">
+                <glass-element
+                    width="350"
+                    height="48"
+                    radius="50"
+                    depth="6"
+                    blur="1"
+                    strength="50"
+                    background-color="rgba(255,255,255,0.08)"
+                    chromatic-aberration="2">
+                </glass-element>
+                <span class="nav-pill-content">Inicio &nbsp; Servicios &nbsp; Portafolio &nbsp; Nosotros</span>
+            </div>
+
+            <div class="nav-pill">
+                <glass-element
+                    width="100"
+                    height="48"
+                    radius="50"
+                    depth="6"
+                    blur="1"
+                    strength="50"
+                    background-color="rgba(255,255,255,0.08)"
+                    chromatic-aberration="2">
+                </glass-element>
+                <span class="nav-pill-content">🌙 EN</span>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <h2>Test 4: Auto-size (se adapta al contenido)</h2>
+        <div class="test-grid">
+            <div class="test-card">
+                <glass-element
+                    auto-size
+                    radius="20"
+                    depth="8"
+                    blur="1"
+                    strength="60"
+                    background-color="rgba(255,255,255,0.25)"
+                    chromatic-aberration="3"
+                    style="--glass-padding: 24px 40px;">
+                    <div style="font-size: 1.1rem; font-weight: 600;">Botón Auto-Size</div>
+                </glass-element>
+                <h3>Auto-size Button</h3>
+                <p>Se adapta al contenido interior</p>
+            </div>
+
+            <div class="test-card">
+                <glass-element
+                    auto-size
+                    radius="16"
+                    depth="5"
+                    blur="1"
+                    strength="40"
+                    background-color="rgba(255,255,255,0.2)"
+                    chromatic-aberration="2"
+                    style="--glass-padding: 16px 24px;">
+                    <div>Texto más largo para probar auto-size</div>
+                </glass-element>
+                <h3>Auto-size Text</h3>
+                <p>Texto largo, padding automático</p>
+            </div>
+        </div>
+
+        <!-- ============================================ -->
+        <h2>Test 5: Sobre texto (verificar distorsión real)</h2>
+        <div class="behind-text">
+            <div class="text-bg">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit.<br>
+                Sed do eiusmod tempor incididunt ut labore et dolore.<br>
+                Ut enim ad minim veniam quis nostrud exercitation.<br>
+                Duis aute irure dolor in reprehenderit in voluptate.
+            </div>
+            <glass-element
+                width="300"
+                height="150"
+                radius="24"
+                depth="10"
+                blur="2"
+                strength="80"
+                background-color="rgba(255,255,255,0.15)"
+                chromatic-aberration="4">
+            </glass-element>
+        </div>
+
+        <!-- ============================================ -->
+        <h2>Test 6: Debug Mode (muestra el mapa de desplazamiento)</h2>
+        <div class="debug-grid">
+            <div class="debug-item">
+                <glass-element
+                    width="200"
+                    height="200"
+                    radius="30"
+                    depth="10"
+                    blur="2"
+                    strength="80"
+                    chromatic-aberration="4"
+                    debug="true">
+                </glass-element>
+                <p>debug=true — Muestra el SVG displacement map en vez del efecto</p>
+            </div>
+
+            <div class="debug-item">
+                <glass-element
+                    width="200"
+                    height="200"
+                    radius="30"
+                    depth="10"
+                    blur="2"
+                    strength="80"
+                    chromatic-aberration="4">
+                </glass-element>
+                <p>debug=false — Efecto normal para comparar</p>
+            </div>
+        </div>
+
+        <br><br>
+        <div class="info-box">
+            <strong>Diagnóstico:</strong><br>
+            Si ves los cuadros/círculos con un efecto de <strong>distorsión real</strong> del fondo (como si miraras a través de cristal), el componente funciona.<br>
+            Si solo ves una capa semi-transparente <strong>sin distorsión</strong>, estás en un navegador sin soporte de SVG Filters en backdrop-filter (Firefox/Safari) y estás viendo el fallback.<br><br>
+            <strong>Click en cualquier elemento</strong> para ver la animación de intensificación de la distorsión.
+        </div>
+    </div>
+
+    <!-- SCRIPTS: orden importante - displacement-utils ANTES de glass-element -->
+    <script src="displacement-utils.js"></script>
+    <script src="glass-element.js"></script>
+
+    <script>
+        // Detectar navegador y mostrar info
+        const ua = navigator.userAgent;
+        let browser = 'Desconocido';
+        if (/Edg/.test(ua)) browser = 'Microsoft Edge (Chromium) ✅';
+        else if (/Chrome/.test(ua) && !/Edg/.test(ua)) browser = 'Google Chrome ✅';
+        else if (/Firefox/.test(ua)) browser = 'Firefox ❌ (sin soporte SVG filter en backdrop)';
+        else if (/Safari/.test(ua) && !/Chrome/.test(ua)) browser = 'Safari ❌ (sin soporte SVG filter en backdrop)';
+        else if (/Opera|OPR/.test(ua)) browser = 'Opera (Chromium) ✅';
+        else if (/Brave/.test(ua)) browser = 'Brave (Chromium) ✅';
+
+        document.getElementById('browser-info').textContent = browser;
+
+        // Verificar backdrop-filter
+        const testDiv = document.createElement('div');
+        testDiv.style.backdropFilter = 'blur(1px)';
+        document.getElementById('backdrop-support').textContent = 
+            testDiv.style.backdropFilter ? '✅ Soportado' : '❌ No soportado';
+
+        // Verificar SVG filter en backdrop
+        testDiv.style.backdropFilter = 'url(#test)';
+        document.getElementById('svg-support').textContent = 
+            testDiv.style.backdropFilter.includes('url') ? '✅ SVG Filters en backdrop soportados' : '❌ SVG Filters en backdrop NO soportados';
+    </script>
+</body>
+</html>

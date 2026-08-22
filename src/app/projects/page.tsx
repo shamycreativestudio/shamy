@@ -1,0 +1,142 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { motion, AnimatePresence } from "motion/react";
+import { projects } from "@/data/projects";
+import { useTranslation } from "@/components/TranslationProvider";
+
+export default function ProjectsPage() {
+  const { t } = useTranslation();
+  const [filter, setFilter] = useState("all");
+
+  const filterTabs = [
+    { key: "all", label: t("filter.all") },
+    { key: "branding", label: t("filter.branding") },
+    { key: "coding", label: t("filter.coding") },
+    { key: "animating", label: t("filter.animating") },
+  ];
+
+  const filteredProjects = filter === "all" 
+    ? projects 
+    : projects.filter(p => p.category === filter);
+
+  return (
+    <main id="page-content">
+      {/* 1. Minimal Portfolio Hero */}
+      <section className="hero-asymmetric" style={{ minHeight: "45vh", paddingTop: "8rem", paddingBottom: "2rem" }}>
+        <div className="hero-ambient-orb" aria-hidden="true" />
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+          <motion.h1 
+            className="hero-headline"
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {t("nav.work")}
+          </motion.h1>
+          <motion.p 
+            className="hero-desc"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {t("hero.subtitle")}
+          </motion.p>
+        </div>
+      </section>
+
+      {/* 2. Filter Pills */}
+      <section className="container" style={{ paddingTop: "1rem" }}>
+        <div className="filters" style={{ justifyContent: "flex-start", marginBottom: "2.5rem" }}>
+          {filterTabs.map((tab) => {
+            const isActive = filter === tab.key;
+            return (
+              <button
+                key={tab.key}
+                type="button"
+                className="filter-pill-wrapper"
+                onClick={() => setFilter(tab.key)}
+                style={{
+                  position: "relative",
+                  background: "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: "8px 20px",
+                  borderRadius: "50px",
+                  fontSize: "0.85rem",
+                  fontWeight: isActive ? 600 : 400,
+                  color: isActive ? "var(--bg)" : "var(--text)",
+                  transition: "color 0.25s ease",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="portfolio-filter-pill"
+                    className="filter-active-pill"
+                    transition={{
+                      type: "spring",
+                      stiffness: 400,
+                      damping: 30,
+                    }}
+                  />
+                )}
+                <span style={{ position: "relative", zIndex: 1 }}>
+                  {tab.label}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* 3. Projects Grid v2 with 4:3 Ratio and Integrated Glass Overlay */}
+        <motion.div 
+          className="portfolio-grid-v2"
+          layout
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.length > 0 ? (
+              filteredProjects.map((project, idx) => (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95, filter: "blur(6px)" }}
+                  animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                  exit={{ opacity: 0, scale: 0.95, filter: "blur(6px)" }}
+                  transition={{ duration: 0.4, delay: idx * 0.04, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <Link 
+                    href={`/projects/${project.id}`} 
+                    className="project-card-v2"
+                  >
+                    <div className="card-v2-media">
+                      <Image
+                        src={`/${project.coverImage}`}
+                        alt={t(project.titleKey)}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="card-v2-img"
+                      />
+                      <div className="card-v2-overlay">
+                        <h2 className="card-v2-title">{t(project.titleKey)}</h2>
+                        <span className="card-v2-category">{project.category} · {project.year}</span>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))
+            ) : (
+              <p className="no-results" style={{ gridColumn: "1 / -1", textAlign: "center", padding: "4rem 0" }}>
+                {t("portfolio.noResults")}
+              </p>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </section>
+    </main>
+  );
+}
