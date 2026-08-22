@@ -25,7 +25,7 @@ export default function ProjectsPage() {
   return (
     <main id="page-content">
       {/* 1. Minimal Portfolio Hero */}
-      <section className="hero-asymmetric" style={{ minHeight: "45vh", paddingTop: "8rem", paddingBottom: "2rem" }}>
+      <section className="hero-asymmetric" style={{ minHeight: "40vh", paddingTop: "7.5rem", paddingBottom: "2rem" }}>
         <div className="hero-ambient-orb" aria-hidden="true" />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <motion.h1 
@@ -34,7 +34,7 @@ export default function ProjectsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            {t("nav.work")}
+            {t("portfolio.title") || t("nav.work")}
           </motion.h1>
           <motion.p 
             className="hero-desc"
@@ -42,7 +42,7 @@ export default function ProjectsPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
           >
-            {t("hero.subtitle")}
+            {t("portfolio.subtitle") || t("hero.subtitle")}
           </motion.p>
         </div>
       </section>
