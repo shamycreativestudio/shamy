@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import LiquidGlass from "./LiquidGlass";
 
 type CursorMode = "default" | "subtle" | "crystal";
@@ -8,6 +9,16 @@ type CursorMode = "default" | "subtle" | "crystal";
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement>(null);
   const [mode, setMode] = useState<CursorMode>("default");
+  const pathname = usePathname();
+
+  // Reset cursor on route navigation
+  useEffect(() => {
+    const cursor = cursorRef.current;
+    if (cursor) {
+      cursor.className = "custom-cursor";
+      setMode("default");
+    }
+  }, [pathname]);
 
   useEffect(() => {
     const cursor = cursorRef.current;
@@ -17,8 +28,6 @@ export default function CustomCursor() {
     let mouseY = window.innerHeight / 2;
     let cursorX = window.innerWidth / 2;
     let cursorY = window.innerHeight / 2;
-    let velX = 0;
-    let velY = 0;
 
     const onMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
@@ -31,12 +40,15 @@ export default function CustomCursor() {
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      if (target.closest(".project-card")) {
+      if (target.closest(".project-card, .project-card-v2")) {
         cursor.className = "custom-cursor active-crystal";
         setMode("crystal");
-      } else if (target.closest("a, button, .nav-capsule, .ui-toggle, .filter-btn")) {
+      } else if (target.closest("a, button, .nav-capsule, .ui-toggle, .filter-btn, .filter-pill-wrapper")) {
         cursor.className = "custom-cursor active-subtle";
         setMode("subtle");
+      } else {
+        cursor.className = "custom-cursor";
+        setMode("default");
       }
     };
 
@@ -44,17 +56,35 @@ export default function CustomCursor() {
       const target = e.target as HTMLElement | null;
       if (!target) return;
 
-      if (target.closest(".project-card")) {
+      if (target.closest(".project-card, .project-card-v2")) {
         cursor.classList.remove("active-crystal");
         setMode((prev) => (prev === "crystal" ? "default" : prev));
-      } else if (target.closest("a, button, .nav-capsule, .ui-toggle, .filter-btn")) {
+      } else if (target.closest("a, button, .nav-capsule, .ui-toggle, .filter-btn, .filter-pill-wrapper")) {
         cursor.classList.remove("active-subtle");
         setMode((prev) => (prev === "subtle" ? "default" : prev));
       }
     };
 
+    const onPointerUp = () => {
+      // Re-evaluate or reset on click
+      setTimeout(() => {
+        const el = document.elementFromPoint(mouseX, mouseY);
+        if (!el || !el.closest(".project-card, .project-card-v2, a, button, .nav-capsule, .ui-toggle, .filter-btn, .filter-pill-wrapper")) {
+          cursor.className = "custom-cursor";
+          setMode("default");
+        }
+      }, 50);
+    };
+
+    const onMouseLeave = () => {
+      cursor.className = "custom-cursor";
+      setMode("default");
+    };
+
     window.addEventListener("mouseover", onMouseOver, { passive: true });
     window.addEventListener("mouseout", onMouseOut, { passive: true });
+    window.addEventListener("pointerup", onPointerUp, { passive: true });
+    document.addEventListener("mouseleave", onMouseLeave);
 
     let animFrame: number;
     const animate = () => {
@@ -78,6 +108,8 @@ export default function CustomCursor() {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mouseover", onMouseOver);
       window.removeEventListener("mouseout", onMouseOut);
+      window.removeEventListener("pointerup", onPointerUp);
+      document.removeEventListener("mouseleave", onMouseLeave);
       cancelAnimationFrame(animFrame);
     };
   }, []);

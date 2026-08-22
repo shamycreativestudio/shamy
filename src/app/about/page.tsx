@@ -90,7 +90,7 @@ export default function AboutPage() {
               </motion.div>
             </div>
 
-            {/* Right Column: Founder Cutout PNG aligned to bottom */}
+            {/* Right Column: Founder Cutout PNG on Architectural Arch Stage */}
             <motion.div
               className="about-clean-media"
               initial={{ opacity: 0, y: 30 }}
@@ -98,7 +98,8 @@ export default function AboutPage() {
               transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="about-png-glow" aria-hidden="true" />
-              <div className="about-png-container">
+              <div className="about-portrait-stage">
+                <div className="about-portrait-backdrop" aria-hidden="true" />
                 <Image
                   src="/assets/img/shamy-founder.png"
                   alt="Samuel Woodcock - Shamy Creative Studio"
