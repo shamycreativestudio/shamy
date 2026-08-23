@@ -1984,6 +1984,56 @@ a.project-card,
 }
 
 /* ==========================================================================
+   Standardized Pill Button with Ethereal Glow
+   ========================================================================== */
+.btn-pill-glow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 50px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: relative;
+  cursor: pointer;
+}
+
+.btn-pill-glow:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.14), 0 8px 24px rgba(0, 0, 0, 0.25);
+  color: var(--text);
+}
+
+body:not(.dark-mode) .btn-pill-glow:hover {
+  border-color: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.1), 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.btn-pill-glow svg {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+}
+
+.btn-pill-glow:hover svg.arrow-right {
+  transform: translateX(4px);
+}
+
+.btn-pill-glow:hover svg.arrow-left {
+  transform: translateX(-4px);
+}
+
+.btn-pill-glow:hover svg.arrow-up-right {
+  transform: translate(3px, -3px);
+}
+
+/* ==========================================================================
    Project Filmstrip Styles
    ========================================================================== */
 .filmstrip-container {
@@ -2233,6 +2283,26 @@ a.project-card,
 .bento-card:hover .bento-icon-wrapper {
   transform: scale(1.1) rotate(6deg);
   border-color: var(--text);
+}
+
+.bento-arrow-indicator {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card:hover .bento-arrow-indicator {
+  border-color: var(--text);
+  color: var(--text);
+  transform: translate(2px, -2px) scale(1.08);
+  box-shadow: 0 0 16px rgba(255, 255, 255, 0.12);
 }
 
 .bento-card-title {

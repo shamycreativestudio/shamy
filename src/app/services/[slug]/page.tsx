@@ -184,10 +184,10 @@ export default function ServiceDetailPage({
             </div>
             <Link 
               href="/projects" 
-              style={{ display: "inline-flex", alignItems: "center", gap: "6px", color: "var(--text)", textDecoration: "none", fontWeight: 600, fontSize: "0.9rem" }}
+              className="btn-pill-glow"
             >
               <span>{currentLang === "es" ? "Ver todo el portafolio" : "Explore full portfolio"}</span>
-              <ArrowUpRight size={16} weight="bold" />
+              <ArrowUpRight size={16} weight="bold" className="arrow-up-right" />
             </Link>
           </div>
 

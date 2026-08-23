@@ -126,6 +126,7 @@ export default function ProjectsPage() {
                         src={`/${project.coverImage}`}
                         alt={t(project.titleKey)}
                         fill
+                        priority={idx < 4}
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className="card-v2-img"
                       />

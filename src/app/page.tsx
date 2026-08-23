@@ -108,17 +108,10 @@ export default function Home() {
         <div className="text-center mt-12">
           <Link 
             href="/services" 
-            style={{ 
-              display: "inline-flex", 
-              alignItems: "center", 
-              gap: "8px", 
-              color: "var(--text)", 
-              textDecoration: "none", 
-              fontWeight: 600,
-              fontSize: "0.95rem"
-            }}
+            className="btn-pill-glow"
           >
-            {t("services.explore")}
+            <span>{t("services.explore")}</span>
+            <ArrowRight size={16} weight="bold" className="arrow-right" />
           </Link>
         </div>
       </section>

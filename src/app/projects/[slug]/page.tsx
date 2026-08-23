@@ -52,24 +52,11 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
           >
             <Link 
               href="/projects" 
-              style={{ 
-                display: "inline-flex", 
-                alignItems: "center", 
-                gap: "8px", 
-                color: "rgba(255, 255, 255, 0.8)", 
-                textDecoration: "none", 
-                fontSize: "0.85rem", 
-                fontWeight: 500,
-                marginBottom: "1.5rem",
-                background: "rgba(0, 0, 0, 0.4)",
-                backdropFilter: "blur(8px)",
-                padding: "6px 14px",
-                borderRadius: "50px",
-                border: "1px solid rgba(255, 255, 255, 0.2)"
-              }}
+              className="btn-pill-glow"
+              style={{ marginBottom: "1.75rem" }}
             >
-              <ArrowLeft size={14} weight="bold" />
-              <span>{t("nav.work")}</span>
+              <ArrowLeft size={16} weight="bold" className="arrow-left" />
+              <span>{lang === "en" ? "Back to portfolio" : "Volver al portafolio"}</span>
             </Link>
 
             <div>
@@ -201,13 +188,14 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
                   style={{ width: "100%", height: "auto", display: "block" }}
                 />
               ) : (
-                <div style={{ position: "relative", width: "100%", minHeight: "400px" }}>
+                <div style={{ position: "relative", width: "100%", minHeight: "200px" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img 
                     src={`/${mediaSrc}`}
                     alt={`${title} - elemento ${idx + 1}`}
-                    loading="lazy"
-                    style={{ width: "100%", height: "auto", display: "block" }}
+                    loading={idx < 2 ? "eager" : "lazy"}
+                    decoding="async"
+                    style={{ width: "100%", height: "auto", display: "block", transition: "opacity 0.3s ease" }}
                   />
                 </div>
               )}

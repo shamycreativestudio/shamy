@@ -8,7 +8,8 @@ import {
   BookOpen, 
   Desktop, 
   PlayCircle,
-  ArrowRight
+  ArrowRight,
+  ArrowUpRight
 } from "@phosphor-icons/react";
 import { useTranslation } from "@/components/TranslationProvider";
 
@@ -118,12 +119,11 @@ export default function ServicesPage() {
                     <div>
                       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
                         <div className="bento-icon-wrapper" style={{ margin: 0 }}>
-                          <IconComponent size={28} weight="regular" />
+                          <IconComponent size={26} weight="regular" />
                         </div>
-                        <span style={{ fontSize: "0.85rem", color: "var(--muted)", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: "4px" }}>
-                          <span>Ver detalle</span>
-                          <ArrowRight size={14} weight="bold" />
-                        </span>
+                        <div className="bento-arrow-indicator">
+                          <ArrowUpRight size={18} weight="bold" />
+                        </div>
                       </div>
                       <h2 className="bento-card-title">{srv.title}</h2>
                     </div>
