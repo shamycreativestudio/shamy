@@ -16,22 +16,19 @@ export default function AboutPage() {
 
   const values = [
     {
-      icon: Eye,
+      num: "01",
       title: t("about.values.v1.title"),
       desc: t("about.values.v1.desc"),
-      highlight: "01 / Precisión",
     },
     {
-      icon: Target,
+      num: "02",
       title: t("about.values.v2.title"),
       desc: t("about.values.v2.desc"),
-      highlight: "02 / Estrategia",
     },
     {
-      icon: Crown,
+      num: "03",
       title: t("about.values.v3.title"),
       desc: t("about.values.v3.desc"),
-      highlight: "03 / Impacto",
     },
   ];
 
@@ -116,39 +113,33 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 2. Studio Values & Philosophy: 3 Cards */}
+      {/* 2. Studio Values & Philosophy: Architectural Layout */}
       <section className="about-values-clean">
         <div className="container">
           <div className="section-header text-center" style={{ marginBottom: "2.5rem" }}>
-            <h2 className="text-3xl font-bold mb-2">{t("about.philosophy.title")}</h2>
-            <p className="text-muted mx-auto" style={{ maxWidth: "45ch" }}>
+            <h2 className="text-3xl font-bold mb-3">{t("about.philosophy.title")}</h2>
+            <p className="text-muted mx-auto" style={{ maxWidth: "50ch" }}>
               {t("about.philosophy.subtitle")}
             </p>
           </div>
 
-          <div className="about-values-grid-clean">
-            {values.map((v, idx) => {
-              const Icon = v.icon;
-              return (
-                <motion.div
-                  key={idx}
-                  className="about-value-card-clean"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{ duration: 0.45, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                >
-                  <div className="value-clean-top">
-                    <div className="value-clean-icon">
-                      <Icon size={22} weight="duotone" />
-                    </div>
-                    <span className="value-clean-tag">{v.highlight}</span>
-                  </div>
-                  <h3 className="value-clean-title">{v.title}</h3>
-                  <p className="value-clean-desc">{v.desc}</p>
-                </motion.div>
-              );
-            })}
+          <div className="about-values-grid">
+            {values.map((v, idx) => (
+              <motion.div
+                key={idx}
+                className="process-step"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <div className="process-step-header">
+                  <div className="process-step-num">{v.num}</div>
+                  <h3 className="process-step-title">{v.title}</h3>
+                </div>
+                <p className="process-step-desc">{v.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
