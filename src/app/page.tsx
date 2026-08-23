@@ -36,10 +36,8 @@ export default function Home() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <span className="hero-line">SHAMY</span>
-                <span className="hero-line hero-line-accent">STUDIO</span>
-              </motion.h1>
+                dangerouslySetInnerHTML={{ __html: t("hero.title") }}
+              />
               
               <motion.p 
                 className="hero-desc"

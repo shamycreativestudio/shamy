@@ -89,7 +89,7 @@ export default function ServiceDetailPage({
         </div>
       </section>
 
-      {/* 2. OVERVIEW & INTEGRATED STRATEGIC VISION */}
+      {/* 2. OVERVIEW & STRATEGIC VISION */}
       <section className="container" style={{ paddingTop: "1rem", paddingBottom: "2.5rem" }}>
         <div className="service-overview-grid">
           <div>
@@ -102,23 +102,9 @@ export default function ServiceDetailPage({
             <p style={{ color: "var(--muted)", fontSize: "1.05rem", lineHeight: 1.65, marginBottom: "1.25rem" }}>
               {overview.p1}
             </p>
-            <p style={{ color: "var(--muted)", fontSize: "1.05rem", lineHeight: 1.65, marginBottom: "2rem" }}>
+            <p style={{ color: "var(--muted)", fontSize: "1.05rem", lineHeight: 1.65 }}>
               {overview.p2}
             </p>
-
-            {/* Strategic Impact Highlights */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1.5rem", marginTop: "1.5rem" }}>
-              {benefits.map((ben, idx) => (
-                <div key={idx} style={{ borderLeft: "2px solid var(--border)", paddingLeft: "1rem" }}>
-                  <h4 style={{ fontSize: "1rem", fontWeight: 700, marginBottom: "0.25rem", color: "var(--text)" }}>
-                    {ben.title}
-                  </h4>
-                  <p style={{ color: "var(--muted)", fontSize: "0.88rem", lineHeight: 1.5, margin: 0 }}>
-                    {ben.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
 
           <div style={{
@@ -169,10 +155,8 @@ export default function ServiceDetailPage({
         <div className="deliverables-grid">
           {deliverables.map((deliv, idx) => (
             <div key={idx} className="deliverable-card">
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.85rem" }}>
-                <div className="deliverable-card-icon">
-                  <CheckCircle size={20} weight="fill" />
-                </div>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1rem" }}>
+                <CheckCircle size={22} weight="fill" style={{ color: "var(--text)", flexShrink: 0 }} />
                 {deliv.badge && (
                   <span style={{ fontSize: "0.75rem", padding: "0.2rem 0.65rem", borderRadius: "50px", background: "rgba(var(--text-rgb), 0.06)", color: "var(--text)", fontWeight: 600 }}>
                     {deliv.badge}
