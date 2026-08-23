@@ -27,7 +27,6 @@ export default function ProjectsPage() {
     <main id="page-content">
       {/* 1. Minimal Portfolio Hero */}
       <section className="hero-asymmetric">
-        <div className="hero-ambient-orb" aria-hidden="true" />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <motion.h1 
             className="hero-headline"

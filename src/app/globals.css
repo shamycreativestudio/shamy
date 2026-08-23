@@ -1980,20 +1980,7 @@ a.project-card,
 }
 
 .hero-ambient-orb {
-  position: absolute;
-  right: 5%;
-  top: 30%;
-  width: 380px;
-  height: 380px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 70%);
-  filter: blur(40px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-body:not(.dark-mode) .hero-ambient-orb {
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0) 70%);
+  display: none !important;
 }
 
 /* ==========================================================================
@@ -2301,9 +2288,9 @@ body:not(.dark-mode) .hero-ambient-orb {
 
 .process-step-header {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.25rem;
+  align-items: baseline;
+  gap: 0.65rem;
+  margin-bottom: 0.35rem;
 }
 
 .process-step-num {
@@ -2312,18 +2299,21 @@ body:not(.dark-mode) .hero-ambient-orb {
   color: var(--muted);
   letter-spacing: 0.5px;
   flex-shrink: 0;
-  line-height: 1;
+  line-height: 1.2;
 }
 
 .process-step-title {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
 }
 
 .process-step-desc {
   color: var(--muted);
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.55;
+  margin: 0;
 }
 
 /* ==========================================================================
@@ -2759,8 +2749,9 @@ body.dark-mode .about-photo-img {
 .hero-desc {
   font-size: clamp(1.05rem, 1.8vw, 1.2rem);
   color: var(--muted);
-  line-height: 1.65;
-  max-width: 54ch;
+  line-height: 1.6;
+  max-width: 58ch;
+  text-wrap: pretty;
   margin-bottom: 2rem;
 }
 

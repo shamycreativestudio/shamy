@@ -26,23 +26,24 @@ export default function Home() {
 
   return (
     <main id="page-content">
-      {/* 1. Asymmetric Hero Section */}
+      {/* 1. Asymmetric Fluid Hero */}
       <section className="hero-asymmetric">
-        <div className="hero-ambient-orb" aria-hidden="true" />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div className="hero-grid-layout">
-            <div>
+            <div className="hero-text-block">
               <motion.h1 
                 className="hero-headline"
                 initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                dangerouslySetInnerHTML={{ __html: t("hero.title") }}
-              />
+              >
+                <span className="hero-line">SHAMY</span>
+                <span className="hero-line hero-line-accent">STUDIO</span>
+              </motion.h1>
               
               <motion.p 
                 className="hero-desc"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
               >
@@ -83,7 +84,7 @@ export default function Home() {
       <section className="container py-20">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-4">{t("services.title")}</h2>
-          <p className="text-muted mx-auto" style={{ maxWidth: "45ch" }}>
+          <p className="text-muted mx-auto" style={{ maxWidth: "75ch" }}>
             {t("services.strip.subtitle")}
           </p>
         </div>

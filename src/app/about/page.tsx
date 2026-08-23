@@ -36,7 +36,6 @@ export default function AboutPage() {
     <main id="page-content">
       {/* 1. Asymmetric About Hero: Left Content & Right Bleed PNG */}
       <section className="about-hero-clean">
-        <div className="hero-ambient-orb" aria-hidden="true" />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <div className="about-clean-grid">
             {/* Left Column: Title, Subtitle, Story, Stats */}
@@ -94,7 +93,6 @@ export default function AboutPage() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             >
-              <div className="about-png-glow" aria-hidden="true" />
               <div className="popout-avatar-stage">
                 <div className="avatar-circle-bg" aria-hidden="true" />
                 <div className="avatar-crop-wrapper">

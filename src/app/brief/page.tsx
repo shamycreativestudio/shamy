@@ -11,7 +11,6 @@ export default function BriefPage() {
   return (
     <main id="page-content">
       <section className="hero-asymmetric" style={{ minHeight: "80vh", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center" }}>
-        <div className="hero-ambient-orb" aria-hidden="true" />
         <div className="container" style={{ position: "relative", zIndex: 1, maxWidth: "680px" }}>
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}

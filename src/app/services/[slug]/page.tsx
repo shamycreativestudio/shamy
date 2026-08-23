@@ -61,7 +61,6 @@ export default function ServiceDetailPage({
     <main id="page-content" className="service-detail-main">
       {/* 1. HERO SECTION */}
       <section className="service-hero">
-        <div className="hero-ambient-orb" aria-hidden="true" />
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
