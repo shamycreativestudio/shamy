@@ -25,8 +25,8 @@ export default function ProjectsPage() {
 
   return (
     <main id="page-content">
-      {/* 1. Minimal Portfolio Hero */}
-      <section className="hero-asymmetric" style={{ paddingBottom: "1.5rem" }}>
+      {/* 1. Portfolio Hero & Interactive Grid */}
+      <section className="hero-asymmetric" style={{ paddingBottom: "5rem" }}>
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <motion.h1 
             className="hero-headline"
@@ -38,18 +38,16 @@ export default function ProjectsPage() {
           </motion.h1>
           <motion.p 
             className="hero-desc"
+            style={{ marginBottom: 0 }}
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
           >
             {t("portfolio.subtitle") || t("hero.subtitle")}
           </motion.p>
-        </div>
-      </section>
 
-      {/* 2. Filter Pills */}
-      <section className="container" style={{ paddingTop: "0" }}>
-        <div className="filters" style={{ justifyContent: "flex-start", marginBottom: "2.5rem", gap: "8px" }}>
+          {/* 2. Filter Pills */}
+          <div className="filters" style={{ justifyContent: "flex-start", marginTop: "4.5rem", marginBottom: "2.5rem", gap: "8px" }}>
           {filterTabs.map((tab) => {
             const isActive = filter === tab.key;
             return (
@@ -146,6 +144,7 @@ export default function ProjectsPage() {
             )}
           </AnimatePresence>
         </motion.div>
+        </div>
       </section>
 
       {/* 4. CTA Final */}

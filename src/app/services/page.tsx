@@ -68,7 +68,7 @@ export default function ServicesPage() {
   return (
     <main id="page-content">
       {/* 1. Services Hero & Bento Grid */}
-      <section className="hero-asymmetric" style={{ paddingBottom: "4rem" }}>
+      <section className="hero-asymmetric" style={{ paddingBottom: "4.5rem" }}>
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <motion.h1 
             className="hero-headline"
@@ -80,6 +80,7 @@ export default function ServicesPage() {
           </motion.h1>
           <motion.p 
             className="hero-desc"
+            style={{ marginBottom: 0 }}
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
@@ -88,7 +89,7 @@ export default function ServicesPage() {
           </motion.p>
 
           {/* Interactive Bento Services Grid */}
-          <div className="service-bento-grid" style={{ marginTop: "3.5rem", marginBottom: "3.5rem" }}>
+          <div className="service-bento-grid" style={{ marginTop: "4.5rem", marginBottom: "0" }}>
             {services.map((srv, idx) => {
               const IconComponent = srv.icon;
               return (
