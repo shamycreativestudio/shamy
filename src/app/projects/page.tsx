@@ -26,7 +26,7 @@ export default function ProjectsPage() {
   return (
     <main id="page-content">
       {/* 1. Minimal Portfolio Hero */}
-      <section className="hero-asymmetric">
+      <section className="hero-asymmetric" style={{ paddingBottom: "1.5rem" }}>
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <motion.h1 
             className="hero-headline"
@@ -48,7 +48,7 @@ export default function ProjectsPage() {
       </section>
 
       {/* 2. Filter Pills */}
-      <section className="container" style={{ paddingTop: "1rem" }}>
+      <section className="container" style={{ paddingTop: "0" }}>
         <div className="filters" style={{ justifyContent: "flex-start", marginBottom: "2.5rem", gap: "8px" }}>
           {filterTabs.map((tab) => {
             const isActive = filter === tab.key;

@@ -68,7 +68,7 @@ export default function ServicesPage() {
   return (
     <main id="page-content">
       {/* 1. Services Hero & Bento Grid */}
-      <section className="hero-asymmetric" style={{ paddingBottom: "3rem" }}>
+      <section className="hero-asymmetric" style={{ paddingBottom: "4rem" }}>
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <motion.h1 
             className="hero-headline"
@@ -88,7 +88,7 @@ export default function ServicesPage() {
           </motion.p>
 
           {/* Interactive Bento Services Grid */}
-          <div className="service-bento-grid">
+          <div className="service-bento-grid" style={{ marginTop: "3.5rem", marginBottom: "3.5rem" }}>
             {services.map((srv, idx) => {
               const IconComponent = srv.icon;
               return (
