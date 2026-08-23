@@ -2307,19 +2307,12 @@ body:not(.dark-mode) .hero-ambient-orb {
 }
 
 .process-step-num {
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  background: var(--panel);
-  border: 1px solid var(--border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-weight: 700;
   font-size: 0.85rem;
   color: var(--muted);
   letter-spacing: 0.5px;
   flex-shrink: 0;
+  line-height: 1;
 }
 
 .process-step-title {
