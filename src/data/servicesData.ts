@@ -68,13 +68,13 @@ export const servicesData: ServiceDetail[] = [
     },
     overview: {
       es: {
-        p1: "Una identidad visual sin base estratégica es solo decoración. En Shamy Creative Studio concebimos la estrategia de marca como los cimientos sobre los cuales se erige cada decisión creativa, comercial y comunicacional de tu negocio.",
-        p2: "Analizamos en profundidad tu mercado, desciframos los arquetipos de tu audiencia y formulamos una propuesta de valor diferencial que te posiciona de manera orgánica y contundente por encima del ruido de la competencia.",
+        p1: "Una identidad visual sin base estratégica es solo decoración. Concebimos la estrategia como los cimientos que guían cada decisión creativa, comercial y comunicacional de tu negocio.",
+        p2: "Analizamos tu mercado y audiencia para formular una propuesta de valor diferencial que posicione tu marca con claridad por encima del ruido.",
         quote: "No diseñamos para decorar; estructuramos marcas para trascender y liderar su sector."
       },
       en: {
-        p1: "Visual identity without strategic grounding is merely decoration. At Shamy Creative Studio, we treat brand strategy as the bedrock upon which every creative, commercial, and communicative decision is built.",
-        p2: "We conduct deep industry analysis, decode target audience archetypes, and formulate a distinctive value proposition that organically elevates your brand above market noise.",
+        p1: "Visual identity without strategy is merely decorative. We define the strategic foundation that directs every creative, commercial, and brand decision.",
+        p2: "We analyze your market and audience to build a distinctive value proposition that positions your brand with clarity and impact.",
         quote: "We don't design to decorate; we engineer brands to endure and lead their industry."
       }
     },
@@ -251,13 +251,13 @@ export const servicesData: ServiceDetail[] = [
     },
     overview: {
       es: {
-        p1: "La identidad visual es la manifestación sensorial de tu estrategia. Creamos identidades con carácter: no nos limitamos a diseñar un logotipo, sino un ecosistema gráfico coherente compuesto por sistemas tipográficos, paletas cromáticas medidas al milímetro, texturas y patrones iconográficos.",
-        p2: "Nuestro enfoque combina la pureza del diseño suizo contemporáneo con una sensibilidad digital vanguardista, garantizando que tu marca luzca impecable tanto en una pantalla OLED de 120Hz como en una impresión offset de alta gama.",
+        p1: "La identidad visual es la cara tangible de tu negocio. Diseñamos universos gráficos coherentes donde logotipo, tipografía y color comunican autoridad y rigor.",
+        p2: "Creamos sistemas de diseño escalables que garantizan una presencia impecable y memorable en cualquier punto de contacto físico o digital.",
         quote: "Construimos lenguajes visuales que respiran, evolucionan y cautivan a primera vista."
       },
       en: {
-        p1: "Visual identity is the sensory embodiment of your brand strategy. We craft character-driven identities: extending far beyond simple logos to build cohesive graphic ecosystems featuring rigorous typography, meticulously balanced palettes, and bespoke iconographies.",
-        p2: "Our methodology fuses the clarity of contemporary Swiss design with cutting-edge digital aesthetics, ensuring your brand looks peerless whether on a 120Hz OLED display or a premium offset print piece.",
+        p1: "Visual identity is the tangible expression of your business. We build cohesive graphic systems where logo, typography, and color project authority and craft.",
+        p2: "We deliver scalable design systems that maintain flawless brand presence across digital, print, and physical touchpoints.",
         quote: "We construct visual languages that breathe, adapt, and mesmerize at first glance."
       }
     },
@@ -444,13 +444,13 @@ export const servicesData: ServiceDetail[] = [
     },
     overview: {
       es: {
-        p1: "El diseño editorial es el arte de estructurar la información para que la lectura sea un placer fluido y estéticamente enriquecedor. Tratamos cada página como una composición arquitectónica donde los márgenes, las retículas y los blancos respiran con perfecta sincronía.",
-        p2: "Desde libros de arte de edición limitada y memorias institucionales hasta catálogos de moda y publicaciones periódicas, combinamos la maestría tipográfica tradicional con acabados de producción especiales (serigrafía, tintas directas, encuadernaciones artesanales).",
+        p1: "El diseño editorial transforma información compleja en lecturas fluidas y memorables. Cuidamos cada detalle de maquetación, ritmo visual y jerarquía tipográfica.",
+        p2: "Diseñamos libros, catálogos y memorias corporativas con personalidad, pensadas para destacar tanto en papel como en formatos digitales interactivos.",
         quote: "El diseño editorial transforma información densa en una experiencia cultural y sensorial memorable."
       },
       en: {
-        p1: "Editorial design is the craft of orchestrating information so reading becomes a fluid, aesthetically rewarding journey. We treat every spread as an architectural composition where margins, grids, and negative space breathe in perfect harmony.",
-        p2: "From limited-edition art books and corporate annual reports to high-fashion catalogs and digital periodicals, we unite classical typography with sophisticated production finishes (screen printing, spot inks, custom binding).",
+        p1: "Editorial design translates complex information into engaging, fluid reading experiences with rigorous typographic hierarchy and visual rhythm.",
+        p2: "We design publications, books, and corporate reports that command attention in both print and interactive digital formats.",
         quote: "Editorial design elevates complex information into a tactile, sensory cultural experience."
       }
     },
@@ -637,13 +637,13 @@ export const servicesData: ServiceDetail[] = [
     },
     overview: {
       es: {
-        p1: "Diseñamos interfaces digitales que equilibran una estética vanguardista con una usabilidad impecable. Nos alejamos de las plantillas genéricas para crear experiencias inmersivas que cautivan al usuario y simplifican flujos complejos.",
-        p2: "Implementamos sistemas de diseño escalables en Figma con tokens de diseño, estados interactivos y micro-animaciones pensadas para desarrollo frontend fluido en Next.js y React.",
+        p1: "Diseñamos productos digitales donde la estética vanguardista y la usabilidad conviven en perfecto equilibrio. Cada flujo está pensado para convertir y deleitar.",
+        p2: "Desde wireframes hasta design systems en código, creamos experiencias web intuitivas, rápidas y visualmente refinadas.",
         quote: "La mejor interfaz es aquella que se siente viva, receptiva y natural bajo los dedos del usuario."
       },
       en: {
-        p1: "We design digital interfaces that strike a delicate balance between avant-garde visual craft and effortless usability. We avoid cookie-cutter templates to build immersive, tactile digital journeys that simplify complex workflows.",
-        p2: "We construct scalable design systems in Figma complete with design tokens, responsive breakpoints, and kinetic micro-interactions optimized for seamless Next.js and React execution.",
+        p1: "We design digital products where avant-garde visual craft meets effortless usability. Every workflow is engineered to engage and convert.",
+        p2: "From structural wireframes to production-ready design systems, we craft intuitive web experiences that feel fast and refined.",
         quote: "The finest interface is one that feels alive, responsive, and natural under the user's fingertips."
       }
     },
@@ -830,13 +830,13 @@ export const servicesData: ServiceDetail[] = [
     },
     overview: {
       es: {
-        p1: "En un entorno digital saturado de imágenes estáticas, el movimiento es el factor definitivo para captar y retener la atención. Creamos piezas de animación que combinan ritmo musical, física de curvas elásticas y composición cinemática.",
-        p2: "Desarrollamos desde reveals de marca y reels corporativos para lanzamientos de producto hasta micro-animaciones Lottie y videos explicativos que traducen conceptos técnicos complejos en historias visualmente irresistibles.",
+        p1: "El movimiento da vida a la identidad de tu marca. Creamos piezas audiovisuales y animaciones dinámicas que capturan la atención desde el primer instante.",
+        p2: "Desde micro-animaciones para interfaces hasta piezas narrativas de lanzamiento, aportamos ritmo, fluidez y carácter a tu presencia digital.",
         quote: "El movimiento transforma la estética en emoción y convierte a los espectadores en entusiastas."
       },
       en: {
-        p1: "In a digital landscape flooded with static imagery, kinetic motion is the ultimate differentiator for capturing and holding attention. We create animation pieces marrying musical rhythm, spring physics, and cinematic composition.",
-        p2: "From logo reveals and product launch trailers to lightweight Lottie web micro-animations and explainer narratives, we distill complex ideas into captivating kinetic stories.",
+        p1: "Motion brings brand identity to life. We create dynamic animations and video pieces that capture instant attention and communicate with clarity.",
+        p2: "From UI micro-animations to full brand launch films, we infuse rhythm and energy into your digital presence.",
         quote: "Motion transforms aesthetics into emotion, turning casual viewers into brand advocates."
       }
     },

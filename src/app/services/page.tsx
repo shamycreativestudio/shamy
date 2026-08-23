@@ -67,8 +67,8 @@ export default function ServicesPage() {
 
   return (
     <main id="page-content">
-      {/* 1. Services Hero */}
-      <section className="hero-asymmetric">
+      {/* 1. Services Hero & Bento Grid */}
+      <section className="hero-asymmetric" style={{ paddingBottom: "3rem" }}>
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
           <motion.h1 
             className="hero-headline"
@@ -86,54 +86,52 @@ export default function ServicesPage() {
           >
             {t("services.subtitle")}
           </motion.p>
-        </div>
-      </section>
 
-      {/* 2. Interactive Bento Services Grid */}
-      <section className="container" style={{ paddingBottom: "3rem" }}>
-        <div className="service-bento-grid">
-          {services.map((srv, idx) => {
-            const IconComponent = srv.icon;
-            return (
-              <motion.div 
-                key={srv.id}
-                className={`bento-card ${srv.spanClass}`}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              >
-                <Link 
-                  href={`/services/${srv.slug}`} 
-                  style={{ 
-                    textDecoration: "none", 
-                    color: "inherit", 
-                    display: "flex", 
-                    flexDirection: "column", 
-                    justifyContent: "space-between",
-                    height: "100%",
-                    position: "relative",
-                    zIndex: 1
-                  }}
+          {/* Interactive Bento Services Grid */}
+          <div className="service-bento-grid">
+            {services.map((srv, idx) => {
+              const IconComponent = srv.icon;
+              return (
+                <motion.div 
+                  key={srv.id}
+                  className={`bento-card ${srv.spanClass}`}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
                 >
-                  <div className="bento-bg-accent" aria-hidden="true" />
-                  <div>
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
-                      <div className="bento-icon-wrapper" style={{ margin: 0 }}>
-                        <IconComponent size={28} weight="regular" />
+                  <Link 
+                    href={`/services/${srv.slug}`} 
+                    style={{ 
+                      textDecoration: "none", 
+                      color: "inherit", 
+                      display: "flex", 
+                      flexDirection: "column", 
+                      justifyContent: "space-between",
+                      height: "100%",
+                      position: "relative",
+                      zIndex: 1
+                    }}
+                  >
+                    <div className="bento-bg-accent" aria-hidden="true" />
+                    <div>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
+                        <div className="bento-icon-wrapper" style={{ margin: 0 }}>
+                          <IconComponent size={28} weight="regular" />
+                        </div>
+                        <span style={{ fontSize: "0.85rem", color: "var(--muted)", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: "4px" }}>
+                          <span>Ver detalle</span>
+                          <ArrowRight size={14} weight="bold" />
+                        </span>
                       </div>
-                      <span style={{ fontSize: "0.85rem", color: "var(--muted)", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: "4px" }}>
-                        <span>Ver detalle</span>
-                        <ArrowRight size={14} weight="bold" />
-                      </span>
+                      <h2 className="bento-card-title">{srv.title}</h2>
                     </div>
-                    <h2 className="bento-card-title">{srv.title}</h2>
-                  </div>
-                  <p className="bento-card-desc" style={{ marginTop: "1rem" }}>{srv.desc}</p>
-                </Link>
-              </motion.div>
-            );
-          })}
+                    <p className="bento-card-desc" style={{ marginTop: "1rem" }}>{srv.desc}</p>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </section>
 

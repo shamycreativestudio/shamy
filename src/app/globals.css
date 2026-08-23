@@ -2171,20 +2171,22 @@ a.project-card,
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
-  margin: 4rem 0;
+  margin: 1.5rem 0 3rem 0;
 }
 
 @media (max-width: 900px) {
   .service-bento-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin: 1.25rem 0 2.5rem 0;
   }
 }
 
 .bento-card {
   background: var(--panel);
   border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 2.5rem;
+  border-radius: 20px;
+  padding: 2rem;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -2218,12 +2220,12 @@ a.project-card,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 16px;
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
   background: var(--bg);
   border: 1px solid var(--border);
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
   color: var(--text);
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
 }
