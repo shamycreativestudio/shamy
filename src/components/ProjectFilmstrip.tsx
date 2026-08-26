@@ -9,26 +9,26 @@ import { useTranslation } from "./TranslationProvider";
 export default function ProjectFilmstrip() {
   const { t } = useTranslation();
 
-  // Create two distinct sets of projects with varying aspect ratios for visual rhythm
+  // Dos filas con anchos variables para ritmo visual (--card-w se consume en globals.css)
   const row1 = [
-    { project: projects[0], ratio: "aspect-[16/10]", width: "w-[320px] md:w-[420px]" },
-    { project: projects[1], ratio: "aspect-[3/4]", width: "w-[180px] md:w-[240px]" },
-    { project: projects[2], ratio: "aspect-[1/1]", width: "w-[220px] md:w-[280px]" },
-    { project: projects[3], ratio: "aspect-[4/3]", width: "w-[280px] md:w-[360px]" },
-    { project: projects[4], ratio: "aspect-[2/3]", width: "w-[170px] md:w-[220px]" },
-    { project: projects[5], ratio: "aspect-[16/9]", width: "w-[320px] md:w-[440px]" },
+    { project: projects[0], cardWidth: 380 },
+    { project: projects[1], cardWidth: 200 },
+    { project: projects[2], cardWidth: 260 },
+    { project: projects[3], cardWidth: 320 },
+    { project: projects[4], cardWidth: 190 },
+    { project: projects[5], cardWidth: 400 },
   ];
 
   const row2 = [
-    { project: projects[6] || projects[0], ratio: "aspect-[4/3]", width: "w-[260px] md:w-[350px]" },
-    { project: projects[7] || projects[1], ratio: "aspect-[1/1]", width: "w-[200px] md:w-[260px]" },
-    { project: projects[8] || projects[2], ratio: "aspect-[16/10]", width: "w-[300px] md:w-[400px]" },
-    { project: projects[9] || projects[3], ratio: "aspect-[3/4]", width: "w-[180px] md:w-[230px]" },
-    { project: projects[10] || projects[4], ratio: "aspect-[4/3]", width: "w-[270px] md:w-[360px]" },
-    { project: projects[0], ratio: "aspect-[16/9]", width: "w-[310px] md:w-[420px]" },
+    { project: projects[6] || projects[0], cardWidth: 330 },
+    { project: projects[7] || projects[1], cardWidth: 240 },
+    { project: projects[8] || projects[2], cardWidth: 370 },
+    { project: projects[9] || projects[3], cardWidth: 210 },
+    { project: projects[10] || projects[4], cardWidth: 340 },
+    { project: projects[0], cardWidth: 390 },
   ];
 
-  // Duplicate for seamless infinite loop
+  // Duplicado para loop infinito continuo
   const fullRow1 = [...row1, ...row1];
   const fullRow2 = [...row2, ...row2];
 
@@ -42,10 +42,9 @@ export default function ProjectFilmstrip() {
               key={`r1-${item.project.id}-${idx}`}
               href={`/projects/${item.project.id}`}
               className="filmstrip-card"
-              style={{
-                width: item.width.includes("420px") ? "380px" : item.width.includes("360px") ? "320px" : item.width.includes("280px") ? "260px" : "220px",
-                height: "220px",
-              }}
+              style={{ "--card-w": `${item.cardWidth}px` } as React.CSSProperties}
+              tabIndex={idx >= row1.length ? -1 : undefined}
+              aria-hidden={idx >= row1.length ? true : undefined}
             >
               <div className="filmstrip-media">
                 <Image
@@ -73,10 +72,9 @@ export default function ProjectFilmstrip() {
               key={`r2-${item.project.id}-${idx}`}
               href={`/projects/${item.project.id}`}
               className="filmstrip-card"
-              style={{
-                width: item.width.includes("420px") ? "390px" : item.width.includes("360px") ? "330px" : item.width.includes("260px") ? "250px" : "210px",
-                height: "220px",
-              }}
+              style={{ "--card-w": `${item.cardWidth}px` } as React.CSSProperties}
+              tabIndex={idx >= row2.length ? -1 : undefined}
+              aria-hidden={idx >= row2.length ? true : undefined}
             >
               <div className="filmstrip-media">
                 <Image

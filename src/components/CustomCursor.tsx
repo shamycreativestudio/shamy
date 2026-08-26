@@ -28,10 +28,37 @@ export default function CustomCursor() {
     let mouseY = window.innerHeight / 2;
     let cursorX = window.innerWidth / 2;
     let cursorY = window.innerHeight / 2;
+    let animFrame = 0;
+    let pointerUpTimeout = 0;
+
+    const startLoop = () => {
+      if (!animFrame) animFrame = requestAnimationFrame(animate);
+    };
+
+    const animate = () => {
+      // Calculate velocity
+      const dx = mouseX - cursorX;
+      const dy = mouseY - cursorY;
+
+      // Update cursor position with lerp
+      cursorX += dx * 0.4;
+      cursorY += dy * 0.4;
+
+      // We translate first, then center
+      cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
+
+      // Pausa el loop cuando el cursor converge (ahorra frames en idle)
+      if (Math.abs(dx) + Math.abs(dy) < 0.1) {
+        animFrame = 0;
+        return;
+      }
+      animFrame = requestAnimationFrame(animate);
+    };
 
     const onMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
+      startLoop();
     };
 
     window.addEventListener("mousemove", onMouseMove, { passive: true });
@@ -67,7 +94,8 @@ export default function CustomCursor() {
 
     const onPointerUp = () => {
       // Re-evaluate or reset on click
-      setTimeout(() => {
+      window.clearTimeout(pointerUpTimeout);
+      pointerUpTimeout = window.setTimeout(() => {
         const el = document.elementFromPoint(mouseX, mouseY);
         if (!el || !el.closest(".project-card, .project-card-v2, a, button, .nav-capsule, .ui-toggle, .filter-btn, .filter-pill-wrapper")) {
           cursor.className = "custom-cursor";
@@ -86,22 +114,6 @@ export default function CustomCursor() {
     window.addEventListener("pointerup", onPointerUp, { passive: true });
     document.addEventListener("mouseleave", onMouseLeave);
 
-    let animFrame: number;
-    const animate = () => {
-      // Calculate velocity
-      const dx = mouseX - cursorX;
-      const dy = mouseY - cursorY;
-      
-      // Update cursor position with lerp
-      cursorX += dx * 0.4;
-      cursorY += dy * 0.4;
-      
-      // We translate first, then center
-      cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
-      
-      animFrame = requestAnimationFrame(animate);
-    };
-
     animFrame = requestAnimationFrame(animate);
 
     return () => {
@@ -110,16 +122,12 @@ export default function CustomCursor() {
       window.removeEventListener("mouseout", onMouseOut);
       window.removeEventListener("pointerup", onPointerUp);
       document.removeEventListener("mouseleave", onMouseLeave);
-      cancelAnimationFrame(animFrame);
+      window.clearTimeout(pointerUpTimeout);
+      if (animFrame) cancelAnimationFrame(animFrame);
     };
   }, []);
 
-  if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) {
-    return null;
-  }
-
   // Dynamic props for LiquidGlass based on cursor size
-  // Default is arbitrary since it's hidden, but we keep it sane
   const glassProps = {
     crystal: { size: 70, depth: 5, blur: 1, strength: 40, chromaticAberration: 2 },
     subtle:  { size: 36, depth: 3, blur: 0.5, strength: 15, chromaticAberration: 1 },
@@ -127,7 +135,7 @@ export default function CustomCursor() {
   }[mode];
 
   return (
-    <div ref={cursorRef} className="custom-cursor">
+    <div ref={cursorRef} className="custom-cursor" aria-hidden="true">
       <LiquidGlass
         width={glassProps.size}
         height={glassProps.size}
@@ -142,4 +150,3 @@ export default function CustomCursor() {
     </div>
   );
 }
-

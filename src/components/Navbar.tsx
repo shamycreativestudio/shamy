@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -8,34 +8,23 @@ import { motion } from "motion/react";
 import { useTranslation } from "./TranslationProvider";
 import LiquidGlass from "./LiquidGlass";
 
-export default function Navbar() {
+type Theme = "light" | "dark";
+
+function persistTheme(theme: Theme) {
+  document.cookie = `shamy_theme=${theme}; path=/; max-age=31536000; samesite=lax`;
+}
+
+export default function Navbar({ initialTheme = "light" }: { initialTheme?: Theme }) {
   const pathname = usePathname();
-  const [theme, setTheme] = useState<string>("light");
+  const [theme, setTheme] = useState<Theme>(initialTheme);
   const { lang, toggleLang, t } = useTranslation();
   const navRef = useRef<HTMLElement>(null);
 
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("shamy_theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const initialDark = savedTheme === "dark" || (!savedTheme && prefersDark);
-    
-    setTheme(initialDark ? "dark" : "light");
-    if (initialDark) {
-      document.body.classList.add("dark-mode");
-    } else {
-      document.body.classList.remove("dark-mode");
-    }
-  }, []);
-
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
+    const newTheme: Theme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-    localStorage.setItem("shamy_theme", newTheme);
-    if (newTheme === "dark") {
-      document.body.classList.add("dark-mode");
-    } else {
-      document.body.classList.remove("dark-mode");
-    }
+    persistTheme(newTheme);
+    document.body.classList.toggle("dark-mode", newTheme === "dark");
   };
 
   const handleNavClick = (href: string, e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -153,11 +142,12 @@ export default function Navbar() {
           chromaticAberration={2}
         />
         <div className="nav-controls" id="navControls" style={{ position: "relative", zIndex: 1 }}>
-          <button 
-            type="button" 
-            className="theme-toggle ui-toggle" 
+          <button
+            type="button"
+            className="theme-toggle ui-toggle"
             onClick={toggleTheme}
-            aria-label="Toggle Theme"
+            aria-label={isDark ? "Cambiar a tema claro" : "Cambiar a tema oscuro"}
+            aria-pressed={isDark}
           >
             {isDark ? (
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -165,11 +155,11 @@ export default function Navbar() {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             )}
           </button>
-          <button 
-            type="button" 
-            className="lang-toggle ui-toggle" 
+          <button
+            type="button"
+            className="lang-toggle ui-toggle"
             onClick={toggleLang}
-            aria-label="Toggle Language"
+            aria-label={lang === "es" ? "Switch to English" : "Cambiar a español"}
             style={{ fontSize: "0.8rem", fontWeight: 600 }}
           >
             {lang === "es" ? "EN" : "ES"}

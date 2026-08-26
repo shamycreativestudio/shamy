@@ -40,7 +40,7 @@ http://localhost:3000/api/admin/panel
 Panel de administración
 
 - Usuario: `admin`
-- Contraseña: `shamy2025`
+- Contraseña: `<CAMBIA_ESTO>`
 
 ---
 
@@ -123,7 +123,7 @@ notepad .env
 Busca esta línea:
 
 ```
-ADMIN_PASSWORD=shamy2025
+ADMIN_PASSWORD=<CAMBIA_ESTO>
 ```
 
 Cámbiala por tu contraseña segura:
@@ -153,13 +153,13 @@ Deberías ver:
 ### Test 2: Ver estadísticas (requiere autenticación)
 
 ```powershell
-curl -u admin:shamy2025 http://localhost:3000/api/admin/stats
+curl -u admin:<CAMBIA_ESTO> http://localhost:3000/api/admin/stats
 ```
 
 ### Test 3: Listar briefs
 
 ```powershell
-curl -u admin:shamy2025 http://localhost:3000/api/briefs
+curl -u admin:<CAMBIA_ESTO> http://localhost:3000/api/briefs
 ```
 
 ---
@@ -491,7 +491,7 @@ Start-Process "http://localhost:3000/branding"
 Start-Process "http://localhost:3000/api/admin/panel"
 
 # 3. VER ESTADÍSTICAS
-curl -u admin:shamy2025 http://localhost:3000/api/admin/stats
+curl -u admin:<CAMBIA_ESTO> http://localhost:3000/api/admin/stats
 
 # 4. BACKUP
 $fecha = Get-Date -Format "yyyy-MM-dd"; Copy-Item database/briefs.db "backup_$fecha.db"

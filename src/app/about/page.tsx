@@ -3,11 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "motion/react";
-import { 
-  ArrowRight, 
-  Target, 
-  Eye, 
-  Crown
+import {
+  ArrowRight
 } from "@phosphor-icons/react";
 import { useTranslation } from "@/components/TranslationProvider";
 

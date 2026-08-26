@@ -38,7 +38,7 @@ npm run dev
 - **Formulario:** http://localhost:3000/branding
 - **Panel Admin:** http://localhost:3000/api/admin/panel
   - Usuario: `admin`
-  - Contraseña: `shamy2025`
+  - Contraseña: `<CAMBIA_ESTO>`
 
 ---
 
@@ -78,7 +78,7 @@ npm run dev
 └─────────────────────────────────────────────────────────┘
                      ▲
                      │ HTTP GET /api/admin/panel
-                     │ (Auth: admin/shamy2025)
+                     │ (Auth: admin/<CAMBIA_ESTO>)
                      │
 ┌─────────────────────────────────────────────────────────┐
 │                 PANEL DE ADMINISTRACIÓN                 │
@@ -292,7 +292,7 @@ database/briefs.db
 3. **Verificar en panel admin:**
 
    - Ir a: http://localhost:3000/api/admin/panel
-   - Login: admin / shamy2025
+   - Login: admin / <CAMBIA_ESTO>
    - Ver el brief en la lista
    - Click en "Ver" para ver detalles
 
@@ -346,7 +346,7 @@ DB_PATH=./database/briefs.db # Ruta de la base de datos
 UPLOAD_DIR=./uploads         # Carpeta de archivos
 MAX_FILE_SIZE=10485760       # 10MB en bytes
 ADMIN_USERNAME=admin         # Usuario admin
-ADMIN_PASSWORD=shamy2025     # ⚠️ CAMBIAR EN PRODUCCIÓN
+ADMIN_PASSWORD=<CAMBIA_ESTO>     # ⚠️ CAMBIAR EN PRODUCCIÓN
 ```
 
 ---

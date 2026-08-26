@@ -56,7 +56,7 @@ Verás algo como esto:
 1. Abre: `http://localhost:3000/api/admin/panel`
 2. Credenciales:
    - Usuario: `admin`
-   - Contraseña: `shamy2025`
+   - Contraseña: `<CAMBIA_ESTO>`
 3. Verás el brief que acabas de enviar
 
 ## ✅ ¡Listo!

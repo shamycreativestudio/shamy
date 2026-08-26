@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Código heredado pre-Next.js (solo referencia histórica)
+    "_legacy/**",
+    "liquid-glass/**",
   ]),
 ]);
 

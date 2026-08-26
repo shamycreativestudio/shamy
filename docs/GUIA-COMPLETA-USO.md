@@ -57,7 +57,7 @@ https://shamy.vercel.app/api/briefs
 **Credenciales actuales:**
 
 - **Usuario:** `admin`
-- **Contraseña:** `shamy2025`
+- **Contraseña:** `<CAMBIA_ESTO>`
 
 **Funcionalidades:**
 
@@ -178,7 +178,7 @@ fetch("https://shamycreativestudio.fly.dev/api/briefs", {
 ### **Paso 4: Tú revisas en el panel**
 
 1. Abres: `https://shamycreativestudio.fly.dev/api/admin/panel`
-2. Ingresas: `admin` / `shamy2025`
+2. Ingresas: `admin` / `<CAMBIA_ESTO>`
 3. Ves lista de todos los briefs recibidos
 4. Haces clic en cualquier brief para ver detalles completos
 
@@ -203,7 +203,7 @@ fetch("https://shamycreativestudio.fly.dev/api/briefs", {
 ```
 URL: https://shamycreativestudio.fly.dev/api/admin/panel
 Usuario: admin
-Contraseña: shamy2025
+Contraseña: <CAMBIA_ESTO>
 ```
 
 ### **Funcionalidades disponibles:**
@@ -516,14 +516,14 @@ C:\Users\shamu\.fly\bin\flyctl.exe secrets list --app shamycreativestudio
 # En Fly.io
 NODE_ENV=production
 ADMIN_USERNAME=admin
-ADMIN_PASSWORD=shamy2025
+ADMIN_PASSWORD=<CAMBIA_ESTO>
 CORS_ORIGIN=https://shamycreativestudio.github.io
 
 # En local (.env)
 NODE_ENV=development
 PORT=3000
 ADMIN_USERNAME=admin
-ADMIN_PASSWORD=admin123
+ADMIN_PASSWORD=<CAMBIA_ESTO>
 CORS_ORIGIN=http://localhost:5500
 ```
 
@@ -708,7 +708,7 @@ C:\Users\shamu\.fly\bin\flyctl.exe logs --app shamycreativestudio
 ```javascript
 // Revisar que las credenciales sean correctas
 Usuario: admin;
-Contraseña: shamy2025;
+Contraseña: <CAMBIA_ESTO>;
 ```
 
 3. **Limpiar caché del navegador:**

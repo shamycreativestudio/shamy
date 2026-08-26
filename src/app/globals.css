@@ -43,7 +43,7 @@ html {
 }
 
 body {
-  font-family: "Onest", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-onest), "Onest", -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
@@ -2097,6 +2097,13 @@ body:not(.dark-mode) .btn-pill-glow:hover {
   background: var(--panel);
   border: 1px solid var(--border);
   transform-origin: center center;
+  width: calc(var(--card-w) * 0.8);
+}
+
+@media (min-width: 768px) {
+  .filmstrip-card {
+    width: var(--card-w);
+  }
 }
 
 .filmstrip-track:hover .filmstrip-card {
@@ -3094,3 +3101,15 @@ body.dark-mode .popout-avatar-stage:hover .avatar-circle-bg {
 }
 
 
+
+/* Accesibilidad: respetar preferencia de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

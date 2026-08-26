@@ -1,8 +1,8 @@
-# Shamy] Creative Studio
+# Shamy Creative Studio
 
-![Shamy Logo](assets/img/shamy-logotipo.svg)
+![Shamy Logo](public/assets/img/shamy-logotipo.svg)
 
-Sitio web oficial de **Shamy] Creative Studio** — Diseño de marca con propósito.
+Sitio web oficial de **Shamy Creative Studio** — Branding · Diseño Editorial · UX/UI · Motion.
 
 ## 🌐 Sitio web
 
@@ -10,121 +10,89 @@ Sitio web oficial de **Shamy] Creative Studio** — Diseño de marca con propós
 
 ---
 
-## 📁 Estructura del proyecto
-
-```
-shamy/
-├── index.html                  # Página principal (portfolio + servicios)
-├── vercel.json                 # Configuración Vercel
-├── package.json                # Dependencias Node.js
-├── .env                        # Variables de entorno (local)
-│
-├── assets/                     # Recursos compartidos
-│   ├── css/
-│   │   └── main.css           # Estilos de la página principal
-│   ├── js/
-│   │   ├── ui-core.js         # Theme (dark/light) + Idioma (ES/EN)
-│   │   └── portfolio.js       # Grid de proyectos + modal con galería
-│   └── img/                   # Logos, favicon, imágenes del portfolio
-│       ├── favicon.svg
-│       ├── shamy-logotipo.svg
-│       ├── shamy-logotipo-white.svg
-│       └── portfolio/         # Imágenes de cada proyecto
-│
-├── branding/                   # Submarca: shamy] branding
-│   ├── index.html             # Formulario wizard 10 pasos
-│   ├── styles.css             # Estilos del formulario
-│   ├── script.js              # Lógica del wizard + fetch a API
-│   └── config.js              # Configuración local/producción
-│
-├── api/                        # Vercel Serverless Functions
-│   ├── submit.js              # Recibe brief → Notion + Cloudinary
-│   └── briefs.js              # CRUD de briefs (admin)
-│
-├── .vercel/                    # Vinculación con Vercel (no trackear)
-└── docs/                       # Documentación (ver abajo)
-    ├── COMANDOS.md            # Comandos PowerShell útiles
-    ├── ESTRUCTURA.md          # Estructura de carpetas detallada
-    ├── INSTALACION.md         # Guía de instalación local
-    └── INICIO-RAPIDO.md       # Inicio rápido
-```
-
 ## 🛠️ Stack Tecnológico
 
 | Capa | Tecnología |
 |------|-----------|
-| **Frontend** | HTML5 + CSS3 + Vanilla JS (ES6+) |
+| **Framework** | [Next.js 16](https://nextjs.org) (App Router + Turbopack) |
+| **UI** | React 19 + TypeScript |
+| **Animaciones** | Motion (`motion/react`) + Web Component `<glass-element>` propio |
+| **Estilos** | CSS global con custom properties (dark/light mode) |
+| **Fuentes** | Onest vía `next/font` (self-hosted) |
+| **Imágenes** | `next/image` + WebP optimizado |
+| **Idiomas** | ES/EN con cookie de servidor (sin flash de contenido) |
 | **Hosting** | [Vercel](https://vercel.com) |
-| **Backend** | Vercel Serverless Functions (Node.js) |
-| **Base de datos** | Notion API ([@notionhq/client](https://www.npmjs.com/package/@notionhq/client)) |
-| **Imágenes** | [Cloudinary](https://cloudinary.com) |
-| **Fuentes** | Google Fonts: Onest |
-| **Idiomas** | ES/EN con sistema de traducciones |
-| **Tema** | Dark/Light mode con CSS custom properties |
+
+## 📁 Estructura del proyecto
+
+```
+shamy/
+├── src/
+│   ├── app/                    # App Router: páginas y layouts
+│   │   ├── layout.tsx          # Layout raíz (metadata, tema e idioma desde cookies)
+│   │   ├── page.tsx            # Home
+│   │   ├── about/              # Sobre el estudio
+│   │   ├── brief/              # Brief interactivo (en construcción)
+│   │   ├── projects/[slug]/    # Detalle de proyecto (SSG + metadata dinámica)
+│   │   ├── services/[slug]/    # Detalle de servicio (SSG + metadata dinámica)
+│   │   ├── sitemap.ts          # Sitemap XML
+│   │   └── robots.ts           # Robots.txt
+│   ├── components/             # Navbar, Footer, LiquidGlass, CustomCursor...
+│   └── data/                   # Proyectos, servicios, traducciones, metadatos de imagen
+├── public/
+│   ├── glass-element.js        # Web Component del efecto cristal líquido
+│   ├── displacement-utils.js   # Generadores de filtros SVG
+│   └── assets/img/portfolio/   # Imágenes WebP del portafolio
+├── scripts/
+│   └── convert-portfolio.mjs   # Conversión PNG → WebP con sharp
+├── _legacy/                    # Versión antigua estática (solo referencia)
+└── docs/                       # Documentación histórica
+```
 
 ## ✨ Funcionalidades
 
-### Página principal (`index.html`)
-- Portfolio interactivo con filtros por categoría (Branding, Coding, Animating)
-- Modal de proyecto con galería de imágenes y video
-- Carrusel en miniatura en cada tarjeta
-- Animaciones con IntersectionObserver
-- Tema oscuro/claro con persistencia en localStorage
-- Traducción ES/EN completa
-
-### Formulario de branding (`branding/`)
-- Wizard de 10 pasos con barra de progreso
-- Validación en tiempo real
-- Subida de archivos drag & drop
-- Guardado automático en localStorage
-- Resumen previo al envío
-- Los datos se envían a Notion vía API serverless
-
-### Backend Serverless (`api/`)
-- `POST /api/submit` — Recibe el formulario, sube imágenes a Cloudinary y crea entrada en Notion
-- `GET /api/briefs` — Lista briefs (admin, con autenticación Basic Auth)
-- `DELETE /api/briefs?id=...` — Elimina briefs
+- Portfolio con filmstrip infinito, filtros por categoría y páginas de detalle prerenderizadas
+- Efecto *Liquid Glass* propio (Web Component con `feDisplacementMap`) con fallback blur para Safari/Firefox
+- Cursor personalizado que se pausa en idle
+- Tema oscuro/claro e idioma ES/EN persistidos en cookies → render correcto desde el servidor, sin FOUC
+- SEO completo: Open Graph, sitemap, robots, metadatos por página
+- Accesibilidad: `prefers-reduced-motion`, aria-labels con estado, HTML lang dinámico
 
 ## 🚀 Desarrollo Local
 
 ```powershell
-# 1. Clonar
-git clone https://github.com/shamycreativestudio/shamy.git
-cd shamy
-
-# 2. Instalar dependencias
+# 1. Instalar dependencias
 npm install
 
-# 3. Iniciar servidor local de Vercel
-npx vercel dev
+# 2. Servidor de desarrollo
+npm run dev
 
-# 4. Abrir en navegador
-# http://localhost:3000
+# 3. Abrir http://localhost:3000
+```
+
+Otros comandos:
+
+```powershell
+npm run lint        # ESLint
+npm run build       # Build de producción
+npm start           # Servir build de producción
+node scripts/convert-portfolio.mjs   # Reconvertir imágenes del portafolio a WebP
 ```
 
 ## 🚀 Despliegue
 
-El sitio se despliega automáticamente en **Vercel** con cada push a `main`:
+Vinculado a **Vercel** (proyecto `shamy`). El sitio se despliega automáticamente con cada push a la rama principal.
 
-```bash
-git add .
-git commit -m "descripción del cambio"
-git push origin main
-```
+Variables de entorno opcionales en Vercel:
 
-Variables de entorno requeridas en Vercel:
-- `NOTION_TOKEN` — Token de integración de Notion
-- `NOTION_DATABASE_ID` — ID de la base de datos en Notion
-- `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`
-- `ADMIN_USERNAME`, `ADMIN_PASSWORD` — Para el panel admin
+- `NEXT_PUBLIC_SITE_URL` — URL pública del sitio (por defecto `https://shamy.vercel.app`). La usa el sitemap, robots y los metadatos Open Graph.
+
+> Las variables legacy (`NOTION_TOKEN`, `CLOUDINARY_*`, `ADMIN_*`) pertenecen solo al código en `_legacy/` y no son usadas por la app activa.
 
 ## 📄 Documentación
 
-- **[COMANDOS.md](docs/COMANDOS.md)** — Comandos PowerShell útiles
-- **[INSTALACION.md](docs/INSTALACION.md)** — Guía de instalación local
-- **[ESTRUCTURA.md](docs/ESTRUCTURA.md)** — Estructura detallada del proyecto
-- **[GUIA-COMPLETA-USO.md](docs/GUIA-COMPLETA-USO.md)** — Manual de uso completo
+La documentación en `docs/` corresponde a la versión antigua estática; se conserva como referencia histórica.
 
 ---
 
-© 2025 Shamy Creative Studio. Todos los derechos reservados.
+© 2026 Shamy Creative Studio. Todos los derechos reservados.

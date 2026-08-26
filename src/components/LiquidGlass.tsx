@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useSyncExternalStore } from "react";
 import LegacyLiquidGlass from "./LegacyLiquidGlass";
 
 interface LiquidGlassProps {
@@ -16,36 +16,34 @@ interface LiquidGlassProps {
   fallbackMode?: "blur" | "overlay"; // How to behave in Mozilla/Safari
 }
 
+// El User-Agent no cambia durante la sesión: suscripción vacía es suficiente.
+const emptySubscribe = () => () => {};
+
+function getIsChromium(): boolean {
+  const ua = navigator.userAgent.toLowerCase();
+  const isFirefox = ua.includes("firefox") || ua.includes("fxios");
+  const isSafari =
+    ua.includes("safari") &&
+    !ua.includes("chrome") &&
+    !ua.includes("chromium") &&
+    !ua.includes("crios") &&
+    !ua.includes("edg/");
+  return !isFirefox && !isSafari;
+}
+
+const getServerSnapshot = () => true;
+
 export default function UnifiedLiquidGlass(props: LiquidGlassProps) {
-  const [isChromium, setIsChromium] = useState(true);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const ua = navigator.userAgent.toLowerCase();
-    const isChrome = ua.includes('chrome') || ua.includes('chromium');
-    const isEdge = ua.includes('edg/');
-    const isSafari = ua.includes('safari') && !ua.includes('chrome') && !ua.includes('chromium');
-    const isFirefox = ua.includes('firefox');
-    
-    // We only use the new alternative on Safari and Firefox
-    if (isSafari || isFirefox) {
-      setIsChromium(false);
-    }
-  }, []);
-
-  if (!mounted) {
-    // Avoid hydration mismatch by rendering nothing or a placeholder
-    return null;
-  }
+  // useSyncExternalStore evita hydration mismatch sin estados de "mounted":
+  // en SSR y primer render usa el snapshot del servidor y re-renderiza después si difiere.
+  const isChromium = useSyncExternalStore(emptySubscribe, getIsChromium, getServerSnapshot);
 
   if (isChromium) {
-    // @ts-ignore (ignoring props type mismatch with Legacy)
-    return <LegacyLiquidGlass {...props} />;
+    return <LegacyLiquidGlass {...(props as React.ComponentProps<typeof LegacyLiquidGlass>)} />;
   }
 
   // Fallback for Mozilla/Safari
-  
+
   if (props.fallbackMode === "blur") {
     // Simple blur for cursor
     const fallbackBlur = Math.max((props.blur || 1) * 8, 4);

@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-namespace */
-
 /**
  * Type declarations for the <glass-element> Web Component.
  * Source: liquid-glass/glass-element.js + liquid-glass/displacement-utils.js

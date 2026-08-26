@@ -16,6 +16,14 @@ export interface Project {
   previewGallery?: string[];
 }
 
+export function findProjectBySlug(slug: string): Project | undefined {
+  return projects.find(
+    (p) =>
+      p.id.toString() === slug ||
+      p.titleKey.split(".")[2]?.toLowerCase() === slug.toLowerCase()
+  );
+}
+
 export const projects: Project[] = [
   // BRANDING PROJECTS
   {
@@ -28,10 +36,10 @@ export const projects: Project[] = [
     year: 2020,
     colors: ["#7C2D12", "#D97706", "#FEF3C7", "#18181B"],
     deliverables: ["Brand Strategy", "Visual Identity", "Packaging Design"],
-    coverImage: "assets/img/portfolio/branding/001_d_antano/00.png",
+    coverImage: "assets/img/portfolio/branding/001_d_antano/00.webp",
     gallery: [
-      "assets/img/portfolio/branding/001_d_antano/00.png",
-      "assets/img/portfolio/branding/001_d_antano/01.png",
+      "assets/img/portfolio/branding/001_d_antano/00.webp",
+      "assets/img/portfolio/branding/001_d_antano/01.webp",
     ],
     allowExpand: true,
   },
@@ -45,10 +53,10 @@ export const projects: Project[] = [
     year: 2021,
     colors: ["#0284C7", "#0369A1", "#E0F2FE", "#0F172A"],
     deliverables: ["ONG Identity", "Campaign Posters", "Motion Graphics"],
-    coverImage: "assets/img/portfolio/branding/002_from_the_ocean/00.png",
+    coverImage: "assets/img/portfolio/branding/002_from_the_ocean/00.webp",
     gallery: [
-      "assets/img/portfolio/branding/002_from_the_ocean/00.png",
-      "assets/img/portfolio/branding/002_from_the_ocean/01.png",
+      "assets/img/portfolio/branding/002_from_the_ocean/00.webp",
+      "assets/img/portfolio/branding/002_from_the_ocean/01.webp",
     ],
     allowExpand: true,
   },
@@ -62,10 +70,10 @@ export const projects: Project[] = [
     year: 2022,
     colors: ["#18181B", "#CA8A04", "#F4F4F5", "#27272A"],
     deliverables: ["Spirits Identity", "Luxury Packaging", "Storytelling"],
-    coverImage: "assets/img/portfolio/branding/003_robert_capa/00.png",
+    coverImage: "assets/img/portfolio/branding/003_robert_capa/00.webp",
     gallery: [
-      "assets/img/portfolio/branding/003_robert_capa/00.png",
-      "assets/img/portfolio/branding/003_robert_capa/01.png",
+      "assets/img/portfolio/branding/003_robert_capa/00.webp",
+      "assets/img/portfolio/branding/003_robert_capa/01.webp",
     ],
     allowExpand: true,
   },
@@ -79,10 +87,10 @@ export const projects: Project[] = [
     year: 2023,
     colors: ["#059669", "#10B981", "#ECFDF5", "#064E3B"],
     deliverables: ["Type Design", "Specimen Poster", "Editorial Layout"],
-    coverImage: "assets/img/portfolio/branding/004_zeth/00.png",
+    coverImage: "assets/img/portfolio/branding/004_zeth/00.webp",
     gallery: [
-      "assets/img/portfolio/branding/004_zeth/00.png",
-      "assets/img/portfolio/branding/004_zeth/01.png",
+      "assets/img/portfolio/branding/004_zeth/00.webp",
+      "assets/img/portfolio/branding/004_zeth/01.webp",
     ],
     allowExpand: true,
   },
@@ -96,10 +104,10 @@ export const projects: Project[] = [
     year: 2023,
     colors: ["#EA580C", "#C026D3", "#FDE047", "#1E1B4B"],
     deliverables: ["Festival Branding", "Motion Poster", "Merchandising"],
-    coverImage: "assets/img/portfolio/branding/005_summer_groove/00.png",
+    coverImage: "assets/img/portfolio/branding/005_summer_groove/00.webp",
     gallery: [
-      "assets/img/portfolio/branding/005_summer_groove/00.png",
-      "assets/img/portfolio/branding/005_summer_groove/01.png",
+      "assets/img/portfolio/branding/005_summer_groove/00.webp",
+      "assets/img/portfolio/branding/005_summer_groove/01.webp",
     ],
     allowExpand: true,
   },
@@ -113,10 +121,10 @@ export const projects: Project[] = [
     year: 2023,
     colors: ["#DC2626", "#F59E0B", "#FEF2F2", "#451A03"],
     deliverables: ["Rebranding Concept", "Food Packaging", "Digital Menu"],
-    coverImage: "assets/img/portfolio/branding/006_whopper_king/00.png",
+    coverImage: "assets/img/portfolio/branding/006_whopper_king/00.webp",
     gallery: [
-      "assets/img/portfolio/branding/006_whopper_king/00.png",
-      "assets/img/portfolio/branding/006_whopper_king/01.png",
+      "assets/img/portfolio/branding/006_whopper_king/00.webp",
+      "assets/img/portfolio/branding/006_whopper_king/01.webp",
     ],
     allowExpand: true,
   },
@@ -130,10 +138,10 @@ export const projects: Project[] = [
     year: 2023,
     colors: ["#2563EB", "#3B82F6", "#EFF6FF", "#1E3A8A"],
     deliverables: ["Corporate Identity", "Brand Guidelines", "Stationery"],
-    coverImage: "assets/img/portfolio/branding/007_aemg/00.png",
+    coverImage: "assets/img/portfolio/branding/007_aemg/00.webp",
     gallery: [
-      "assets/img/portfolio/branding/007_aemg/00.png",
-      "assets/img/portfolio/branding/007_aemg/01.png",
+      "assets/img/portfolio/branding/007_aemg/00.webp",
+      "assets/img/portfolio/branding/007_aemg/01.webp",
     ],
     allowExpand: true,
   },
@@ -147,10 +155,10 @@ export const projects: Project[] = [
     year: 2023,
     colors: ["#D97706", "#7C2D12", "#FFFBEB", "#451A03"],
     deliverables: ["Cultural Branding", "Illustration System", "Event Packaging"],
-    coverImage: "assets/img/portfolio/branding/008_juego_de_guaguas/00.png",
+    coverImage: "assets/img/portfolio/branding/008_juego_de_guaguas/00.webp",
     gallery: [
-      "assets/img/portfolio/branding/008_juego_de_guaguas/00.png",
-      "assets/img/portfolio/branding/008_juego_de_guaguas/01.png",
+      "assets/img/portfolio/branding/008_juego_de_guaguas/00.webp",
+      "assets/img/portfolio/branding/008_juego_de_guaguas/01.webp",
     ],
     allowExpand: true,
   },
@@ -164,10 +172,10 @@ export const projects: Project[] = [
     year: 2024,
     colors: ["#0D9488", "#14B8A6", "#CCFBF1", "#115E59"],
     deliverables: ["Pharmacy Branding", "Packaging System", "Web UI Concept"],
-    coverImage: "assets/img/portfolio/branding/009_dos_efes/00.png",
+    coverImage: "assets/img/portfolio/branding/009_dos_efes/00.webp",
     gallery: [
-      "assets/img/portfolio/branding/009_dos_efes/00.png",
-      "assets/img/portfolio/branding/009_dos_efes/01.png",
+      "assets/img/portfolio/branding/009_dos_efes/00.webp",
+      "assets/img/portfolio/branding/009_dos_efes/01.webp",
     ],
     allowExpand: true,
   },
@@ -181,10 +189,10 @@ export const projects: Project[] = [
     year: 2025,
     colors: ["#65A30D", "#84CC16", "#ECFCCB", "#365314"],
     deliverables: ["Music Identity", "Vinyl Album Art", "Stage Visuals"],
-    coverImage: "assets/img/portfolio/branding/010_sonpa/00.png",
+    coverImage: "assets/img/portfolio/branding/010_sonpa/00.webp",
     gallery: [
-      "assets/img/portfolio/branding/010_sonpa/00.png",
-      "assets/img/portfolio/branding/010_sonpa/01.png",
+      "assets/img/portfolio/branding/010_sonpa/00.webp",
+      "assets/img/portfolio/branding/010_sonpa/01.webp",
     ],
     allowExpand: true,
   },
@@ -198,10 +206,10 @@ export const projects: Project[] = [
     year: 2025,
     colors: ["#9333EA", "#A855F7", "#F3E8FF", "#581C87"],
     deliverables: ["Hospitality Branding", "Handcrafted Menu", "Interior Signage"],
-    coverImage: "assets/img/portfolio/branding/011_bitacora/00.png",
+    coverImage: "assets/img/portfolio/branding/011_bitacora/00.webp",
     gallery: [
-      "assets/img/portfolio/branding/011_bitacora/00.png",
-      "assets/img/portfolio/branding/011_bitacora/01.png",
+      "assets/img/portfolio/branding/011_bitacora/00.webp",
+      "assets/img/portfolio/branding/011_bitacora/01.webp",
     ],
     allowExpand: true,
   },
@@ -218,10 +226,10 @@ export const projects: Project[] = [
     colors: ["#4F46E5", "#6366F1", "#EEF2FF", "#312E81"],
     deliverables: ["Interactive Web", "Infographic Engine", "UI Architecture"],
     url: "https://cvdll.github.io/CVDLL/",
-    coverImage: "assets/img/portfolio/coding/001_cvdll/00.png",
+    coverImage: "assets/img/portfolio/coding/001_cvdll/00.webp",
     gallery: [
-      "assets/img/portfolio/coding/001_cvdll/00.png",
-      "assets/img/portfolio/coding/001_cvdll/01.png",
+      "assets/img/portfolio/coding/001_cvdll/00.webp",
+      "assets/img/portfolio/coding/001_cvdll/01.webp",
     ],
     allowExpand: true,
   },
@@ -238,13 +246,13 @@ export const projects: Project[] = [
     colors: ["#E11D48", "#F43F5E", "#FFE4E6", "#881337"],
     deliverables: ["2D Animation", "Character Design", "Storyboard & Sound"],
     coverImage:
-      "assets/img/portfolio/animating/001_corazones_al_rescate/00.png",
+      "assets/img/portfolio/animating/001_corazones_al_rescate/00.webp",
     previewGallery: [
-      "assets/img/portfolio/animating/001_corazones_al_rescate/00.png",
-      "assets/img/portfolio/animating/001_corazones_al_rescate/01.png",
+      "assets/img/portfolio/animating/001_corazones_al_rescate/00.webp",
+      "assets/img/portfolio/animating/001_corazones_al_rescate/01.webp",
     ],
     gallery: [
-      "assets/img/portfolio/animating/001_corazones_al_rescate/00.png",
+      "assets/img/portfolio/animating/001_corazones_al_rescate/00.webp",
       "assets/img/portfolio/animating/001_corazones_al_rescate/01.mp4",
     ],
     allowExpand: true,

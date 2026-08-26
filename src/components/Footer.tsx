@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <footer className="footer" role="contentinfo">
       <div className="footer-content" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "0.5rem" }}>
-        <p className="footer-brand" style={{ fontWeight: 600, letterSpacing: "0.5px" }}>
+        <p className="footer-brand" style={{ fontWeight: 600, letterSpacing: "0.5px" }} suppressHydrationWarning>
           Shamy® Creative Studio &mdash; {currentYear}
         </p>
         <p className="footer-rights" style={{ color: "var(--muted)", fontSize: "0.85rem" }}>
