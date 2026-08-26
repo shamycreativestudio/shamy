@@ -2097,12 +2097,13 @@ body:not(.dark-mode) .btn-pill-glow:hover {
   background: var(--panel);
   border: 1px solid var(--border);
   transform-origin: center center;
-  width: calc(var(--card-w) * 0.8);
+  width: var(--card-w, 300px);
+  height: 220px;
 }
 
 @media (min-width: 768px) {
   .filmstrip-card {
-    width: var(--card-w);
+    width: var(--card-w, 380px);
   }
 }
 
