@@ -82,49 +82,14 @@ export default function ProjectDetail({ slug }: { slug: string }) {
       {/* 2. Project Case Details Section */}
       <section className="container" style={{ padding: "4rem 0" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: "4rem", marginBottom: "4rem" }}>
+          {/* Desafío, solución y entregables ocultos hasta revisar sus textos (los datos siguen en projects.ts) */}
           <div>
-            <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem", fontWeight: 700 }}>
-              {t("modal.challenge") || "El Desafío"}
-            </h2>
-            <p style={{ color: "var(--muted)", lineHeight: 1.8, fontSize: "1.05rem" }}>
-              {t(project.challengeKey || project.descKey)}
+            <p style={{ color: "var(--text)", lineHeight: 1.6, fontSize: "clamp(1.25rem, 2.2vw, 1.6rem)", fontWeight: 500, letterSpacing: "-0.01em" }}>
+              {t(project.descKey)}
             </p>
-
-            {project.solutionKey && (
-              <div style={{ marginTop: "2.5rem" }}>
-                <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem", fontWeight: 700 }}>
-                  {t("modal.solution") || "La Solución"}
-                </h2>
-                <p style={{ color: "var(--muted)", lineHeight: 1.8, fontSize: "1.05rem" }}>
-                  {t(project.solutionKey)}
-                </p>
-              </div>
-            )}
           </div>
 
           <div>
-            <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem", fontWeight: 700 }}>
-              {t("modal.deliverables") || "Entregables"}
-            </h2>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "2.5rem" }}>
-              {project.deliverables?.map(d => (
-                <span
-                  key={d}
-                  style={{
-                    padding: "6px 16px",
-                    borderRadius: "50px",
-                    background: "var(--panel)",
-                    border: "1px solid var(--border)",
-                    color: "var(--text)",
-                    fontSize: "0.85rem",
-                    fontWeight: 500
-                  }}
-                >
-                  {d}
-                </span>
-              ))}
-            </div>
-
             {project.colors && project.colors.length > 0 && (
               <div>
                 <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem", fontWeight: 700 }}>
