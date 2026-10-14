@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
 import { servicesData } from "@/data/servicesData";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://shamy-creative-studio.vercel.app";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://shamy.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = ["", "/services", "/projects", "/about", "/brief"].map((path) => ({
