@@ -34,7 +34,7 @@ export const projects: Project[] = [
     solutionKey: "project.branding.dantano.solution",
     category: "branding",
     year: 2020,
-    colors: ["#7C2D12", "#D97706", "#FEF3C7", "#18181B"],
+    colors: ["#D24845", "#FFFCF6", "#FBCA69"],
     deliverables: ["Brand Strategy", "Visual Identity", "Packaging Design"],
     coverImage: "assets/img/portfolio/branding/001_d_antano/00.webp",
     gallery: [
@@ -51,7 +51,7 @@ export const projects: Project[] = [
     solutionKey: "project.branding.fromtheocean.solution",
     category: "branding",
     year: 2021,
-    colors: ["#0284C7", "#0369A1", "#E0F2FE", "#0F172A"],
+    colors: ["#175C77", "#61B9A8", "#F8FFFD"],
     deliverables: ["ONG Identity", "Campaign Posters", "Motion Graphics"],
     coverImage: "assets/img/portfolio/branding/002_from_the_ocean/00.webp",
     gallery: [
@@ -68,7 +68,7 @@ export const projects: Project[] = [
     solutionKey: "project.branding.robertcapa.solution",
     category: "branding",
     year: 2022,
-    colors: ["#18181B", "#CA8A04", "#F4F4F5", "#27272A"],
+    colors: ["#191F24", "#F0AE5D"],
     deliverables: ["Spirits Identity", "Luxury Packaging", "Storytelling"],
     coverImage: "assets/img/portfolio/branding/003_robert_capa/00.webp",
     gallery: [
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     solutionKey: "project.branding.zeth.solution",
     category: "branding",
     year: 2023,
-    colors: ["#059669", "#10B981", "#ECFDF5", "#064E3B"],
+    colors: ["#080808", "#D7F179", "#12D5AD", "#ED7E00", "#830032", "#260B34"],
     deliverables: ["Type Design", "Specimen Poster", "Editorial Layout"],
     coverImage: "assets/img/portfolio/branding/004_zeth/00.webp",
     gallery: [
@@ -102,7 +102,7 @@ export const projects: Project[] = [
     solutionKey: "project.branding.summergroove.solution",
     category: "branding",
     year: 2023,
-    colors: ["#EA580C", "#C026D3", "#FDE047", "#1E1B4B"],
+    colors: ["#598CAD", "#F8CC98", "#FBE6CB"],
     deliverables: ["Festival Branding", "Motion Poster", "Merchandising"],
     coverImage: "assets/img/portfolio/branding/005_summer_groove/00.webp",
     gallery: [
@@ -119,7 +119,7 @@ export const projects: Project[] = [
     solutionKey: "project.branding.whopperking.solution",
     category: "branding",
     year: 2023,
-    colors: ["#DC2626", "#F59E0B", "#FEF2F2", "#451A03"],
+    colors: ["#C24B37", "#F4A061", "#FDD06D", "#FFFFFF"],
     deliverables: ["Rebranding Concept", "Food Packaging", "Digital Menu"],
     coverImage: "assets/img/portfolio/branding/006_whopper_king/00.webp",
     gallery: [
@@ -136,7 +136,7 @@ export const projects: Project[] = [
     solutionKey: "project.branding.aemg.solution",
     category: "branding",
     year: 2023,
-    colors: ["#2563EB", "#3B82F6", "#EFF6FF", "#1E3A8A"],
+    colors: ["#1F2D53", "#F2F2F1"],
     deliverables: ["Corporate Identity", "Brand Guidelines", "Stationery"],
     coverImage: "assets/img/portfolio/branding/007_aemg/00.webp",
     gallery: [
@@ -153,7 +153,7 @@ export const projects: Project[] = [
     solutionKey: "project.branding.curcuns.solution",
     category: "branding",
     year: 2023,
-    colors: ["#D97706", "#7C2D12", "#FFFBEB", "#451A03"],
+    colors: ["#1D1D1B", "#FCCF85", "#FF585D", "#9ACAEA", "#FFFCF6"],
     deliverables: ["Cultural Branding", "Illustration System", "Event Packaging"],
     coverImage: "assets/img/portfolio/branding/008_juego_de_guaguas/00.webp",
     gallery: [
@@ -170,7 +170,7 @@ export const projects: Project[] = [
     solutionKey: "project.branding.dosefes.solution",
     category: "branding",
     year: 2024,
-    colors: ["#0D9488", "#14B8A6", "#CCFBF1", "#115E59"],
+    colors: ["#C63663", "#47D7AC", "#FFFFFF"],
     deliverables: ["Pharmacy Branding", "Packaging System", "Web UI Concept"],
     coverImage: "assets/img/portfolio/branding/009_dos_efes/00.webp",
     gallery: [
@@ -187,7 +187,7 @@ export const projects: Project[] = [
     solutionKey: "project.branding.sompa.solution",
     category: "branding",
     year: 2025,
-    colors: ["#65A30D", "#84CC16", "#ECFCCB", "#365314"],
+    colors: ["#101820", "#FDB183", "#98E8BD", "#F3E5D1"],
     deliverables: ["Music Identity", "Vinyl Album Art", "Stage Visuals"],
     coverImage: "assets/img/portfolio/branding/010_sonpa/00.webp",
     gallery: [
@@ -204,7 +204,7 @@ export const projects: Project[] = [
     solutionKey: "project.branding.antaera.solution",
     category: "branding",
     year: 2025,
-    colors: ["#9333EA", "#A855F7", "#F3E8FF", "#581C87"],
+    colors: ["#41273B", "#FF7276", "#F1F1DE"],
     deliverables: ["Hospitality Branding", "Handcrafted Menu", "Interior Signage"],
     coverImage: "assets/img/portfolio/branding/011_bitacora/00.webp",
     gallery: [
@@ -223,7 +223,7 @@ export const projects: Project[] = [
     solutionKey: "project.branding.cvdll.solution",
     category: "coding",
     year: 2025,
-    colors: ["#4F46E5", "#6366F1", "#EEF2FF", "#312E81"],
+    colors: ["#F9F0D0", "#77694E", "#AA5A22", "#F4CF5B", "#546A61", "#2D2B20"],
     deliverables: ["Interactive Web", "Infographic Engine", "UI Architecture"],
     url: "https://cvdll.github.io/CVDLL/",
     coverImage: "assets/img/portfolio/coding/001_cvdll/00.webp",
@@ -243,7 +243,7 @@ export const projects: Project[] = [
     solutionKey: "project.branding.corazonesalrescate.solution",
     category: "animating",
     year: 2023,
-    colors: ["#E11D48", "#F43F5E", "#FFE4E6", "#881337"],
+    colors: ["#000000", "#FFFFFF"],
     deliverables: ["2D Animation", "Character Design", "Storyboard & Sound"],
     coverImage:
       "assets/img/portfolio/animating/001_corazones_al_rescate/00.webp",

@@ -9,23 +9,27 @@ import { useTranslation } from "./TranslationProvider";
 export default function ProjectFilmstrip() {
   const { t } = useTranslation();
 
-  // Dos filas con anchos variables para ritmo visual (--card-w se consume en globals.css)
+  // Dos filas con anchos variables para ritmo visual (--card-w se consume en globals.css).
+  // Las portadas son 16:9 y la tarjeta mide 220px de alto, así que con object-fit: cover
+  // una tarjeta de menos de ~390px recorta los lados. Las marcas horizontales
+  // (D'Antaño, From the Ocean, Dos Efes, Sonpa, Bitácora, Guaguas) necesitan >= 300px;
+  // los anchos angostos se reservan para logos compactos o verticales.
   const row1 = [
     { project: projects[0], cardWidth: 380 },
-    { project: projects[1], cardWidth: 200 },
+    { project: projects[3], cardWidth: 200 },
+    { project: projects[1], cardWidth: 360 },
     { project: projects[2], cardWidth: 260 },
-    { project: projects[3], cardWidth: 320 },
     { project: projects[4], cardWidth: 190 },
-    { project: projects[5], cardWidth: 400 },
+    { project: projects[5], cardWidth: 240 },
   ];
 
   const row2 = [
-    { project: projects[6] || projects[0], cardWidth: 330 },
-    { project: projects[7] || projects[1], cardWidth: 240 },
-    { project: projects[8] || projects[2], cardWidth: 370 },
-    { project: projects[9] || projects[3], cardWidth: 210 },
-    { project: projects[10] || projects[4], cardWidth: 340 },
-    { project: projects[0], cardWidth: 390 },
+    { project: projects[6], cardWidth: 250 },
+    { project: projects[7], cardWidth: 320 },
+    { project: projects[8], cardWidth: 370 },
+    { project: projects[12], cardWidth: 230 },
+    { project: projects[9], cardWidth: 340 },
+    { project: projects[10], cardWidth: 330 },
   ];
 
   // Duplicado para loop infinito continuo
